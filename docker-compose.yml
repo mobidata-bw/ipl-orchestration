@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:  
+  lamassu:
+    # TODO fix image name after repository has been choosen and CI is set up
+    image: mfdz/lamassu:${LAMASSU_VERSION_TAG}
+    ports:
+      - ${LAMASSU_PORT}:8080
+      - ${LAMASSU_ADMIN_PORT}:9001
+    environment:
+      # depending on base image, JAVA_TOOL_OPTIONS must be used
+      JDK_JAVA_OPTIONS: 
+        -Dspring.config.location=/etc/application-config/application.properties 
+        -Dspring.profiles.active=leader
+        -Dorg.entur.lamassu.adminPassword=secret
+        #-Djava.net.useSystemProxies=true 
+        #-Dhttps.proxyHost=http://proxy
+        #-Dhttps.proxyPort=8080
+    volumes:
+      - ./etc/lamassu/:/etc/application-config/
+      - ./var/lamassu/feeds:/var/lamassu/feeds
+
+  redis:
+    image: redis

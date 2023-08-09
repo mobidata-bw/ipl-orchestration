@@ -1,0 +1,194 @@
+lamassu:
+  providers:
+    - systemId: regiorad_stuttgart
+      operatorId: CAB:Operator:callabike
+      operatorName: Call-A-Bike
+      codespace: CAB
+      url: "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json"
+      language: de
+    - systemId: bird-ulm
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/ulm/gbfs.json"
+      language: en
+    - systemId: donkey_freiburg
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_freiburg/gbfs.json"
+      language: en
+    - systemId: nextbike_df
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBK
+      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_df/gbfs.json"
+      language: de
+    - systemId: nextbike_fg
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBK
+      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/gbfs.json"
+      language: de
+    - systemId: nextbike_ds
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBK
+      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ds/gbfs.json"
+      language: de
+    - systemId: nextbike_vn
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBK
+      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/gbfs.json"
+      language: de
+      # Offenburg currently not available(?). Request sent to nextbike 2023-07-25
+    #  - systemId: nextbike_dl
+    #    operatorId: NBK:Operator:nextbike
+    #    operatorName: Nextbike
+    #    codespace: NBK
+    #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_dl/gbfs.json"
+    #    language: de
+    # Lahr currently not available(?). Request sent to nextbike 2023-07-25
+    #  - systemId: nextbike_lr
+    #    operatorId: NBK:Operator:nextbike
+    #    operatorName: Nextbike
+    #    codespace: NBK
+    #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_lr/gbfs.json"
+    #    language: de
+    # Feeds CH
+    ## Bird CH
+    - systemId: bird-basel
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
+      language: en
+    - systemId: bird-biel
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
+      language: en
+    - systemId: bird-bulle
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/bulle/gbfs.json"
+      language: en
+    - systemId: bird-uster
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/uster/gbfs.json"
+      language: en
+    - systemId: bird-winterthur
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/winterthur/gbfs.json"
+      language: en
+    - systemId: bird-zurich
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/zurich/gbfs.json"
+      language: en
+    ## Donkey CH
+    - systemId: donkey_ge
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
+      language: de
+    - systemId: donkey_kreuzlingen
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
+      language: en
+    - systemId: donkey_neuchatel
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
+      language: en
+    - systemId: donkey_sion
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
+      language: en
+    - systemId: donkey_thun
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
+      language: en
+    - systemId: donkey_yverdon-les-bains
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
+      language: en
+    # Lime CH
+    - systemId: lime_opfikon
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: DKY
+      url: "https://data.lime.bike/api/partners/v2/gbfs/opfikon/gbfs.json"
+      language: en
+    - systemId: lime_zu
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: DKY
+      url: "https://data.lime.bike/api/partners/v2/gbfs/zug/gbfs.json"
+      language: en
+    # Link CH
+    - systemId: Link_Zurich
+      operatorId: LNK:Operator:link
+      operatorName: Link
+      codespace: LNK
+      url: "https://mds.linkyour.city/gbfs/ch_zurich/gbfs.json"
+      language: en
+    # Nexbike CH
+    - systemId: nextbike_ch
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBK
+      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
+      language: en
+    # Share Birrer CH
+    - systemId: share_birrer_ch
+      operatorId: NBK:Operator:share_birrer_ag
+      operatorName: Share Birrer A
+      codespace: SBA
+      url: "https://www.share-birrer.ch/gbfs/gbfs.json"
+      language: de
+    # Feeds FR
+    # Bird FR
+    - systemId: bird-chalonsenchampagne
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/chalonsenchampagne/gbfs.json"
+      language: en
+    - systemId: bird-sarreguemines
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
+      language: en
+    # Others FR
+    - systemId: mulhouse
+      operatorId: VLC:Operator:velocite
+      operatorName: velocite
+      codespace: VLC
+      url: "https://transport.data.gouv.fr/gbfs/mulhouse/gbfs.json"
+      language: fr
+    - systemId: nancy
+      operatorId: VLS:Operator:velostanlib
+      operatorName: velostanlib
+      codespace: VLS
+      url: "https://transport.data.gouv.fr/gbfs/nancy/gbfs.json"
+      language: fr
