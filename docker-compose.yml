@@ -24,10 +24,10 @@ services:
       JDK_JAVA_OPTIONS: 
         -Dspring.config.location=/etc/application-config/application.properties 
         -Dspring.profiles.active=leader
-        -Dorg.entur.lamassu.adminPassword=secret
         #-Djava.net.useSystemProxies=true 
         #-Dhttps.proxyHost=http://proxy
         #-Dhttps.proxyPort=8080
+        -Dorg.entur.lamassu.adminPassword=${LAMASSU_ADMIN_PASSWORD}
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/lamassu/feeds:/var/lamassu/feeds
