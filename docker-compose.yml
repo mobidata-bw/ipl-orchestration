@@ -1,6 +1,18 @@
 version: '3.9'
 
-services:  
+services:
+
+  x2gbfs:
+    # TODO fix image name after repository has been choosen and CI is set up
+    image: mfdz/x2gbfs:${X2GBFS_VERSION_TAG}
+    volumes:
+      - ./var/lamassu/feeds:/app/out/
+    command: -p deer -b file:///var/lamassu/feeds -i 45
+    environment:
+      - DEER_API_URL
+      - DEER_USER
+      - DEER_PASSWORD
+
   lamassu:
     # TODO fix image name after repository has been choosen and CI is set up
     image: mfdz/lamassu:${LAMASSU_VERSION_TAG}
