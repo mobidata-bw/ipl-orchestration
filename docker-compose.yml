@@ -1,10 +1,21 @@
 version: '3.9'
 
 services:
+  # This service applies aa couple of conversions for certain GBFS feeds to fix
+  # syntax issues which prevent importin in Lamassu. 
+  # It needs to be configured as proxy for Lamassu and feeds to be filtered should
+  # explicitly be requests using http. Proxy will take care of https requesting and
+  # necessary response rewrites.
+  transformer-proxy:
+    image: registry.git.sectio-aurea.org/mobidata-bw/proxy/proxy:${TRANSFORMER_PROXY_VERSION_TAG}
+    ports:
+      - ${TRANSFORMER_PROXY_PORT}:8080
   
+  # This service requests non-standard sharing provider APIs and generates
+  # a gbfs feed intended for local import into Lamassu. The volume needs to be
+  # mounted by the lamassu container also.
   x2gbfs:
-    # TODO fix image name after repository has been choosen and CI is set up
-    image: mfdz/x2gbfs:${X2GBFS_VERSION_TAG}
+    image: registry.git.sectio-aurea.org/mobidata-bw/x2gbfs/x2gbfs:${X2GBFS_VERSION_TAG}
     volumes:
       - ./var/lamassu/feeds:/app/out/
     command: -p deer -b file:///var/lamassu/feeds -i 45
