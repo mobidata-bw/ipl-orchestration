@@ -1,7 +1,7 @@
 version: '3.9'
 
 services:
-
+  
   x2gbfs:
     # TODO fix image name after repository has been choosen and CI is set up
     image: mfdz/x2gbfs:${X2GBFS_VERSION_TAG}
@@ -12,7 +12,7 @@ services:
       - DEER_API_URL
       - DEER_USER
       - DEER_PASSWORD
-
+  
   lamassu:
     # TODO fix image name after repository has been choosen and CI is set up
     image: mfdz/lamassu:${LAMASSU_VERSION_TAG}
@@ -34,3 +34,111 @@ services:
 
   redis:
     image: redis
+
+  ipl_db:
+      image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
+      volumes:
+        - ./var/postgis:/var/lib/postgresql
+      ports:
+        - ${IPL_POSTGRES_PORT}:5432
+      environment:
+        - POSTGRES_DB=${IPL_POSTGRES_DB}
+        - POSTGRES_USER=${IPL_POSTGRES_USER}
+        - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
+      restart: on-failure
+      healthcheck:
+        test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+
+  # This service runs the postgres DB used by dagster for run storage, schedule storage,
+  # and event log storage.
+  dagster_postgresql:
+    image: postgres:${DAGSTER_POSTGRES_IMAGE_TAG}
+    environment:
+      POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
+    restart: on-failure
+    # TODO we should mount volume to allow backup
+    networks:
+      - dagster_network
+    healthcheck:
+        test: "PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${DAGSTER_POSTGRES_USER} -d ${DAGSTER_POSTGRES_DB}"
+
+  # This service runs the gRPC server that loads your user code, in both dagster-webserver
+  # and dagster-daemon. Multiple containers like this can be deployed separately - each just needs to run on
+  # its own port, and have its own entry in the workspace.yaml file that's loaded by 
+  # dagster-webserver.
+  dagster_pipeline:
+    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-code:${DAGSTER_PIPELINE_IMAGE_TAG}
+    restart: always
+    environment:
+      - DAGSTER_POSTGRES_USER
+      - DAGSTER_POSTGRES_PASSWORD
+      - DAGSTER_POSTGRES_DB
+    depends_on:
+        dagster_postgresql:
+          condition: service_healthy
+    networks:
+      - dagster_network
+
+  # This service runs dagster-webserver, which loads your user code from the user code container.
+  # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
+  # will be put on a queue and later dequeued and launched by dagster-daemon.
+  dagster_dagit:
+    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    entrypoint:
+      - dagster-webserver
+      - -h
+      - "0.0.0.0"
+      - -p
+      - "3000"
+      - -w
+      - workspace.yaml
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    environment:
+      - DAGSTER_POSTGRES_USER
+      - DAGSTER_POSTGRES_PASSWORD
+      - DAGSTER_POSTGRES_DB
+    volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/io_manager_storage:/tmp/io_manager_storage
+      - ./etc/dagster:/opt/dagster/dagster_home/
+    networks:
+      - dagster_network
+    depends_on:
+      dagster_postgresql:
+        condition: service_healthy
+      dagster_pipeline:
+        condition: service_started
+
+  # This service runs the dagster-daemon process, which is responsible for taking runs
+  # off of the queue and launching them, as well as creating runs from schedules or sensors.
+  dagster_daemon:
+    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    entrypoint:
+      - dagster-daemon
+      - run
+    restart: on-failure
+    environment:
+      - DAGSTER_POSTGRES_USER
+      - DAGSTER_POSTGRES_PASSWORD
+      - DAGSTER_POSTGRES_DB
+    volumes: # Make docker client accessible so we can launch containers using host docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/io_manager_storage:/tmp/io_manager_storage
+      - ./etc/dagster:/opt/dagster/dagster_home/
+    networks:
+      - dagster_network
+    depends_on:
+      dagster_postgresql:
+        condition: service_healthy
+      dagster_pipeline:
+        condition: service_started
+
+networks:
+  dagster_network:
+    driver: bridge
+    name: dagster_network
