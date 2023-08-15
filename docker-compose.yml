@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   # This service applies aa couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importin in Lamassu. 
