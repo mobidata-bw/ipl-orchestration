@@ -67,8 +67,6 @@ services:
       POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
     restart: on-failure
     # TODO we should mount volume to allow backup
-    networks:
-      - dagster_network
     healthcheck:
         test: "PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${DAGSTER_POSTGRES_USER} -d ${DAGSTER_POSTGRES_DB}"
 
@@ -86,8 +84,6 @@ services:
     depends_on:
         dagster_postgresql:
           condition: service_healthy
-    networks:
-      - dagster_network
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
@@ -114,8 +110,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
-    networks:
-      - dagster_network
     depends_on:
       dagster_postgresql:
         condition: service_healthy
@@ -138,15 +132,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
-    networks:
-      - dagster_network
     depends_on:
       dagster_postgresql:
         condition: service_healthy
       dagster_pipeline:
         condition: service_started
-
-networks:
-  dagster_network:
-    driver: bridge
-    name: dagster_network
