@@ -34,6 +34,8 @@ services:
         -Dspring.config.location=/etc/application-config/application.properties 
         -Dspring.profiles.active=leader
         -Dorg.entur.lamassu.adminPassword=${LAMASSU_ADMIN_PASSWORD}
+        -Dhttp.proxyHost=transformer-proxy
+        -Dhttp.proxyPort=8080
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
