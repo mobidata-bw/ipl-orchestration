@@ -17,8 +17,8 @@ services:
   x2gbfs:
     image: registry.git.sectio-aurea.org/mobidata-bw/x2gbfs/x2gbfs:${X2GBFS_VERSION_TAG}
     volumes:
-      - ./var/lamassu/feeds:/app/out/
-    command: -p deer -b file:///var/lamassu/feeds -i 45
+      - ./var/gbfs/feeds:/app/out/
+    command: -p deer -b file:///var/gbfs/feeds -i 45
     environment:
       - DEER_API_URL
       - DEER_USER
