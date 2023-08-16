@@ -1,0 +1,55 @@
+<settings>
+  <id>SettingsInfoImpl--48f676ef:18997a59df5:-7ff4</id>
+  <workspace>
+    <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
+    <name>MobiData-BW</name>
+    <isolated>false</isolated>
+    <dateCreated>2023-07-27 14:02:34.743 UTC</dateCreated>
+    <dateModified>2023-07-27 14:06:15.733 UTC</dateModified>
+  </workspace>
+  <contact>
+    <id>contact</id>
+    <addressCity>Stuttgart</addressCity>
+    <addressCountry>Deutschland</addressCountry>
+    <addressPostalCode>70182</addressPostalCode>
+    <addressState>Baden-Württemberg</addressState>
+    <addressType>Wilhelmsplatz 11</addressType>
+    <contactEmail>Thorsten.Froehlinghaus@nvbw.de</contactEmail>
+    <contactFacsimile>F +49 711 23991-23</contactFacsimile>
+    <contactOrganization>NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH</contactOrganization>
+    <contactPerson>Dr. Thorsten Fröhlinghaus</contactPerson>
+    <contactPosition>Technischer Leiter - Team Mobilitätsdaten &amp; Innovationen</contactPosition>
+    <contactVoice>+49 711 23991-138</contactVoice>
+    <internationalAddress class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressCity class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressCountry class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressDeliveryPoint class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressPostalCode class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressState class="org.geotools.util.GrowableInternationalString"/>
+    <internationalAddressType class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactEmail class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactFacsimile class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactOrganization class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactPerson class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactPosition class="org.geotools.util.GrowableInternationalString"/>
+    <internationalContactVoice class="org.geotools.util.GrowableInternationalString"/>
+    <internationalOnlineResource class="org.geotools.util.GrowableInternationalString"/>
+    <internationalWelcome class="org.geotools.util.GrowableInternationalString"/>
+  </contact>
+  <charset>UTF-8</charset>
+  <numDecimals>6</numDecimals>
+  <verbose>true</verbose>
+  <verboseExceptions>false</verboseExceptions>
+  <metadata>
+    <map>
+      <entry>
+        <string>quietOnNotFound</string>
+        <boolean>false</boolean>
+      </entry>
+    </map>
+  </metadata>
+  <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
+  <showCreatedTimeColumnsInAdminList>false</showCreatedTimeColumnsInAdminList>
+  <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
+  <useHeadersProxyURL>false</useHeadersProxyURL>
+</settings>

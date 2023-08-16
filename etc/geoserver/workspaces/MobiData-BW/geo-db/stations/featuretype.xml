@@ -1,0 +1,45 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-7ffb</id>
+  <name>stations</name>
+  <nativeName>stations</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
+  </namespace>
+  <title>stations</title>
+  <keywords>
+    <string>features</string>
+    <string>stations</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>7.695681571960449</minx>
+    <maxx>10.103250503540039</maxx>
+    <miny>47.9656982421875</miny>
+    <maxy>49.12748718261719</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>7.695681571960449</minx>
+    <maxx>10.103250503540039</maxx>
+    <miny>47.9656982421875</miny>
+    <maxy>49.12748718261719</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

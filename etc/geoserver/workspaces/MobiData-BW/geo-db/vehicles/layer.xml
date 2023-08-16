@@ -1,0 +1,16 @@
+<layer>
+  <name>vehicles</name>
+  <id>LayerInfoImpl--1e02d99c:189997e81fa:-79df</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--48f676ef:18997a59df5:-8000</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-79e0</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-07-28 12:38:08.640 UTC</dateCreated>
+</layer>
