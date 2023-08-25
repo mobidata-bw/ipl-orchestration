@@ -49,6 +49,10 @@ services:
       resources:
         limits:
           memory: ${REDIS_MEMORY_MB:-256}M
+    # The redis image doesn't provide a health check by itself.
+    # see also https://github.com/docker-library/redis/issues/91
+    healthcheck:
+      test: "redis-cli --raw incr ping"
 
   ipl_db:
       image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
