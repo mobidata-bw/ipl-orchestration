@@ -155,7 +155,7 @@ services:
       dagster-pipeline:
         condition: service_started
 
-  # This service stores GTFS data.
+  # This service stores GTFS data imported by gtfs-importer.
   gtfs-db:
     image: postgis/postgis:${IPL_GTFS_DB_POSTGIS_VERSION_TAG}
     volumes:
@@ -192,3 +192,21 @@ services:
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
     restart: unless-stopped
+
+  gtfs-importer:
+    depends_on:
+      gtfs-db:
+        condition: service_healthy
+    links:
+      - gtfs-db
+    build:
+      context: ./gtfs-importer
+    volumes:
+      - ./var/gtfs:/var/gtfs
+    environment:
+      PGHOST: gtfs-db
+      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
+      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
+      GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
+      GTFS_TMP_DIR: /var/gtfs
