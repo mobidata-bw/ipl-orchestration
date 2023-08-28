@@ -155,3 +155,40 @@ services:
       dagster-pipeline:
         condition: service_started
 
+  # This service stores GTFS data.
+  gtfs-db:
+    image: postgis/postgis:${IPL_GTFS_DB_POSTGIS_VERSION_TAG}
+    volumes:
+      - ./var/gtfs/gtfs-db:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: ${IPL_GTFS_DB_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${IPL_GTFS_DB_POSTGRES_DB}
+    restart: on-failure
+    healthcheck:
+      test: "PGPASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_GTFS_DB_POSTGRES_USER} -d ${IPL_GTFS_DB_POSTGRES_DB}"
+      timeout: 3s
+      interval: 5s
+      start_period: 10s
+      retries: 10
+
+  gtfs-api:
+    depends_on:
+      gtfs-db:
+        condition: service_healthy
+    links:
+      - gtfs-db
+    image: postgrest/postgrest
+    ports:
+      - ${IPL_GTFS_API_PORT}:3000
+    read_only: true
+    environment:
+      PGHOST: gtfs-db
+      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
+      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
+      # PostgREST-specific env vars
+      PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
+      PGRST_DB_SCHEMAS: api
+      PGRST_DB_ANON_ROLE: web_anon
+    restart: unless-stopped
