@@ -1,6 +1,6 @@
 services:
-  # This service applies aa couple of conversions for certain GBFS feeds to fix
-  # syntax issues which prevent importin in Lamassu. 
+  # This service applies a couple of conversions for certain GBFS feeds to fix
+  # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
