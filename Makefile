@@ -32,10 +32,15 @@ docker-down:
 
 # Restart all containers (default) or only the containers specified by SERVICE (e.g. `make docker-restart SERVICE=redis`)
 .PHONY: docker-restart
-docker-restart: .env
+docker-restart:
 	$(DOCKER_COMPOSE) restart $(SERVICE)
+
+# Pull all images or only the containers specified by SERVICE (e.g. `make docker-pull SERVICE=redis`)
+.PHONY: docker-pull
+docker-pull:
+	$(DOCKER_COMPOSE) pull $(SERVICE)
 
 # Tear down all containers and delete all volumes
 .PHONY: docker-purge
-docker-purge: .env
+docker-purge:
 	$(DOCKER_COMPOSE) down --remove-orphans --volumes
