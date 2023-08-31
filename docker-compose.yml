@@ -99,7 +99,7 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
     depends_on:
-        dagster_postgresql:
+        dagster-postgresql:
           condition: service_healthy
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
@@ -128,9 +128,9 @@ services:
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster_postgresql:
+      dagster-postgresql:
         condition: service_healthy
-      dagster_pipeline:
+      dagster-pipeline:
         condition: service_started
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
@@ -150,8 +150,8 @@ services:
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster_postgresql:
+      dagster-postgresql:
         condition: service_healthy
-      dagster_pipeline:
+      dagster-pipeline:
         condition: service_started
 
