@@ -54,7 +54,7 @@ services:
     healthcheck:
       test: "redis-cli --raw incr ping"
 
-  ipl_db:
+  ipl-db:
       image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
       volumes:
         - ./var/postgis:/var/lib/postgresql
@@ -70,7 +70,7 @@ services:
 
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
-  dagster_postgresql:
+  dagster-postgresql:
     image: postgres:${DAGSTER_POSTGRES_IMAGE_TAG}
     environment:
       POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
@@ -85,7 +85,7 @@ services:
   # and dagster-daemon. Multiple containers like this can be deployed separately - each just needs to run on
   # its own port, and have its own entry in the workspace.yaml file that's loaded by 
   # dagster-webserver.
-  dagster_pipeline:
+  dagster-pipeline:
     image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-code:${DAGSTER_PIPELINE_IMAGE_TAG}
     restart: always
     environment:
@@ -99,13 +99,13 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
     depends_on:
-        dagster_postgresql:
+        dagster-postgresql:
           condition: service_healthy
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
-  dagster_dagit:
+  dagster-dagit:
     image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
     entrypoint:
       - dagster-webserver
@@ -128,14 +128,14 @@ services:
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster_postgresql:
+      dagster-postgresql:
         condition: service_healthy
-      dagster_pipeline:
+      dagster-pipeline:
         condition: service_started
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
-  dagster_daemon:
+  dagster-daemon:
     image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
     entrypoint:
       - dagster-daemon
@@ -150,7 +150,8 @@ services:
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster_postgresql:
+      dagster-postgresql:
         condition: service_healthy
-      dagster_pipeline:
+      dagster-pipeline:
         condition: service_started
+
