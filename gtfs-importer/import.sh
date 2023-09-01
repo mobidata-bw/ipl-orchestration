@@ -39,7 +39,7 @@ gtfs-via-postgres -d \
 	--import-metadata \
 	--schema api --postgrest \
 	"$extracted_path/"*.txt \
-	| sponge \
+	| zstd | sponge | zstd -d \
 	| psql -b
 
 set +x

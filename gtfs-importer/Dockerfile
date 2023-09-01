@@ -14,7 +14,8 @@ RUN apk update && apk add --no-cache \
 	moreutils \
 	ncurses \
 	unzip \
-	wget
+	wget \
+	zstd
 
 ADD package.json ./
 RUN npm install --omit dev && npm cache clean --force
