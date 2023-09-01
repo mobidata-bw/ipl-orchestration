@@ -182,11 +182,11 @@ services:
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
+    env_file: ./.gtfs-api.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
       PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
-      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
       # PostgREST-specific env vars
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
@@ -203,10 +203,16 @@ services:
       context: ./gtfs-importer
     volumes:
       - ./var/gtfs:/var/gtfs
+      - ./.gtfs-api.env:/var/.gtfs-api.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
       PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      # the default DB, used by gtfs-importer to keep track of imports
       PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
       GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
+      # the prefix of all DBs created for imports by gtfs-importer
+      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
+      # let the importer modify gtfs-api's env file
+      GTFS_IMPORTER_ENV_FILE: /var/.gtfs-api.env
       GTFS_TMP_DIR: /var/gtfs

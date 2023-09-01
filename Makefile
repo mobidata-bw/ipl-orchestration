@@ -44,3 +44,10 @@ docker-pull:
 .PHONY: docker-purge
 docker-purge:
 	$(DOCKER_COMPOSE) down --remove-orphans --volumes
+
+# GTFS data management
+# --------------------
+
+.PHONY: import-new-gtfs
+import-new-gtfs:
+	./import-new-gtfs.sh
