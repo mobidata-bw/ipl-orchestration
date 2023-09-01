@@ -33,8 +33,6 @@ set +x
 print_bold "Importing GTFS feed into the $PGDATABASE database."
 set -x
 
-# todo: create new db, import into it, switch to it, delete old – safely despite crashes!
-
 gtfs-via-postgres -d \
 	--trips-without-shape-id --lower-case-lang-codes \
 	--stops-location-index \

@@ -16,7 +16,10 @@ RUN apk update && apk add --no-cache \
 	unzip \
 	wget
 
+ADD package.json ./
+RUN npm install --omit dev && npm cache clean --force
+
 ADD . .
 
-ENTRYPOINT ["/bin/bash"]
-CMD ["import.sh"]
+ENTRYPOINT []
+CMD ["/usr/local/bin/node", "importer.js"]
