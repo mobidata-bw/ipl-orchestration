@@ -1,5 +1,5 @@
 # todo: this base image is Prosperity-dual-licensed, obtain a purely Apache-licensed one
-FROM ghcr.io/public-transport/gtfs-via-postgres:4
+FROM ghcr.io/public-transport/gtfs-via-postgres:4.8.0-alpha.2
 LABEL org.opencontainers.image.title="GTFS importer, based on gtfs-via-postgres"
 LABEL org.opencontainers.image.authors="MobiData-BW IPL contributors <mobidata-bw@nvbw.de>"
 
