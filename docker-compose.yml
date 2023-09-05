@@ -6,7 +6,11 @@ services:
   # necessary response rewrites.
   transformer-proxy:
     image: registry.git.sectio-aurea.org/mobidata-bw/proxy/proxy:${TRANSFORMER_PROXY_VERSION_TAG}
+    volumes:
+      # Mount config file which declares hosts to proxy
+      - ./etc/transformer-proxy/config.yaml:/app/config.yaml
     ports:
+      # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
   
   # This service requests non-standard sharing provider APIs and generates
