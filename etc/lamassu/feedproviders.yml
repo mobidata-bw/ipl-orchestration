@@ -11,8 +11,13 @@ lamassu:
       operatorId: CAB:Operator:callabike
       operatorName: Call-A-Bike
       codespace: CAB
-      url: "https://gtfs.mfdz.de/gbfs/regiorad_stuttgart/gbfs.json"
+      url: "https://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/RegioRadStuttgart/gbfs"
       language: de
+      authentication:
+        scheme: httpHeaders
+        properties:
+          DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
+          DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
     - systemId: bird-ulm
       operatorId: BRD:Operator:bird
       operatorName: bird
