@@ -155,9 +155,9 @@ services:
       dagster-pipeline:
         condition: service_started
 
-  # This service stores GTFS data imported by gtfs-importer.
   gtfs-db:
-    image: postgis/postgis:${IPL_GTFS_DB_POSTGIS_VERSION_TAG}
+    build:
+      context: ./gtfs-db
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
     environment:
@@ -171,6 +171,7 @@ services:
       interval: 5s
       start_period: 10s
       retries: 10
+    restart: "on-failure"
 
   gtfs-api:
     depends_on:
@@ -192,27 +193,3 @@ services:
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
     restart: unless-stopped
-
-  gtfs-importer:
-    depends_on:
-      gtfs-db:
-        condition: service_healthy
-    links:
-      - gtfs-db
-    build:
-      context: ./gtfs-importer
-    volumes:
-      - ./var/gtfs:/var/gtfs
-      - ./.gtfs-api.env:/var/.gtfs-api.env
-    environment:
-      PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
-      # the default DB, used by gtfs-importer to keep track of imports
-      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
-      # the prefix of all DBs created for imports by gtfs-importer
-      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
-      # let the importer modify gtfs-api's env file
-      GTFS_IMPORTER_ENV_FILE: /var/.gtfs-api.env
-      GTFS_TMP_DIR: /var/gtfs
-    restart: "on-failure"
