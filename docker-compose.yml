@@ -39,6 +39,9 @@ services:
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
+    depends_on:
+        redis:
+          condition: service_healthy
 
   redis:
     image: redis:6-alpine
