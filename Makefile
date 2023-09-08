@@ -1,6 +1,6 @@
 DOCKER_COMPOSE = docker compose --env-file .env --env-file .env.local
 
-DOCKER_REGISTRY = registry.git.sectio-aurea.org
+DOCKER_REGISTRY = ghcr.io
 
 # Default target when running `make`
 .PHONY: all
