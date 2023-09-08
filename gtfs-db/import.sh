@@ -16,6 +16,7 @@ bwgesamt='https://www.nvbw.de/fileadmin/user_upload/service/open_data/fahrplanda
 gtfs_url="${GTFS_DOWNLOAD_URL:-$bwgesamt}"
 gtfs_tmp_dir="${GTFS_TMP_DIR:-/tmp/gtfs}"
 mkdir -p "$gtfs_tmp_dir"
+dest="${DEST_PATH:?missing env \$DEST_PATH var}"
 
 zip_path="$gtfs_tmp_dir/bwgesamt.gtfs.zip"
 extracted_path="$gtfs_tmp_dir/bwgesamt.gtfs"
@@ -30,8 +31,10 @@ rm -rf "$extracted_path"
 unzip -d "$extracted_path" "$zip_path"
 
 set +x
-print_bold "Importing GTFS feed into the $PGDATABASE database."
+print_bold "Writing GTFS SQL to $dest."
 set -x
+
+mkdir -p "$(dirname "$dest")"
 
 gtfs-via-postgres -d \
 	--trips-without-shape-id --lower-case-lang-codes \
@@ -39,14 +42,7 @@ gtfs-via-postgres -d \
 	--import-metadata \
 	--schema api --postgrest \
 	"$extracted_path/"*.txt \
-	| zstd | sponge | zstd -d \
-	| psql -b
+	| sponge "$dest"
 
 set +x
 print_bold 'Done!'
-
-cat <<EOF
-Run PostgREST with the following environment variables:'
-PGRST_DB_SCHEMAS=api
-PGRST_DB_ANON_ROLE=web_anon
-EOF
