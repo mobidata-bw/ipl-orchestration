@@ -32,6 +32,13 @@ ENV POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 ARG POSTGRES_DB
 ENV POSTGRES_DB=$POSTGRES_DB
 
+# patch pre-populated docker-entrypoint.sh
+# see https://github.com/docker-library/postgres/issues/731#issuecomment-1431638282
+# see https://github.com/docker-library/postgres/blob/2f0ed0c7e8f8b05b294740f150397eec0af8dc50/15/alpine3.18/docker-entrypoint.sh
+ADD docker-entrypoint.sh /usr/local/bin/
+# tell docker-entrypoint.sh *not to* (re)start PostgreSQL after importing /docker-entrypoint-initdb.d/*
+ENV POSTGRES_INIT_THEN_EXIT=1
+
 # We prefix our GTFS SQL with `20_`, so that it gets processed *after* the pre-existing PostGIS init script (/docker-entrypoint-initdb.d/10_postgis.sh).
 RUN \
 	--mount=type=bind,from=sql,source=/tmp/sql,target=/tmp/sql \
