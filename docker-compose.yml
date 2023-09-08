@@ -13,7 +13,7 @@ services:
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
   x2gbfs:
-    image: registry.git.sectio-aurea.org/mobidata-bw/x2gbfs/x2gbfs:${X2GBFS_VERSION_TAG}
+    image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
     command: -p deer -b file:///var/gbfs/feeds -i 45
