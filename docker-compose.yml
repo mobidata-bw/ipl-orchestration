@@ -73,7 +73,7 @@ services:
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
   dagster-postgresql:
-    image: postgres:${DAGSTER_POSTGRES_IMAGE_TAG}
+    image: ${DAGSTER_POSTGRES_IMAGE}
     environment:
       POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
       POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
@@ -88,7 +88,7 @@ services:
   # its own port, and have its own entry in the workspace.yaml file that's loaded by 
   # dagster-webserver.
   dagster-pipeline:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-code:${DAGSTER_PIPELINE_IMAGE_TAG}
+    image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
       - DAGSTER_POSTGRES_USER
@@ -108,7 +108,7 @@ services:
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
   dagster-dagit:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    image: ${DAGSTER_IMAGE}
     entrypoint:
       - dagster-webserver
       - -h
@@ -138,7 +138,7 @@ services:
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
   dagster-daemon:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    image: ${DAGSTER_IMAGE}
     entrypoint:
       - dagster-daemon
       - run
