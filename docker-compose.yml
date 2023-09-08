@@ -5,7 +5,7 @@ services:
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
   transformer-proxy:
-    image: registry.git.sectio-aurea.org/mobidata-bw/proxy/proxy:${TRANSFORMER_PROXY_VERSION_TAG}
+    image: ${TRANSFORMER_PROXY_IMAGE}
     ports:
       - ${TRANSFORMER_PROXY_PORT}:8080
   
