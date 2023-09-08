@@ -23,8 +23,7 @@ services:
       - DEER_PASSWORD
   
   lamassu:
-    # TODO fix image name after repository has been choosen and CI is set up
-    image: mfdz/lamassu:${LAMASSU_VERSION_TAG}
+    image: ${LAMASSU_IMAGE}
     ports:
       - ${LAMASSU_PORT}:8080
       - ${LAMASSU_ADMIN_PORT}:9001
