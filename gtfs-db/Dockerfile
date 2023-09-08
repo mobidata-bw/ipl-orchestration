@@ -44,6 +44,19 @@ ADD docker-entrypoint.sh /usr/local/bin/
 # tell docker-entrypoint.sh *not to* (re)start PostgreSQL after importing /docker-entrypoint-initdb.d/*
 ENV POSTGRES_INIT_THEN_EXIT=1
 
+# tune PostgreSQL: trade reliability for raw import performance
+# https://stackoverflow.com/a/9407940
+# todo: how? the following `docker-entrypoint.sh` flags didn't affect the import time:
+# -c wal_level=logical \
+# -c wal_log_hints=off \
+# -c synchronous_commit=off \
+# -c checkpoint_timeout=6h \
+# -c full_page_writes=off \
+# -c fsync=off \
+# -c shared_buffers=2GB \
+# -c work_mem=64MB \
+# -c log_temp_files=1000000
+
 # We prefix our GTFS SQL with `20_`, so that it gets processed *after* the pre-existing PostGIS init script (/docker-entrypoint-initdb.d/10_postgis.sh).
 RUN \
 	--mount=type=bind,from=sql,source=/tmp/sql,target=/tmp/sql \

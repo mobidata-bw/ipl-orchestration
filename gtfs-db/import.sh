@@ -30,6 +30,9 @@ wget -nv -U "$ua" -O "$zip_path" "$gtfs_url"
 rm -rf "$extracted_path"
 unzip -d "$extracted_path" "$zip_path"
 
+# todo: remove
+rm "$extracted_path/shapes.txt"
+
 set +x
 print_bold "Writing GTFS SQL to $dest."
 set -x
