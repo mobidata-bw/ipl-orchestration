@@ -57,7 +57,7 @@ services:
       test: "redis-cli --raw incr ping"
 
   ipl-db:
-      image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
+      image: ${IPL_POSTGIS_IMAGE}
       volumes:
         - ./var/postgis:/var/lib/postgresql
       ports:
