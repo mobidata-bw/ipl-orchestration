@@ -14,12 +14,17 @@ RUN apk update && apk add --no-cache \
 	unzip \
 	wget
 
+# configure the GTFS download
+ARG GTFS_DOWNLOAD_USER_AGENT
+ENV GTFS_DOWNLOAD_USER_AGENT=$GTFS_DOWNLOAD_USER_AGENT
+ARG GTFS_DOWNLOAD_URL
+ENV GTFS_DOWNLOAD_URL=$GTFS_DOWNLOAD_URL
+ENV GTFS_TMP_DIR=/tmp/gtfs
+
 ADD import.sh ./
 RUN \
 	--mount=type=cache,target=/tmp/gtfs,sharing=locked \
-	env \
-		GTFS_TMP_DIR=/tmp/gtfs \
-		DEST_PATH=/tmp/sql/gtfs.sql \
+	env DEST_PATH=/tmp/sql/gtfs.sql \
 		./import.sh
 
 FROM postgis/postgis:15-3.4-alpine AS import
