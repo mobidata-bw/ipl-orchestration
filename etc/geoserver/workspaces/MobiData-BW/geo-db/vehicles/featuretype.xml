@@ -36,6 +36,10 @@
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
+  <metadata>
+    <entry key="cacheAgeMax">60</entry>
+    <entry key="cachingEnabled">true</entry>
+  </metadata>
   <store class="dataStore">
     <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
   </store>
