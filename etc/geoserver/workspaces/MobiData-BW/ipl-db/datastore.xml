@@ -1,7 +1,7 @@
 <dataStore>
   <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
-  <name>geo-db</name>
-  <description>MobiData Geoserver DB</description>
+  <name>ipl-db</name>
+  <description>MobiData IPL DB</description>
   <type>PostGIS</type>
   <enabled>true</enabled>
   <workspace>
