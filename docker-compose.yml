@@ -64,7 +64,7 @@ services:
   ipl-db:
       image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
       volumes:
-        - ./var/postgis:/var/lib/postgresql
+        - ./var/ipl-db/data:/var/lib/postgresql/data
       ports:
         - ${IPL_POSTGRES_PORT}:5432
       environment:
@@ -84,7 +84,8 @@ services:
       POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
       POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
     restart: on-failure
-    # TODO we should mount volume to allow backup
+    volumes:
+        - ./var/dagster-postgresql/data:/var/lib/postgresql/data
     healthcheck:
         test: "PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${DAGSTER_POSTGRES_USER} -d ${DAGSTER_POSTGRES_DB}"
 
