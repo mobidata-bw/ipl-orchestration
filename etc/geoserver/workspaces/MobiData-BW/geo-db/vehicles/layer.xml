@@ -3,8 +3,13 @@
   <id>LayerInfoImpl--1e02d99c:189997e81fa:-79df</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl--48f676ef:18997a59df5:-8000</id>
+    <id>StyleInfoImpl-113972e5:18a7881cbca:-7ff6</id>
   </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl-113972e5:18a7881cbca:-7ff6</id>
+    </style>
+  </styles>
   <resource class="featureType">
     <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-79e0</id>
   </resource>
@@ -13,4 +18,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2023-07-28 12:38:08.640 UTC</dateCreated>
+  <dateModified>2023-09-09 06:10:29.118 UTC</dateModified>
 </layer>
