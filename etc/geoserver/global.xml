@@ -2,8 +2,17 @@
   <settings>
     <contact>
       <id>contact</id>
-      <contactOrganization class="org.geotools.util.GrowableInternationalString"/>
-      <contactPerson class="org.geotools.util.GrowableInternationalString"/>
+      <address>Wilhelmsplatz 11</address>
+      <addressCity>Stuttgart</addressCity>
+      <addressCountry>Deutschland</addressCountry>
+      <addressPostalCode>70182</addressPostalCode>
+      <addressState>Baden-Württemberg</addressState>
+      <contactEmail>mobidatabw-technik@nvbw.de</contactEmail>
+      <contactOrganization>MobiData-BW</contactOrganization>
+      <contactPerson>Dr. Thorsten Fröhlinghaus</contactPerson>
+      <contactPosition>Technischer Leiter - Team Mobilitätsdaten &amp;amp; Innovationen</contactPosition>
+      <contactVoice>+49 711 23991-138</contactVoice>
+      <onlineResource>https://www.mobidata-bw.de/</onlineResource>
       <internationalAddress class="org.geotools.util.GrowableInternationalString"/>
       <internationalAddressCity class="org.geotools.util.GrowableInternationalString"/>
       <internationalAddressCountry class="org.geotools.util.GrowableInternationalString"/>
@@ -76,7 +85,7 @@
     <queueType>UNBOUNDED</queueType>
     <imageIOCacheThreshold>10240</imageIOCacheThreshold>
   </coverageAccess>
-  <updateSequence>2</updateSequence>
+  <updateSequence>3</updateSequence>
   <featureTypeCacheSize>0</featureTypeCacheSize>
   <globalServices>true</globalServices>
   <xmlPostRequestLogBufferSize>1024</xmlPostRequestLogBufferSize>
