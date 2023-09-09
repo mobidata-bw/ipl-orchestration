@@ -134,8 +134,11 @@ services:
   geoserver:
     image: ${GEOSERVER_IMAGE}
     volumes:
-      # TODO separate log/tmp/cache dirs from config dirs
-      - ./etc/geoserver/:/opt/geoserver/data_dir
+      # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
+      - ./var/geoserver/:/opt/geoserver/data_dir/
+      - ./etc/geoserver/global.xml:/opt/geoserver/data_dir/global.xml
+      - ./etc/geoserver/logging.xml:/opt/geoserver/data_dir/logging.xml
+      - ./etc/geoserver/workspaces:/opt/geoserver/data_dir/workspaces
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
       - ./.env.local:/opt/geoserver/data_dir/geoserver-environment.properties
     ports:
