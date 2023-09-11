@@ -5,7 +5,7 @@ services:
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
   transformer-proxy:
-    image: registry.git.sectio-aurea.org/mobidata-bw/proxy/proxy:${TRANSFORMER_PROXY_VERSION_TAG}
+    image: ${TRANSFORMER_PROXY_IMAGE}
     volumes:
       # Mount config file which declares hosts to proxy
       - ./etc/transformer-proxy/config.yaml:/app/config.yaml
@@ -17,7 +17,7 @@ services:
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
   x2gbfs:
-    image: registry.git.sectio-aurea.org/mobidata-bw/x2gbfs/x2gbfs:${X2GBFS_VERSION_TAG}
+    image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
     command: -p deer -b file:///var/gbfs/feeds -i 45
@@ -27,8 +27,7 @@ services:
       - DEER_PASSWORD
   
   lamassu:
-    # TODO fix image name after repository has been choosen and CI is set up
-    image: mfdz/lamassu:${LAMASSU_VERSION_TAG}
+    image: ${LAMASSU_IMAGE}
     ports:
       - ${LAMASSU_PORT}:8080
       - ${LAMASSU_ADMIN_PORT}:9001
@@ -62,7 +61,7 @@ services:
       test: "redis-cli --raw incr ping"
 
   ipl-db:
-      image: postgis/postgis:${IPL_POSTGIS_VERSION_TAG}
+      image: ${IPL_POSTGIS_IMAGE}
       volumes:
         - ./var/ipl-db/data:/var/lib/postgresql/data
       ports:
@@ -78,7 +77,7 @@ services:
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
   dagster-postgresql:
-    image: postgres:${DAGSTER_POSTGRES_IMAGE_TAG}
+    image: ${DAGSTER_POSTGRES_IMAGE}
     environment:
       POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
       POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
@@ -94,7 +93,7 @@ services:
   # its own port, and have its own entry in the workspace.yaml file that's loaded by 
   # dagster-webserver.
   dagster-pipeline:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-code:${DAGSTER_PIPELINE_IMAGE_TAG}
+    image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
       - DAGSTER_POSTGRES_USER
@@ -114,7 +113,7 @@ services:
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
   dagster-dagit:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    image: ${DAGSTER_IMAGE}
     entrypoint:
       - dagster-webserver
       - -h
@@ -144,7 +143,7 @@ services:
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
   dagster-daemon:
-    image: registry.git.sectio-aurea.org/mobidata-bw/pipeline/pipeline-dagster:${DAGSTER_IMAGE_TAG}
+    image: ${DAGSTER_IMAGE}
     entrypoint:
       - dagster-daemon
       - run
