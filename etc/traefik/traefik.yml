@@ -36,6 +36,8 @@ entryPoints:
         - "127.0.0.1"
         # gateway of the default Docker (brdige) network
         - "172.17.0.1"
+        # gateway of our custom Docker Compose (bridge) network (`ipl`)
+        - "172.28.5.254"
   # explicitly define an entrypoint `traefik` on port 8080 for ops & system management
   # - Prometheus metrics
   traefik:

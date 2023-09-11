@@ -6,6 +6,7 @@ services:
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
   ingress:
+    networks: [ipl]
     image: traefik:v2.10
     ports:
       # todo: change to 80:80
@@ -24,6 +25,7 @@ services:
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
   transformer-proxy:
+    networks: [ipl]
     image: ${TRANSFORMER_PROXY_IMAGE}
     volumes:
       # Mount config file which declares hosts to proxy
@@ -36,6 +38,7 @@ services:
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
   x2gbfs:
+    networks: [ipl]
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
@@ -46,6 +49,7 @@ services:
       - DEER_PASSWORD
   
   lamassu:
+    networks: [ipl]
     image: ${LAMASSU_IMAGE}
     ports:
       - ${LAMASSU_PORT}:8080
@@ -69,6 +73,7 @@ services:
           condition: service_started
 
   redis:
+    networks: [ipl]
     image: redis:6-alpine
     # Redis tries to use all memory it gets, and doesn't query the container's memory limit.
     # see also https://stackoverflow.com/a/70779280
@@ -83,6 +88,7 @@ services:
       test: "redis-cli --raw incr ping"
 
   ipl-db:
+      networks: [ipl]
       image: ${IPL_POSTGIS_IMAGE}
       volumes:
         - ./var/ipl-db/data:/var/lib/postgresql/data
@@ -99,6 +105,7 @@ services:
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
   dagster-postgresql:
+    networks: [ipl]
     image: ${DAGSTER_POSTGRES_IMAGE}
     environment:
       POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
@@ -118,6 +125,7 @@ services:
   # its own port, and have its own entry in the workspace.yaml file that's loaded by 
   # dagster-webserver.
   dagster-pipeline:
+    networks: [ipl]
     image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
@@ -139,6 +147,7 @@ services:
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
   dagster-dagit:
+    networks: [ipl]
     image: ${DAGSTER_DAGIT_IMAGE}
     expose:
       - "3000"
@@ -162,6 +171,7 @@ services:
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
   dagster-daemon:
+    networks: [ipl]
     image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
@@ -181,6 +191,7 @@ services:
 
   # This service stores GTFS data imported by gtfs-importer.
   gtfs-db:
+    networks: [ipl]
     image: ${IPL_GTFS_DB_IMAGE}
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
@@ -197,6 +208,7 @@ services:
       retries: 10
 
   gtfs-api:
+    networks: [ipl]
     depends_on:
       gtfs-db:
         condition: service_healthy
@@ -218,6 +230,7 @@ services:
     restart: unless-stopped
 
   gtfs-importer:
+    networks: [ipl]
     profiles:
       - import-new-gtfs
     depends_on:
@@ -244,6 +257,7 @@ services:
       GTFS_TMP_DIR: /var/gtfs
 
   gtfs-swagger-ui:
+    networks: [ipl]
     depends_on:
       gtfs-api:
         condition: service_started
@@ -254,3 +268,13 @@ services:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
       API_URL: http://localhost:${IPL_GTFS_API_PORT}
     restart: unless-stopped
+
+networks:
+  ipl:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.28.0.0/16
+        ip_range: 172.28.5.0/24
+        gateway: 172.28.5.254
