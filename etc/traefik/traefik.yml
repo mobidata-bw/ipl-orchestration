@@ -19,6 +19,23 @@ entryPoints:
         - no-mime-sniff@file
         # enable response compression by default
         - compression@file
+    forwardedHeaders:
+      # Trust all `X-Forwarded-*` headers passed from the a reverse proxy *in front of Traefik*
+      # (if uses one of the specified IP addresses/ranges), and pass them through to services,
+      # instead of filtering them out. The address of this "external" reverse proxy depends on
+      # Docker's network configuration.
+      # - By default, Docker uses the "bridge" networking integration: It does NAT[1] between
+      #   the host's network and the Docker-internal network. Its default (bridge) network called
+      #   `bridge` usually uses `172.17.0.0/16`, with `172.17.0.1` being the gateway.
+      # - In our docker-compose.yaml, we have configured our own (bridge) network `ipl` using
+      #   `172.28.0.0/16` (gateway is `172.28.5.254`), so we add it here.
+      # [1] https://en.wikipedia.org/wiki/Network_address_translation
+      # todo: do we want to use [host networking](https://docs.docker.com/network/network-tutorial-host/)? then we need to add the MobiData-BW load balancer IPs here!
+      trustedIPs:
+        # loopback a.k.a. local
+        - "127.0.0.1"
+        # gateway of the default Docker (brdige) network
+        - "172.17.0.1"
   # explicitly define an entrypoint `traefik` on port 8080 for ops & system management
   # - Prometheus metrics
   traefik:
