@@ -63,6 +63,12 @@ entryPoints:
 accesslog:
   filePath: "/var/log/traefik/access.log"
   format: json
+  # increase logging performance, risk loss of in-memory logs
+  bufferingSize: 100
+  # include all headers in the access log
+  fields:
+    headers:
+      defaultMode: keep
 
 metrics:
   prometheus:
