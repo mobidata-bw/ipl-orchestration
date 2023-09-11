@@ -19,10 +19,19 @@ entryPoints:
         - no-mime-sniff@file
         # enable response compression by default
         - compression@file
+  # explicitly define an entrypoint `traefik` on port 8080 for ops & system management
+  # - Prometheus metrics
+  traefik:
+    address: ":8080"
 
 accesslog:
   filePath: "/var/log/traefik/access.log"
   format: json
+
+metrics:
+  prometheus:
+    # expose metrics on the `traefik` entrypoint
+    entryPoint: traefik
 
 # todo: move /health to `web` entrypoint instead of default `traefik`, to allow health-checking from the outside?
 ping: true
