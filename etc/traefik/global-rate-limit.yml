@@ -1,0 +1,22 @@
+http:
+  middlewares:
+    global-rate-limit:
+      ratelimit:
+        # Define a global HTTP request rate limit, so that individual naive, broken or malicous clients cannot DOS the backend services.
+        # see https://doc.traefik.io/traefik/middlewares/http/ratelimit/
+
+        period: "1m" # 1 minute
+        average: 600 # 600 requests
+        burst: 1000 # in addition, allow a burst of 1000 requests
+
+        sourceCriterion:
+          ipStrategy:
+            # We put the IPs of our trusted (reverse) proxies *in front of Traefik* here.
+            # > ipStrategy.excludedIps
+            # > Contrary to what the name might suggest, this option is *not* about excluding an IP from the rate limiter, and therefore cannot be used to deactivate rate limiting for some IPs.
+            # > excludedIPs is meant to address two classes of somewhat distinct use-cases:
+            # > 1. Distinguish IPs which are behind the same (set of) reverse-proxies so that each of them contributes, independently to the others, to its own rate-limit "bucket" (cf the leaky bucket analogy). In this case, excludedIPs should be set to match the list of X-Forwarded-For IPs that are to be excluded, in order to find the actual clientIP.
+            # https://doc.traefik.io/traefik/middlewares/http/ratelimit/#sourcecriterionipstrategy
+            excludedIps:
+              # gateway of our custom Docker Compose (bridge) network (`ipl`)
+              - "172.28.5.254"
