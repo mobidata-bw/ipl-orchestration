@@ -19,6 +19,8 @@ entryPoints:
     address: ":80"
     http:
       middlewares:
+        # by default, apply a global request rate limit
+        - global-rate-limit@file
         # don't sniff the mime type from the response body (will be removed in Traefik v3)
         - no-mime-sniff@file
         # enable response compression by default
