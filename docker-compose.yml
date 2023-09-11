@@ -113,15 +113,7 @@ services:
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
   dagster-dagit:
-    image: ${DAGSTER_IMAGE}
-    entrypoint:
-      - dagster-webserver
-      - -h
-      - "0.0.0.0"
-      - -p
-      - "3000"
-      - -w
-      - workspace.yaml
+    image: ${DAGSTER_DAGIT_IMAGE}
     expose:
       - "3000"
     ports:
@@ -143,10 +135,7 @@ services:
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
   dagster-daemon:
-    image: ${DAGSTER_IMAGE}
-    entrypoint:
-      - dagster-daemon
-      - run
+    image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
       - DAGSTER_POSTGRES_USER
