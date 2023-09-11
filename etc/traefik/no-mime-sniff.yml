@@ -1,0 +1,6 @@
+http:
+  middlewares:
+    no-mime-sniff:
+      # don't sniff the mime type from the response body (will be removed in Traefik v3)
+      contenttype:
+        autodetect: false
