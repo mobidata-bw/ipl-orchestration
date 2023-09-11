@@ -5,8 +5,15 @@ services:
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
   transformer-proxy:
+    volumes:
+      # Mount config file which declares hosts to proxy
+      - ./etc/transformer-proxy/config.yaml:/app/config.yaml
     image: ${TRANSFORMER_PROXY_IMAGE}
+    volumes:
+      # Mount config file which declares hosts to proxy
+      - ./etc/transformer-proxy/config.yaml:/app/config.yaml
     ports:
+      # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
   
   # This service requests non-standard sharing provider APIs and generates
@@ -59,7 +66,7 @@ services:
   ipl-db:
       image: ${IPL_POSTGIS_IMAGE}
       volumes:
-        - ./var/postgis:/var/lib/postgresql
+        - ./var/ipl-db/data:/var/lib/postgresql/data
       ports:
         - ${IPL_POSTGRES_PORT}:5432
       environment:
@@ -79,7 +86,8 @@ services:
       POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
       POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
     restart: on-failure
-    # TODO we should mount volume to allow backup
+    volumes:
+        - ./var/dagster-postgresql/data:/var/lib/postgresql/data
     healthcheck:
         test: "PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${DAGSTER_POSTGRES_USER} -d ${DAGSTER_POSTGRES_DB}"
 
