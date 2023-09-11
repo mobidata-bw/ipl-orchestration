@@ -5,9 +5,6 @@ services:
   # explicitly be requests using http. Proxy will take care of https requesting and
   # necessary response rewrites.
   transformer-proxy:
-    volumes:
-      # Mount config file which declares hosts to proxy
-      - ./etc/transformer-proxy/config.yaml:/app/config.yaml
     image: ${TRANSFORMER_PROXY_IMAGE}
     volumes:
       # Mount config file which declares hosts to proxy
