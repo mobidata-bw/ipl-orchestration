@@ -2,6 +2,22 @@
 name: ipl
 
 services:
+  # Traefik is our ingress: requests enter our infrastructure through it.
+  # It is an HTTP reverse proxy, discovering available services (and their containers)
+  # automatically by using the Docker API.
+  ingress:
+    image: traefik:v2.10
+    ports:
+      # todo: change to 80:80
+      - "8080:80"
+    volumes:
+      - ./etc/traefik:/etc/traefik
+      - ./var/log/traefik:/var/log/traefik
+      # So that Traefik can listen to the Docker events.
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: "traefik healthcheck"
+
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should

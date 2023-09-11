@@ -1,0 +1,22 @@
+providers:
+  file:
+    directory: /etc/traefik
+    watch: true # todo: keep?
+  docker:
+    # only expose services if they have an explicit traefik.enable=true label
+    exposedByDefault: false
+
+log:
+  level: INFO
+
+entryPoints:
+  # explicitly define an entrypoint `web` on port 80
+  web:
+    address: ":80"
+
+accesslog:
+  filePath: "/var/log/traefik/access.log"
+  format: json
+
+# todo: move /health to `web` entrypoint instead of default `traefik`, to allow health-checking from the outside?
+ping: true
