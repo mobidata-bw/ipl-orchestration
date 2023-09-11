@@ -9,6 +9,10 @@ providers:
 log:
   level: INFO
 
+api:
+  # enable web UI on port 8080
+  insecure: true
+
 entryPoints:
   # explicitly define an entrypoint `web` on port 80
   web:
@@ -39,6 +43,7 @@ entryPoints:
         # gateway of our custom Docker Compose (bridge) network (`ipl`)
         - "172.28.5.254"
   # explicitly define an entrypoint `traefik` on port 8080 for ops & system management
+  # - web UI
   # - Prometheus metrics
   traefik:
     address: ":8080"
