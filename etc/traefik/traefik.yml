@@ -21,10 +21,20 @@ entryPoints:
       middlewares:
         # by default, apply a global request rate limit
         - global-rate-limit@file
+        # redirect all `http:` requests to `https:`
+        # todo: only do this in production
+        # - redirect-http-to-https@file
         # don't sniff the mime type from the response body (will be removed in Traefik v3)
         - no-mime-sniff@file
         # enable response compression by default
         - compression@file
+      # redirect all `http:` requests to `https:`
+      # todo: only do this in production
+      # redirections:
+      #   entryPoint:
+      #     to: ":443"
+      #     scheme: https
+      #     priority: 0 # run before all other middleware
     forwardedHeaders:
       # Trust all `X-Forwarded-*` headers passed from the a reverse proxy *in front of Traefik*
       # (if uses one of the specified IP addresses/ranges), and pass them through to services,
