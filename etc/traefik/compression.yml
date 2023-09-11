@@ -1,0 +1,5 @@
+http:
+  middlewares:
+    compression:
+      # enable response compression by default
+      compress: {}

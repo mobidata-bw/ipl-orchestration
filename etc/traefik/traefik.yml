@@ -17,6 +17,8 @@ entryPoints:
       middlewares:
         # don't sniff the mime type from the response body (will be removed in Traefik v3)
         - no-mime-sniff@file
+        # enable response compression by default
+        - compression@file
 
 accesslog:
   filePath: "/var/log/traefik/access.log"
