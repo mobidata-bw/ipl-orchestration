@@ -33,6 +33,7 @@ services:
       - ${LAMASSU_ADMIN_PORT}:9001
     environment:
       # depending on base image, JAVA_TOOL_OPTIONS must be used
+      LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
       JDK_JAVA_OPTIONS: 
         -Dspring.config.location=/etc/application-config/application.properties 
         -Dspring.profiles.active=leader
@@ -99,7 +100,7 @@ services:
       - DAGSTER_POSTGRES_USER
       - DAGSTER_POSTGRES_PASSWORD
       - DAGSTER_POSTGRES_DB
-      - IPL_LAMASSU_BASE_URL
+      - IPL_LAMASSU_BASE_URL=${LAMASSU_BASE_URL}
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
       - IPL_POSTGRES_DB
