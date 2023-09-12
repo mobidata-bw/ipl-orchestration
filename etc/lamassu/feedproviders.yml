@@ -64,6 +64,24 @@ lamassu:
     #    codespace: NBK
     #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_lr/gbfs.json"
     #    language: de
+    - systemId: roxy_freiburg
+      operatorId: RXY:Operator:roxy
+      operatorName: Roxy
+      codespace: RXY
+      url: "https://roxy.rideatom.com/gbfs/v2_2/en/gbfs?id=1227"
+      language: en
+    - systemId: yoio_freiburg
+      operatorId: YOO:Operator:yoio
+      operatorName: Yoio
+      codespace: YOO
+      url: "https://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
+      language: en
+    - systemId: zeus_freiburg
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
+      language: en
     # Feeds CH
     ## Bird CH
     - systemId: bird-basel
