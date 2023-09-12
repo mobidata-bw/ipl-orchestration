@@ -1,3 +1,6 @@
+# compose "namespace", prepended to all network names, container names, etc.
+name: ipl
+
 services:
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
