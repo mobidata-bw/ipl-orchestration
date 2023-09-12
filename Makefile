@@ -50,4 +50,5 @@ docker-purge:
 
 .PHONY: import-new-gtfs
 import-new-gtfs:
-	./import-new-gtfs.sh
+	$(DOCKER_COMPOSE) run gtfs-importer
+	$(DOCKER_COMPOSE) restart --timeout 30 gtfs-api
