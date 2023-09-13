@@ -43,6 +43,14 @@ gtfs-via-postgres -d \
 	| psql -b -v 'ON_ERROR_STOP=1'
 
 set +x
+print_bold "Running custom post-processing SQL scripts in /etc/gtfs/sql.d."
+set -x
+
+for file in /etc/gtfs/sql.d/*; do
+	psql -b -v 'ON_ERROR_STOP=1' -f "$file"
+done
+
+set +x
 print_bold 'Done!'
 
 cat <<EOF
