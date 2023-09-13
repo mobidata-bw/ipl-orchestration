@@ -194,6 +194,8 @@ services:
     restart: unless-stopped
 
   gtfs-importer:
+    profiles:
+      - import-new-gtfs
     depends_on:
       gtfs-db:
         condition: service_healthy
