@@ -28,7 +28,7 @@ docker-up-detached:
 
 .PHONY: docker-down
 docker-down:
-	$(DOCKER_COMPOSE) down --remove-orphans
+	$(DOCKER_COMPOSE) down --remove-orphans $(SERVICE)
 
 # Restart all containers (default) or only the containers specified by SERVICE (e.g. `make docker-restart SERVICE=redis`)
 .PHONY: docker-restart
