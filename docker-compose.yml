@@ -100,9 +100,10 @@ services:
     image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
-      - DAGSTER_POSTGRES_USER
-      - DAGSTER_POSTGRES_PASSWORD
-      - DAGSTER_POSTGRES_DB
+      - PGHOST=dagster-postgresql
+      - PGUSER=${DAGSTER_POSTGRES_USER}
+      - PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD}
+      - PGDATABASE=${DAGSTER_POSTGRES_DB}
       - IPL_LAMASSU_BASE_URL=${LAMASSU_BASE_URL}
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
@@ -123,9 +124,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DAGSTER_POSTGRES_USER
-      - DAGSTER_POSTGRES_PASSWORD
-      - DAGSTER_POSTGRES_DB
+      PGHOST: dagster-postgresql
+      PGUSER: ${DAGSTER_POSTGRES_USER}
+      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
+      PGDATABASE: ${DAGSTER_POSTGRES_DB}
     volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
@@ -142,9 +144,10 @@ services:
     image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
-      - DAGSTER_POSTGRES_USER
-      - DAGSTER_POSTGRES_PASSWORD
-      - DAGSTER_POSTGRES_DB
+      PGHOST: dagster-postgresql
+      PGUSER: ${DAGSTER_POSTGRES_USER}
+      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
+      PGDATABASE: ${DAGSTER_POSTGRES_DB}
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
