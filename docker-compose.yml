@@ -91,6 +91,9 @@ services:
         - ./var/dagster-postgresql/data:/var/lib/postgresql/data
     healthcheck:
         test: "PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${DAGSTER_POSTGRES_USER} -d ${DAGSTER_POSTGRES_DB}"
+        interval: 5s
+        timeout: 3s
+        retries: 12
 
   # This service runs the gRPC server that loads your user code, in both dagster-webserver
   # and dagster-daemon. Multiple containers like this can be deployed separately - each just needs to run on
