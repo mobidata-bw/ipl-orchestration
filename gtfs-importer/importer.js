@@ -125,6 +125,7 @@ try {
 	if (PATH_TO_ENV_FILE !== null) {
 		console.info(`writing PGDATABASE="${dbName}" into env file ${PATH_TO_ENV_FILE}`)
 		await writeFile(PATH_TO_ENV_FILE, `PGDATABASE="${dbName}"\n`)
+		console.info('make sure to also put it into .env.local, so that `geoserver` can read it')
 	}
 
 	console.info('import succeeded, committing all changes to "latest_import"!')

@@ -305,6 +305,7 @@ services:
       context: ./gtfs-importer
     volumes:
       - ./var/gtfs:/var/gtfs
+      - ./etc/gtfs:/etc/gtfs
       - ./.gtfs-api.env:/var/.gtfs-api.env
     environment:
       PGHOST: gtfs-db
