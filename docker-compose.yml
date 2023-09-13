@@ -160,7 +160,7 @@ services:
 
   # This service stores GTFS data imported by gtfs-importer.
   gtfs-db:
-    image: postgis/postgis:${IPL_GTFS_DB_POSTGIS_VERSION_TAG}
+    image: ${IPL_GTFS_DB_IMAGE}
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
     environment:
