@@ -218,3 +218,15 @@ services:
       # let the importer modify gtfs-api's env file
       GTFS_IMPORTER_ENV_FILE: /var/.gtfs-api.env
       GTFS_TMP_DIR: /var/gtfs
+
+  gtfs-swagger-ui:
+    depends_on:
+      gtfs-api:
+        condition: service_started
+    image: swaggerapi/swagger-ui
+    ports:
+      - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
+    environment:
+      # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
+      API_URL: http://localhost:${IPL_GTFS_API_PORT}
+    restart: unless-stopped
