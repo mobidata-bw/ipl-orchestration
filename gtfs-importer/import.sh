@@ -40,7 +40,7 @@ gtfs-via-postgres -d \
 	--schema api --postgrest \
 	"$extracted_path/"*.txt \
 	| zstd | sponge | zstd -d \
-	| psql -b
+	| psql -b -v 'ON_ERROR_STOP=1'
 
 set +x
 print_bold 'Done!'
