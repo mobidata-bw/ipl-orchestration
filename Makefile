@@ -45,6 +45,12 @@ docker-pull:
 docker-purge:
 	$(DOCKER_COMPOSE) down --remove-orphans --volumes
 
+# Prints the entire Compose config, with environment variables filled in.
+# Optionally, a SERVICE can be specified to restrict the config.
+.PHONY: docker-config
+docker-config:
+	$(DOCKER_COMPOSE) config $(SERVICE)
+
 # GTFS data management
 # --------------------
 
