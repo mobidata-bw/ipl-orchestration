@@ -132,6 +132,7 @@ services:
       test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
 
   geoserver:
+    networks: [ipl]
     image: ${GEOSERVER_IMAGE}
     volumes:
       # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
@@ -294,6 +295,9 @@ services:
 
   gtfs-importer:
     networks: [ipl]
+    # gtfstidy currently only provides a linux/amd64 binary
+    # see also https://github.com/patrickbr/gtfstidy/pull/21
+    platform: linux/amd64
     profiles:
       - import-new-gtfs
     depends_on:
