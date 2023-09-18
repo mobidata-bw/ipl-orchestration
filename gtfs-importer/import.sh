@@ -19,6 +19,7 @@ mkdir -p "$gtfs_tmp_dir"
 
 zip_path="$gtfs_tmp_dir/gtfs.zip"
 extracted_path="$gtfs_tmp_dir/gtfs"
+tidied_path="$gtfs_tmp_dir/tidied.gtfs"
 
 print_bold "Downloading & extracting the GTFS feed from $GTFS_DOWNLOAD_URL."
 set -x
@@ -30,15 +31,24 @@ rm -rf "$extracted_path"
 unzip -d "$extracted_path" "$zip_path"
 
 set +x
-print_bold "Cleaning GTFS feed using preprocess.sh."
+print_bold "Tidying GTFS feed using preprocess.sh & gtfstidy."
 set -x
 
 if [[ -f '/etc/gtfs/preprocess.sh' ]]; then
 	/etc/gtfs/preprocess.sh "$extracted_path"
 fi
 
+gtfstidy \
+	--show-warnings \
+	--fix \
+	--Compress \
+	--min-shapes \
+	-o "$tidied_path" \
+	"$extracted_path" \
+	2>&1 | tee "$gtfs_tmp_dir/tidied.gtfs.gtfstidy-log.txt"
+
 set +x
-print_bold "Importing GTFS feed into the $PGDATABASE database."
+print_bold "Importing (tidied) GTFS feed into the $PGDATABASE database."
 set -x
 
 gtfs-to-sql -d \
@@ -46,7 +56,7 @@ gtfs-to-sql -d \
 	--stops-location-index \
 	--import-metadata \
 	--schema api --postgrest \
-	"$extracted_path/"*.txt \
+	"$tidied_path/"*.txt \
 	| zstd | sponge | zstd -d \
 	| psql -b -v 'ON_ERROR_STOP=1'
 
