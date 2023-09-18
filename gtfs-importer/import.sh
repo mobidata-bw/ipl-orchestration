@@ -30,6 +30,14 @@ rm -rf "$extracted_path"
 unzip -d "$extracted_path" "$zip_path"
 
 set +x
+print_bold "Cleaning GTFS feed using preprocess.sh."
+set -x
+
+if [[ -f '/etc/gtfs/preprocess.sh' ]]; then
+	/etc/gtfs/preprocess.sh "$extracted_path"
+fi
+
+set +x
 print_bold "Importing GTFS feed into the $PGDATABASE database."
 set -x
 
