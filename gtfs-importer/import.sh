@@ -41,7 +41,7 @@ set +x
 print_bold "Importing GTFS feed into the $PGDATABASE database."
 set -x
 
-gtfs-via-postgres -d \
+gtfs-to-sql -d \
 	--trips-without-shape-id --lower-case-lang-codes \
 	--stops-location-index \
 	--import-metadata \
