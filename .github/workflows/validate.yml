@@ -17,4 +17,4 @@ jobs:
 
     - name: validate docker-compose.yml
       run: |
-        docker compose config
+        docker compose --env-file .env --env-file .env.local.example config
