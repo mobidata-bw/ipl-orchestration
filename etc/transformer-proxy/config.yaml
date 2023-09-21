@@ -1,3 +1,4 @@
 
 HTTP_TO_HTTPS_HOSTS:
   - gbfs.nextbike.net
+  - apis.deutschebahn.com
