@@ -11,7 +11,8 @@ lamassu:
       operatorId: CAB:Operator:callabike
       operatorName: Call-A-Bike
       codespace: CAB
-      url: "https://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/RegioRadStuttgart/gbfs"
+      # Note: dbconnect feeds are accessed via proxy, using http instead of https 
+      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/RegioRadStuttgart/gbfs"
       language: de
       authentication:
         scheme: httpHeaders
