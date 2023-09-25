@@ -56,7 +56,7 @@ services:
     ports:
       # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
-  
+
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
@@ -70,7 +70,7 @@ services:
       - DEER_API_URL
       - DEER_USER
       - DEER_PASSWORD
-  
+
   lamassu:
     networks: [ipl]
     image: ${LAMASSU_IMAGE}
@@ -80,8 +80,8 @@ services:
     environment:
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
-      JDK_JAVA_OPTIONS: 
-        -Dspring.config.location=/etc/application-config/application.properties 
+      JDK_JAVA_OPTIONS:
+        -Dspring.config.location=/etc/application-config/application.properties
         -Dspring.profiles.active=leader
         -Dorg.entur.lamassu.adminPassword=${LAMASSU_ADMIN_PASSWORD}
         -Dhttp.proxyHost=transformer-proxy
@@ -89,6 +89,10 @@ services:
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lamassu.rule=PathPrefix(`/gbfs`)"
+      - "traefik.http.services.lamassu.loadbalancer.server.port=8080"
     depends_on:
         redis:
           condition: service_healthy
@@ -111,19 +115,19 @@ services:
       test: "redis-cli --raw incr ping"
 
   ipl-db:
-      networks: [ipl]
-      image: ${IPL_POSTGIS_IMAGE}
-      volumes:
-        - ./var/ipl-db/data:/var/lib/postgresql/data
-      ports:
-        - ${IPL_POSTGRES_PORT}:5432
-      environment:
-        - POSTGRES_DB=${IPL_POSTGRES_DB}
-        - POSTGRES_USER=${IPL_POSTGRES_USER}
-        - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
-      restart: on-failure
-      healthcheck:
-        test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+    networks: [ipl]
+    image: ${IPL_POSTGIS_IMAGE}
+    volumes:
+      - ./var/ipl-db/data:/var/lib/postgresql/data
+    ports:
+      - ${IPL_POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_DB=${IPL_POSTGRES_DB}
+      - POSTGRES_USER=${IPL_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
+    restart: on-failure
+    healthcheck:
+      test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
 
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
@@ -145,7 +149,7 @@ services:
 
   # This service runs the gRPC server that loads your user code, in both dagster-webserver
   # and dagster-daemon. Multiple containers like this can be deployed separately - each just needs to run on
-  # its own port, and have its own entry in the workspace.yaml file that's loaded by 
+  # its own port, and have its own entry in the workspace.yaml file that's loaded by
   # dagster-webserver.
   dagster-pipeline:
     networks: [ipl]
@@ -250,6 +254,10 @@ services:
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
+      - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
 
   gtfs-importer:
@@ -290,6 +298,11 @@ services:
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
       API_URL: http://localhost:${IPL_GTFS_API_PORT}
+      BASE_URL: /docs/gtfs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gtfs-swagger-ui.rule=PathPrefix(`/docs/gtfs`)"
+      - "traefik.http.services.gtfs-swagger-ui.loadbalancer.server.port=8080"
     restart: unless-stopped
 
 networks:
