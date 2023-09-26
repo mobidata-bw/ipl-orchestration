@@ -27,7 +27,14 @@
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
     <entry key="port">5432</entry>
-    <entry key="passwd">${IPL_GTFS_DB_POSTGRES_PASSWORD}</entry>
+    <!--
+      We have to use the very generic `PGPASSWORD` (we access >1 PostgreSQL
+      DB from the GeoServer, after all) here because
+      1. gtfs-importer writes this variabl name into .imported-gtfs-db.env,
+      2. we directly source this env file in `geoserver`'s Compose spec,
+      3. we generate `geoserver`'s config file from the Compose env vars.
+    -->
+    <entry key="passwd">${PGPASSWORD}</entry>
     <entry key="min connections">1</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">mdbw</entry>

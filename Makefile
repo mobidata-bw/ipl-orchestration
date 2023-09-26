@@ -2,6 +2,8 @@ DOCKER_COMPOSE = docker compose --env-file .env --env-file .env.local
 
 DOCKER_REGISTRY = ghcr.io
 
+GEOSERVER_ENV_FILE = etc/geoserver/geoserver-environment.properties
+
 # Default target when running `make`
 .PHONY: all
 all: docker-up
@@ -51,11 +53,31 @@ docker-purge:
 docker-config:
 	$(DOCKER_COMPOSE) config $(SERVICE)
 
+# Geoserver management
+# --------------------
+
+# The Geoserver cannot pick up configuration data from environment variables,
+# so in order to make it configurable using `.env` and `.env.local`, we generate
+# a file `$GEOSERVER_ENV_FILE` using `docker compose config`. Essentially, we're
+# "flattening" `geoserver`'s entire env var configuration.
+# The generated config file is then read by `geoserver` on startup. Only variables
+# referenced within `geoserver`'s other config files get used, the others ignored.
+# see also https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
+.PHONY: geoserver-config
+geoserver-config:
+	$(DOCKER_COMPOSE) config --format json geoserver \
+		| jq -rc '.services.geoserver.environment | to_entries[] | .key + "=" + .value' \
+		>"$(GEOSERVER_ENV_FILE)"
+
 # GTFS data management
 # --------------------
 
-.PHONY: import-new-gtfs
+.PHONY: import-new-gtfs-only
 import-new-gtfs:
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
+
+.PHONY: import-new-gtfs
+import-new-gtfs: import-new-gtfs-only | geoserver-config
 	$(DOCKER_COMPOSE) restart --timeout 30 gtfs-api
+	$(DOCKER_COMPOSE) restart --timeout 60 geoserver

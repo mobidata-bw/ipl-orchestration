@@ -3,6 +3,8 @@ Thumbs.db
 
 /.idea
 
+/etc/geoserver/geoserver-environment.properties
+
 /var
 
 /.env.local

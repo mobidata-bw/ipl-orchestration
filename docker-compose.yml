@@ -141,7 +141,7 @@ services:
       - ./etc/geoserver/logging.xml:/opt/geoserver/data_dir/logging.xml
       - ./etc/geoserver/workspaces:/opt/geoserver/data_dir/workspaces
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
-      - ./.env.local:/opt/geoserver/data_dir/geoserver-environment.properties
+      - ./etc/geoserver/geoserver-environment.properties:/opt/geoserver/data_dir/geoserver-environment.properties
     ports:
       - ${GEOSERVER_PORT}:8080
     restart: on-failure
@@ -153,6 +153,13 @@ services:
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
+      # Note: All of the following parameters (other than those above) are *not* picked up via env vars
+      # but from a config file that is being generated from this list of env vars (and those in the
+      # file referenced in `env_file`).
+      - IPL_POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
+      - IPL_GTFS_DB_POSTGRES_PASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD}
+    # contains the latest import's DB name as `PGDATABASE`
+    env_file: ./.imported-gtfs-db.env
     depends_on:
       ipl-db:
         condition: service_healthy
