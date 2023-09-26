@@ -1,0 +1,17 @@
+<layer>
+  <name>stations_with_served_routes</name>
+  <id>LayerInfoImpl-24a0a30e:18ad176585a:-7ff9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-24a0a30e:18ad176585a:6bce</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-24a0a30e:18ad176585a:-7ffa</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-09-26 13:08:33.159 UTC</dateCreated>
+  <dateModified>2023-09-26 13:16:08.527 UTC</dateModified>
+</layer>
