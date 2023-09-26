@@ -278,7 +278,8 @@ services:
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
-    env_file: ./.gtfs-api.env
+    # contains the latest import's DB name as `PGDATABASE`
+    env_file: ./.imported-gtfs-db.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
@@ -310,7 +311,7 @@ services:
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
-      - ./.gtfs-api.env:/var/.gtfs-api.env
+      - ./.imported-gtfs-db.env:/var/.imported-gtfs-db.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
@@ -320,8 +321,8 @@ services:
       GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
-      # let the importer modify gtfs-api's env file
-      GTFS_IMPORTER_ENV_FILE: /var/.gtfs-api.env
+      # path to the env file containing the latest import's DB name as `PGDATABASE`
+      GTFS_IMPORTER_ENV_FILE: /var/.imported-gtfs-db.env
       GTFS_TMP_DIR: /var/gtfs
 
   gtfs-swagger-ui:
