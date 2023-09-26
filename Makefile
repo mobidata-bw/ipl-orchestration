@@ -56,5 +56,6 @@ docker-config:
 
 .PHONY: import-new-gtfs
 import-new-gtfs:
+	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
 	$(DOCKER_COMPOSE) restart --timeout 30 gtfs-api
