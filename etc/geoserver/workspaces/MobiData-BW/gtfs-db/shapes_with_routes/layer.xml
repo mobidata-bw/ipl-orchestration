@@ -1,0 +1,17 @@
+<layer>
+  <name>shapes_with_routes</name>
+  <id>LayerInfoImpl--13cd1a5c:18ad207f4e0:-13b2</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--13cd1a5c:18ad2307323:416d</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--13cd1a5c:18ad207f4e0:-13b3</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-09-26 15:50:08.350 UTC</dateCreated>
+  <dateModified>2023-09-26 16:11:52.104 UTC</dateModified>
+</layer>

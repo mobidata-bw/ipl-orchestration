@@ -1,0 +1,49 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--13cd1a5c:18ad207f4e0:-13b3</id>
+  <name>shapes_with_routes</name>
+  <nativeName>shapes_with_routes</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
+  </namespace>
+  <title>shapes_with_routes</title>
+  <abstract>ÖPNV-Linien</abstract>
+  <keywords>
+    <string>features</string>
+    <string>shapes_with_routes</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>7.0</minx>
+    <maxx>12.0</maxx>
+    <miny>47.0</miny>
+    <maxy>52.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>7.0</minx>
+    <maxx>12.0</maxx>
+    <miny>47.0</miny>
+    <maxy>52.0</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--3b38816a:18a8b06ea7a:-7ff5</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle>
+    <de>shapes_with_routes</de>
+  </internationalTitle>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>
