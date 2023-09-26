@@ -162,7 +162,11 @@ services:
     env_file: ./.imported-gtfs-db.env
     depends_on:
       ipl-db:
+        # For sharing layers
         condition: service_healthy
+      gtfs-db:
+        # For transit layer
+        condition: service_healthy     
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
       interval: 0m15s
