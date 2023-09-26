@@ -1,7 +1,7 @@
 CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 	SELECT
 		shape_id,
-		min(shape) AS shape,
+		st_setsrid(min(shape), 4326) AS shape,
 		route_type,
 		array_to_string(array_agg(DISTINCT route_id), ', ') AS route_ids,
 		array_to_string(array_agg(DISTINCT route_name), ', ') AS route_names
@@ -20,4 +20,6 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 	GROUP BY shape_id, route_type;
 
 -- todo: primary/unique key?
--- todo: spatial index?
+CREATE INDEX shapes_with_routes_shape_idx
+  ON geoserver.shapes_with_routes
+  USING GIST (shape);
