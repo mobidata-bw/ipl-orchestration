@@ -73,7 +73,7 @@ geoserver-config:
 # --------------------
 
 .PHONY: import-new-gtfs-only
-import-new-gtfs:
+import-new-gtfs-only:
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
 
