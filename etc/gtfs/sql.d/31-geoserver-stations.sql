@@ -4,17 +4,22 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 		-- todo: is there something faster than min()? we just want *any*
 		min(station_name) AS station_name,
 		ST_Centroid(ST_Collect(stop_locs)) AS centroid,
-		-- todo: prefer "rail" (`2`) over "light rail" (`0`)
-		min(route_type::int) AS min_route_type,
-		json_object_agg(route_type, route_names) AS routes
+		-- prio_encoded_route_type has a multiple of 10000 added, which determines render prio (less is higher prio)
+		-- the last 4 digits represent the original route_type, so we need to modulo...
+		mod(min(prio_encoded_route_type::int),10000) AS prio_route_type,
+		json_object_agg(route_type, route_names) AS routes,
+		-- prio_encoded_route_type has a multiple of 10000 added, which determines render prio (less is higher prio)
+		min(prio_encoded_route_type::int) / 10000 AS render_prio
 	FROM (
 		-- determine available routes for each (station, route_type)
 		SELECT
 			station_id,
 			-- todo: is there something faster than min()? we just want *any*
 			min(station_name) AS station_name,
-			ST_Collect(array_agg(stop_loc::geometry)) AS stop_locs, -- todo: distinct by stop_id?
-			route_type, -- todo: normalize into basic route type
+			ST_Collect(array_agg(stop_loc::geometry)) AS stop_locs, -- todo: distinct by stop_id?,
+			route_type,
+			-- todo: in case the feed uses extended route_types, these need to be handled here also
+			case when route_type=0 then '20000' when route_type=2 then '10002' when route_type between 3 and 9 then '3000'||route_type else '9000'||route_type end prio_encoded_route_type,
 			array_agg(DISTINCT route_name) AS route_names
 		FROM (
 			SELECT DISTINCT ON (stop_id, route_id)

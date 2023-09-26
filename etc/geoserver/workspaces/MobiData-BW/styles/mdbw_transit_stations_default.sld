@@ -13,7 +13,7 @@
           <Title>Straßen-, Stadt und U-Bahn-Haltestelle</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>min_route_type</ogc:PropertyName>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
               <ogc:Literal>0</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
@@ -33,7 +33,7 @@
           <Title>Bus-Haltestelle</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>min_route_type</ogc:PropertyName>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
               <ogc:Literal>3</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
@@ -53,7 +53,7 @@
           <Title>Bahnhof</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>min_route_type</ogc:PropertyName>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
               <ogc:Literal>2</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
@@ -84,7 +84,7 @@
             </Graphic>
           </PointSymbolizer>
         </Rule>
-        <VendorOption name="sortBy">min_route_type D</VendorOption>
+        <VendorOption name="sortBy">render_prio D</VendorOption>
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
