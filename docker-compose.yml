@@ -254,7 +254,7 @@ services:
     networks: [ipl]
     image: ${IPL_GTFS_DB_IMAGE}
     volumes:
-      - ./var/gtfs/gtfs-db:/var/lib/postgresql
+      - ./var/gtfs/gtfs-db:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${IPL_GTFS_DB_POSTGRES_USER}
       POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
