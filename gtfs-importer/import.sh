@@ -38,10 +38,12 @@ if [[ -f '/etc/gtfs/preprocess.sh' ]]; then
 	/etc/gtfs/preprocess.sh "$extracted_path"
 fi
 
+# Instead of --Compress, which is shorthand for -OSRCcIAPdT, we use --OSRCcIAPT (no id minimisation)
+# Note: in later versions of gtfstidy, --keep-ids and --keep-additional-fields are introduced
 gtfstidy \
 	--show-warnings \
+	-OSRCcIAPT \
 	--fix \
-	--Compress \
 	--min-shapes \
 	-o "$tidied_path" \
 	"$extracted_path" \
