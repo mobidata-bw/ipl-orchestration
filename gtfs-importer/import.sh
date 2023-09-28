@@ -38,6 +38,8 @@ if [[ -f '/etc/gtfs/preprocess.sh' ]]; then
 	/etc/gtfs/preprocess.sh "$extracted_path"
 fi
 
+# Remove any leftovers from previous runs (e.g. pathways.txt/levels.txt)
+rm -rf "$tidied_path"
 # Instead of --Compress, which is shorthand for -OSRCcIAPdT, we use --OSRCcIAPT (no id minimisation)
 # Note: in later versions of gtfstidy, --keep-ids and --keep-additional-fields are introduced
 gtfstidy \
