@@ -24,9 +24,22 @@ tidied_path="$gtfs_tmp_dir/tidied.gtfs"
 print_bold "Downloading & extracting the GTFS feed from $GTFS_DOWNLOAD_URL."
 set -x
 
-# Using wget's -c & -N is not an option here, see https://gist.github.com/derhuerst/745cf09fe5f3ea2569948dd215bbfe1a
+# Using wget with both -c *and* -N is not an option here, so we use curl.
+# see also https://gist.github.com/derhuerst/745cf09fe5f3ea2569948dd215bbfe1a
+# Note: This *does not* work with an incomplete local download!
 # todo: use a (more?) correct & efficient mirroring script
-wget -nv -U "$ua" -O "$zip_path" "$gtfs_url"
+# wget -nv -U "$ua" -O "$zip_path" "$gtfs_url"
+# flags logic modified from https://superuser.com/q/1710172
+curl_flags=()
+if test -e "$zip_path"; then
+	curl_flags+=(-z "$zip_path")
+fi
+curl -fsSL \
+	-H "User-Agent: $ua" \
+	--compressed -R \
+	-o "$zip_path" \
+	"${curl_flags[@]}" \
+	"$gtfs_url"
 rm -rf "$extracted_path"
 unzip -d "$extracted_path" "$zip_path"
 
