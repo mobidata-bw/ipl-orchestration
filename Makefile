@@ -62,5 +62,7 @@ import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
 	# restart dependent services
-	$(DOCKER_COMPOSE) restart --timeout 30 gtfs-api
-	$(DOCKER_COMPOSE) restart --timeout 60 geoserver
+	# Restarting the containers would re-run them with the old env vars, so we `stop` & `start` instead.
+	$(DOCKER_COMPOSE) stop --timeout 30 gtfs-api geoserver
+	$(DOCKER_COMPOSE) rm gtfs-api geoserver
+	$(DOCKER_COMPOSE) up -d --wait --wait-timeout 30 gtfs-api geoserver
