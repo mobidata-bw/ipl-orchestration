@@ -122,12 +122,11 @@ services:
       - ./etc/geoserver/global.xml:/opt/geoserver/data_dir/global.xml
       - ./etc/geoserver/logging.xml:/opt/geoserver/data_dir/logging.xml
       - ./etc/geoserver/workspaces:/opt/geoserver/data_dir/workspaces
-      # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
-      - ./etc/geoserver/geoserver-environment.properties:/opt/geoserver/data_dir/geoserver-environment.properties
     ports:
       - ${GEOSERVER_PORT}:8080
     restart: on-failure
     environment:
+      # Special env vars picked up by the kartoza/geoserver Docker image, getting passed in as Java system properties (`-D`).
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - INITIAL_MEMORY=${GEOSERVER_INITIAL_MEMORY}
@@ -135,9 +134,7 @@ services:
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
-      # Note: All of the following parameters (other than those above) are *not* picked up via env vars
-      # but from a config file that is being generated from this list of env vars (and those in the
-      # file referenced in `env_file`).
+      # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
       - IPL_POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
       - IPL_GTFS_DB_POSTGRES_PASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD}
     # contains the latest import's DB name as `PGDATABASE`
