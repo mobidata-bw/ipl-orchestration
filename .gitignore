@@ -3,6 +3,9 @@ Thumbs.db
 
 /.idea
 
+/etc/dagster/.telemetry
+/etc/dagster/logs
+
 /var
 
 /.env.local
