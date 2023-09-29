@@ -8,6 +8,9 @@ GEOSERVER_ENV_FILE = etc/geoserver/geoserver-environment.properties
 .PHONY: all
 all: docker-up
 
+.PHONY: init
+init:
+	touch -a .imported-gtfs-db.env
 
 # Container management
 # --------------------
@@ -19,13 +22,13 @@ docker-login:
 
 # Builds and starts all docker containers. Supports starting by SERVICE (e.g. `make docker-up SERVICE=redis`)
 .PHONY: docker-up
-docker-up:
+docker-up: init
 	$(DOCKER_COMPOSE) up $(SERVICE)
 
 # Start containers in background (or recreate containers while they are running attached to another terminal). Supports starting or
 # restarting by SERVICE (e.g. `make docker-up-detached SERVICE=redis`)
 .PHONY: docker-up-detached
-docker-up-detached:
+docker-up-detached: init
 	$(DOCKER_COMPOSE) up --detach $(SERVICE)
 
 .PHONY: docker-down
@@ -34,7 +37,7 @@ docker-down:
 
 # Restart all containers (default) or only the containers specified by SERVICE (e.g. `make docker-restart SERVICE=redis`)
 .PHONY: docker-restart
-docker-restart:
+docker-restart: init
 	$(DOCKER_COMPOSE) restart $(SERVICE)
 
 # Pull all images or only the containers specified by SERVICE (e.g. `make docker-pull SERVICE=redis`)
@@ -73,7 +76,7 @@ geoserver-config:
 # --------------------
 
 .PHONY: import-new-gtfs-only
-import-new-gtfs-only:
+import-new-gtfs-only: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
 
