@@ -15,6 +15,9 @@ jobs:
     - name: checkout
       uses: actions/checkout@v4
 
+    - name: make init
+      run: |
+        make init
     - name: validate docker-compose.yml
       run: |
         docker compose --env-file .env --env-file .env.local.example config
