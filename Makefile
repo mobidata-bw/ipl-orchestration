@@ -71,3 +71,11 @@ import-new-gtfs: init
 	$(DOCKER_COMPOSE) stop --timeout 30 gtfs-api geoserver
 	$(DOCKER_COMPOSE) rm gtfs-api geoserver
 	$(DOCKER_COMPOSE) up -d --wait --wait-timeout 30 gtfs-api geoserver
+
+.PHONY: gtfs-db-psql
+gtfs-db-psql:
+	$(DOCKER_COMPOSE) --env-file .imported-gtfs-db.env exec -e PGDATABASE gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" psql'
+
+.PHONY: gtfs-db-latest-import
+gtfs-db-latest-import:
+	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE=gtfs_importer psql -b -t --csv -c "SELECT db_name FROM latest_import"'
