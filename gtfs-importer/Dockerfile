@@ -11,21 +11,22 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT
 
+# curl is needed to download the GTFS
 # moreutils is needed for sponge
 # postgresql-client is needed for psql
 RUN apt update && apt install -y \
 	bash \
+	curl \
 	moreutils \
 	postgresql-client \
 	unzip \
-	wget \
 	zstd \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN \
-	wget -nv \
-	-U 'gtfs-importer (github.com/mobidata-bw/ipl-orchestration)' \
-	-O /usr/local/bin/gtfstidy \
+	curl -fsSL \
+	-H 'User-Agent: gtfs-importer (github.com/mobidata-bw/ipl-orchestration)' \
+	-o /usr/local/bin/gtfstidy \
 	"https://github.com/patrickbr/gtfstidy/releases/download/v0.2/gtfstidy.v0.2.$TARGETOS.$TARGETARCH" \
 	&& chmod +x /usr/local/bin/gtfstidy
 
