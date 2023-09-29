@@ -54,6 +54,11 @@ docker-purge:
 docker-config:
 	$(DOCKER_COMPOSE) config $(SERVICE)
 
+# Lists all docker containers. Supports filtering by SERVICE (e.g. `make docker-ps SERVICE=lamassu`).
+.PHONY: docker-ps
+docker-ps:
+	$(DOCKER_COMPOSE) ps $(SERVICE)
+
 # GTFS data management
 # --------------------
 
