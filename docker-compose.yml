@@ -24,24 +24,6 @@ services:
     healthcheck:
       test: "traefik healthcheck"
 
-  # todo: remove
-  whoami:
-    networks: [ipl]
-    image: traefik/whoami
-    # command: -verbose # todo: remove
-    labels:
-      - "traefik.enable=true"
-      # expose under /whoami
-      - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
-      - "traefik.http.routers.whoami.middlewares=whoami-stripprefix"
-      - "traefik.http.middlewares.whoami-stripprefix.stripprefix.prefixes=/whoami"
-      # health check on /health, every 10s, 3s timeout
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.path=/health"
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.interval=10s"
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.timeout=3s"
-    expose:
-      - "80"
-
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
