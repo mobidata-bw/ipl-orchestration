@@ -94,6 +94,98 @@ lamassu:
     #    codespace: NBK
     #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_lr/gbfs.json"
     #    language: de
+    # Tier DE
+    - systemId: tier_stuttgart
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_stuttgart/gbfs/2.3"
+      language: en
+    - systemId: tier_mannheim-ludwigshafen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_mannheim-ludwigshafen/gbfs/2.3"
+      language: en
+    - systemId: tier_friedrichshafen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_friedrichshafen/gbfs/2.3"
+      language: en
+    - systemId: tier_pfullingen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_pfullingen/gbfs/2.3"
+      language: en
+    - systemId: tier_schwabach
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_schwabach/gbfs/2.3"
+      language: en
+    - systemId: tier_rastatt
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_rastatt/gbfs/2.3"
+      language: en
+    - systemId: tier_boeblingen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_boeblingen/gbfs/2.3"
+      language: en
+    - systemId: tier_tubingen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_tubingen/gbfs/2.3"
+      language: en
+    - systemId: tier_sindelfingen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_sindelfingen/gbfs/2.3"
+      language: en
+    - systemId: tier_ludwigsburg
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_ludwigsburg/gbfs/2.3"
+      language: en
+    - systemId: tier_neckarsulm
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_neckarsulm/gbfs/2.3"
+      language: en
+    - systemId: tier_reutlingen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_reutlingen/gbfs/2.3"
+      language: en
+    - systemId: tier_heilbronn
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_heilbronn/gbfs/2.3"
+      language: en
+    - systemId: tier_karlsruhe
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_karlsruhe/gbfs/2.3"
+      language: en
+    - systemId: tier_heidelberg
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://platform.tier-services.io/data-sharing/tier_heidelberg/gbfs/2.3"
+      language: en
+    # Freiburg
     - systemId: roxy_freiburg
       operatorId: RXY:Operator:roxy
       operatorName: Roxy
