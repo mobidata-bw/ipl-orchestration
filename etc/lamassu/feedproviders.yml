@@ -94,6 +94,25 @@ lamassu:
     #    codespace: NBK
     #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_lr/gbfs.json"
     #    language: de
+    # Bolt DE
+    - systemId: bolt_karlsruhe
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://mds.bolt.eu/gbfs/2/1352/gbfs"
+      language: en
+    - systemId: bolt_stuttgart
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://mds.bolt.eu/gbfs/2/719/gbfs"
+      language: en
+    - systemId: bolt_reutlingen_tuebingen
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://mds.bolt.eu/gbfs/2/1321/gbfs"
+      language: en
     - systemId: roxy_freiburg
       operatorId: RXY:Operator:roxy
       operatorName: Roxy
