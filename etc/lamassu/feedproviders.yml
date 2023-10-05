@@ -113,12 +113,24 @@ lamassu:
       codespace: BLT
       url: "https://mds.bolt.eu/gbfs/2/719/gbfs"
       language: en
+      authentication:
+        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        properties:
+          tokenUrl: ${LAMASSU_BOLT_API_URL}
+          clientId: ${LAMASSU_BOLT_USER}
+          clientPassword: ${LAMASSU_BOLT_PASSWORD}
     - systemId: bolt_reutlingen_tuebingen
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
       codespace: BLT
       url: "https://mds.bolt.eu/gbfs/2/1321/gbfs"
       language: en
+      authentication:
+        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        properties:
+          tokenUrl: ${LAMASSU_BOLT_API_URL}
+          clientId: ${LAMASSU_BOLT_USER}
+          clientPassword: ${LAMASSU_BOLT_PASSWORD}
     - systemId: roxy_freiburg
       operatorId: RXY:Operator:roxy
       operatorName: Roxy
