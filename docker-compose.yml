@@ -75,8 +75,12 @@ services:
       - ./var/gbfs/feeds:/var/gbfs/feeds
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.lamassu.rule=PathPrefix(`/gbfs`)"
+      - "traefik.http.routers.lamassu.rule=PathPrefix(`/sharing`)"
+      - "traefik.http.routers.lamassu.middlewares=sharing-stripprefix"
+      - "traefik.http.middlewares.sharing-stripprefix.stripprefix.prefixes=/sharing"
       - "traefik.http.services.lamassu.loadbalancer.server.port=8080"
+      # Note: /admin is shifted to the management port in application.properties'
+      # management.endpoints.web.exposure.include (currently including admin,info,health,prometheus)
     depends_on:
         redis:
           condition: service_healthy
@@ -188,7 +192,8 @@ services:
       - PGUSER=${DAGSTER_POSTGRES_USER}
       - PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD}
       - PGDATABASE=${DAGSTER_POSTGRES_DB}
-      - IPL_LAMASSU_BASE_URL=${LAMASSU_BASE_URL}
+      # Use docker hostname of lamassu service to avoid roundtrip via proxy service
+      - IPL_LAMASSU_BASE_URL=http://lamassu/
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
       - IPL_POSTGRES_DB
