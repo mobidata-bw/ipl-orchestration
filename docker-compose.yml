@@ -62,12 +62,11 @@ services:
     environment:
       LAMASSU_DB_CONNECT_CLIENT_ID: ${LAMASSU_DB_CONNECT_CLIENT_ID:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
       LAMASSU_DB_CONNECT_API_KEY: ${LAMASSU_DB_CONNECT_API_KEY:?'missing/empty env var $LAMASSU_DB_CONNECT_API_KEY'}
+      LAMASSU_BOLT_API_URL: ${LAMASSU_BOLT_API_URL:?'missing/empty env var $LAMASSU_BOLT_API_URL'}
+      LAMASSU_BOLT_USER: ${LAMASSU_BOLT_USER:?'missing/empty env var $LAMASSU_BOLT_USER'}
+      LAMASSU_BOLT_PASSWORD: ${LAMASSU_BOLT_PASSWORD:?'missing/empty env var $LAMASSU_BOLT_PASSWORD'}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
-      # Bolt authentification
-      - BOLT_API_URL
-      - BOLT_USER
-      - BOLT_PASSWORD
       JDK_JAVA_OPTIONS:
         -Dspring.config.location=/etc/application-config/application.properties
         -Dspring.profiles.active=leader
