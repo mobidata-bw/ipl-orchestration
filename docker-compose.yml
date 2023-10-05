@@ -70,6 +70,10 @@ services:
         -Dorg.entur.lamassu.adminPassword=${LAMASSU_ADMIN_PASSWORD}
         -Dhttp.proxyHost=transformer-proxy
         -Dhttp.proxyPort=8080
+      # Bolt authentification
+      - BOLT_API_URL
+      - BOLT_USER
+      - BOLT_PASSWORD
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
