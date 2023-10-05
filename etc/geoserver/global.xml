@@ -3,15 +3,18 @@
     <contact>
       <id>contact</id>
       <address>Wilhelmsplatz 11</address>
+      <!-- Need to configure addressDeliveryPoint for WFS, see https://osgeo-org.atlassian.net/browse/GEOS-10663 -->
+      <addressDeliveryPoint>Wilhelmsplatz 11</addressDeliveryPoint>
       <addressCity>Stuttgart</addressCity>
       <addressCountry>Deutschland</addressCountry>
       <addressPostalCode>70182</addressPostalCode>
       <addressState>Baden-Württemberg</addressState>
       <contactEmail>mobidatabw-technik@nvbw.de</contactEmail>
-      <contactOrganization>MobiData-BW</contactOrganization>
+      <contactOrganization>MobiData BW</contactOrganization>
       <contactPerson>Dr. Thorsten Fröhlinghaus</contactPerson>
-      <contactPosition>Technischer Leiter - Team Mobilitätsdaten &amp;amp; Innovationen</contactPosition>
+      <contactPosition>Technische Leitung Dateninfrastruktur</contactPosition>
       <contactVoice>+49 711 23991-138</contactVoice>
+      <contactFacsimile>+49 711 23991-23</contactFacsimile>
       <onlineResource>https://www.mobidata-bw.de/</onlineResource>
       <internationalAddress class="org.geotools.util.GrowableInternationalString"/>
       <internationalAddressCity class="org.geotools.util.GrowableInternationalString"/>
