@@ -92,7 +92,8 @@ services:
     image: redis:6-alpine
     # Redis tries to use all memory it gets, and doesn't query the container's memory limit.
     # see also https://stackoverflow.com/a/70779280
-    command: --maxmemory ${REDIS_MEMORY_MB:-256}mb
+    # --save '' should explicitly disable saving to volume data, avoiding no space left on devide errors
+    command: --maxmemory ${REDIS_MEMORY_MB:-256}mb --save ''
     deploy:
       resources:
         limits:
