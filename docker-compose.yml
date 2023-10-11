@@ -47,12 +47,14 @@ services:
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
-    command: -p deer -b file:///var/gbfs/feeds -i 45
+    command: -p deer,voi-raumobil,lastenvelo_fr -b file:///var/gbfs/feeds -i 60
     environment:
       - DEER_API_URL
       - DEER_USER
       - DEER_PASSWORD
-
+      - VOI_API_URL
+      - VOI_USER
+      - VOI_PASSWORD
   lamassu:
     networks: [ipl]
     image: ${LAMASSU_IMAGE}
