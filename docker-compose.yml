@@ -397,20 +397,21 @@ services:
   gtfs-api:
     networks: [ipl]
     depends_on:
-      gtfs-db:
+      pgbouncer:
         condition: service_healthy
     links:
-      - gtfs-db
+      - pgbouncer
     image: postgrest/postgrest
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
     environment:
-      PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
+      PGHOST: pgbouncer
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: gtfs # determined by pgbouncer!
       # PostgREST-specific env vars
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api

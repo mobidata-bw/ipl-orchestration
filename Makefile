@@ -66,11 +66,6 @@ docker-ps:
 import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
-	# restart dependent services
-	# Restarting the containers would re-run them with the old env vars, so we `stop` & `start` instead.
-	$(DOCKER_COMPOSE) stop --timeout 30 gtfs-api
-	$(DOCKER_COMPOSE) rm gtfs-api
-	$(DOCKER_COMPOSE) up -d --wait --wait-timeout 30 gtfs-api
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:
