@@ -224,17 +224,12 @@ services:
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
       # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
-      - IPL_POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
-      - IPL_GTFS_DB_POSTGRES_PASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD}
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
     depends_on:
-      ipl-db:
-        # For sharing layers
-        condition: service_healthy
-      gtfs-db:
-        # For transit layer
-        condition: service_healthy
+      pgbouncer:
+        # For sharing & transit layers
+        condition: service_healthy     
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
       interval: 0m15s
@@ -347,9 +342,19 @@ services:
       start_period: 10s
       retries: 10
 
-  # pgbouncer acts like a facade in front of PostgreSQL instances
+  # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db), providing
+  # - programmatically configurable query routing (used by `make import-new-gtfs`)
+  # - improved connect performance for clients, especially Dagster workers
   pgbouncer:
     networks: [ipl]
+    depends_on:
+      ipl-db:
+        condition: service_started
+      gtfs-db:
+        condition: service_started
+    links:
+      - ipl-db
+      - gtfs-db
     image: ${PGBOUNCER_IMAGE}
     ports:
       - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
@@ -368,9 +373,19 @@ services:
       # todo: remove? should work without 🤔
       # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
       PGBOUNCER_AUTH_TYPE: md5
+      # Geoserver fails to connect without this config
+      # see https://github.com/bitnami/containers/issues/25394#issuecomment-1457893192
+      PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits
 
       # upsteam connections
-      # todo
+      # see also https://www.pgbouncer.org/config.html#section-databases
+      # see also https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
+      # expose ipl-db as `ipl`
+      PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
+      # todo: expose dagster-postgresql as `dagster`
+      # expose the latest GTFS import within gtfs-db as `gtfs`
+      # todo: let gtfs-importer modify this config programmatically!
+      PGBOUNCER_DSN_2: "gtfs=host=gtfs-db dbname=${IPL_GTFS_DB_POSTGRES_DB:?missing/empty $IPL_GTFS_DB_POSTGRES_DB} user=${IPL_GTFS_DB_POSTGRES_USER:?missing/empty $IPL_GTFS_DB_POSTGRES_USER} password=${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty $IPL_GTFS_DB_POSTGRES_PASSWORD}"
     restart: unless-stopped
     healthcheck:
       # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.

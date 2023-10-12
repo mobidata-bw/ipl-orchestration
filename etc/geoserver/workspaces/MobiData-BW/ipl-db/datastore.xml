@@ -14,8 +14,9 @@
     <entry key="encode functions">true</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
-    <entry key="database">geoserver</entry>
-    <entry key="host">ipl-db</entry>
+    <!-- connect via pgbouncer to improve performance -->
+    <entry key="database">ipl</entry> <!-- determined by pgbouncer! -->
+    <entry key="host">pgbouncer</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>
@@ -26,15 +27,15 @@
     <entry key="Connection timeout">20</entry>
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
-    <entry key="port">5432</entry>
-    <entry key="passwd">${IPL_POSTGRES_PASSWORD}</entry>
+    <entry key="port">6432</entry>
+    <entry key="passwd">${PGBOUNCER_POSTGRES_PASSWORD}</entry>
     <entry key="min connections">1</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">mdbw</entry>
     <entry key="max connections">10</entry>
     <entry key="Evictor tests per run">3</entry>
     <entry key="Test while idle">true</entry>
-    <entry key="user">geoserver</entry>
+    <entry key="user">${PGBOUNCER_POSTGRES_USER}</entry>
     <entry key="Max connection idle time">300</entry>
   </connectionParameters>
   <__default>false</__default>
