@@ -8,7 +8,8 @@ all: docker-up
 
 .PHONY: init
 init:
-	touch -a .imported-gtfs-db.env
+	mkdir -p var/gtfs
+	touch -a var/gtfs/gtfs-pgbouncer-dsn.txt
 
 # Container management
 # --------------------
@@ -66,6 +67,7 @@ docker-ps:
 import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
+	$(DOCKER_COMPOSE) --profile import-new-gtfs exec pgbouncer /reload-pgbouncer-databases.sh
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:

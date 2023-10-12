@@ -355,9 +355,14 @@ services:
     links:
       - ipl-db
       - gtfs-db
+      - dagster-postgresql
     image: ${PGBOUNCER_IMAGE}
     ports:
       - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
+    volumes:
+      # contains the latest import's DB name
+      - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
+      - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
     environment:
       # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
       # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
@@ -384,8 +389,10 @@ services:
       PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
       # todo: expose dagster-postgresql as `dagster`
       # expose the latest GTFS import within gtfs-db as `gtfs`
-      # todo: let gtfs-importer modify this config programmatically!
-      PGBOUNCER_DSN_2: "gtfs=host=gtfs-db dbname=${IPL_GTFS_DB_POSTGRES_DB:?missing/empty $IPL_GTFS_DB_POSTGRES_DB} user=${IPL_GTFS_DB_POSTGRES_USER:?missing/empty $IPL_GTFS_DB_POSTGRES_USER} password=${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty $IPL_GTFS_DB_POSTGRES_PASSWORD}"
+      # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
+      # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
+      # todo: not yet, push & PR our changes, see `image` field above!
+      PGBOUNCER_DSN_2_FILE: /var/gtfs-pgbouncer-dsn.txt
     restart: unless-stopped
     healthcheck:
       # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.
@@ -441,7 +448,6 @@ services:
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
-      - ./.imported-gtfs-db.env:/var/.imported-gtfs-db.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
@@ -451,8 +457,8 @@ services:
       GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
-      # path to the env file containing the latest import's DB name as `PGDATABASE`
-      GTFS_IMPORTER_ENV_FILE: /var/.imported-gtfs-db.env
+      # path to the file containing the latest import's DB name
+      GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
 
   gtfs-swagger-ui:
