@@ -263,10 +263,12 @@ services:
     image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
-      - PGHOST=dagster-postgresql
-      - PGUSER=${DAGSTER_POSTGRES_USER}
-      - PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD}
-      - PGDATABASE=${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      - PGHOST=pgbouncer
+      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      - PGDATABASE=dagster # determined by pgbouncer!
       # Use docker hostname of lamassu service to avoid roundtrip via proxy service
       - IPL_LAMASSU_BASE_URL=http://lamassu/
       - IPL_POSTGRES_HOST=ipl-db
@@ -275,7 +277,7 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
     depends_on:
-        dagster-postgresql:
+        pgbouncer:
           condition: service_healthy
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
@@ -289,16 +291,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -310,16 +315,19 @@ services:
     image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -342,7 +350,7 @@ services:
       start_period: 10s
       retries: 10
 
-  # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db), providing
+  # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db, dagster-postgresql), providing
   # - programmatically configurable query routing (used by `make import-new-gtfs`)
   # - improved connect performance for clients, especially Dagster workers
   pgbouncer:
@@ -351,6 +359,8 @@ services:
       ipl-db:
         condition: service_started
       gtfs-db:
+        condition: service_started
+      dagster-postgresql:
         condition: service_started
     links:
       - ipl-db
@@ -387,7 +397,8 @@ services:
       # see also https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
       # expose ipl-db as `ipl`
       PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
-      # todo: expose dagster-postgresql as `dagster`
+      # expose dagster-postgresql as `dagster`
+      PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty $DAGSTER_POSTGRES_DB} user=${DAGSTER_POSTGRES_USER:?missing/empty $DAGSTER_POSTGRES_USER} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty $DAGSTER_POSTGRES_PASSWORD}"
       # expose the latest GTFS import within gtfs-db as `gtfs`
       # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
       # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
