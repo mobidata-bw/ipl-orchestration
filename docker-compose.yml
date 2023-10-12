@@ -347,6 +347,38 @@ services:
       start_period: 10s
       retries: 10
 
+  # pgbouncer acts like a facade in front of PostgreSQL instances
+  pgbouncer:
+    networks: [ipl]
+    image: ${PGBOUNCER_IMAGE}
+    ports:
+      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
+    environment:
+      # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
+      # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
+      # Therefore, we duplicate the connection to ipl-db and expose it as `meta`, clearly denoting it as a connection *not* intended for pgbouncer clients.
+      PGBOUNCER_DATABASE: meta
+      POSTGRESQL_HOST: ipl-db
+      POSTGRESQL_DATABASE: ${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB}
+      POSTGRESQL_USERNAME: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      # > Most polite method. When a client connects, a server connection will be assigned to it for the whole duration the client stays connected. When the client disconnects, the server connection will be put back into the pool. This is the default method.
+      # We hardcode this, because we definitely don't want the other pooling modes.
+      PGBOUNCER_POOL_MODE: session
+      # todo: remove? should work without 🤔
+      # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
+      PGBOUNCER_AUTH_TYPE: md5
+
+      # upsteam connections
+      # todo
+    restart: unless-stopped
+    healthcheck:
+      # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.
+      test: 'env PGPASSWORD="$$POSTGRESQL_PASSWORD" psql -p 6432 -U "$$POSTGRESQL_USERNAME" pgbouncer -b -c "SHOW USERS" >/dev/null'
+      interval: 0m15s
+      timeout: 5s
+      retries: 10
+
   gtfs-api:
     networks: [ipl]
     depends_on:
