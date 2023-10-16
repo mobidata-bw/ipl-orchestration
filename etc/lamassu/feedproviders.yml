@@ -102,11 +102,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_stuttgart/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_mannheim-ludwigshafen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -114,11 +115,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_mannheim-ludwigshafen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_friedrichshafen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -126,11 +128,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_friedrichshafen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_pfullingen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -138,11 +141,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_pfullingen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_schwabach
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -150,11 +154,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_schwabach/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_rastatt
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -162,11 +167,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_rastatt/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_boeblingen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -174,11 +180,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_boeblingen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_tubingen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -186,11 +193,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_tubingen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_sindelfingen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -198,11 +206,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_sindelfingen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_ludwigsburg
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -210,11 +219,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_ludwigsburg/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_neckarsulm
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -222,11 +232,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_neckarsulm/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_reutlingen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -234,11 +245,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_reutlingen/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_heilbronn
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -246,11 +258,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_heilbronn/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_karlsruhe
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -258,11 +271,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_karlsruhe/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     - systemId: tier_heidelberg
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -270,11 +284,12 @@ lamassu:
       url: "https://platform.tier-services.io/data-sharing/tier_heidelberg/gbfs/2.3"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
-          tokenUrl: ${LAMASSU_TIER_API_URL}
-          clientId: ${LAMASSU_TIER_USER}
-          clientPassword: ${LAMASSU_TIER_PASSWORD}
+          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
+          clientId: ${LAMASSU_TIER_CLIENT_ID}
+          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
+          scope: gbfs
     # Freiburg
     - systemId: roxy_freiburg
       operatorId: RXY:Operator:roxy
