@@ -102,7 +102,7 @@ lamassu:
       url: "https://mds.bolt.eu/gbfs/2/1352/gbfs"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
           tokenUrl: ${LAMASSU_BOLT_API_URL}
           clientId: ${LAMASSU_BOLT_USER}
@@ -114,7 +114,7 @@ lamassu:
       url: "https://mds.bolt.eu/gbfs/2/719/gbfs"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
           tokenUrl: ${LAMASSU_BOLT_API_URL}
           clientId: ${LAMASSU_BOLT_USER}
@@ -126,7 +126,7 @@ lamassu:
       url: "https://mds.bolt.eu/gbfs/2/1321/gbfs"
       language: en
       authentication:
-        sheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
+        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
         properties:
           tokenUrl: ${LAMASSU_BOLT_API_URL}
           clientId: ${LAMASSU_BOLT_USER}
