@@ -292,6 +292,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
+      - "traefik.http.routers.gtfs-api.middlewares=gtfs-stripprefix"
+      - "traefik.http.middlewares.gtfs-stripprefix.stripprefix.prefixes=/gtfs"
       - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
 
