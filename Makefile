@@ -79,3 +79,15 @@ gtfs-db-psql:
 .PHONY: gtfs-db-latest-import
 gtfs-db-latest-import:
 	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE=gtfs_importer psql -b -t --csv -c "SELECT db_name FROM latest_import"'
+
+
+# OCPDB management
+# ------------------
+
+.PHONY: ocpdb-upgrade
+ocpdb-upgrade:
+	docker exec -it ipl-ocpdb-flask-1 /bin/sh -c 'flask db upgrade'
+
+.PHONY: ocpdb-shell
+ocpdb-shell:
+	docker exec -it ipl-ocpdb-flask-1 /bin/bash
