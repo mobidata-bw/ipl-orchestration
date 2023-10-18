@@ -447,7 +447,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.park-api-flask.rule=PathPrefix(`/park-api`)"
       - "traefik.http.services.park-api-flask.loadbalancer.server.port=5000"
-      - "traefik.http.routers.park-api-flask.middlewares=ocpdb-stripprefix"
+      - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
       - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
 
   park-api-worker:
