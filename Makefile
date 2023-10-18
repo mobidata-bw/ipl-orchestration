@@ -81,6 +81,7 @@ gtfs-db-latest-import:
 	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE=gtfs_importer psql -b -t --csv -c "SELECT db_name FROM latest_import"'
 
 
+
 # OCPDB management
 # ------------------
 
@@ -91,3 +92,16 @@ ocpdb-upgrade:
 .PHONY: ocpdb-shell
 ocpdb-shell:
 	docker exec -it ipl-ocpdb-flask-1 /bin/bash
+
+
+# ParkAPI management
+# ------------------
+
+.PHONY: park-api-upgrade
+park-api-upgrade:
+	docker exec -it ipl-park-api-flask-1 /bin/sh -c 'flask db upgrade'
+
+.PHONY: park-api-shell
+park-api-shell:
+	docker exec -it ipl-park-api-flask-1 /bin/bash
+

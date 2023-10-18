@@ -22,6 +22,39 @@ x-ocpdb-defaults: &ocpdb-defaults
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
 
+x-park-api-defaults: &park-api-defaults
+  image: ghcr.io/mobidata-bw/park-api-v3:latest
+  networks: [ipl]
+  environment:
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD}
+    PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL}
+    PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
+  restart: unless-stopped
+  depends_on:
+    park-api-db:
+      condition: service_healthy
+    park-api-rabbitmq:
+      condition: service_healthy
+  volumes:
+    - ./etc/park-api/config.yaml:/app/config.yaml
+    - ./var/park-api/logs:/app/logs
+    - ./var/park-api/temp:/app/temp
+
+x-generic-rabbitmq: &generic-rabbitmq
+  networks: [ipl]
+  image: rabbitmq:3.12
+  environment:
+    # Disable spammy logging
+    RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
+  healthcheck:
+    test: rabbitmq-diagnostics -q ping
+    interval: 1s
+    timeout: 1s
+    retries: 20
+
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
@@ -403,16 +436,42 @@ services:
       retries: 3
 
   ocpdb-rabbitmq:
+    <<: *generic-rabbitmq
+
+  park-api-flask:
+    <<: *park-api-defaults
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    ports:
+      - ${PARK_API_API_PORT}:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.park-api-flask.rule=PathPrefix(`/park-api`)"
+      - "traefik.http.services.park-api-flask.loadbalancer.server.port=5000"
+      - "traefik.http.routers.park-api-flask.middlewares=ocpdb-stripprefix"
+      - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
+
+  park-api-worker:
+    <<: *park-api-defaults
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  park-api-db:
     networks: [ipl]
-    image: rabbitmq:3.12
+    image: postgis/postgis:16-3.4
+    volumes:
+      - ./var/park-api/park-api-db:/var/lib/postgresql/data
     environment:
-      # Disable spammy logging
-      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
+      - POSTGRES_USER=${PARK_API_PGUSER}
+      - POSTGRES_PASSWORD=${PARK_API_PGPASSWORD}
+      - POSTGRES_DB=${PARK_API_PGDATABASE}
+      - PGUSER=${PARK_API_PGUSER}
     healthcheck:
-      test: rabbitmq-diagnostics -q ping
-      interval: 1s
-      timeout: 1s
-      retries: 20
+      test: "PGPASSWORD=${PARK_API_PGPASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_PGUSER} -d ${PARK_API_PGDATABASE}"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  park-api-rabbitmq:
+    <<: *generic-rabbitmq
 
 networks:
   ipl:
