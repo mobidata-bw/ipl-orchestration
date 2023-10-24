@@ -2,12 +2,12 @@
 name: ipl
 
 x-ocpdb-defaults: &ocpdb-defaults
-  image: ghcr.io/binary-butterfly/ocpdb:latest
+  image: ${OCPDB_IMAGE}
   networks: [ipl]
   environment:
-    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB}
-    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER}
-    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD}
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
@@ -23,14 +23,14 @@ x-ocpdb-defaults: &ocpdb-defaults
     - ./var/ocpdb/temp:/app/temp
 
 x-park-api-defaults: &park-api-defaults
-  image: ghcr.io/mobidata-bw/park-api-v3:latest
+  image: ${PARK_API_IMAGE}
   networks: [ipl]
   environment:
-    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB}
-    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER}
-    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD}
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
-    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
   restart: unless-stopped
   depends_on:
@@ -460,12 +460,12 @@ services:
     volumes:
       - ./var/park-api/park-api-db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=${PARK_API_PGUSER}
-      - POSTGRES_PASSWORD=${PARK_API_PGPASSWORD}
-      - POSTGRES_DB=${PARK_API_PGDATABASE}
-      - PGUSER=${PARK_API_PGUSER}
+      - POSTGRES_USER=${PARK_API_POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=${PARK_API_POSTGRES_USER}
+      - POSTGRES_DB=${PARK_API_POSTGRES_DB}
+      - PGUSER=${PARK_API_POSTGRES_PASSWORD}
     healthcheck:
-      test: "PGPASSWORD=${PARK_API_PGPASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_PGUSER} -d ${PARK_API_PGDATABASE}"
+      test: "PGPASSWORD=${PARK_API_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_POSTGRES_USER} -d ${PARK_API_POSTGRES_DB}"
       interval: 10s
       timeout: 3s
       retries: 3
