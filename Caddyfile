@@ -1,7 +1,0 @@
-:1234 {
-	reverse_proxy http://host.docker.internal:8080 {
-		# trust Docker default (bridge) network's gateway
-		trusted_proxies 172.17.0.1/32
-		header_up Caddy "true"
-	}
-}

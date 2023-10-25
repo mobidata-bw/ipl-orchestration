@@ -91,6 +91,25 @@ services:
       # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
 
+  caddy:
+    networks: [ipl]
+    image: ${CADDY_IMAGE}
+    restart: unless-stopped
+    ports:
+      - 6999:80 
+      # - 443:443
+    volumes:
+      - ./var/caddy/data:/data
+      - ./var/caddy/config:/config
+      - ./var/www/:/var/www
+      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
+      - "traefik.http.routers.caddy.middlewares=caddy-stripprefix"
+      - "traefik.http.middlewares.caddy-stripprefix.stripprefix.prefixes=/datasets"
+      - "traefik.http.services.caddy.loadbalancer.server.port=80"
+
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
