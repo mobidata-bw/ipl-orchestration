@@ -1,0 +1,7 @@
+http://:80 {
+  root * /var/www
+  encode zstd gzip
+  file_server {
+    precompressed gzip zstd
+  }
+}
