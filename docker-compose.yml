@@ -11,7 +11,6 @@ x-ocpdb-defaults: &ocpdb-defaults
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
-  restart: unless-stopped
   depends_on:
     ocpdb-db:
       condition: service_healthy
@@ -32,7 +31,6 @@ x-park-api-defaults: &park-api-defaults
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
     PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
-  restart: unless-stopped
   depends_on:
     park-api-db:
       condition: service_healthy
@@ -406,6 +404,7 @@ services:
   ocpdb-flask:
     <<: *ocpdb-defaults
     command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    restart: unless-stopped
     ports:
       - ${OCPDB_API_PORT}:5000
     labels:
@@ -417,18 +416,22 @@ services:
 
   ocpdb-worker:
     <<: *ocpdb-defaults
+    restart: unless-stopped
     command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  ocpdb-init:
+    <<: *ocpdb-defaults
+    command: ["flask", "db", "upgrade"]
 
   ocpdb-db:
     networks: [ipl]
-    image: postgis/postgis:16-3.4
+    image: ${OCPDB_DB_IMAGE}
     volumes:
       - ./var/ocpdb/ocpdb-db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=${OCPDB_POSTGRES_USER}
       - POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD}
       - POSTGRES_DB=${OCPDB_POSTGRES_DB}
-      - PGUSER=${OCPDB_POSTGRES_USER}
     healthcheck:
       test: "PGPASSWORD=${OCPDB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${OCPDB_POSTGRES_USER} -d ${OCPDB_POSTGRES_DB}"
       interval: 10s
@@ -440,6 +443,7 @@ services:
 
   park-api-flask:
     <<: *park-api-defaults
+    restart: unless-stopped
     command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
     ports:
       - ${PARK_API_API_PORT}:5000
@@ -450,20 +454,29 @@ services:
       - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
       - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
 
+  park-api-init:
+    <<: *park-api-defaults
+    command: ["bash", "-c", "flask db upgrade && flask source init-converters"]
+
   park-api-worker:
     <<: *park-api-defaults
+    restart: unless-stopped
     command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  park-api-heartbeat:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
 
   park-api-db:
     networks: [ipl]
-    image: postgis/postgis:16-3.4
+    image: ${PARK_API_DB_IMAGE}
     volumes:
       - ./var/park-api/park-api-db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=${PARK_API_POSTGRES_PASSWORD}
-      - POSTGRES_PASSWORD=${PARK_API_POSTGRES_USER}
+      - POSTGRES_USER=${PARK_API_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD}
       - POSTGRES_DB=${PARK_API_POSTGRES_DB}
-      - PGUSER=${PARK_API_POSTGRES_PASSWORD}
     healthcheck:
       test: "PGPASSWORD=${PARK_API_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_POSTGRES_USER} -d ${PARK_API_POSTGRES_DB}"
       interval: 10s
