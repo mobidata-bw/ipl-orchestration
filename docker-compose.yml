@@ -1,6 +1,58 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
+x-ocpdb-defaults: &ocpdb-defaults
+  image: ${OCPDB_IMAGE}
+  networks: [ipl]
+  environment:
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
+    OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
+    OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
+  depends_on:
+    ocpdb-db:
+      condition: service_healthy
+    ocpdb-rabbitmq:
+      condition: service_healthy
+  volumes:
+    - ./etc/ocpdb/config.yaml:/app/config.yaml
+    - ./var/ocpdb/logs:/app/logs
+    - ./var/ocpdb/temp:/app/temp
+
+x-park-api-defaults: &park-api-defaults
+  image: ${PARK_API_IMAGE}
+  networks: [ipl]
+  environment:
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
+    PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
+    PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
+  depends_on:
+    park-api-db:
+      condition: service_healthy
+    park-api-rabbitmq:
+      condition: service_healthy
+  volumes:
+    - ./etc/park-api/config.yaml:/app/config.yaml
+    - ./var/park-api/logs:/app/logs
+    - ./var/park-api/temp:/app/temp
+
+x-generic-rabbitmq: &generic-rabbitmq
+  networks: [ipl]
+  image: rabbitmq:3.12
+  environment:
+    # Disable spammy logging
+    RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
+  healthcheck:
+    test: rabbitmq-diagnostics -q ping
+    interval: 1s
+    timeout: 1s
+    retries: 20
+
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
@@ -160,7 +212,7 @@ services:
         condition: service_healthy
       gtfs-db:
         # For transit layer
-        condition: service_healthy     
+        condition: service_healthy
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
       interval: 0m15s
@@ -350,6 +402,91 @@ services:
       - "traefik.http.routers.gtfs-swagger-ui.rule=PathPrefix(`/docs/gtfs`)"
       - "traefik.http.services.gtfs-swagger-ui.loadbalancer.server.port=8080"
     restart: unless-stopped
+
+  ocpdb-flask:
+    <<: *ocpdb-defaults
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    restart: unless-stopped
+    ports:
+      - ${OCPDB_API_PORT}:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`)"
+      - "traefik.http.services.ocpdb-flask.loadbalancer.server.port=5000"
+      - "traefik.http.routers.ocpdb-flask.middlewares=ocpdb-stripprefix"
+      - "traefik.http.middlewares.ocpdb-stripprefix.stripprefix.prefixes=/ocpdb"
+
+  ocpdb-worker:
+    <<: *ocpdb-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  ocpdb-init:
+    <<: *ocpdb-defaults
+    command: ["flask", "db", "upgrade"]
+
+  ocpdb-db:
+    networks: [ipl]
+    image: ${OCPDB_DB_IMAGE}
+    volumes:
+      - ./var/ocpdb/ocpdb-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${OCPDB_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${OCPDB_POSTGRES_DB}
+    healthcheck:
+      test: "PGPASSWORD=${OCPDB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${OCPDB_POSTGRES_USER} -d ${OCPDB_POSTGRES_DB}"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  ocpdb-rabbitmq:
+    <<: *generic-rabbitmq
+
+  park-api-flask:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    ports:
+      - ${PARK_API_API_PORT}:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.park-api-flask.rule=PathPrefix(`/park-api`)"
+      - "traefik.http.services.park-api-flask.loadbalancer.server.port=5000"
+      - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
+      - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
+
+  park-api-init:
+    <<: *park-api-defaults
+    command: ["bash", "-c", "flask db upgrade && flask source init-converters"]
+
+  park-api-worker:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  park-api-heartbeat:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
+
+  park-api-db:
+    networks: [ipl]
+    image: ${PARK_API_DB_IMAGE}
+    volumes:
+      - ./var/park-api/park-api-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${PARK_API_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${PARK_API_POSTGRES_DB}
+    healthcheck:
+      test: "PGPASSWORD=${PARK_API_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_POSTGRES_USER} -d ${PARK_API_POSTGRES_DB}"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  park-api-rabbitmq:
+    <<: *generic-rabbitmq
 
 networks:
   ipl:

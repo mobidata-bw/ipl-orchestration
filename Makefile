@@ -79,3 +79,29 @@ gtfs-db-psql:
 .PHONY: gtfs-db-latest-import
 gtfs-db-latest-import:
 	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE=gtfs_importer psql -b -t --csv -c "SELECT db_name FROM latest_import"'
+
+
+
+# OCPDB management
+# ------------------
+
+.PHONY: ocpdb-upgrade
+ocpdb-upgrade:
+	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh -c 'flask db upgrade'
+
+.PHONY: ocpdb-shell
+ocpdb-shell:
+	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh
+
+
+# ParkAPI management
+# ------------------
+
+.PHONY: park-api-upgrade
+park-api-upgrade:
+	$(DOCKER_COMPOSE) exec park-flask /bin/sh -c 'flask db upgrade'
+
+.PHONY: park-api-shell
+park-api-shell:
+	$(DOCKER_COMPOSE) exec park-api-flask /bin/sh
+
