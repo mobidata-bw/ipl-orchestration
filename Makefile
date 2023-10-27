@@ -87,11 +87,11 @@ gtfs-db-latest-import:
 
 .PHONY: ocpdb-upgrade
 ocpdb-upgrade:
-	docker exec -it ipl-ocpdb-flask-1 /bin/sh -c 'flask db upgrade'
+	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh -c 'flask db upgrade'
 
 .PHONY: ocpdb-shell
 ocpdb-shell:
-	docker exec -it ipl-ocpdb-flask-1 /bin/bash
+	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh
 
 
 # ParkAPI management
@@ -99,9 +99,9 @@ ocpdb-shell:
 
 .PHONY: park-api-upgrade
 park-api-upgrade:
-	docker exec -it ipl-park-api-flask-1 /bin/sh -c 'flask db upgrade'
+	$(DOCKER_COMPOSE) exec park-flask /bin/sh -c 'flask db upgrade'
 
 .PHONY: park-api-shell
 park-api-shell:
-	docker exec -it ipl-park-api-flask-1 /bin/bash
+	$(DOCKER_COMPOSE) exec park-api-flask /bin/sh
 
