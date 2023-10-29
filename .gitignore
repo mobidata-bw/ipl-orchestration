@@ -9,5 +9,5 @@ Thumbs.db
 /etc/ocpdb/config.secrets.yaml
 
 /var
-
+!/**/.gitkeep
 /.env.local
