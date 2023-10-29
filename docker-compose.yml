@@ -1,9 +1,13 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
+# Define placeholder for running a container with the same UID/GID as your local user
+x-local-user: &local-user ${DOCKER_LOCAL_USER:?Variable needs to be set in .env (e.g. "DOCKER_LOCAL_USER=1000:1000")}
+
 x-ocpdb-defaults: &ocpdb-defaults
   image: ${OCPDB_IMAGE}
   networks: [ipl]
+  user: *local-user
   environment:
     OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
     OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
@@ -25,6 +29,7 @@ x-ocpdb-defaults: &ocpdb-defaults
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
   networks: [ipl]
+  user: *local-user
   environment:
     PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
     PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
@@ -61,17 +66,13 @@ services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
+  # Trafik can't run as local user, because service discovery just works with root.
   ingress:
     networks: [ipl]
     image: traefik:v2.10
     ports:
-      # todo: change to 80:80
-      - "8080:80"
-      # # todo: change to 443:443
-      # - "8443:443"
-      # todo: change to 8080:8080
-      # web UI, Prometheus, etc.
-      - "8081:8080"
+      - "8080:80"  # public interface
+      - "8081:8080"  # admin interface, Prometheus, etc.
     volumes:
       - ./etc/traefik:/etc/traefik
       - ./var/log/traefik:/var/log/traefik
@@ -109,6 +110,8 @@ services:
   transformer-proxy:
     networks: [ipl]
     image: ${TRANSFORMER_PROXY_IMAGE}
+    user: *local-user
+    command: ["mitmdump", "-s", "addons.py", "--set", "confdir=/tmp/mitmproxy"]
     volumes:
       # Mount config file which declares hosts to proxy
       - ./etc/transformer-proxy/config.yaml:/app/config.yaml
@@ -584,11 +587,13 @@ services:
       gtfs-api:
         condition: service_started
     image: swaggerapi/swagger-ui
+    user: *local-user
     ports:
       - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" URL here.
       API_URL: ${IPL_GTFS_API_PUBLIC_BASE_URL}
+
       BASE_URL: /docs/gtfs
     labels:
       - "traefik.enable=true"
@@ -665,7 +670,7 @@ services:
   park-api-heartbeat:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat", "-s", "/tmp/park-api-heartbeat.db"]
 
   park-api-db:
     networks: [ipl]
