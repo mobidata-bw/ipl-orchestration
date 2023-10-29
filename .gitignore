@@ -9,5 +9,8 @@ Thumbs.db
 /etc/ocpdb/config.secrets.yaml
 
 /var
-!/**/.gitkeep
 /.env.local
+
+/.imported-gtfs-db.env
+
+!/**/.gitkeep

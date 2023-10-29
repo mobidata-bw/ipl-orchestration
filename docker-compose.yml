@@ -9,9 +9,9 @@ x-ocpdb-defaults: &ocpdb-defaults
   networks: [ipl]
   user: *local-user
   environment:
-    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
-    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
-    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var $OCPDB_POSTGRES_DB'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var $OCPDB_POSTGRES_USER'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var $OCPDB_POSTGRES_PASSWORD'}
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
@@ -31,9 +31,9 @@ x-park-api-defaults: &park-api-defaults
   networks: [ipl]
   user: *local-user
   environment:
-    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
-    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
-    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var $PARK_API_POSTGRES_DB'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var $PARK_API_POSTGRES_USER'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $PARK_API_POSTGRES_PASSWORD'}
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
     PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
@@ -171,6 +171,7 @@ services:
       LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?'missing/empty env var $LAMASSU_BOLT_AUTH_URL'}
       LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?'missing/empty env var $LAMASSU_BOLT_CLIENT_ID'}
       LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?'missing/empty env var $LAMASSU_BOLT_CLIENT_PASSWORD'}
+      LAMASSU_ADMIN_PASSWORD: ${LAMASSU_ADMIN_PASSWORD:?'missing/empty env var $LAMASSU_ADMIN_PASSWORD'}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
       JDK_JAVA_OPTIONS:
@@ -315,9 +316,9 @@ services:
     networks: [ipl]
     image: ${DAGSTER_POSTGRES_IMAGE}
     environment:
-      POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
-      POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
-      POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
+      POSTGRES_USER: "${DAGSTER_POSTGRES_USER?'missing/empty env var $DAGSTER_POSTGRES_USER'}"
+      POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD?'missing/empty env var $DAGSTER_POSTGRES_PASSWORD'}"
+      POSTGRES_DB: "${DAGSTER_POSTGRES_DB?'missing/empty env var $DAGSTER_POSTGRES_DB'}"
     volumes:
         - ./var/dagster-postgresql/data:/var/lib/postgresql/data
     healthcheck:
