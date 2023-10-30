@@ -106,8 +106,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
-      - "traefik.http.routers.caddy.middlewares=caddy-stripprefix"
-      - "traefik.http.middlewares.caddy-stripprefix.stripprefix.prefixes=/datasets"
+      - "traefik.http.routers.caddy.middlewares=caddy-middleware"
+      - "traefik.http.middlewares.caddy-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD"
+      - "traefik.http.middlewares.caddy-middleware.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.caddy-middleware.stripprefix.prefixes=/datasets"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
 
   # This service requests non-standard sharing provider APIs and generates
