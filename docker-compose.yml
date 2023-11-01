@@ -44,6 +44,7 @@ x-park-api-defaults: &park-api-defaults
 x-generic-rabbitmq: &generic-rabbitmq
   networks: [ipl]
   image: rabbitmq:3.12
+  user: rabbitmq  # required due eacces-issue: https://github.com/docker-library/rabbitmq/issues/318
   environment:
     # Disable spammy logging
     RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
@@ -96,7 +97,7 @@ services:
     image: ${CADDY_IMAGE}
     restart: unless-stopped
     ports:
-      - 6999:80 
+      - 6999:80
       # - 443:443
     volumes:
       - ./var/caddy/data:/data
