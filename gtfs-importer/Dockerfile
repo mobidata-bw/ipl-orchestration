@@ -14,6 +14,7 @@ ARG TARGETVARIANT
 # curl is needed to download the GTFS
 # moreutils is needed for sponge
 # postgresql-client is needed for psql
+# note: curl-mirror.mjs would need gunzip *if* the HTTP response was gzipped
 RUN apt update && apt install -y \
 	bash \
 	curl \
@@ -22,6 +23,18 @@ RUN apt update && apt install -y \
 	unzip \
 	zstd \
 	&& rm -rf /var/lib/apt/lists/*
+
+# > Alas, there is no way to tell node to interpret a file with an arbitrary extension as an ESM module. That’s why we have to use the extension .mjs. Workarounds are possible but complicated, as we’ll see later.
+# https://exploringjs.com/nodejs-shell-scripting/ch_creating-shell-scripts.html#node.js-esm-modules-as-standalone-shell-scripts-on-unix
+# > A script such as homedir.mjs does not need to be executable on Unix because npm installs it via an executable symbolic link […].
+# https://exploringjs.com/nodejs-shell-scripting/ch_creating-shell-scripts.html#how-npm-installs-shell-scripts
+ADD \
+	--checksum=sha256:95b995d6e30cb765a02c14f265526801664ea9e03a090951cab0aee7fed103ee \
+	https://gist.github.com/derhuerst/745cf09fe5f3ea2569948dd215bbfe1a/raw/6df4a02302d77edac674fec52ed1c0b32a795a37/mirror.mjs \
+	/opt/curl-mirror.mjs
+RUN \
+	ln -s /opt/curl-mirror.mjs /usr/local/bin/curl-mirror && \
+	chmod +x /usr/local/bin/curl-mirror
 
 RUN \
 	curl -fsSL \
