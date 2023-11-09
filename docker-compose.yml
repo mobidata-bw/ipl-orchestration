@@ -415,6 +415,7 @@ services:
       timeout: 5s
       retries: 10
 
+  # todo /arrivals_departures: enforce stop_id filtering?
   gtfs-api:
     networks: [ipl]
     depends_on:
@@ -485,6 +486,7 @@ services:
       - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
+      # todo: localhost -> dev-ipl.mobidata-bw.de
       API_URL: http://localhost:${IPL_GTFS_API_PORT}
       BASE_URL: /docs/gtfs
     labels:

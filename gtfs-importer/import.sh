@@ -61,6 +61,8 @@ set +x
 print_bold "Importing (tidied) GTFS feed into the $PGDATABASE database."
 set -x
 
+gtfs-to-sql --version
+
 gtfs-to-sql -d \
 	--trips-without-shape-id --lower-case-lang-codes \
 	--stops-location-index \
