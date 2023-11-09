@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url'
 import _pg from 'pg'
 const {Client} = _pg
 import pgFormat from 'pg-format'
+import {ok} from 'node:assert'
 import {writeFile} from 'node:fs/promises'
 
 const PATH_TO_IMPORT_SCRIPT = fileURLToPath(new URL('import.sh', import.meta.url).href)
@@ -127,10 +128,14 @@ try {
 		// https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
 		const {
 			PGHOST,
-			PGUSER,
-			PGPASSWORD,
+			POSTGREST_USER,
+			POSTGREST_PASSWORD,
 		} = process.env
-		const dsn = `gtfs=host=${PGHOST} dbname=${dbName} user=${PGUSER} password=${PGPASSWORD}`
+		ok(PGHOST, 'missing/empty $PGHOST')
+		ok(POSTGREST_USER, 'missing/empty $POSTGREST_USER')
+		ok(POSTGREST_PASSWORD, 'missing/empty $POSTGREST_PASSWORD')
+
+		const dsn = `gtfs=host=${PGHOST} dbname=${dbName} user=${POSTGREST_USER} password=${POSTGREST_PASSWORD}`
 		console.info(`writing "${dsn}" into env file ${PATH_TO_DSN_FILE}`)
 		await writeFile(PATH_TO_DSN_FILE, dsn)
 	}

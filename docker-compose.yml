@@ -481,6 +481,8 @@ services:
       # path to the file containing the latest import's DB name
       GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
+      POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER}
+      POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD}
 
   gtfs-swagger-ui:
     networks: [ipl]
