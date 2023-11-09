@@ -67,6 +67,8 @@ docker-ps:
 import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
+	# make sure pgbouncer is running
+	$(DOCKER_COMPOSE) --profile import-new-gtfs up --detach --wait --wait-timeout 20 pgbouncer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs exec pgbouncer /reload-pgbouncer-databases.sh
 
 .PHONY: gtfs-db-psql
