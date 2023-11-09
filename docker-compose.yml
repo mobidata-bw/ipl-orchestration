@@ -196,6 +196,9 @@ services:
     restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+      interval: 5s
+      timeout: 3s
+      retries: 12
 
   geoserver:
     networks: [ipl]
