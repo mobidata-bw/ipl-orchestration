@@ -47,7 +47,7 @@ RUN \
 	&& chmod +x /usr/local/bin/gtfstidy
 
 # todo: gtfs-via-postgres is Prosperity-dual-licensed, obtain a purely Apache-licensed version
-RUN npm install -g gtfs-via-postgres@4
+RUN npm install -g gtfs-via-postgres@'^4.8.2'
 
 ADD package.json ./
 RUN npm install --omit dev && npm cache clean --force

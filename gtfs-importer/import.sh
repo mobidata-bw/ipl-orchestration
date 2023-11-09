@@ -85,6 +85,7 @@ print_bold 'Done!'
 
 cat <<EOF
 Run PostgREST with the following environment variables:'
+PGUSER=postgrest
 PGRST_DB_SCHEMAS=api
 PGRST_DB_ANON_ROLE=web_anon
 EOF
