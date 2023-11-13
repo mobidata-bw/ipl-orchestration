@@ -223,6 +223,7 @@ services:
       - INITIAL_MEMORY=${GEOSERVER_INITIAL_MEMORY}
       - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
       - GEOSERVER_LOGGING_PROFILE=${GEOSERVER_LOGGING_PROFILE}
+      - TIMEZONE=Europe/Berlin
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
