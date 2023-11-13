@@ -228,12 +228,16 @@ services:
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
       # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
-      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $$PGBOUNCER_POSTGRES_USER}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $$PGBOUNCER_POSTGRES_PASSWORD}
+      - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty $$PARK_API_POSTGRES_PASSWORD}
     depends_on:
       pgbouncer:
         # For sharing & transit layers
-        condition: service_healthy     
+        condition: service_healthy
+      park-api-db:
+        # For parking_sites layer
+        condition: service_healthy
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
       interval: 0m15s

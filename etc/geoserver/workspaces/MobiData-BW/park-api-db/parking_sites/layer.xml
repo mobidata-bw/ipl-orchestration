@@ -1,0 +1,22 @@
+<layer>
+  <name>parking_sites</name>
+  <id>LayerInfoImpl--5bcdf8b:18bc88075ee:-7ff9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--5bcdf8b:18bc88075ee:-7ff7</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5bcdf8b:18bc88075ee:-7ffa</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-11-13 11:50:05.514 UTC</dateCreated>
+  <dateModified>2023-11-13 13:07:22.798 UTC</dateModified>
+</layer>
