@@ -17,7 +17,7 @@ if (!GTFS_IMPORTER_DB_PREFIX) {
 }
 const DB_PREFIX = GTFS_IMPORTER_DB_PREFIX + '_'
 
-const PATH_TO_ENV_FILE = process.env.GTFS_IMPORTER_ENV_FILE || null
+const PATH_TO_DSN_FILE = process.env.GTFS_IMPORTER_DSN_FILE || null
 
 const pSpawn = (path, args = [], opts = {}) => {
 	return new Promise((resolve, reject) => {
@@ -122,10 +122,17 @@ try {
 		ON CONFLICT (always_true) DO UPDATE SET db_name = $1;
 	`, [dbName])
 
-	if (PATH_TO_ENV_FILE !== null) {
-		console.info(`writing PGDATABASE="${dbName}" into env file ${PATH_TO_ENV_FILE}`)
-		await writeFile(PATH_TO_ENV_FILE, `PGDATABASE="${dbName}"\n`)
-		console.info('make sure to also put it into .env.local, so that `geoserver` can read it')
+	if (PATH_TO_DSN_FILE !== null) {
+		// https://www.pgbouncer.org/config.html#section-databases
+		// https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
+		const {
+			PGHOST,
+			PGUSER,
+			PGPASSWORD,
+		} = process.env
+		const dsn = `gtfs=host=${PGHOST} dbname=${dbName} user=${PGUSER} password=${PGPASSWORD}`
+		console.info(`writing "${dsn}" into env file ${PATH_TO_DSN_FILE}`)
+		await writeFile(PATH_TO_DSN_FILE, dsn)
 	}
 
 	console.info('import succeeded, committing all changes to "latest_import"!')

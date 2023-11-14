@@ -8,4 +8,3 @@ First, we have to install Docker (Desktop); Follow the [official installation in
 
 You will also need the following tools:
 - [`make`](https://en.wikipedia.org/wiki/Make_(software))
-- [`jq`](https://jqlang.github.io/jq/)

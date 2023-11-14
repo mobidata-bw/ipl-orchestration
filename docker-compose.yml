@@ -196,6 +196,9 @@ services:
     restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+      interval: 5s
+      timeout: 3s
+      retries: 12
 
   geoserver:
     networks: [ipl]
@@ -224,17 +227,12 @@ services:
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
       # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
-      - IPL_POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
-      - IPL_GTFS_DB_POSTGRES_PASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD}
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
     depends_on:
-      ipl-db:
-        # For sharing layers
-        condition: service_healthy
-      gtfs-db:
-        # For transit layer
-        condition: service_healthy
+      pgbouncer:
+        # For sharing & transit layers
+        condition: service_healthy     
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
       interval: 0m15s
@@ -268,10 +266,12 @@ services:
     image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
-      - PGHOST=dagster-postgresql
-      - PGUSER=${DAGSTER_POSTGRES_USER}
-      - PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD}
-      - PGDATABASE=${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      - PGHOST=pgbouncer
+      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      - PGDATABASE=dagster # determined by pgbouncer!
       # Use docker hostname of lamassu service to avoid roundtrip via proxy service
       - IPL_LAMASSU_BASE_URL=http://lamassu/
       - IPL_POSTGRES_HOST=ipl-db
@@ -280,7 +280,7 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
     depends_on:
-        dagster-postgresql:
+        pgbouncer:
           condition: service_healthy
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
@@ -294,16 +294,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -315,16 +318,19 @@ services:
     image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -347,23 +353,87 @@ services:
       start_period: 10s
       retries: 10
 
+  # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db, dagster-postgresql), providing
+  # - programmatically configurable query routing (used by `make import-new-gtfs`)
+  # - improved connect performance for clients, especially Dagster workers
+  pgbouncer:
+    networks: [ipl]
+    depends_on:
+      ipl-db:
+        condition: service_started
+      gtfs-db:
+        condition: service_started
+      dagster-postgresql:
+        condition: service_started
+    links:
+      - ipl-db
+      - gtfs-db
+      - dagster-postgresql
+    image: ${PGBOUNCER_IMAGE}
+    ports:
+      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
+    volumes:
+      # contains the latest import's DB name
+      - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
+      - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
+    environment:
+      # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
+      # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
+      # Therefore, we duplicate the connection to ipl-db and expose it as `meta`, clearly denoting it as a connection *not* intended for pgbouncer clients.
+      PGBOUNCER_DATABASE: meta
+      POSTGRESQL_HOST: ipl-db
+      POSTGRESQL_DATABASE: ${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB}
+      POSTGRESQL_USERNAME: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      # > Most polite method. When a client connects, a server connection will be assigned to it for the whole duration the client stays connected. When the client disconnects, the server connection will be put back into the pool. This is the default method.
+      # We hardcode this, because we definitely don't want the other pooling modes.
+      PGBOUNCER_POOL_MODE: session
+      # todo: remove? should work without 🤔
+      # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
+      PGBOUNCER_AUTH_TYPE: md5
+      # Geoserver fails to connect without this config
+      # see https://github.com/bitnami/containers/issues/25394#issuecomment-1457893192
+      PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits
+
+      # upsteam connections
+      # see also https://www.pgbouncer.org/config.html#section-databases
+      # see also https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
+      # expose ipl-db as `ipl`
+      PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
+      # expose dagster-postgresql as `dagster`
+      PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty $DAGSTER_POSTGRES_DB} user=${DAGSTER_POSTGRES_USER:?missing/empty $DAGSTER_POSTGRES_USER} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty $DAGSTER_POSTGRES_PASSWORD}"
+      # expose the latest GTFS import within gtfs-db as `gtfs`
+      # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
+      # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
+      # todo: not yet, push & PR our changes, see `image` field above!
+      PGBOUNCER_DSN_2_FILE: /var/gtfs-pgbouncer-dsn.txt
+    restart: unless-stopped
+    healthcheck:
+      # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.
+      test: 'env PGPASSWORD="$$POSTGRESQL_PASSWORD" psql -p 6432 -U "$$POSTGRESQL_USERNAME" pgbouncer -b -c "SHOW USERS" >/dev/null'
+      interval: 0m15s
+      timeout: 5s
+      retries: 10
+
+  # todo /arrivals_departures: enforce stop_id filtering?
   gtfs-api:
     networks: [ipl]
     depends_on:
-      gtfs-db:
+      pgbouncer:
         condition: service_healthy
     links:
-      - gtfs-db
+      - pgbouncer
     image: postgrest/postgrest
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
     environment:
-      PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
+      PGHOST: pgbouncer
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: gtfs # determined by pgbouncer!
       # PostgREST-specific env vars
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
@@ -393,7 +463,6 @@ services:
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
-      - ./.imported-gtfs-db.env:/var/.imported-gtfs-db.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
@@ -403,8 +472,8 @@ services:
       GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
-      # path to the env file containing the latest import's DB name as `PGDATABASE`
-      GTFS_IMPORTER_ENV_FILE: /var/.imported-gtfs-db.env
+      # path to the file containing the latest import's DB name
+      GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
 
   gtfs-swagger-ui:
@@ -417,6 +486,7 @@ services:
       - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
+      # todo: localhost -> dev-ipl.mobidata-bw.de
       API_URL: http://localhost:${IPL_GTFS_API_PORT}
       BASE_URL: /docs/gtfs
     labels:

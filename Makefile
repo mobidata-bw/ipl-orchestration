@@ -8,7 +8,8 @@ all: docker-up
 
 .PHONY: init
 init:
-	touch -a .imported-gtfs-db.env
+	mkdir -p var/gtfs
+	touch -a var/gtfs/gtfs-pgbouncer-dsn.txt
 
 # Container management
 # --------------------
@@ -66,11 +67,9 @@ docker-ps:
 import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
-	# restart dependent services
-	# Restarting the containers would re-run them with the old env vars, so we `stop` & `start` instead.
-	$(DOCKER_COMPOSE) stop --timeout 30 gtfs-api geoserver
-	$(DOCKER_COMPOSE) rm gtfs-api geoserver
-	$(DOCKER_COMPOSE) up -d --wait --wait-timeout 30 gtfs-api geoserver
+	# make sure pgbouncer is running
+	$(DOCKER_COMPOSE) --profile import-new-gtfs up --detach --wait --wait-timeout 20 pgbouncer
+	$(DOCKER_COMPOSE) --profile import-new-gtfs exec pgbouncer /reload-pgbouncer-databases.sh
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:
