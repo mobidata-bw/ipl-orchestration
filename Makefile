@@ -9,7 +9,7 @@ all: docker-up
 .PHONY: init
 init:
 	mkdir -p var/gtfs
-	touch -a var/gtfs/gtfs-pgbouncer-dsn.txt
+	touch -a var/gtfs/pgbouncer-dsn.txt
 
 # Container management
 # --------------------
