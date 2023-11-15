@@ -1,6 +1,59 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
+x-ocpdb-defaults: &ocpdb-defaults
+  image: ${OCPDB_IMAGE}
+  networks: [ipl]
+  environment:
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
+    OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
+    OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
+  depends_on:
+    ocpdb-db:
+      condition: service_healthy
+    ocpdb-rabbitmq:
+      condition: service_healthy
+  volumes:
+    - ./etc/ocpdb/config.yaml:/app/config.yaml
+    - ./var/ocpdb/logs:/app/logs
+    - ./var/ocpdb/temp:/app/temp
+
+x-park-api-defaults: &park-api-defaults
+  image: ${PARK_API_IMAGE}
+  networks: [ipl]
+  environment:
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
+    PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
+    PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
+  depends_on:
+    park-api-db:
+      condition: service_healthy
+    park-api-rabbitmq:
+      condition: service_healthy
+  volumes:
+    - ./etc/park-api/config.yaml:/app/config.yaml
+    - ./var/park-api/logs:/app/logs
+    - ./var/park-api/temp:/app/temp
+
+x-generic-rabbitmq: &generic-rabbitmq
+  networks: [ipl]
+  image: rabbitmq:3.12
+  user: rabbitmq  # required due eacces-issue: https://github.com/docker-library/rabbitmq/issues/318
+  environment:
+    # Disable spammy logging
+    RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
+  healthcheck:
+    test: rabbitmq-diagnostics -q ping
+    interval: 1s
+    timeout: 1s
+    retries: 20
+
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
@@ -24,24 +77,6 @@ services:
     healthcheck:
       test: "traefik healthcheck"
 
-  # todo: remove
-  whoami:
-    networks: [ipl]
-    image: traefik/whoami
-    # command: -verbose # todo: remove
-    labels:
-      - "traefik.enable=true"
-      # expose under /whoami
-      - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
-      - "traefik.http.routers.whoami.middlewares=whoami-stripprefix"
-      - "traefik.http.middlewares.whoami-stripprefix.stripprefix.prefixes=/whoami"
-      # health check on /health, every 10s, 3s timeout
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.path=/health"
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.interval=10s"
-      - "traefik.http.services.whoami.loadbalancer.healthcheck.timeout=3s"
-    expose:
-      - "80"
-
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
@@ -57,6 +92,27 @@ services:
       # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
 
+  caddy:
+    networks: [ipl]
+    image: ${CADDY_IMAGE}
+    restart: unless-stopped
+    ports:
+      - 6999:80
+      # - 443:443
+    volumes:
+      - ./var/caddy/data:/data
+      - ./var/caddy/config:/config
+      - ./var/www/:/var/www
+      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
+      - "traefik.http.routers.caddy.middlewares=caddy-middleware"
+      - "traefik.http.middlewares.caddy-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD"
+      - "traefik.http.middlewares.caddy-middleware.headers.accesscontrolallowheaders=*"
+      - "traefik.http.middlewares.caddy-middleware.stripprefix.prefixes=/datasets"
+      - "traefik.http.services.caddy.loadbalancer.server.port=80"
+
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
   # mounted by the lamassu container also.
@@ -65,12 +121,14 @@ services:
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
-    command: -p deer -b file:///var/gbfs/feeds -i 45
+    command: -p deer,voi-raumobil,lastenvelo_fr -b file:///var/gbfs/feeds -i 60
     environment:
       - DEER_API_URL
       - DEER_USER
       - DEER_PASSWORD
-
+      - VOI_API_URL
+      - VOI_USER
+      - VOI_PASSWORD
   lamassu:
     networks: [ipl]
     image: ${LAMASSU_IMAGE}
@@ -80,6 +138,9 @@ services:
     environment:
       LAMASSU_DB_CONNECT_CLIENT_ID: ${LAMASSU_DB_CONNECT_CLIENT_ID:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
       LAMASSU_DB_CONNECT_API_KEY: ${LAMASSU_DB_CONNECT_API_KEY:?'missing/empty env var $LAMASSU_DB_CONNECT_API_KEY'}
+      LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?'missing/empty env var $LAMASSU_BOLT_AUTH_URL'}
+      LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?'missing/empty env var $LAMASSU_BOLT_CLIENT_ID'}
+      LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?'missing/empty env var $LAMASSU_BOLT_CLIENT_PASSWORD'}
       LAMASSU_TIER_AUTH_URL: ${LAMASSU_TIER_AUTH_URL:?'missing/empty env var $LAMASSU_TIER_AUTH_URL'}
       LAMASSU_TIER_CLIENT_ID: ${LAMASSU_TIER_CLIENT_ID:?'missing/empty env var $LAMASSU_TIER_CLIENT_ID'}
       LAMASSU_TIER_CLIENT_PASSWORD: ${LAMASSU_TIER_CLIENT_PASSWORD:?'missing/empty env var $LAMASSU_TIER_CLIENT_PASSWORD'}
@@ -96,8 +157,12 @@ services:
       - ./var/gbfs/feeds:/var/gbfs/feeds
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.lamassu.rule=PathPrefix(`/gbfs`)"
+      - "traefik.http.routers.lamassu.rule=PathPrefix(`/sharing`)"
+      - "traefik.http.routers.lamassu.middlewares=sharing-stripprefix"
+      - "traefik.http.middlewares.sharing-stripprefix.stripprefix.prefixes=/sharing"
       - "traefik.http.services.lamassu.loadbalancer.server.port=8080"
+      # Note: /admin is shifted to the management port in application.properties'
+      # management.endpoints.web.exposure.include (currently including admin,info,health,prometheus)
     depends_on:
         redis:
           condition: service_healthy
@@ -109,7 +174,8 @@ services:
     image: redis:6-alpine
     # Redis tries to use all memory it gets, and doesn't query the container's memory limit.
     # see also https://stackoverflow.com/a/70779280
-    command: --maxmemory ${REDIS_MEMORY_MB:-256}mb
+    # --save '' should explicitly disable saving to volume data, avoiding no space left on devide errors
+    command: --maxmemory ${REDIS_MEMORY_MB:-256}mb --save ''
     deploy:
       resources:
         limits:
@@ -133,6 +199,9 @@ services:
     restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+      interval: 5s
+      timeout: 3s
+      retries: 12
 
   geoserver:
     networks: [ipl]
@@ -143,32 +212,29 @@ services:
       - ./etc/geoserver/global.xml:/opt/geoserver/data_dir/global.xml
       - ./etc/geoserver/logging.xml:/opt/geoserver/data_dir/logging.xml
       - ./etc/geoserver/workspaces:/opt/geoserver/data_dir/workspaces
-      # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
-      - ./etc/geoserver/geoserver-environment.properties:/opt/geoserver/data_dir/geoserver-environment.properties
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
+      - "traefik.http.services.geoserver.loadbalancer.server.port=8080"
     ports:
       - ${GEOSERVER_PORT}:8080
     restart: on-failure
     environment:
+      # Special env vars picked up by the kartoza/geoserver Docker image, getting passed in as Java system properties (`-D`).
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - INITIAL_MEMORY=${GEOSERVER_INITIAL_MEMORY}
       - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
+      - GEOSERVER_LOGGING_PROFILE=${GEOSERVER_LOGGING_PROFILE}
       # to provide env variables, see https://docs.geoserver.org/stable/en/user/datadirectory/configtemplate.html
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
-      # Note: All of the following parameters (other than those above) are *not* picked up via env vars
-      # but from a config file that is being generated from this list of env vars (and those in the
-      # file referenced in `env_file`).
-      - IPL_POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
-      - IPL_GTFS_DB_POSTGRES_PASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD}
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
+      # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
     depends_on:
-      ipl-db:
-        # For sharing layers
-        condition: service_healthy
-      gtfs-db:
-        # For transit layer
+      pgbouncer:
+        # For sharing & transit layers
         condition: service_healthy     
     healthcheck:
       test: "curl -fsS -o /dev/null -u '${GEOSERVER_ADMIN_USER}':'${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
@@ -203,18 +269,21 @@ services:
     image: ${DAGSTER_PIPELINE_IMAGE}
     restart: always
     environment:
-      - PGHOST=dagster-postgresql
-      - PGUSER=${DAGSTER_POSTGRES_USER}
-      - PGPASSWORD=${DAGSTER_POSTGRES_PASSWORD}
-      - PGDATABASE=${DAGSTER_POSTGRES_DB}
-      - IPL_LAMASSU_BASE_URL=${LAMASSU_BASE_URL}
+      # connect via pgbouncer to improve performance
+      - PGHOST=pgbouncer
+      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      - PGDATABASE=dagster # determined by pgbouncer!
+      # Use docker hostname of lamassu service to avoid roundtrip via proxy service
+      - IPL_LAMASSU_BASE_URL=http://lamassu/
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
       - IPL_POSTGRES_DB
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
     depends_on:
-        dagster-postgresql:
+        pgbouncer:
           condition: service_healthy
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
@@ -228,16 +297,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -249,16 +321,19 @@ services:
     image: ${DAGSTER_DAEMON_IMAGE}
     restart: on-failure
     environment:
-      PGHOST: dagster-postgresql
-      PGUSER: ${DAGSTER_POSTGRES_USER}
-      PGPASSWORD: ${DAGSTER_POSTGRES_PASSWORD}
-      PGDATABASE: ${DAGSTER_POSTGRES_DB}
+      # connect via pgbouncer to improve performance
+      PGHOST: pgbouncer
+      # todo: doesn't work yet, uses default port 5432 instead
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
-      dagster-postgresql:
+      pgbouncer:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
@@ -281,23 +356,87 @@ services:
       start_period: 10s
       retries: 10
 
+  # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db, dagster-postgresql), providing
+  # - programmatically configurable query routing (used by `make import-new-gtfs`)
+  # - improved connect performance for clients, especially Dagster workers
+  pgbouncer:
+    networks: [ipl]
+    depends_on:
+      ipl-db:
+        condition: service_started
+      gtfs-db:
+        condition: service_started
+      dagster-postgresql:
+        condition: service_started
+    links:
+      - ipl-db
+      - gtfs-db
+      - dagster-postgresql
+    image: ${PGBOUNCER_IMAGE}
+    ports:
+      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
+    volumes:
+      # contains the latest import's DB name
+      - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
+      - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
+    environment:
+      # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
+      # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
+      # Therefore, we duplicate the connection to ipl-db and expose it as `meta`, clearly denoting it as a connection *not* intended for pgbouncer clients.
+      PGBOUNCER_DATABASE: meta
+      POSTGRESQL_HOST: ipl-db
+      POSTGRESQL_DATABASE: ${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB}
+      POSTGRESQL_USERNAME: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      # > Most polite method. When a client connects, a server connection will be assigned to it for the whole duration the client stays connected. When the client disconnects, the server connection will be put back into the pool. This is the default method.
+      # We hardcode this, because we definitely don't want the other pooling modes.
+      PGBOUNCER_POOL_MODE: session
+      # todo: remove? should work without 🤔
+      # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
+      PGBOUNCER_AUTH_TYPE: md5
+      # Geoserver fails to connect without this config
+      # see https://github.com/bitnami/containers/issues/25394#issuecomment-1457893192
+      PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits
+
+      # upsteam connections
+      # see also https://www.pgbouncer.org/config.html#section-databases
+      # see also https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
+      # expose ipl-db as `ipl`
+      PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
+      # expose dagster-postgresql as `dagster`
+      PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty $DAGSTER_POSTGRES_DB} user=${DAGSTER_POSTGRES_USER:?missing/empty $DAGSTER_POSTGRES_USER} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty $DAGSTER_POSTGRES_PASSWORD}"
+      # expose the latest GTFS import within gtfs-db as `gtfs`
+      # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
+      # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
+      # todo: not yet, push & PR our changes, see `image` field above!
+      PGBOUNCER_DSN_2_FILE: /var/gtfs-pgbouncer-dsn.txt
+    restart: unless-stopped
+    healthcheck:
+      # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.
+      test: 'env PGPASSWORD="$$POSTGRESQL_PASSWORD" psql -p 6432 -U "$$POSTGRESQL_USERNAME" pgbouncer -b -c "SHOW USERS" >/dev/null'
+      interval: 0m15s
+      timeout: 5s
+      retries: 10
+
+  # todo /arrivals_departures: enforce stop_id filtering?
   gtfs-api:
     networks: [ipl]
     depends_on:
-      gtfs-db:
+      pgbouncer:
         condition: service_healthy
     links:
-      - gtfs-db
+      - pgbouncer
     image: postgrest/postgrest
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
-    # contains the latest import's DB name as `PGDATABASE`
-    env_file: ./.imported-gtfs-db.env
     environment:
-      PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
+      PGHOST: pgbouncer
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGDATABASE: gtfs # determined by pgbouncer!
       # PostgREST-specific env vars
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
@@ -305,6 +444,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
+      - "traefik.http.routers.gtfs-api.middlewares=gtfs-stripprefix"
+      - "traefik.http.middlewares.gtfs-stripprefix.stripprefix.prefixes=/gtfs"
       - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
 
@@ -325,7 +466,6 @@ services:
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
-      - ./.imported-gtfs-db.env:/var/.imported-gtfs-db.env
     environment:
       PGHOST: gtfs-db
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
@@ -335,8 +475,8 @@ services:
       GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
-      # path to the env file containing the latest import's DB name as `PGDATABASE`
-      GTFS_IMPORTER_ENV_FILE: /var/.imported-gtfs-db.env
+      # path to the file containing the latest import's DB name
+      GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
 
   gtfs-swagger-ui:
@@ -349,6 +489,7 @@ services:
       - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" port here.
+      # todo: localhost -> dev-ipl.mobidata-bw.de
       API_URL: http://localhost:${IPL_GTFS_API_PORT}
       BASE_URL: /docs/gtfs
     labels:
@@ -356,6 +497,91 @@ services:
       - "traefik.http.routers.gtfs-swagger-ui.rule=PathPrefix(`/docs/gtfs`)"
       - "traefik.http.services.gtfs-swagger-ui.loadbalancer.server.port=8080"
     restart: unless-stopped
+
+  ocpdb-flask:
+    <<: *ocpdb-defaults
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    restart: unless-stopped
+    ports:
+      - ${OCPDB_API_PORT}:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`)"
+      - "traefik.http.services.ocpdb-flask.loadbalancer.server.port=5000"
+      - "traefik.http.routers.ocpdb-flask.middlewares=ocpdb-stripprefix"
+      - "traefik.http.middlewares.ocpdb-stripprefix.stripprefix.prefixes=/ocpdb"
+
+  ocpdb-worker:
+    <<: *ocpdb-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  ocpdb-init:
+    <<: *ocpdb-defaults
+    command: ["flask", "db", "upgrade"]
+
+  ocpdb-db:
+    networks: [ipl]
+    image: ${OCPDB_DB_IMAGE}
+    volumes:
+      - ./var/ocpdb/ocpdb-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${OCPDB_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${OCPDB_POSTGRES_DB}
+    healthcheck:
+      test: "PGPASSWORD=${OCPDB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${OCPDB_POSTGRES_USER} -d ${OCPDB_POSTGRES_DB}"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  ocpdb-rabbitmq:
+    <<: *generic-rabbitmq
+
+  park-api-flask:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    ports:
+      - ${PARK_API_API_PORT}:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.park-api-flask.rule=PathPrefix(`/park-api`)"
+      - "traefik.http.services.park-api-flask.loadbalancer.server.port=5000"
+      - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
+      - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
+
+  park-api-init:
+    <<: *park-api-defaults
+    command: ["bash", "-c", "flask db upgrade && flask source init-converters"]
+
+  park-api-worker:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  park-api-heartbeat:
+    <<: *park-api-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
+
+  park-api-db:
+    networks: [ipl]
+    image: ${PARK_API_DB_IMAGE}
+    volumes:
+      - ./var/park-api/park-api-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${PARK_API_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${PARK_API_POSTGRES_DB}
+    healthcheck:
+      test: "PGPASSWORD=${PARK_API_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${PARK_API_POSTGRES_USER} -d ${PARK_API_POSTGRES_DB}"
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  park-api-rabbitmq:
+    <<: *generic-rabbitmq
 
 networks:
   ipl:
