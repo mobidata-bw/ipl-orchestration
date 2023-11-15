@@ -22,13 +22,13 @@ docker-login:
 # Builds and starts all docker containers. Supports starting by SERVICE (e.g. `make docker-up SERVICE=redis`)
 .PHONY: docker-up
 docker-up: init
-	$(DOCKER_COMPOSE) up --wait-timeout 30 $(SERVICE)
+	$(DOCKER_COMPOSE) up --wait-timeout 60 $(SERVICE)
 
 # Start containers in background (or recreate containers while they are running attached to another terminal). Supports starting or
 # restarting by SERVICE (e.g. `make docker-up-detached SERVICE=redis`)
 .PHONY: docker-up-detached
 docker-up-detached: init
-	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 30 $(SERVICE)
+	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 60 $(SERVICE)
 
 .PHONY: docker-down
 docker-down:
@@ -68,7 +68,7 @@ import-new-gtfs: init
 	$(DOCKER_COMPOSE) build gtfs-importer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
 	# make sure pgbouncer is running
-	$(DOCKER_COMPOSE) --profile import-new-gtfs up --detach --wait --wait-timeout 20 pgbouncer
+	$(DOCKER_COMPOSE) --profile import-new-gtfs up --detach --wait --wait-timeout 30 pgbouncer
 	$(DOCKER_COMPOSE) --profile import-new-gtfs exec pgbouncer /reload-pgbouncer-databases.sh
 
 .PHONY: gtfs-db-psql
