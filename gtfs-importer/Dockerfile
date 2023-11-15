@@ -1,3 +1,6 @@
+# syntax=docker/dockerfile:1.6
+# ^ needed for ADD --checksum=…
+
 FROM node:20-bookworm-slim
 LABEL org.opencontainers.image.title="GTFS importer, using gtfstidy & gtfs-via-postgres to import GTFS data into PostgreSQL."
 LABEL org.opencontainers.image.authors="MobiData-BW IPL contributors <mobidata-bw@nvbw.de>"
