@@ -5,3 +5,7 @@ PARK_API_CONVERTER:
   - heilbronn
   - karlsruhe
   - mannheim
+
+OPENAPI_SERVERS:
+  - url: https://dev-ipl.mobidata-bw.de/park-api
+    description: staging
