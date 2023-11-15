@@ -73,7 +73,7 @@ import-new-gtfs: init
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:
-	$(DOCKER_COMPOSE) --env-file .imported-gtfs-db.env exec -e PGDATABASE gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" psql'
+	$(DOCKER_COMPOSE) exec -e PGDATABASE gtfs-db /bin/sh -c 'export PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD"; env PGDATABASE="$$(psql gtfs_importer -b -t --csv -c "SELECT db_name FROM latest_import" | xargs)" psql'
 
 .PHONY: gtfs-db-latest-import
 gtfs-db-latest-import:
