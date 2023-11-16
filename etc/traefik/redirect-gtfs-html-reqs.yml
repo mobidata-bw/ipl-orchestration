@@ -1,0 +1,21 @@
+# redirects GET *explicitly HTML* requests to /gtfs & /gtfs/ to /docs/gtfs
+http:
+  routers:
+    gtfs-redirect:
+      # handles the following cases correctly:
+      # - `Accept: text/html`
+      # - `Accept: text/html+foo`
+      # - `Accept: text/html,foo`
+      # - `Accept: foo, text/html;q=0.91, bar;q=0.9`
+      # - `Accept: foo, text/html; q=0.91, bar; q=0.9` (generous spacing)
+      # - `Accept: foo,text/html; q=0.91,bar; q=0.9` (unusual spacing)
+      # todo: leverage a proper content negotiation algorithm for this
+      rule: "Method(`GET`, `HEAD`) && Path(`/gtfs`, `/gtfs/`) && HeadersRegexp(`Accept`, `\\b(text/html|application/xhtml\\+xml)([,;\\s]|$)`)"
+      middlewares: gtfs-redirect-docs
+      # https://github.com/traefik/traefik/issues/7242
+      service: noop@internal
+  middlewares:
+    gtfs-redirect-docs:
+      redirectregex:
+        regex: ".*"
+        replacement: "/docs/gtfs"
