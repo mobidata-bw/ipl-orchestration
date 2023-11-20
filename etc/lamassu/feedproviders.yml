@@ -148,19 +148,6 @@ lamassu:
           clientId: ${LAMASSU_TIER_CLIENT_ID}
           clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
           scope: gbfs
-    - systemId: tier_pfullingen
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://platform.tier-services.io/data-sharing/tier_pfullingen/gbfs/2.3"
-      language: en
-      authentication:
-        scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
-        properties:
-          tokenUrl: ${LAMASSU_TIER_AUTH_URL}
-          clientId: ${LAMASSU_TIER_CLIENT_ID}
-          clientPassword: ${LAMASSU_TIER_CLIENT_PASSWORD}
-          scope: gbfs
     - systemId: tier_schwabach
       operatorId: TIE:Operator:tier
       operatorName: Tier
