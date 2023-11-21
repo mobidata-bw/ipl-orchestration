@@ -23,7 +23,8 @@ run_storage:
         env: PGPASSWORD
       db_name:
         env: PGDATABASE
-      port: 5432
+      port:
+        env: PGPORT
 
 schedule_storage:
   module: dagster_postgres.schedule_storage
@@ -38,7 +39,8 @@ schedule_storage:
         env: PGPASSWORD
       db_name:
         env: PGDATABASE
-      port: 5432
+      port:
+        env: PGPORT
 
 event_log_storage:
   module: dagster_postgres.event_log
@@ -53,4 +55,6 @@ event_log_storage:
         env: PGPASSWORD
       db_name:
         env: PGDATABASE
-      port: 5432
+      port:
+        env: PGPORT
+
