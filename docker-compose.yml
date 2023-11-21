@@ -396,9 +396,10 @@ services:
       # todo: remove? should work without 🤔
       # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
       PGBOUNCER_AUTH_TYPE: md5
-      # Geoserver fails to connect without this config
+      # Geoserver connects with `extra_float_digits` set.
       # see https://github.com/bitnami/containers/issues/25394#issuecomment-1457893192
-      PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits
+      # dagster-* connect with `statement_timeout` set.
+      PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits, statement_timeout
 
       # upsteam connections
       # see also https://www.pgbouncer.org/config.html#section-databases
