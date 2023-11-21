@@ -9,3 +9,8 @@ PARK_API_CONVERTER:
 OPENAPI_SERVERS:
   - url: https://dev-ipl.mobidata-bw.de/park-api
     description: staging
+
+LOKI_ENABLED: true
+LOKI_URL: http://10.70.172.20:3100/loki/api/v1/push
+LOKI_TAGS:
+  service: park-api
