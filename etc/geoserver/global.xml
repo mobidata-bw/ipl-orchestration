@@ -39,7 +39,8 @@
     <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
     <showCreatedTimeColumnsInAdminList>false</showCreatedTimeColumnsInAdminList>
     <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
-    <useHeadersProxyURL>false</useHeadersProxyURL>
+    <useHeadersProxyURL>true</useHeadersProxyURL>
+    <proxyBaseUrl>${X-Forwarded-Proto}://${X-Forwarded-Host}/geoserver</proxyBaseUrl>
   </settings>
   <jai>
     <allowInterpolation>false</allowInterpolation>
