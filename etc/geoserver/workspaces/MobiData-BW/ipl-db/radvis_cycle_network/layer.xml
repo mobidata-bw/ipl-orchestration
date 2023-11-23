@@ -1,0 +1,17 @@
+<layer>
+  <name>radvis_cycle_network</name>
+  <id>LayerInfoImpl-16b18166:18b6756af37:-7adb</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--4537d375:18dec89cdf2:-452b</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-16b18166:18b6756af37:-7adc</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-10-25 15:39:36.504 UTC</dateCreated>
+  <dateModified>2024-02-27 22:07:45.949 UTC</dateModified>
+</layer>
