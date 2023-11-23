@@ -20,6 +20,7 @@ x-ocpdb-defaults: &ocpdb-defaults
     - ./etc/ocpdb/config.yaml:/app/config.yaml
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
+  restart: unless-stopped
 
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
@@ -53,6 +54,7 @@ x-generic-rabbitmq: &generic-rabbitmq
     interval: 1s
     timeout: 1s
     retries: 20
+  restart: unless-stopped
 
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.
@@ -76,6 +78,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: "traefik healthcheck"
+    restart: unless-stopped
 
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
@@ -91,6 +94,7 @@ services:
     ports:
       # We export the port for debugging purposes. Lamassu acceses via docker network
       - ${TRANSFORMER_PROXY_PORT}:8080
+    restart: unless-stopped
 
   caddy:
     networks: [ipl]
@@ -129,6 +133,8 @@ services:
       - VOI_API_URL
       - VOI_USER
       - VOI_PASSWORD
+    restart: unless-stopped
+
   lamassu:
     networks: [ipl]
     image: ${LAMASSU_IMAGE}
@@ -165,6 +171,7 @@ services:
           condition: service_healthy
         transformer-proxy:
           condition: service_started
+    restart: unless-stopped
 
   redis:
     networks: [ipl]
@@ -181,6 +188,10 @@ services:
     # see also https://github.com/docker-library/redis/issues/91
     healthcheck:
       test: "redis-cli --raw incr ping"
+      interval: 1s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
 
   ipl-db:
     networks: [ipl]
@@ -193,12 +204,12 @@ services:
       - POSTGRES_DB=${IPL_POSTGRES_DB}
       - POSTGRES_USER=${IPL_POSTGRES_USER}
       - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
-    restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
       interval: 5s
       timeout: 3s
       retries: 12
+    restart: unless-stopped
 
   geoserver:
     networks: [ipl]
@@ -215,7 +226,6 @@ services:
       - "traefik.http.services.geoserver.loadbalancer.server.port=8080"
     ports:
       - ${GEOSERVER_PORT}:8080
-    restart: on-failure
     environment:
       # Special env vars picked up by the kartoza/geoserver Docker image, getting passed in as Java system properties (`-D`).
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
@@ -243,6 +253,7 @@ services:
       interval: 0m15s
       timeout: 10s
       retries: 15
+    restart: unless-stopped
 
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
@@ -253,7 +264,6 @@ services:
       POSTGRES_USER: "${DAGSTER_POSTGRES_USER}"
       POSTGRES_PASSWORD: "${DAGSTER_POSTGRES_PASSWORD}"
       POSTGRES_DB: "${DAGSTER_POSTGRES_DB}"
-    restart: on-failure
     volumes:
         - ./var/dagster-postgresql/data:/var/lib/postgresql/data
     healthcheck:
@@ -261,6 +271,7 @@ services:
         interval: 5s
         timeout: 3s
         retries: 12
+    restart: unless-stopped
 
   # This service runs the gRPC server that loads your user code, in both dagster-webserver
   # and dagster-daemon. Multiple containers like this can be deployed separately - each just needs to run on
@@ -269,7 +280,6 @@ services:
   dagster-pipeline:
     networks: [ipl]
     image: ${DAGSTER_PIPELINE_IMAGE}
-    restart: always
     environment:
       # connect via pgbouncer to improve performance
       - PGHOST=pgbouncer
@@ -287,6 +297,7 @@ services:
     depends_on:
         pgbouncer:
           condition: service_healthy
+    restart: unless-stopped
 
   # This service runs dagster-webserver, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
@@ -315,13 +326,13 @@ services:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
+    restart: unless-stopped
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
   dagster-daemon:
     networks: [ipl]
     image: ${DAGSTER_DAEMON_IMAGE}
-    restart: on-failure
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
@@ -339,6 +350,7 @@ services:
         condition: service_healthy
       dagster-pipeline:
         condition: service_started
+    restart: unless-stopped
 
   # This service stores GTFS data imported by gtfs-importer.
   gtfs-db:
@@ -350,13 +362,13 @@ services:
       POSTGRES_USER: ${IPL_GTFS_DB_POSTGRES_USER}
       POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
       POSTGRES_DB: ${IPL_GTFS_DB_POSTGRES_DB}
-    restart: on-failure
     healthcheck:
       test: "PGPASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_GTFS_DB_POSTGRES_USER} -d ${IPL_GTFS_DB_POSTGRES_DB}"
       timeout: 3s
       interval: 5s
       start_period: 10s
       retries: 10
+    restart: unless-stopped
 
   # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db, dagster-postgresql), providing
   # - programmatically configurable query routing (used by `make import-new-gtfs`)
@@ -586,6 +598,7 @@ services:
       interval: 10s
       timeout: 3s
       retries: 3
+    restart: unless-stopped
 
   park-api-rabbitmq:
     <<: *generic-rabbitmq
