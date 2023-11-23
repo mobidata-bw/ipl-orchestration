@@ -500,6 +500,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-swagger-ui.rule=PathPrefix(`/docs/gtfs`)"
       - "traefik.http.services.gtfs-swagger-ui.loadbalancer.server.port=8080"
+    logging:
+      # disable stdout/stderr logging entirely
+      driver: none
     restart: unless-stopped
 
   ocpdb-flask:
