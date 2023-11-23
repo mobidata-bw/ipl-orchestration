@@ -3,7 +3,8 @@ PARK_API_CONVERTER:
   - freiburg
   - heidelberg
   - heilbronn
-  - karlsruhe
+  # Karlsruhe currently fails, see https://github.com/ParkenDD/ParkAPI2-sources/issues/40
+  # - karlsruhe
   - mannheim
 
 OPENAPI_SERVERS:
