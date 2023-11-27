@@ -20,7 +20,6 @@ x-ocpdb-defaults: &ocpdb-defaults
     - ./etc/ocpdb/config.yaml:/app/config.yaml
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
-  restart: unless-stopped
 
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
@@ -553,6 +552,7 @@ services:
       interval: 10s
       timeout: 3s
       retries: 3
+    restart: unless-stopped
 
   ocpdb-rabbitmq:
     <<: *generic-rabbitmq
