@@ -283,7 +283,7 @@ services:
       - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
       - PGDATABASE=dagster # determined by pgbouncer!
       # Use docker hostname of lamassu service to avoid roundtrip via proxy service
-      - IPL_LAMASSU_BASE_URL=http://lamassu/
+      - IPL_LAMASSU_BASE_URL=http://lamassu:8080/
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
       - IPL_POSTGRES_DB
