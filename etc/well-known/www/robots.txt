@@ -1,0 +1,8 @@
+User-Agent: *
+Allow: /
+
+# gtfs-api: allow only some specific paths
+Disallow: /gtfs/
+Allow: /gtfs/feed_info
+Allow: /gtfs/stops
+Allow: /gtfs/routes

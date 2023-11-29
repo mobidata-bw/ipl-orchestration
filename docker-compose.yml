@@ -86,7 +86,7 @@ services:
       - ./etc/well-known/www:/var/www:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.well-known-uris.rule=PathPrefix(`/.well-known/`)"
+      - "traefik.http.routers.well-known-uris.rule=PathPrefix(`/.well-known/`) || Path(`/robots.txt`)"
       - "traefik.http.routers.well-known-uris.middlewares=well-known-uris-middleware"
       - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD"
       - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowheaders=*"
