@@ -54,6 +54,8 @@ entryPoints:
         - "172.17.0.1"
         # gateway of our custom Docker Compose (bridge) network (`ipl`)
         - "172.28.5.254"
+        # NVBW/MobiData-BW HTTP reverse proxy & load balancer
+        - "10.70.188.169"
   # explicitly define an entrypoint `traefik` on port 8080 for ops & system management
   # - web UI
   # - Prometheus metrics
