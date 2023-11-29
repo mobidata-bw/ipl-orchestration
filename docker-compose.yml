@@ -73,6 +73,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     healthcheck:
       test: "traefik healthcheck"
+      interval: 3s
+      timeout: 1s
+      retries: 10
     restart: unless-stopped
 
   well-known-uris:
