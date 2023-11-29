@@ -40,6 +40,7 @@
     <showCreatedTimeColumnsInAdminList>false</showCreatedTimeColumnsInAdminList>
     <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
     <useHeadersProxyURL>false</useHeadersProxyURL>
+    <proxyBaseUrl>${GEOSERVER_PROXY_BASE_URL}</proxyBaseUrl>
   </settings>
   <jai>
     <allowInterpolation>false</allowInterpolation>

@@ -253,6 +253,7 @@ services:
       # kartoza/geoserver maps PROXY_BASE_URL_PARAMETRIZATION to ALLOW_ENV_PARAMETRIZATION, see https://github.com/kartoza/docker-geoserver/blob/844c7a26acd1687358c821ea73117a721f25f7b6/scripts/entrypoint.sh#L72
       - PROXY_BASE_URL_PARAMETRIZATION=true
       # The following parameters are *not* picked up by kartoza/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
+      - GEOSERVER_PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty $$GEOSERVER_PROXY_BASE_URL}
       - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $$PGBOUNCER_POSTGRES_USER}
       - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $$PGBOUNCER_POSTGRES_PASSWORD}
       - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty $$PARK_API_POSTGRES_PASSWORD}
