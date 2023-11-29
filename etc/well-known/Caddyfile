@@ -1,0 +1,13 @@
+http://:80 {
+	root * /var/www
+	# The brotli (.br) encoded is not included in the standard caddy distribution.
+	encode zstd gzip
+
+	handle /robots.txt {
+		file_server
+	}
+	handle_path /.well-known/* {
+		file_server
+	}
+	respond 404
+}

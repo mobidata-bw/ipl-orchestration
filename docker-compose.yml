@@ -75,6 +75,23 @@ services:
       test: "traefik healthcheck"
     restart: unless-stopped
 
+  well-known-uris:
+    networks: [ipl]
+    image: ${CADDY_IMAGE}
+    restart: unless-stopped
+    ports:
+      - 6998:80
+    volumes:
+      - ./etc/well-known/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./etc/well-known/www:/var/www:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.well-known-uris.rule=PathPrefix(`/.well-known/`)"
+      - "traefik.http.routers.well-known-uris.middlewares=well-known-uris-middleware"
+      - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD"
+      - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowheaders=*"
+      - "traefik.http.services.well-known-uris.loadbalancer.server.port=80"
+
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
