@@ -630,4 +630,5 @@ networks:
       config:
       - subnet: 172.28.0.0/16
         ip_range: 172.28.5.0/24
+        # Traefikforwards X-Forwarded-* headers only from trusted IPs, so we need a specific IP here.
         gateway: 172.28.5.254
