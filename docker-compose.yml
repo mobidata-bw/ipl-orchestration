@@ -235,9 +235,8 @@ services:
       - ./var/geoserver/datadir/:/var/geoserver/datadir/
       - ./var/geoserver/logs/:/var/geoserver/logs/
       - ./var/geoserver/gwc_cache_dir/:/var/geoserver/gwc_cache_dir/
-      - ./etc/geoserver/global.xml:/var/geoserver/datadir/global.xml
-      - ./etc/geoserver/logging.xml:/var/geoserver/datadir/logging.xml
-      - ./etc/geoserver/workspaces:/var/geoserver/datadir/workspaces
+      - ./etc/geoserver/:/var/geoserver/datadir_template/
+      - ./bin/geoserver/geoserver-rest-config.sh:/usr/local/bin/geoserver-rest-config.sh
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
@@ -249,6 +248,7 @@ services:
       - ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - INITIAL_MEMORY=${GEOSERVER_INITIAL_MEMORY}
       - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
+      - GEOSERVER_DATA_DIR_CUSTOM=/var/geoserver/datadir_template/
       - GEOSERVER_LOGGING_PROFILE=${GEOSERVER_LOGGING_PROFILE}
       - GEOSERVER_PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty $$GEOSERVER_PROXY_BASE_URL}
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
