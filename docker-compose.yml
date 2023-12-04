@@ -237,6 +237,7 @@ services:
       - ./var/geoserver/gwc_cache_dir/:/var/geoserver/gwc_cache_dir/
       - ./etc/geoserver/:/var/geoserver/datadir_template/
       - ./bin/geoserver/geoserver-rest-config.sh:/usr/local/bin/geoserver-rest-config.sh
+      - ./bin/geoserver/geoserver-rest-reload.sh:/usr/local/bin/geoserver-rest-reload.sh
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
