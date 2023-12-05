@@ -10,6 +10,9 @@ all: docker-up
 init:
 	mkdir -p var/gtfs
 	touch -a var/gtfs/pgbouncer-dsn.txt
+	mkdir -p var/geoserver/datadir
+	mkdir -p var/geoserver/gwc_cache_dir
+	mkdir -p var/geoserver/logs
 
 # Container management
 # --------------------
