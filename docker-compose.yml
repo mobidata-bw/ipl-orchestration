@@ -251,6 +251,7 @@ services:
       - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
       - GEOSERVER_DATA_DIR_CUSTOM=/var/geoserver/datadir_template/
       - GEOSERVER_LOGGING_PROFILE=${GEOSERVER_LOGGING_PROFILE}
+      - GEOSERVER_CSRF_WHITELIST=${GEOSERVER_CSRF_WHITELIST:?missing/empty $$GEOSERVER_CSRF_WHITELIST}
       - GEOSERVER_PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty $$GEOSERVER_PROXY_BASE_URL}
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
       # we currently need to pass in all default properties already defined in the dockerfile
