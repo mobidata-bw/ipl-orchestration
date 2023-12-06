@@ -1,0 +1,4 @@
+GRANT USAGE ON SCHEMA "geoserver" TO postgrest;
+GRANT SELECT ON ALL TABLES IN SCHEMA "geoserver" TO postgrest;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA "geoserver" TO postgrest;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA "geoserver" TO postgrest;
