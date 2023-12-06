@@ -331,7 +331,8 @@ services:
       - PGDATABASE=dagster # determined by pgbouncer!
       # Use docker hostname of lamassu service to avoid roundtrip via proxy service
       # todo [breaking]: remove `IPL_LAMASSU_BASE_URL` to prevent confusion with `LAMASSU_BASE_URL`
-      - IPL_LAMASSU_BASE_URL=http://lamassu:8080/
+      # temporarilly remove trainling slash as pipeline adds another / which causes the spring firewall to block
+      - IPL_LAMASSU_BASE_URL=http://lamassu:8080
       - IPL_LAMASSU_INTERNAL_BASE_URL=http://lamassu:8080/
       - IPL_POSTGRES_HOST=ipl-db
       - IPL_POSTGRES_PORT
