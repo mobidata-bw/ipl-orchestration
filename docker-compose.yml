@@ -243,6 +243,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
+      - "traefik.http.routers.geoserver.middlewares=geoserver-middleware"
+      - "traefik.http.middlewares.geoserver-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,HEAD"
+      - "traefik.http.middlewares.geoserver-middleware.headers.accesscontrolallowheaders=*"
       - "traefik.http.services.geoserver.loadbalancer.server.port=8080"
     ports:
       - ${GEOSERVER_PORT}:8080
