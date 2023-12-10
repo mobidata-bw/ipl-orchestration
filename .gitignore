@@ -11,3 +11,5 @@ Thumbs.db
 /var
 
 /.env.local
+
+!/**/.gitkeep

@@ -1,13 +1,17 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
+# Define placeholder for running a container with the same UID/GID as your local user
+x-local-user: &local-user ${DOCKER_LOCAL_USER:?Variable needs to be set in .env (e.g. "DOCKER_LOCAL_USER=1000:1000")}
+
 x-ocpdb-defaults: &ocpdb-defaults
   image: ${OCPDB_IMAGE}
   networks: [ipl]
+  user: *local-user
   environment:
-    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
-    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
-    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var $OCPDB_POSTGRES_DB'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var $OCPDB_POSTGRES_USER'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var $OCPDB_POSTGRES_PASSWORD'}
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
@@ -25,10 +29,11 @@ x-ocpdb-defaults: &ocpdb-defaults
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
   networks: [ipl]
+  user: ${DOCKER_LOCAL_USER}
   environment:
-    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
-    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
-    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var $PARK_API_POSTGRES_DB'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var $PARK_API_POSTGRES_USER'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $PARK_API_POSTGRES_PASSWORD'}
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
     PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
@@ -61,6 +66,7 @@ services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
+  # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
     image: traefik:v2.10
@@ -101,6 +107,35 @@ services:
       - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowheaders=*"
       - "traefik.http.services.well-known-uris.loadbalancer.server.port=80"
 
+  goaccess:
+    networks: [ipl]
+    user: *local-user
+    image: ${GOACCESS_IMAGE}
+    volumes:
+      # entrypoint script
+      - ./bin/goaccess/import.sh:/opt/import.sh:ro
+      # GoAccess configuration file
+      - ./etc/goaccess.conf:/etc/goaccess.conf:ro
+      # data written by GoAccess itself: statistics database, generated HTML report, processing logs
+      - ./var/goaccess/data:/srv/goaccess/data
+      - ./var/goaccess/report:/srv/goaccess/report
+      - ./var/log/goaccess:/srv/goaccess/logs
+      # Traefik access logs
+      - ./var/log/traefik:/var/log/traefik:ro
+    depends_on:
+      ingress:
+        condition: service_healthy
+    entrypoint: ["/opt/import.sh"]
+    restart: unless-stopped
+
+  goaccess-nginx:
+    networks: [ipl]
+    image: ${GOACCESS_NGINX_IMAGE}
+    ports:
+      - "${GOACCESS_PORT}:80"
+    volumes:
+      - ./var/goaccess/report:/usr/share/nginx/html
+
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
@@ -123,7 +158,6 @@ services:
     restart: unless-stopped
     ports:
       - 6999:80
-      # - 443:443
     volumes:
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
@@ -235,7 +269,7 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
-    user: 1000:1000
+    user: *local-user
     volumes:
       # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
       - ./var/geoserver/datadir/:/var/geoserver/datadir/
@@ -665,7 +699,7 @@ services:
   park-api-heartbeat:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat", "-s", "/tmp/celerybeat-schedule"]
 
   park-api-db:
     networks: [ipl]
