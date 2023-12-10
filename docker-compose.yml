@@ -346,6 +346,21 @@ services:
       - IPL_POSTGRES_DB
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
+      # Variables required for GTFS-Import
+      - GTFS_DOWNLOAD_URL
+      - GTFS_DOWNLOAD_USER_AGENT
+      - IPL_GTFS_IMPORTER_IMAGE
+      - IPL_GTFS_DB_POSTGRES_USER
+      - IPL_GTFS_DB_POSTGRES_PASSWORD
+      - IPL_GTFS_DB_POSTGRES_DB
+      - IPL_GTFS_DB_POSTGRES_DB_PREFIX
+      - IPL_GTFS_DB_POSTGREST_USER
+      - IPL_GTFS_DB_POSTGREST_PASSWORD
+      # Required to mount volumes for docker-in-docker executions
+      - IPL_ROOT_DIR
+    volumes: 
+      # Make docker client accessible so we can start containers in jobs
+      - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
         pgbouncer:
           condition: service_healthy
