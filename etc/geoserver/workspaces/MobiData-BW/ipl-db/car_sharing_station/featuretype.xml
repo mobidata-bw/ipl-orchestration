@@ -1,14 +1,14 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-7ffb</id>
-  <name>stations</name>
-  <nativeName>stations</nativeName>
+  <id>FeatureTypeInfoImpl-5e86fa79:18c2f7d2dac:-7ef2</id>
+  <name>car_sharing_station</name>
+  <nativeName>car_sharing_station</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>stations</title>
+  <title>Carsharing-Station</title>
   <keywords>
     <string>features</string>
-    <string>stations</string>
+    <string>car_sharing_station</string>
   </keywords>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
@@ -16,7 +16,6 @@
     <maxx>10.5</maxx>
     <miny>47.6</miny>
     <maxy>49.8</maxy>
-    <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
     <minx>7.5</minx>
@@ -28,14 +27,26 @@
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <metadata>
-    <entry key="cacheAgeMax">60</entry>
-    <entry key="cachingEnabled">true</entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>car_sharing_station</name>
+        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_cars_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, s.geometry &#xd;
+FROM sharing_stations s &#xd;
+ JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
+WHERE st.num_cars_available &gt;= 0
+</sql>
+        <escapeSql>false</escapeSql>
+      </virtualTable>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
   </metadata>
   <store class="dataStore">
     <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>

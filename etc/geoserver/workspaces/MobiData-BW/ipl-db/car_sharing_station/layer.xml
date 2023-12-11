@@ -1,0 +1,22 @@
+<layer>
+  <name>car_sharing_station</name>
+  <id>LayerInfoImpl-5e86fa79:18c2f7d2dac:-7ef1</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-5e86fa79:18c2f7d2dac:-7de9</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--1e02d99c:1899cf5cc1c:-6fcc</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-5e86fa79:18c2f7d2dac:-7ef2</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-12-03 22:43:52.216 UTC</dateCreated>
+  <dateModified>2023-12-03 22:53:54.445 UTC</dateModified>
+</layer>
