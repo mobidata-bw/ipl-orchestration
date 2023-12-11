@@ -79,7 +79,8 @@ lamassu:
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_freiburg/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_freiburg/gbfs.json"
       language: en
       # Note: nextbike feeds are accessed via proxy, using http instead of https 
     - systemId: nextbike_df
@@ -218,37 +219,43 @@ lamassu:
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
       language: de
     - systemId: donkey_kreuzlingen
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
       language: en
     - systemId: donkey_neuchatel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
       language: en
     - systemId: donkey_sion
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
       language: en
     - systemId: donkey_thun
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
       language: en
     - systemId: donkey_yverdon-les-bains
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKY
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
       language: en
     # Lime CH
     - systemId: lime_opfikon
