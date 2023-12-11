@@ -508,6 +508,7 @@ services:
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
+      PGRST_DB_MAX_ROWS: ${IPL_GTFS_API_MAX_ROWS:?missing/empty $IPL_GTFS_API_MAX_ROWS}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
