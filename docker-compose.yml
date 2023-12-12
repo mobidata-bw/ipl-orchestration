@@ -128,14 +128,6 @@ services:
     entrypoint: ["/opt/import.sh"]
     restart: unless-stopped
 
-  goaccess-nginx:
-    networks: [ipl]
-    image: ${GOACCESS_NGINX_IMAGE}
-    ports:
-      - "${GOACCESS_PORT}:80"
-    volumes:
-      - ./var/goaccess/report:/usr/share/nginx/html
-
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
@@ -157,7 +149,10 @@ services:
     image: ${CADDY_IMAGE}
     restart: unless-stopped
     ports:
+      # public IPL assets
       - 6999:80
+      # GoAccess access statistics reports
+      - "${GOACCESS_PORT:?'missing/empty env var $GOACCESS_PORT'}:81"
     volumes:
       # Caddy configuration file
       - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
@@ -166,6 +161,8 @@ services:
       - ./var/caddy/config:/config
       # public IPL assets (served on :80)
       - ./var/www/:/var/www:ro
+      # GoAccess access statistics reports (served on :81)
+      - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
