@@ -362,7 +362,7 @@ services:
       - IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
       - IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
     volumes: 
-      # Make docker client accessible so we can start containers in jobs
+      # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
       # mount storage dir so logs/assets are written to volume shared with dagaster-daemon/dagit
       - ./var/dagster/storage/:/opt/dagster/dagster_home/storage/
@@ -389,12 +389,11 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      # todo: doesn't work yet, uses default port 5432 instead
       PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
       PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
       PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
       PGDATABASE: dagster # determined by pgbouncer!
-    volumes: # Make docker client accessible so we can terminate containers from dagster-webserver
+    volumes: # Make docker API accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
@@ -414,12 +413,11 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      # todo: doesn't work yet, uses default port 5432 instead
       PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
       PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
       PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
       PGDATABASE: dagster # determined by pgbouncer!
-    volumes: # Make docker client accessible so we can launch containers using host docker
+    volumes: # Make docker API accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
