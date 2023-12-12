@@ -368,7 +368,12 @@ services:
         pgbouncer:
           condition: service_healthy
     restart: unless-stopped
-
+    healthcheck:
+      test: ["CMD-SHELL", "/bin/bash", "printf", "'GET / HTTP/1.1\n\n'", ">/dev/tcp/127.0.0.1/4000"]
+      timeout: 1s
+      interval: 1s
+      start_period: 2s
+      retries: 15
   # This service runs dagster-webserver, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagster-webserver
   # will be put on a queue and later dequeued and launched by dagster-daemon.
