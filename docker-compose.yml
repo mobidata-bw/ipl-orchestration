@@ -347,9 +347,11 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
       # Variables required for GTFS-Import
-      - GTFS_DOWNLOAD_URL
-      - GTFS_DOWNLOAD_USER_AGENT
       - IPL_GTFS_IMPORTER_IMAGE
+      - IPL_GTFS_IMPORTER_NETWORK
+      - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
+      - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
+      - IPL_GTFS_DB_POSTGRES_HOST
       - IPL_GTFS_DB_POSTGRES_USER
       - IPL_GTFS_DB_POSTGRES_PASSWORD
       - IPL_GTFS_DB_POSTGRES_DB
@@ -357,7 +359,8 @@ services:
       - IPL_GTFS_DB_POSTGREST_USER
       - IPL_GTFS_DB_POSTGREST_PASSWORD
       # Required to mount volumes for docker-in-docker executions
-      - IPL_ROOT_DIR
+      - IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
+      - IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
     volumes: 
       # Make docker client accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
