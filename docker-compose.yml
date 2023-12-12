@@ -364,6 +364,8 @@ services:
     volumes: 
       # Make docker client accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
+      # mount storage dir so logs/assets are written to volume shared with dagaster-daemon/dagit
+      - ./var/dagster/storage/:/opt/dagster/dagster_home/storage/
     depends_on:
         pgbouncer:
           condition: service_healthy
@@ -396,6 +398,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
+      - ./var/dagster/storage/:/opt/dagster/dagster_home/storage/
     depends_on:
       pgbouncer:
         condition: service_healthy
@@ -420,6 +423,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/io_manager_storage:/tmp/io_manager_storage
       - ./etc/dagster:/opt/dagster/dagster_home/
+      - ./var/dagster/storage/:/opt/dagster/dagster_home/storage/
     depends_on:
       pgbouncer:
         condition: service_healthy
