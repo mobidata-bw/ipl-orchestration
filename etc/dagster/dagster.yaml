@@ -61,3 +61,5 @@ event_log_storage:
       port:
         env: PGPORT
 
+auto_materialize:
+  enabled: True
