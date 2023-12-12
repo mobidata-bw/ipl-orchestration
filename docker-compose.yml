@@ -159,10 +159,13 @@ services:
     ports:
       - 6999:80
     volumes:
+      # Caddy configuration file
+      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # data stored by Caddy itself: certificates, parsed & normalized config, etc.
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
-      - ./var/www/:/var/www
-      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # public IPL assets (served on :80)
+      - ./var/www/:/var/www:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
