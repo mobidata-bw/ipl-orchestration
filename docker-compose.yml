@@ -616,25 +616,22 @@ services:
       POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty}
       POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
 
-  gtfs-swagger-ui:
+  gtfs-api-docs:
     networks: [ipl]
     depends_on:
       gtfs-api:
         condition: service_started
     image: swaggerapi/swagger-ui
     ports:
-      - ${IPL_GTFS_SWAGGER_UI_PORT}:8080
+      - ${IPL_GTFS_API_DOCS_PORT}:8080
     environment:
       # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" URL here.
       API_URL: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       BASE_URL: /docs/gtfs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.gtfs-swagger-ui.rule=PathPrefix(`/docs/gtfs`)"
-      - "traefik.http.services.gtfs-swagger-ui.loadbalancer.server.port=8080"
-    logging:
-      # disable stdout/stderr logging entirely
-      driver: none
+      - "traefik.http.routers.gtfs-api-docs.rule=PathPrefix(`/docs/gtfs`)"
+      - "traefik.http.services.gtfs-api-docs.loadbalancer.server.port=8080"
     restart: unless-stopped
 
   ocpdb-flask:
