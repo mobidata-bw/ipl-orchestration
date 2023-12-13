@@ -1,5 +1,6 @@
 global:
   checkNewVersion: false
+  sendAnonymousUsage: false
 
 providers:
   file:
