@@ -1,3 +1,7 @@
+{
+  admin off
+}
+
 http://:80 {
   root * /var/www
   encode zstd gzip
