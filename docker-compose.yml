@@ -111,6 +111,8 @@ services:
     networks: [ipl]
     user: *local-user
     image: ${GOACCESS_IMAGE}
+    environment:
+      - TZ=${TZ:?'missing/empty $TZ'}
     volumes:
       # entrypoint script
       - ./bin/goaccess/import.sh:/opt/import.sh:ro
@@ -301,7 +303,7 @@ services:
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
       # we currently need to pass in all default properties already defined in the dockerfile
       - JAVA_OPTS= >-
-          -Duser.timezone=Europe/Berlin
+          -Duser.timezone=${TZ:?'missing/empty $TZ'}
           -DALLOW_ENV_PARAMETRIZATION=true
           -Xms$${INITIAL_MEMORY}
           -Xmx$${MAXIMUM_MEMORY}
