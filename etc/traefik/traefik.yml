@@ -1,3 +1,6 @@
+global:
+  checkNewVersion: false
+
 providers:
   file:
     directory: /etc/traefik
