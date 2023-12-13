@@ -18,6 +18,7 @@ x-ocpdb-defaults: &ocpdb-defaults
       condition: service_healthy
   volumes:
     - ./etc/ocpdb/config.yaml:/app/config.yaml
+    - ./etc/ocpdb/config.secrets.yaml:/app/config.secrets.yaml
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
 
@@ -38,6 +39,7 @@ x-park-api-defaults: &park-api-defaults
       condition: service_healthy
   volumes:
     - ./etc/park-api/config.yaml:/app/config.yaml
+    - ./etc/park-api/config.secrets.yaml:/app/config.secrets.yaml
     - ./var/park-api/logs:/app/logs
     - ./var/park-api/temp:/app/temp
 
@@ -267,9 +269,9 @@ services:
       - JAVA_OPTS= >-
           -Duser.timezone=Europe/Berlin
           -DALLOW_ENV_PARAMETRIZATION=true
-          -Xms$${INITIAL_MEMORY} 
+          -Xms$${INITIAL_MEMORY}
           -Xmx$${MAXIMUM_MEMORY}
-          -Djava.awt.headless=true 
+          -Djava.awt.headless=true
           -server
           -Dfile.encoding=UTF8
           -Djavax.servlet.request.encoding=UTF-8
