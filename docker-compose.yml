@@ -621,13 +621,22 @@ services:
     depends_on:
       gtfs-api:
         condition: service_started
-    image: swaggerapi/swagger-ui
+    # This is a 3rd-part Elements CLI built by the community.
+    # https://github.com/skriptfabrik/elements-cli
+    # see also https://github.com/stoplightio/elements/issues/765#issuecomment-1152620255
+    image: skriptfabrik/elements-cli:0.5.1
+    command:
+      - "preview"
+      # listen on container port 8080
+      - "--port=8080"
+      # communicate host port to clients
+      - "--virtual-host=${IPL_GTFS_API_DOCS_PUBLIC_HOST:?missing/empty}"
+      - "--virtual-port=${IPL_GTFS_API_DOCS_PUBLIC_PORT:?missing/empty}"
+      - "--base-path=/docs/gtfs"
+      # *public* URL of the gtfs-api OpenAPI spec
+      - "${IPL_GTFS_API_PUBLIC_BASE_URL:?missing/empty}"
     ports:
       - ${IPL_GTFS_API_DOCS_PORT}:8080
-    environment:
-      # Swagger UI will call gtfs-api in the browser, so we need to use its "outside" URL here.
-      API_URL: ${IPL_GTFS_API_PUBLIC_BASE_URL}
-      BASE_URL: /docs/gtfs
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api-docs.rule=PathPrefix(`/docs/gtfs`)"
