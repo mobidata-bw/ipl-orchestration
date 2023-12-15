@@ -2,6 +2,9 @@ DOCKER_COMPOSE = docker compose --env-file .env --env-file .env.local
 
 DOCKER_REGISTRY = ghcr.io
 
+# Assign PWD explicitly, as PWD is user home when called via ansible make module
+PWD :=  $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
+
 # Default target when running `make`
 .PHONY: all
 all: docker-up
