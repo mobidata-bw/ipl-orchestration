@@ -5,6 +5,9 @@ DOCKER_REGISTRY = ghcr.io
 # Assign PWD explicitly, as PWD is user home when called via ansible make module
 PWD :=  $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))))
 
+# Read environment variable files, in case they exist
+-include .env .env.local
+
 # Default target when running `make`
 .PHONY: all
 all: docker-up
@@ -48,6 +51,7 @@ docker-restart: init
 # Pull all images or only the containers specified by SERVICE (e.g. `make docker-pull SERVICE=redis`)
 .PHONY: docker-pull
 docker-pull:
+	docker pull ${IPL_GTFS_IMPORTER_IMAGE}
 	$(DOCKER_COMPOSE) pull $(SERVICE)
 
 # Tear down all containers and delete all volumes
