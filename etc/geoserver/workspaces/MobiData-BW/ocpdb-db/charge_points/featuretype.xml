@@ -1,0 +1,78 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-718ae34a:18c6e6b26ff:-7ffa</id>
+  <name>charge_points</name>
+  <nativeName>charge_points</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
+  </namespace>
+  <title>E-Ladesäulen</title>
+  <keywords>
+    <string>charge_points</string>
+    <string>features</string>
+  </keywords>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>7.0</minx>
+    <maxx>10.5</maxx>
+    <miny>48.0</miny>
+    <maxy>52.0</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>7.0</minx>
+    <maxx>10.5</maxx>
+    <miny>48.0</miny>
+    <maxy>52.0</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>charge_points</name>
+        <sql>WITH location_power AS (SELECT location_id, max(max_electric_power) max_electric_power &#xd;
+                       FROM evse&#xd;
+                       JOIN connector&#xd;
+                         on evse.id = connector.evse_id&#xd;
+                      GROUP BY location_id)&#xd;
+&#xd;
+SELECT location.id, location.lat, location.lon, location.name, location.address, chargepoint_available_count, chargepoint_unknown_count, chargepoint_static_count, chargepoint_bike_count, max_electric_power, geometry&#xd;
+FROM location&#xd;
+LEFT JOIN (SELECT location_id, COUNT(es.id) as chargepoint_count,&#xd;
+                  SUM(CASE WHEN es.status = &apos;AVAILABLE&apos; THEN 1 ELSE 0 END) as chargepoint_available_count,&#xd;
+                  SUM(CASE WHEN es.status = &apos;UNKNOWN&apos; THEN 1 ELSE 0 END) as chargepoint_unknown_count,&#xd;
+                  SUM(CASE WHEN es.status = &apos;STATIC&apos; THEN 1 ELSE 0 END) as chargepoint_static_count,&#xd;
+                  SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) as chargepoint_bike_count &#xd;
+             FROM location l&#xd;
+             JOIN evse es&#xd;
+               ON l.id =  es.location_id &#xd;
+            GROUP BY location_id) AS cp&#xd;
+  ON cp.location_id = location.id&#xd;
+LEFT JOIN location_power lp&#xd;
+       ON lp.location_id = location.id
+</sql>
+        <escapeSql>false</escapeSql>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>-1</srid>
+        </geometry>
+      </virtualTable>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl-718ae34a:18c6e6b26ff:-7ffb</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

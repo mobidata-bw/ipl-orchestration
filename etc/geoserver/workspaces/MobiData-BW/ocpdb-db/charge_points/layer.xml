@@ -1,0 +1,17 @@
+<layer>
+  <name>charge_points</name>
+  <id>LayerInfoImpl-718ae34a:18c6e6b26ff:-7ff9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--68bb822d:18c8eaa44d1:-74a0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-718ae34a:18c6e6b26ff:-7ffa</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-12-15 18:21:03.51 UTC</dateCreated>
+  <dateModified>2023-12-21 23:27:33.143 UTC</dateModified>
+</layer>
