@@ -549,6 +549,9 @@ services:
     # gtfstidy currently only provides a linux/amd64 binary
     # see also https://github.com/patrickbr/gtfstidy/pull/21
     platform: linux/amd64
+    # gtfs-imports will be performed via dagster nevertheless, we keep it here for now
+    # i.e. to have it downloaded 
+    image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty $$IPL_GTFS_IMPORTER_IMAGE}
     profiles:
       - import-new-gtfs
     depends_on:
@@ -556,25 +559,24 @@ services:
         condition: service_healthy
     links:
       - gtfs-db
-    build:
-      context: ./gtfs-importer
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
     environment:
       PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
+      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty $$IPL_GTFS_DB_POSTGRES_USER}
+      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty $$IPL_GTFS_DB_POSTGRES_PASSWORD}
       # the default DB, used by gtfs-importer to keep track of imports
-      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB}
-      GTFS_DOWNLOAD_URL: ${GTFS_DOWNLOAD_URL:-}
+      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB:?missing/empty $$IPL_GTFS_DB_POSTGRES_DB}
+      GTFS_DOWNLOAD_URL: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty $$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL}
+      GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty $$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT}
       # the prefix of all DBs created for imports by gtfs-importer
-      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX}
+      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty $$IPL_GTFS_DB_POSTGRES_DB_PREFIX}
       # path to the file containing the latest import's DB name
       GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
-      POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER}
-      POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD}
+      POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty $$IPL_GTFS_DB_POSTGREST_USER}
+      POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty $$IPL_GTFS_DB_POSTGREST_PASSWORD}
 
   gtfs-swagger-ui:
     networks: [ipl]
