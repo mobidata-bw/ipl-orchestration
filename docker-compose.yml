@@ -335,12 +335,16 @@ services:
       - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
       - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
+      - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
     depends_on:
       pgbouncer:
         # For sharing & transit layers
         condition: service_healthy
       park-api-db:
         # For parking_sites layer
+        condition: service_healthy
+      ocpdb-db:
+        # For ocpdb layer
         condition: service_healthy
     healthcheck:
       test: "curl -fsS -o /dev/null -u 'admin:${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
