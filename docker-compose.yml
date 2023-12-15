@@ -224,9 +224,9 @@ services:
     environment:
       - POSTGRES_DB=${IPL_POSTGRES_DB}
       - POSTGRES_USER=${IPL_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty $$IPL_POSTGRES_PASSWORD}
     healthcheck:
-      test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+      test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty $$IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
       interval: 5s
       timeout: 3s
       retries: 12
