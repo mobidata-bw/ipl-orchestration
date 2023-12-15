@@ -146,14 +146,14 @@ services:
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
-    command: -p deer,voi-raumobil,lastenvelo_fr -b file:///var/gbfs/feeds -i 60
+    command: -p ${X2GBFS_PROVIDERS:?missing/empty env var $$X2GBFS_PROVIDERS} -b file:///var/gbfs/feeds -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty env var $$X2GBFS_UPDATE_INTERVAL_SECONDS}
     environment:
       - DEER_API_URL
-      - DEER_USER
-      - DEER_PASSWORD
+      - DEER_USER=${DEER_USER:?missing/empty env var $$DEER_USER}
+      - DEER_PASSWORD=${DEER_PASSWORD:?'missing/empty env var $$DEER_PASSWORD}
       - VOI_API_URL
-      - VOI_USER
-      - VOI_PASSWORD
+      - VOI_USER=${VOI_USER:?missing/empty env var $$VOI_USER}
+      - VOI_PASSWORD=${VOI_PASSWORD:?'missing/empty env var $$VOI_PASSWORD}
     restart: unless-stopped
 
   lamassu:
