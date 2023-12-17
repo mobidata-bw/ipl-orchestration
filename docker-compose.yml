@@ -66,7 +66,7 @@ services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
-  # Trafik can't run as local user, because service discovery just works with root.
+  # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
     image: traefik:v2.10
