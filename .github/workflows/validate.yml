@@ -20,4 +20,4 @@ jobs:
         make init
     - name: validate docker-compose.yml
       run: |
-        docker compose --env-file .env --env-file .github/.env.local.ci config
+        docker compose --env-file .env --env-file .env.local.example config
