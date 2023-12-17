@@ -79,19 +79,19 @@ lamassu:
     - systemId: nextbike_fg
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
-      codespace: NBK
+      codespace: NBF
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/gbfs.json"
       language: de
     - systemId: nextbike_ds
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
-      codespace: NBK
+      codespace: NBD
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ds/gbfs.json"
       language: de
     - systemId: nextbike_vn
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
-      codespace: NBK
+      codespace: NBV
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/gbfs.json"
       language: de
       # Offenburg currently not available(?). Request sent to nextbike 2023-07-25
@@ -267,7 +267,7 @@ lamassu:
     - systemId: nextbike_ch
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
-      codespace: NBK
+      codespace: NBC
       url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
       language: en
     # Share Birrer CH
