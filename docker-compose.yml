@@ -363,7 +363,7 @@ services:
       # Required to mount volumes for docker-in-docker executions
       - IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
       - IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
-    volumes: 
+    volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
       # mount storage dir so logs/assets are written to volume shared with dagaster-daemon/dagit
@@ -550,7 +550,7 @@ services:
     # see also https://github.com/patrickbr/gtfstidy/pull/21
     platform: linux/amd64
     # gtfs-imports will be performed via dagster nevertheless, we keep it here for now
-    # i.e. to have it downloaded 
+    # i.e. to have it downloaded
     image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty $$IPL_GTFS_IMPORTER_IMAGE}
     profiles:
       - import-new-gtfs
@@ -619,7 +619,7 @@ services:
 
   ocpdb-init:
     <<: *ocpdb-defaults
-    command: ["flask", "db", "upgrade"]
+    command: ["sh", "-c", "flask db upgrade && flask bnetza import-web"]
 
   ocpdb-db:
     networks: [ipl]
