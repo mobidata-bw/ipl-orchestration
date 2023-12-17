@@ -9,9 +9,9 @@ x-ocpdb-defaults: &ocpdb-defaults
   networks: [ipl]
   user: *local-user
   environment:
-    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var $OCPDB_POSTGRES_DB'}
-    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var $OCPDB_POSTGRES_USER'}
-    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var $OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty'}
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
@@ -31,11 +31,11 @@ x-park-api-defaults: &park-api-defaults
   networks: [ipl]
   user: ${DOCKER_LOCAL_USER}
   environment:
-    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var $PARK_API_POSTGRES_DB'}
-    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var $PARK_API_POSTGRES_USER'}
-    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $PARK_API_POSTGRES_PASSWORD'}
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty'}
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
-    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
   depends_on:
     park-api-db:
