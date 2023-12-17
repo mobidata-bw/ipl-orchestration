@@ -1,13 +1,17 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
+# Define placeholder for running a container with the same UID/GID as your local user
+x-local-user: &local-user ${DOCKER_LOCAL_USER:?Variable needs to be set in .env (e.g. "DOCKER_LOCAL_USER=1000:1000")}
+
 x-ocpdb-defaults: &ocpdb-defaults
   image: ${OCPDB_IMAGE}
   networks: [ipl]
+  user: *local-user
   environment:
-    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty env var OCPDB_POSTGRES_DB'}
-    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty env var OCPDB_POSTGRES_USER'}
-    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty env var OCPDB_POSTGRES_PASSWORD'}
+    OCPDB_POSTGRES_DB: ${OCPDB_POSTGRES_DB:?'missing/empty'}
+    OCPDB_POSTGRES_USER: ${OCPDB_POSTGRES_USER:?'missing/empty'}
+    OCPDB_POSTGRES_PASSWORD: ${OCPDB_POSTGRES_PASSWORD:?'missing/empty'}
     OCPDB_POSTGRES_HOST: ${OCPDB_POSTGRES_HOST}
     OCPDB_PROJECT_URL: ${OCPDB_PROJECT_URL}
     OCPDB_CELERY_BROKER_URL: ${OCPDB_CELERY_BROKER_URL}
@@ -25,12 +29,13 @@ x-ocpdb-defaults: &ocpdb-defaults
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
   networks: [ipl]
+  user: ${DOCKER_LOCAL_USER}
   environment:
-    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty env var PARK_API_POSTGRES_DB'}
-    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty env var PARK_API_POSTGRES_USER'}
-    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
+    PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty'}
+    PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty'}
+    PARK_API_POSTGRES_PASSWORD: ${PARK_API_POSTGRES_PASSWORD:?'missing/empty'}
     PARK_API_POSTGRES_HOST: ${PARK_API_POSTGRES_HOST}
-    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty env var $PARK_API_PROJECT_URL'}
+    PARK_API_PROJECT_URL: ${PARK_API_PROJECT_URL:?'missing/empty'}
     PARK_API_CELERY_BROKER_URL: ${PARK_API_CELERY_BROKER_URL}
   depends_on:
     park-api-db:
@@ -61,6 +66,7 @@ services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
+  # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
     image: traefik:v2.10
@@ -72,6 +78,8 @@ services:
       # todo: change to 8080:8080
       # web UI, Prometheus, etc.
       - "8081:8080"
+    environment:
+      TZ: ${TZ:?'missing/empty $TZ'}
     volumes:
       - ./etc/traefik:/etc/traefik
       - ./var/log/traefik:/var/log/traefik
@@ -101,6 +109,29 @@ services:
       - "traefik.http.middlewares.well-known-uris-middleware.headers.accesscontrolallowheaders=*"
       - "traefik.http.services.well-known-uris.loadbalancer.server.port=80"
 
+  goaccess:
+    networks: [ipl]
+    user: *local-user
+    image: ${GOACCESS_IMAGE}
+    environment:
+      - TZ=${TZ:?'missing/empty $TZ'}
+    volumes:
+      # entrypoint script
+      - ./bin/goaccess/import.sh:/opt/import.sh:ro
+      # GoAccess configuration file
+      - ./etc/goaccess.conf:/etc/goaccess.conf:ro
+      # data written by GoAccess itself: statistics database, generated HTML report, processing logs
+      - ./var/goaccess/data:/srv/goaccess/data
+      - ./var/goaccess/report:/srv/goaccess/report
+      - ./var/log/goaccess:/srv/goaccess/logs
+      # Traefik access logs
+      - ./var/log/traefik:/var/log/traefik:ro
+    depends_on:
+      ingress:
+        condition: service_healthy
+    entrypoint: ["/opt/import.sh"]
+    restart: unless-stopped
+
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
@@ -122,13 +153,20 @@ services:
     image: ${CADDY_IMAGE}
     restart: unless-stopped
     ports:
+      # public IPL assets
       - 6999:80
-      # - 443:443
+      # GoAccess access statistics reports
+      - "${GOACCESS_PORT:?'missing/empty env var $GOACCESS_PORT'}:81"
     volumes:
+      # Caddy configuration file
+      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # data stored by Caddy itself: certificates, parsed & normalized config, etc.
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
-      - ./var/www/:/var/www
-      - ./etc/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      # public IPL assets (served on :80)
+      - ./var/www/:/var/www:ro
+      # GoAccess access statistics reports (served on :81)
+      - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
@@ -235,7 +273,7 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
-    user: 1000:1000
+    user: *local-user
     volumes:
       # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
       - ./var/geoserver/datadir/:/var/geoserver/datadir/
@@ -267,7 +305,7 @@ services:
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
       # we currently need to pass in all default properties already defined in the dockerfile
       - JAVA_OPTS= >-
-          -Duser.timezone=Europe/Berlin
+          -Duser.timezone=${TZ:?'missing/empty $TZ'}
           -DALLOW_ENV_PARAMETRIZATION=true
           -Xms$${INITIAL_MEMORY}
           -Xmx$${MAXIMUM_MEMORY}
@@ -665,7 +703,7 @@ services:
   park-api-heartbeat:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "beat"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat", "-s", "/tmp/celerybeat-schedule"]
 
   park-api-db:
     networks: [ipl]

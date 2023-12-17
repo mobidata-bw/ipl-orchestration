@@ -9,3 +9,9 @@ http://:80 {
     precompressed gzip zstd
   }
 }
+
+http://:81 {
+  root * /var/goaccess/report
+  encode zstd gzip
+  file_server
+}
