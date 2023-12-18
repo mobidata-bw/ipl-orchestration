@@ -5,66 +5,53 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <NamedLayer>
-    <Name>mdbw_sharing_default</Name>
+    <Name>mdbw_sharing_stations_default</Name>
     <UserStyle>
       <Title>MobiData-BW Sharing-Stationen</Title>
       <FeatureTypeStyle>
         <Rule>
-          <Title>Nextbike</Title>
+          <Title>Fahrzeuge verfügbar</Title>
           <ogc:Filter>
-            <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
-              <ogc:PropertyName>station_id</ogc:PropertyName>
-              <ogc:Literal>NBK*</ogc:Literal>
-            </ogc:PropertyIsLike>
+            <ogc:PropertyIsGreaterThan>
+              <ogc:PropertyName>num_vehicles_available</ogc:PropertyName>
+              <ogc:Literal>0</ogc:Literal>
+            </ogc:PropertyIsGreaterThan>
           </ogc:Filter>
           <PointSymbolizer>
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#0048A3</CssParameter>
+                  <CssParameter name="fill">#fffb05</CssParameter>
                 </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Donkey Republic</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
-              <ogc:PropertyName>station_id</ogc:PropertyName>
-              <ogc:Literal>DKY*</ogc:Literal>
-            </ogc:PropertyIsLike>
-          </ogc:Filter>
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#FF6400</CssParameter>
-                </Fill>
-              </Mark>
-              <Size>6</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Others</Title>
+          <Title>Keine Fahrzeuge verfügbar</Title>
           <ElseFilter />
           <PointSymbolizer>
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#bbbbbb</CssParameter>
+                  <CssParameter name="fill">#ffb805</CssParameter>
                 </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
-
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>

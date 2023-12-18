@@ -1,0 +1,22 @@
+<layer>
+  <name>bicycle_sharing_stations</name>
+  <id>LayerInfoImpl--d3e2e11:18c35d543f4:-7ff7</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-582a934f:18c7db0b402:-7dc3</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--1e02d99c:1899cf5cc1c:-6fcc</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff8</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-12-04 17:22:36.390 UTC</dateCreated>
+  <dateModified>2023-12-18 21:54:58.133 UTC</dateModified>
+</layer>

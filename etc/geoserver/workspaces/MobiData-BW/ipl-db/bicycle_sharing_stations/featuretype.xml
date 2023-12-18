@@ -1,0 +1,165 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff8</id>
+  <name>bicycle_sharing_stations</name>
+  <nativeName>bicycle_sharing_stations</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
+  </namespace>
+  <title>Bikesharing-Stationen</title>
+  <keywords>
+    <string>features</string>
+    <string>bicycle_sharing_stations</string>
+    <string>Leihrad\@language=de\;</string>
+    <string>Fahrrad\@language=de\;</string>
+  </keywords>
+  <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
+  DATUM[&quot;World Geodetic System 1984&quot;, 
+    SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], 
+    AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH], 
+  AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>bicycle_sharing_stations</name>
+        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry&#xd;
+FROM sharing_stations s&#xd;
+ JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
+WHERE st.num_bicycles_available &gt;= 0
+</sql>
+        <escapeSql>false</escapeSql>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
+      </virtualTable>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>feed_id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>ID des Feeds</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>station_id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>ID der Station</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>Name des Fahrzeugs</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>num_vehicles_available</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <en>Anzahl verfügbarer Fahrzeuge</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>rental_uris_android</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>Deeplink zur Buchung (Android)</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>rental_uris_ios</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>Deeplink zu Buchung (iOS)</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>rental_uris_web</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>Deeplink zur Buchung (Web)</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>last_reported</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <en>Zeitpunkt der letzten Aktualisierung</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>geometry</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>org.locationtech.jts.geom.Geometry</binding>
+      <description>
+        <en>Koordinate der Station</en>
+      </description>
+    </attribute>
+  </attributes>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

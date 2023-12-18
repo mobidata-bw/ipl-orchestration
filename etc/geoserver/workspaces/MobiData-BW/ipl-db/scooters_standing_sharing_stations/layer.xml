@@ -1,9 +1,9 @@
 <layer>
-  <name>car_sharing_station</name>
-  <id>LayerInfoImpl-5e86fa79:18c2f7d2dac:-7ef1</id>
+  <name>scooters_standing_sharing_stations</name>
+  <id>LayerInfoImpl--d3e2e11:18c35d543f4:-7ff3</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl-5e86fa79:18c2f7d2dac:-7de9</id>
+    <id>StyleInfoImpl-582a934f:18c7db0b402:-7dc3</id>
   </defaultStyle>
   <styles class="linked-hash-set">
     <style>
@@ -11,12 +11,11 @@
     </style>
   </styles>
   <resource class="featureType">
-    <id>FeatureTypeInfoImpl-5e86fa79:18c2f7d2dac:-7ef2</id>
+    <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff4</id>
   </resource>
   <attribution>
     <logoWidth>0</logoWidth>
     <logoHeight>0</logoHeight>
   </attribution>
-  <dateCreated>2023-12-03 22:43:52.216 UTC</dateCreated>
-  <dateModified>2023-12-03 22:53:54.445 UTC</dateModified>
+  <dateCreated>2023-12-04 23:12:49.495 UTC</dateCreated>
 </layer>
