@@ -114,7 +114,7 @@ services:
     user: *local-user
     image: ${GOACCESS_IMAGE}
     environment:
-      - TZ=${TZ:?'missing/empty $TZ'}
+      - TZ=${TZ:?missing/empty}
     volumes:
       # entrypoint script
       - ./bin/goaccess/import.sh:/opt/import.sh:ro
@@ -184,14 +184,14 @@ services:
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
-    command: -p ${X2GBFS_PROVIDERS:?missing/empty env var $$X2GBFS_PROVIDERS} -b file:///var/gbfs/feeds -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty env var $$X2GBFS_UPDATE_INTERVAL_SECONDS}
+    command: -p ${X2GBFS_PROVIDERS:?missing/empty} -b file:///var/gbfs/feeds -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty}
     environment:
       - DEER_API_URL
-      - DEER_USER=${DEER_USER:?missing/empty env var $$DEER_USER}
-      - DEER_PASSWORD=${DEER_PASSWORD:?'missing/empty env var $$DEER_PASSWORD}
+      - DEER_USER=${DEER_USER:?missing/empty}
+      - DEER_PASSWORD=${DEER_PASSWORD:?'missing/empty}
       - VOI_API_URL
-      - VOI_USER=${VOI_USER:?missing/empty env var $$VOI_USER}
-      - VOI_PASSWORD=${VOI_PASSWORD:?'missing/empty env var $$VOI_PASSWORD}
+      - VOI_USER=${VOI_USER:?missing/empty}
+      - VOI_PASSWORD=${VOI_PASSWORD:?'missing/empty}
     restart: unless-stopped
 
   lamassu:
@@ -201,11 +201,11 @@ services:
       - ${LAMASSU_PORT}:8080
       - ${LAMASSU_ADMIN_PORT}:9001
     environment:
-      LAMASSU_DB_CONNECT_CLIENT_ID: ${LAMASSU_DB_CONNECT_CLIENT_ID:?'missing/empty env var $LAMASSU_DB_CONNECT_CLIENT_ID'}
-      LAMASSU_DB_CONNECT_API_KEY: ${LAMASSU_DB_CONNECT_API_KEY:?'missing/empty env var $LAMASSU_DB_CONNECT_API_KEY'}
-      LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?'missing/empty env var $LAMASSU_BOLT_AUTH_URL'}
-      LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?'missing/empty env var $LAMASSU_BOLT_CLIENT_ID'}
-      LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?'missing/empty env var $LAMASSU_BOLT_CLIENT_PASSWORD'}
+      LAMASSU_DB_CONNECT_CLIENT_ID: ${LAMASSU_DB_CONNECT_CLIENT_ID:?missing/empty}
+      LAMASSU_DB_CONNECT_API_KEY: ${LAMASSU_DB_CONNECT_API_KEY:?missing/empty}
+      LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?missing/empty}
+      LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?missing/empty}
+      LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?missing/empty}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
       JDK_JAVA_OPTIONS:
@@ -262,9 +262,9 @@ services:
     environment:
       - POSTGRES_DB=${IPL_POSTGRES_DB}
       - POSTGRES_USER=${IPL_POSTGRES_USER}
-      - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty $$IPL_POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty}
     healthcheck:
-      test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty $$IPL_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
+      test: "PGPASSWORD=${IPL_POSTGRES_PASSWORD:?missing/empty} pg_isready -h 127.0.0.1 -U ${IPL_POSTGRES_USER} -d ${IPL_POSTGRES_DB}"
       interval: 5s
       timeout: 3s
       retries: 12
@@ -300,8 +300,8 @@ services:
       - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
       - GEOSERVER_DATA_DIR_CUSTOM=/var/geoserver/datadir_template/
       - GEOSERVER_LOGGING_PROFILE=${GEOSERVER_LOGGING_PROFILE}
-      - GEOSERVER_CSRF_WHITELIST=${GEOSERVER_CSRF_WHITELIST:?missing/empty $$GEOSERVER_CSRF_WHITELIST}
-      - GEOSERVER_PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty $$GEOSERVER_PROXY_BASE_URL}
+      - GEOSERVER_CSRF_WHITELIST=${GEOSERVER_CSRF_WHITELIST:?missing/empty}
+      - GEOSERVER_PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty}
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
       # we currently need to pass in all default properties already defined in the dockerfile
       - JAVA_OPTS= >-
@@ -327,9 +327,9 @@ services:
           -DNETCDF_DATA_DIR=$${NETCDF_DATA_DIR}
           -DGRIB_CACHE_DIR=$${GRIB_CACHE_DIR}
       # The following parameters are *not* picked up by geosoultionsit/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
-      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty $$PGBOUNCER_POSTGRES_USER}
-      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $$PGBOUNCER_POSTGRES_PASSWORD}
-      - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty $$PARK_API_POSTGRES_PASSWORD}
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
+      - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
     depends_on:
       pgbouncer:
         # For sharing & transit layers
@@ -372,9 +372,9 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       - PGHOST=pgbouncer
-      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
-      - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       - PGDATABASE=dagster # determined by pgbouncer!
       # Use docker hostname of lamassu service to avoid roundtrip via proxy service
       # todo [breaking]: remove `IPL_LAMASSU_BASE_URL` to prevent confusion with `LAMASSU_BASE_URL`
@@ -429,9 +429,9 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
-      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker API accessible so we can terminate containers from dagster-webserver
       - /var/run/docker.sock:/var/run/docker.sock
@@ -453,9 +453,9 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
-      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: dagster # determined by pgbouncer!
     volumes: # Make docker API accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
@@ -505,7 +505,7 @@ services:
       - dagster-postgresql
     image: ${PGBOUNCER_IMAGE}
     ports:
-      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}:6432
+      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty}:6432
     volumes:
       # contains the latest import's DB name
       - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
@@ -516,9 +516,9 @@ services:
       # Therefore, we duplicate the connection to ipl-db and expose it as `meta`, clearly denoting it as a connection *not* intended for pgbouncer clients.
       PGBOUNCER_DATABASE: meta
       POSTGRESQL_HOST: ipl-db
-      POSTGRESQL_DATABASE: ${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB}
-      POSTGRESQL_USERNAME: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      POSTGRESQL_PASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      POSTGRESQL_DATABASE: ${IPL_POSTGRES_DB:?missing/empty}
+      POSTGRESQL_USERNAME: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      POSTGRESQL_PASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       # > Most polite method. When a client connects, a server connection will be assigned to it for the whole duration the client stays connected. When the client disconnects, the server connection will be put back into the pool. This is the default method.
       # We hardcode this, because we definitely don't want the other pooling modes.
       PGBOUNCER_POOL_MODE: session
@@ -534,9 +534,9 @@ services:
       # see also https://www.pgbouncer.org/config.html#section-databases
       # see also https://www.postgresql.org/docs/15/libpq-connect.html#id-1.7.3.8.3.5
       # expose ipl-db as `ipl`
-      PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty $IPL_POSTGRES_DB} user=${IPL_POSTGRES_USER:?missing/empty $IPL_POSTGRES_USER} password=${IPL_POSTGRES_PASSWORD:?missing/empty $IPL_POSTGRES_PASSWORD}"
+      PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty} user=${IPL_POSTGRES_USER:?missing/empty} password=${IPL_POSTGRES_PASSWORD:?missing/empty}"
       # expose dagster-postgresql as `dagster`
-      PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty $DAGSTER_POSTGRES_DB} user=${DAGSTER_POSTGRES_USER:?missing/empty $DAGSTER_POSTGRES_USER} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty $DAGSTER_POSTGRES_PASSWORD}"
+      PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty} user=${DAGSTER_POSTGRES_USER:?missing/empty} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty}"
       # expose the latest GTFS import within gtfs-db as `gtfs`
       # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
       # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
@@ -565,15 +565,15 @@ services:
     environment:
       # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty $PGBOUNCER_POSTGRES_PORT}
-      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty $PGBOUNCER_POSTGRES_USER}
-      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty $PGBOUNCER_POSTGRES_PASSWORD}
+      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: gtfs # determined by pgbouncer!
       # PostgREST-specific env vars
       PGRST_OPENAPI_SERVER_PROXY_URI: ${IPL_GTFS_API_PUBLIC_BASE_URL}
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
-      PGRST_DB_MAX_ROWS: ${IPL_GTFS_API_MAX_ROWS:?missing/empty $IPL_GTFS_API_MAX_ROWS}
+      PGRST_DB_MAX_ROWS: ${IPL_GTFS_API_MAX_ROWS:?missing/empty}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
@@ -589,7 +589,7 @@ services:
     platform: linux/amd64
     # gtfs-imports will be performed via dagster nevertheless, we keep it here for now
     # i.e. to have it downloaded
-    image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty $$IPL_GTFS_IMPORTER_IMAGE}
+    image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty}
     profiles:
       - import-new-gtfs
     depends_on:
@@ -602,19 +602,19 @@ services:
       - ./etc/gtfs:/etc/gtfs
     environment:
       PGHOST: gtfs-db
-      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty $$IPL_GTFS_DB_POSTGRES_USER}
-      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty $$IPL_GTFS_DB_POSTGRES_PASSWORD}
+      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty}
+      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty}
       # the default DB, used by gtfs-importer to keep track of imports
-      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB:?missing/empty $$IPL_GTFS_DB_POSTGRES_DB}
-      GTFS_DOWNLOAD_URL: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty $$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL}
-      GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty $$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT}
+      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB:?missing/empty}
+      GTFS_DOWNLOAD_URL: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty}
+      GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
       # the prefix of all DBs created for imports by gtfs-importer
-      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty $$IPL_GTFS_DB_POSTGRES_DB_PREFIX}
+      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty}
       # path to the file containing the latest import's DB name
       GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
-      POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty $$IPL_GTFS_DB_POSTGREST_USER}
-      POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty $$IPL_GTFS_DB_POSTGREST_PASSWORD}
+      POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty}
+      POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
 
   gtfs-swagger-ui:
     networks: [ipl]
