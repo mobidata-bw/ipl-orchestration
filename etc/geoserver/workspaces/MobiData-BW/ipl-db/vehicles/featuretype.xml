@@ -5,7 +5,7 @@
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>vehicles</title>
+  <title>Freefloating Sharing-Fahrzeuge</title>
   <keywords>
     <string>features</string>
     <string>vehicles</string>
@@ -21,17 +21,17 @@
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>7.558751106262207</minx>
+    <maxx>8.787613868713379</maxx>
+    <miny>47.530738830566406</miny>
+    <maxy>49.7023811340332</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>7.558751106262207</minx>
+    <maxx>8.787613868713379</maxx>
+    <miny>47.530738830566406</miny>
+    <maxy>49.7023811340332</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
@@ -45,31 +45,42 @@
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
   <attributes>
     <attribute>
-      <name>feed_id</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
       <name>vehicle_id</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>ID des Fahrzeugs</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>feed_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en>ID des Feeds</en>
+      </description>
     </attribute>
     <attribute>
       <name>form_factor</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
+      <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>Art des Fahrzeugs</en>
+      </description>
     </attribute>
     <attribute>
       <name>name</name>
@@ -77,13 +88,9 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
-      <name>is_reserved</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Boolean</binding>
+      <description>
+        <en>Name</en>
+      </description>
     </attribute>
     <attribute>
       <name>propulsion_type</name>
@@ -91,13 +98,39 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>Antriebsart</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>current_fuel_percent</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Double</binding>
+      <description>
+        <en>Aktueller Ladestand in Prozent</en>
+      </description>
+    </attribute>
+    <attribute>
+      <name>current_range_meters</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Double</binding>
+      <description>
+        <en>Aktuelle Reichweite in Metern (ungefähr)</en>
+      </description>
     </attribute>
     <attribute>
       <name>max_range_meters</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
-      <binding>java.lang.String</binding>
+      <binding>java.lang.Double</binding>
+      <description>
+        <en>Maximale Reichweite in Metern</en>
+      </description>
     </attribute>
     <attribute>
       <name>rental_uris_android</name>
@@ -105,6 +138,9 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>Deeplink (Android)</en>
+      </description>
     </attribute>
     <attribute>
       <name>rental_uris_ios</name>
@@ -112,6 +148,9 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>Deeplink (iOS)</en>
+      </description>
     </attribute>
     <attribute>
       <name>rental_uris_web</name>
@@ -119,13 +158,19 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <en>Deepling (Web)</en>
+      </description>
     </attribute>
     <attribute>
       <name>last_reported</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.lang.String</binding>
+      <nillable>true</nillable>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <en>Zuletzt übermittelt</en>
+      </description>
     </attribute>
     <attribute>
       <name>geometry</name>
@@ -133,6 +178,9 @@
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
+      <description>
+        <en>Koordinate des Farzeugs</en>
+      </description>
     </attribute>
   </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
