@@ -140,6 +140,10 @@ services:
   transformer-proxy:
     networks: [ipl]
     image: ${TRANSFORMER_PROXY_IMAGE}
+    environment:
+      # mapped to the `termlog_verbosity` config underneath
+      # https://docs.mitmproxy.org/stable/concepts-options/#available-options
+      LOG_LEVEL: warn
     volumes:
       # Mount config file which declares hosts to proxy
       - ./etc/transformer-proxy/config.yaml:/app/config.yaml
