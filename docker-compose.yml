@@ -529,6 +529,9 @@ services:
       # see https://github.com/bitnami/containers/issues/25394#issuecomment-1457893192
       # dagster-* connect with `statement_timeout` set.
       PGBOUNCER_IGNORE_STARTUP_PARAMETERS: extra_float_digits, statement_timeout
+      # reduce logging verbosity
+      PGBOUNCER_LOG_CONNECTIONS: '0'
+      PGBOUNCER_LOG_DISCONNECTIONS: '0'
 
       # upsteam connections
       # see also https://www.pgbouncer.org/config.html#section-databases
