@@ -1,14 +1,16 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-79e0</id>
-  <name>vehicles</name>
-  <nativeName>vehicles</nativeName>
+  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff6</id>
+  <name>cargo_bicycle_sharing_stationa</name>
+  <nativeName>cargo_bicycle_sharing_station</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Freefloating Sharing-Fahrzeuge</title>
+  <title>Lasterad-Leihstationen</title>
   <keywords>
     <string>features</string>
-    <string>vehicles</string>
+    <string>cargo_bicycle_sharing_station</string>
+    <string>Lastenrad\@language=de\;<string>
+    <string>Lastenrad-Leihstationen\@language=de\;<string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
@@ -21,24 +23,33 @@
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.558751106262207</minx>
-    <maxx>8.787613868713379</maxx>
-    <miny>47.530738830566406</miny>
-    <maxy>49.7023811340332</maxy>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.558751106262207</minx>
-    <maxx>8.787613868713379</maxx>
-    <miny>47.530738830566406</miny>
-    <maxy>49.7023811340332</maxy>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <metadata>
-    <entry key="cacheAgeMax">60</entry>
-    <entry key="cachingEnabled">true</entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>cargo_bicycle_sharing_station</name>
+        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_cargo_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
+FROM sharing_stations s &#xd;
+ JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
+WHERE st.num_cargo_bicycles_available &gt;= 0
+</sql>
+        <escapeSql>false</escapeSql>
+      </virtualTable>
+    </entry>
   </metadata>
   <store class="dataStore">
     <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
@@ -53,18 +64,8 @@
   <forcedDecimal>false</forcedDecimal>
   <attributes>
     <attribute>
-      <name>vehicle_id</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <en>ID des Fahrzeugs</en>
-      </description>
-    </attribute>
-    <attribute>
       <name>feed_id</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
@@ -73,13 +74,13 @@
       </description>
     </attribute>
     <attribute>
-      <name>form_factor</name>
-      <minOccurs>0</minOccurs>
+      <name>station_id</name>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Art des Fahrzeugs</en>
+        <en>ID der Station</en>
       </description>
     </attribute>
     <attribute>
@@ -89,47 +90,17 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Name</en>
+        <en>Name des Fahrzeugs</en>
       </description>
     </attribute>
     <attribute>
-      <name>propulsion_type</name>
-      <minOccurs>0</minOccurs>
+      <name>num_vehicles_available</name>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
+      <nillable>false</nillable>
+      <binding>java.lang.Integer</binding>
       <description>
-        <en>Antriebsart</en>
-      </description>
-    </attribute>
-    <attribute>
-      <name>current_fuel_percent</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Double</binding>
-      <description>
-        <en>Aktueller Ladestand in Prozent</en>
-      </description>
-    </attribute>
-    <attribute>
-      <name>current_range_meters</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Double</binding>
-      <description>
-        <en>Aktuelle Reichweite in Metern (ungefähr)</en>
-      </description>
-    </attribute>
-    <attribute>
-      <name>max_range_meters</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Double</binding>
-      <description>
-        <en>Maximale Reichweite in Metern</en>
+        <en>Anzahl verfügbarer Fahrzeuge</en>
       </description>
     </attribute>
     <attribute>
@@ -139,7 +110,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deeplink (Android)</en>
+        <en>Deeplink zur Buchung (Android)</en>
       </description>
     </attribute>
     <attribute>
@@ -149,7 +120,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deeplink (iOS)</en>
+        <en>Deeplink zu Buchung (iOS)</en>
       </description>
     </attribute>
     <attribute>
@@ -159,27 +130,26 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deepling (Web)</en>
+        <en>Deeplink zur Buchung (Web)</en>
       </description>
     </attribute>
     <attribute>
       <name>last_reported</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <en>Zuletzt übermittelt</en>
+        <en>Zeitpunkt der letzten Aktualisierung</en>
       </description>
     </attribute>
     <attribute>
       <name>geometry</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
-      <binding>org.locationtech.jts.geom.Point</binding>
+      <binding>org.locationtech.jts.geom.Geometry</binding>
       <description>
-        <en>Koordinate des Farzeugs</en>
+        <en>Koordinate der Station</en>
       </description>
     </attribute>
   </attributes>

@@ -11,60 +11,22 @@
       <FeatureTypeStyle>
         <Rule>
           <Title>Nextbike</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
-              <ogc:PropertyName>vehicle_id</ogc:PropertyName>
-              <ogc:Literal>NBK*</ogc:Literal>
-            </ogc:PropertyIsLike>
-          </ogc:Filter>
           <PointSymbolizer>
             <Graphic>
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#0048A3</CssParameter>
+                  <CssParameter name="fill">#00cccc</CssParameter>
                 </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
-        <Rule>
-          <Title>Donkey Republic</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
-              <ogc:PropertyName>vehicle_id</ogc:PropertyName>
-              <ogc:Literal>DKY*</ogc:Literal>
-            </ogc:PropertyIsLike>
-          </ogc:Filter>
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#FF6400</CssParameter>
-                </Fill>
-              </Mark>
-              <Size>6</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Andere Anbieter</Title>
-          <ElseFilter />
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#bbbbbb</CssParameter>
-                </Fill>
-              </Mark>
-              <Size>6</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
