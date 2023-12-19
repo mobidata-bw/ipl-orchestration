@@ -17,6 +17,7 @@ init:
 	mkdir -p var/gtfs
 	touch -a var/gtfs/pgbouncer-dsn.txt
 	mkdir -p var/geoserver/datadir
+	touch -a var/geoserver/datadir/global.xml
 	mkdir -p var/geoserver/gwc_cache_dir
 	mkdir -p var/geoserver/logs
 	mkdir -p var/goaccess/data
@@ -44,6 +45,7 @@ docker-up: init
 .PHONY: docker-up-detached
 docker-up-detached: init
 	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 120 $(SERVICE)
+	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh
 
 .PHONY: docker-down
 docker-down:
