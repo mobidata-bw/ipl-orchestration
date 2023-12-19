@@ -17,9 +17,6 @@ if [ "$GEOSERVER_DATA_DIR_CUSTOM" != "" ]; then
   # Sleep 5 seconds as admin password reset apparently is not completed when call to rest/security/self/password returns. 
   # when reloading config immediatly without sleep, we receive a 403 response...
   sleep 5
-  echo "Copying data dir content from GEOSERVER_DATA_DIR_CUSTOM to GEOSERVER_DATA_DIR"
-  cp -R $GEOSERVER_DATA_DIR_CUSTOM/* $GEOSERVER_DATA_DIR
-  echo "Reloading config"
   /usr/local/bin/geoserver-rest-reload.sh
 fi
 # /end mod 
