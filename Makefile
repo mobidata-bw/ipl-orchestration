@@ -19,6 +19,12 @@ init:
 	mkdir -p var/geoserver/datadir
 	mkdir -p var/geoserver/gwc_cache_dir
 	mkdir -p var/geoserver/logs
+	mkdir -p var/goaccess/data
+	mkdir -p var/goaccess/report
+	mkdir -p var/ocpdb/logs
+	mkdir -p var/ocpdb/temp
+	mkdir -p var/park-api/logs
+	mkdir -p var/park-api/temp
 
 # Container management
 # --------------------
