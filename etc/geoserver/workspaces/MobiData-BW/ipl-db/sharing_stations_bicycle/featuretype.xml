@@ -1,17 +1,16 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff4</id>
-  <name>scooters_standing_sharing_stations</name>
-  <nativeName>scooter_standing_sharing_stations</nativeName>
+  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff8</id>
+  <name>sharing_stations_bicycle</name>
+  <nativeName>bicycle_sharing_stations</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Scootersharing-Stationen</title>
+  <title>Bikesharing-Stationen</title>
   <keywords>
     <string>features</string>
-    <string>scooter_standing_sharing_stations</string>
-    <string>eScooter\@language=de\;</string>
-    <string>Kick-Scooter\@language=de\;</string>
-    <string>Tretroller\@language=de\;</string>
+    <string>bicycle_sharing_stations</string>
+    <string>Leihrad\@language=de\;</string>
+    <string>Fahrrad\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
@@ -42,15 +41,21 @@
   <metadata>
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
-        <name>scooter_standing_sharing_stations</name>
-        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_scooters_standing_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
-FROM sharing_stations s &#xd;
+        <name>bicycle_sharing_stations</name>
+        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry&#xd;
+FROM sharing_stations s&#xd;
  JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
-WHERE st.num_scooters_standing_available &gt;= 0
+WHERE st.num_bicycles_available &gt;= 0
 </sql>
         <escapeSql>false</escapeSql>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
       </virtualTable>
     </entry>
+    <entry key="cachingEnabled">false</entry>
   </metadata>
   <store class="dataStore">
     <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
@@ -148,7 +153,7 @@ WHERE st.num_scooters_standing_available &gt;= 0
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
-      <binding>org.locationtech.jts.geom.Geometry</binding>
+      <binding>org.locationtech.jts.geom.Point</binding>
       <description>
         <en>Koordinate der Station</en>
       </description>
