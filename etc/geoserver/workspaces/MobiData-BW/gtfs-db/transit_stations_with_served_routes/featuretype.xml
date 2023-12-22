@@ -1,11 +1,12 @@
 <featureType>
   <id>FeatureTypeInfoImpl-24a0a30e:18ad176585a:-7ffa</id>
-  <name>stations_with_served_routes</name>
+  <name>transit_stations_with_served_routes</name>
   <nativeName>stations_with_served_routes</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <abstract>Haltestellen und Bahnhöfe mit den von ihnen bedienten Linien</abstract>
+  <title>Bahnhöfe und Haltestellen</title>
+  <abstract>Bahnhöfe und Haltestellen mit den von ihnen bedienten Linien</abstract>
   <keywords>
     <string>stations_with_served_routes</string>
     <string>features</string>

@@ -1,11 +1,12 @@
 <featureType>
   <id>FeatureTypeInfoImpl--3b38816a:18a8b06ea7a:-7ff4</id>
-  <name>stops</name>
+  <name>transit_stops</name>
   <nativeName>stops</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>stops</title>
+  <title>Haltesteige</title>
+  <abstract>Steigscharfe Haltestellen</abstract>
   <keywords>
     <string>features</string>
     <string>stops</string>
