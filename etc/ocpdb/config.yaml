@@ -1,5 +1,11 @@
-
 SHOW_MAP: false
+
+OPENAPI_DESCRIPTION: 'This service tries to collects chargepoint data.'
+OPENAPI_CONTACT_MAIL: 'mobidatabw-technik@nvbw.de'
+OPENAPI_TOS: 'https://www.mobidata-bw.de/pages/nutzungsbedingungen'
+OPENAPI_SERVERS:
+  - url: https://api.mobidata-bw.de/ocpdb
+    description: production
 
 # So far, we don't have credentials, so we can put REMOTE_SERVERS here
 REMOTE_SERVERS:

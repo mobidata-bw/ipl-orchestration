@@ -7,9 +7,11 @@ PARK_API_CONVERTER:
   # - karlsruhe
   - mannheim
 
+OPENAPI_CONTACT_MAIL: 'mobidatabw-technik@nvbw.de'
+OPENAPI_TOS: 'https://www.mobidata-bw.de/pages/nutzungsbedingungen'
 OPENAPI_SERVERS:
-  - url: https://dev-ipl.mobidata-bw.de/park-api
-    description: staging
+  - url: https://api.mobidata-bw.de/park-api
+    description: production
 
 LOKI_ENABLED: true
 LOKI_URL: http://10.70.172.20:3100/loki/api/v1/push
