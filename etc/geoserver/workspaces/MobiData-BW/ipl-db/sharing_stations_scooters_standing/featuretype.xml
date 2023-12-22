@@ -1,16 +1,17 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff6</id>
-  <name>cargo_bicycle_sharing_stationa</name>
-  <nativeName>cargo_bicycle_sharing_station</nativeName>
+  <id>FeatureTypeInfoImpl--d3e2e11:18c35d543f4:-7ff4</id>
+  <name>sharing_stations_scooters_standing</name>
+  <nativeName>scooter_standing_sharing_stations</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Lasterad-Leihstationen</title>
+  <title>Scootersharing-Stationen</title>
   <keywords>
     <string>features</string>
-    <string>cargo_bicycle_sharing_station</string>
-    <string>Lastenrad\@language=de\;<string>
-    <string>Lastenrad-Leihstationen\@language=de\;<string>
+    <string>scooter_standing_sharing_stations</string>
+    <string>eScooter\@language=de\;</string>
+    <string>Kick-Scooter\@language=de\;</string>
+    <string>Tretroller\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
@@ -41,11 +42,11 @@
   <metadata>
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
-        <name>cargo_bicycle_sharing_station</name>
-        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_cargo_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
+        <name>scooter_standing_sharing_stations</name>
+        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_scooters_standing_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
 FROM sharing_stations s &#xd;
  JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
-WHERE st.num_cargo_bicycles_available &gt;= 0
+WHERE st.num_scooters_standing_available &gt;= 0
 </sql>
         <escapeSql>false</escapeSql>
       </virtualTable>
@@ -147,7 +148,7 @@ WHERE st.num_cargo_bicycles_available &gt;= 0
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
-      <binding>org.locationtech.jts.geom.Geometry</binding>
+      <binding>org.locationtech.jts.geom.Point</binding>
       <description>
         <en>Koordinate der Station</en>
       </description>
