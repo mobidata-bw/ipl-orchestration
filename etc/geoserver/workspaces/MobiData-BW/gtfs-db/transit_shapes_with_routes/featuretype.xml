@@ -1,12 +1,12 @@
 <featureType>
   <id>FeatureTypeInfoImpl--13cd1a5c:18ad207f4e0:-13b3</id>
-  <name>shapes_with_routes</name>
+  <name>transit_shapes_with_routes</name>
   <nativeName>shapes_with_routes</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>shapes_with_routes</title>
-  <abstract>ÖPNV-Linien</abstract>
+  <title>ÖPNV-Linien</title>
+  <abstract>Streckenverläufe der ÖPNV-Linien</abstract>
   <keywords>
     <string>features</string>
     <string>shapes_with_routes</string>
