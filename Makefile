@@ -80,6 +80,13 @@ docker-config:
 docker-ps:
 	$(DOCKER_COMPOSE) ps $(SERVICE)
 
+# Geoserver management
+# --------------------
+
+.PHONY: reload-geoserver
+reload-geoserver:
+	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh
+
 # GTFS data management
 # --------------------
 
