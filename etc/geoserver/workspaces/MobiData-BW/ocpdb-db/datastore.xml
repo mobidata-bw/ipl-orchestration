@@ -27,7 +27,7 @@
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
     <entry key="port">5432</entry>
-    <entry key="passwd">${OCPDB_API_POSTGRES_PASSWORD}</entry>
+    <entry key="passwd">${OCPDB_POSTGRES_PASSWORD}</entry>
     <entry key="min connections">1</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">mdbw</entry>
@@ -39,6 +39,6 @@
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2023-12-15 17:15:03.113 UTC</dateCreated>
-  <dateModified>2023-12-15 17:15:22.773 UTC</dateModified>
+  <dateModified>2023-12-27 16:02:00.000 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
