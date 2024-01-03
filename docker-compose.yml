@@ -107,6 +107,10 @@ services:
       - "traefik.http.services.well-known-uris.loadbalancer.server.port=80"
 
   goaccess:
+    # > profiles defines a list of named profiles for the service to be enabled under. If unassigned, the service is always started but if assigned, it is only started if the profile is activated.
+    # https://github.com/compose-spec/compose-spec/blob/77cc0f9575b560c94ca2a3b94db126c54c9e4759/spec.md#profiles
+    profiles:
+      - import-logs
     networks: [ipl]
     user: *local-user
     image: ${GOACCESS_IMAGE}
@@ -123,11 +127,7 @@ services:
       - ./var/log/goaccess:/srv/goaccess/logs
       # Traefik access logs
       - ./var/log/traefik:/var/log/traefik:ro
-    depends_on:
-      ingress:
-        condition: service_healthy
     entrypoint: ["/opt/import.sh"]
-    restart: unless-stopped
 
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
