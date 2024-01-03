@@ -211,6 +211,9 @@ services:
       LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?missing/empty}
       LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?missing/empty}
       LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?missing/empty}
+      LAMASSU_TIER_API_URL: ${LAMASSU_TIER_API_URL:?missing/empty}
+      LAMASSU_TIER_USER: ${LAMASSU_TIER_USER:?missing/empty}
+      LAMASSU_TIER_PASSWORD: ${LAMASSU_TIER_PASSWORD:?missing/empty}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
       JDK_JAVA_OPTIONS:
