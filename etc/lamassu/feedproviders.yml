@@ -444,7 +444,8 @@ lamassu:
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBC
-      url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
+      # Note: nextbike feeds are accessed via proxy, using http instead of https 
+      url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
       language: en
     # Share Birrer CH
     - systemId: share_birrer_ch
