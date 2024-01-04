@@ -1,0 +1,13 @@
+http:
+  middlewares:
+    allow-cors-including-post:
+      # NOTE: we enable CORS for all services (geoserver, etc) all origins (e.g. www.mobidata.de) 
+      # AND all hosts (api.mobiata-bw.de as well as VPN internal IP addresses)
+      # The CORS headers should be set at the publicly provided mobidata-bw reverse proxy instead.
+      headers:
+        accesscontrolallowmethods:
+          - GET
+          - POST
+          - OPTIONS
+          - HEAD
+        accesscontrolalloworiginlist: "*"

@@ -32,6 +32,8 @@ entryPoints:
         - no-mime-sniff@file
         # enable response compression by default
         - compression@file
+        # enable CORS including POST by default
+        - allow-cors-including-post@file
       # redirect all `http:` requests to `https:`
       # todo: only do this in production
       # redirections:
