@@ -449,8 +449,8 @@ lamassu:
       language: en
     # Share Birrer CH
     - systemId: share_birrer_ch
-      operatorId: NBK:Operator:share_birrer_ag
-      operatorName: Share Birrer A
+      operatorId: SBA:Operator:share_birrer_ag
+      operatorName: Share Birrer AG
       codespace: SBA
       url: "https://www.share-birrer.ch/gbfs/gbfs.json"
       language: de
