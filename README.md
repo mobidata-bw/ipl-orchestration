@@ -86,3 +86,83 @@ make docker-pull
 ### Done
 
 Your installation should now be ready!
+
+Refer to the [*Controlling Docker Compose Services* section](#controlling-docker-compose-services) for details on how to start the IPL services.
+
+
+## Controlling Docker Compose Services
+
+Because IPL is basically a set of [Docker Compose](https://docs.docker.com/compose/) services, it is also operated this way.
+
+> [!IMPORTANT]
+> The following code snippets assume that you have either defined all config values necessary for your local installation in `.env.local` (recommended, check the installation instructions), or `export`ed them as environment variables.
+
+There is a [Makefile](https://en.wikipedia.org/wiki/Make_(software)#Makefiles) which defines shortcuts for useful Compose commands; It assumes that you're using `.env.local`. The equivalent shortcut is shown beneath each “manual” `docker compose` command.
+
+### Start services
+
+If you want to start *all* services and keep them running in your current shell (in the foreground), use `docker compose up`:
+
+```bash
+docker compose --env-file .env --env-file .env.local up
+# or use the shortcut:
+make docker-up
+```
+
+Instead, you can also start an *individual* service (and the services it depends on), or multiple individual services:
+
+```bash
+docker compose --env-file .env --env-file .env.local up lamassu redis
+# or use the shortcut:
+make docker-up SERVICE="lamassu redis"
+```
+
+> [!NOTE]
+> It often makes sense to start all services of one "domain" together because often they rely on each other. For example, if you want to work with the ParkAPI API (`park-api-flask`), we recommend starting all ParkAPI services (`park-api-flask`, `park-api-worker`, etc.).
+
+If you want to run all services in a detached mode (a.k.a. as daemons), use the `--detatch`/`-d` option. This way, you can close you shell session, and they will keep running.
+
+```bash
+docker compose --env-file .env --env-file .env.local up --detach
+# or use the shortcut:
+make docker-up-detached
+```
+
+Of course, you can also run *individual* services in detached mode:
+
+```bash
+docker compose --env-file .env --enf-file .env.local up --detach redis
+# or use the shortcut:
+make docker-up-detached SERVICE="redis"
+```
+
+### Update and restart services
+
+You can pull the latest Docker images (for each service from its respective registry):
+
+```bash
+docker compose --env-file .env --env-file .env.local pull
+# or use the shortcut:
+make docker-pull
+```
+
+As with `docker compose up` (see above), you can also pull *individual* services’ images:
+
+```bash
+docker compose --env-file .env --env-file .env.local pull redis
+# or use the shortcut:
+make docker-pull SERVICE="redis"
+```
+
+To re-run all services with these newly pulled images, use `docker compose down` & `docker compose up` (optionally with `--detached`). Again, if you don’t explicitly specify services, it will restart *all*:
+
+```bash
+docker compose --env-file .env --env-file .env.local down
+docker compose --env-file .env --env-file .env.local up --detached
+# or use the shortcuts:
+make docker-down
+make docker-up-detached
+```
+
+> [!WARNING]
+> `docker compose restart` *does not* take changes to `.env` or `.env.local` into account! It merely restarts the services' containers with the environment variables as when they were originally started. To restart all services with modified/new environment variables, use `down` & `up`, as illustrated above. This should be your default workflow instead.
