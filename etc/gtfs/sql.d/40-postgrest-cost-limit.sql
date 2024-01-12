@@ -1,10 +1,10 @@
 CREATE EXTENSION IF NOT EXISTS plan_filter;
 
 -- Make sure plan_filter is auto-loaded whenever connecting to the current DB.
--- Note: `current_database()` cannot be used in `ALTER DATABASE`, so we use `EXECUTE`.
+-- Note: `current_database()` cannot be used in `ALTER DATABASE`, so we use `EXECUTE` within a helper function.
 -- https://dba.stackexchange.com/a/78381
 
-CREATE FUNCTION _alter_db (db TEXT, param TEXT, val TEXT)
+CREATE FUNCTION pg_temp._alter_db (db TEXT, param TEXT, val TEXT)
 RETURNS void
 AS $$
 	BEGIN
@@ -12,9 +12,8 @@ AS $$
 	END
 $$
 LANGUAGE plpgsql;
--- effectively ALTER DATABASE current_database() SET session_preload_libraries = 'plan_filter';
-SELECT _alter_db(current_database(), 'session_preload_libraries', 'plan_filter');
-DROP FUNCTION _alter_db;
+-- effectively `ALTER DATABASE current_database() SET session_preload_libraries = 'plan_filter';`
+SELECT pg_temp._alter_db(current_database(), 'session_preload_libraries', 'plan_filter');
 
 -- Each configuration parameter exists within a scope.
 -- Configuration parameters like plan_filter.statement_cost_limit that exist in a *more secure* scope than `user` (e.g. `superuser` or `sighup`) *do not* get adapted when changing to a different role (`web_anon`) by impersonating it via `SET ROLE`!
