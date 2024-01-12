@@ -514,6 +514,8 @@ services:
       # contains the latest import's DB name
       - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
       - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
+      # /docker-entrypoint-initdb.d is bitnami/pgbouncer's default directory for custom init scripts.
+      - ./etc/pgbouncer-write-server_fast_close.sh:/docker-entrypoint-initdb.d/write-server_fast_close.sh
     environment:
       # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
       # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
@@ -526,6 +528,10 @@ services:
       # > Most polite method. When a client connects, a server connection will be assigned to it for the whole duration the client stays connected. When the client disconnects, the server connection will be put back into the pool. This is the default method.
       # We hardcode this, because we definitely don't want the other pooling modes.
       PGBOUNCER_POOL_MODE: session
+      # > Disconnect a server in session pooling mode immediately or after the end of the current transaction if it is in “close_needed” mode (set by RECONNECT, RELOAD that changes connection settings, or DNS change), rather than waiting for the session end. […]
+      # > If because of this setting a server connection is closed before the end of the client session, the client connection is also closed. This ensures that the client notices that the session has been interrupted.
+      # > This setting makes connection configuration changes take effect sooner if session pooling and long-running sessions are used. […]
+      PGBOUNCER_SERVER_FAST_CLOSE: '1'
       # todo: remove? should work without 🤔
       # see also https://github.com/bitnami/containers/issues/48636#issuecomment-1722518107
       PGBOUNCER_AUTH_TYPE: md5
