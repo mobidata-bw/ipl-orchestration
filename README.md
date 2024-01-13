@@ -199,18 +199,33 @@ The following table lists all IPL components and their respective Docker Compose
 | HTTP ingress/reverse proxy: admin UI                                                | `traefik`            | ✔︎                    | 8081      | *-*                | allows inspecting Traefik's operating state |
 | [GeoServer](https://geoserver.org)                                                  | `geoserver`          | ✔︎                    | 8600      | `/geoserver`       | serves geospatial data sources via WMS, WFS, WMTS, etc. |
 | [OCPDB](https://github.com/binary-butterfly/ocpdb): API                             | `ocpdb-flask`        | ✔︎                    | 7000      | `/ocpdb`           | aggregates charge point data sources |
+| OCPDB: background worker                                                            | `ocpdb-worker`       | ✔︎                    | *-*       | *-*                | fetches & imports 3rd-party data |
+| OCPDB: initialization script                                                        | `ocpdb-init`         |                      | *-*       | *-*                | runs once on startup |
+| OCPDB: database ([PostgreSQL](https://www.postgresql.org))                          | `ocpdb-db`           | ✔︎                    | *-*       | *-*                |
+| OCPDB: task/message queue ([RabbitMQ](https://www.rabbitmq.com))                    | `ocpdb-rabbitmq`     | ✔︎                    | *-*       | *-*                | |
 | [ParkApi](https://github.com/ParkenDD/park-api-v3): API                             | `park-api-flask`     | ✔︎                    | 7500      | `/park-api`        | aggregates parking lot data sources |
+| ParkAPI: background worker                                                          | `park-api-worker`    | ✔︎                    | *-*       | *-*                | fetches & imports 3rd-party data |
+| ParkAPI: initialization script                                                      | `park-api-init`      |                      | *-*       | *-*                | runs once on startup |
+| ParkAPI: database ([PostgreSQL](https://www.postgresql.org))                        | `park-api-db`        | ✔︎                    | *-*       | *-*                |
+| ParkAPI: task/message queue ([RabbitMQ](https://www.rabbitmq.com))                  | `park-api-rabbitmq`  | ✔︎                    | *-*       | *-*                | |
+| ParkAPI: heartbeat                                                                  | `park-api-heartbeat` | ✔︎                    | *-*       | *-*                | |
 | GBFS: [Lamassu](https://github.com/entur/lamassu)                                   | `lamassu`            | ✔︎                    | 8500      | `/sharing`         | aggregates [GBFS](https://gbfs.org) vehicle sharing data sources |
 | GBFS: Lamassu (admin UI)                                                            | `lamassu`            | ✔︎                    | 9002      | *-*                | allows inspecting Lamassu's operating state |
 | GBFS: Lamassu database ([Redis](https://redis.io))                                  | `redis`              | ✔︎                    | *-*       | *-*                |
+| [Dagster](https://docs.dagster.io/getting-started): task runner                     | `dagster-pipeline`   | ✔︎                    | *-*       | *-*                | runs (custom Python) tasks, collects their logs |
+| Dagster: task scheduler                                                             | `dagster-daemon`     | ✔︎                    | *-*       | *-*                | orchestrates [DAGs](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of tasks |
 | Dagster: UI                                                                         | `dagster-dagit`      | ✔︎                    | 3000      | *-*                | shows logs & results of the scripts |
 | Dagster: database ([PostgreSQL](https://www.postgresql.org))                        | `dagster-postgresql` | ✔︎                    | *-*       | *-*                |
 | [IPL Proxy](https://github.com/mobidata-bw/ipl-proxy)                               | `transformer-proxy`  | ✔︎                    | 8400      | *-*                | on-the-fly patching of HTTP resources from 3rd parties; used by OCPDB, x2gbfs, etc. |
 | GBFS/RadVIS: database ([PostgreSQL](https://www.postgresql.org))                    | `ipl-db`             | ✔︎                    | 5432      | *-*                | stores fetched GBFS & RadVIS data |
 | GTFS: API ([PostgREST](https://postgrest.org/))                                     | `gtfs-api`           | ✔︎                    | 4000      | `/gtfs`            | serves [GTFS](https://gtfs.org/schedule/) data as an API |
 | GTFS: documentation ([Stoplight Elements](https://github.com/stoplightio/elements)) | `gtfs-swagger-ui`    | ✔︎                    | 4001      | `/docs/gtfs`       | UI documenting the GTFS API |
+| GTFS: importer ([`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer)) | `gtfs-importer` |              | *-*       | *-*                | downloads, cleans & imports GTFS into the database; started by a Dagster task |
 | GTFS: database ([PostgreSQL](https://www.postgresql.org))                           | `gtfs-db`            | ✔︎                    | *-*       | *-*                | stores imported GTFS data |
 | database proxy ([pgbouncer](https://www.pgbouncer.org))                             | `pgbouncer`          | ✔︎                    | 6432      | *-*                | proxies services' connections to databases (`dagster-postgresql`, `gtfs-db`, etc.) |
 | static data: web server ([Caddy](https://caddyserver.com))                          | `caddy`              | ✔︎                    | 6999      | `/datasets`        | serves static datasets |
+| meta files: web server ([Caddy](https://caddyserver.com))                           | `well-known-uris`    | ✔︎                    | 6998      | `/.well-known`, `/robots.txt`, `/favicon.ico` | miscellaneous files, not datasets |
+| ingress: requests log importer ([GoAccess](https://goaccess.io))                    | `goaccess`           |                      | *-*       | *-*                | computes request statistics from the ingress requests log; started manually/externally |
+| ingress: requests statistics                                                        | `caddy`              | ✔︎                    | 8082      | *-*                | serves the Traefik request statistics |
 
 todo: explain monitoring
