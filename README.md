@@ -166,3 +166,50 @@ make docker-up-detached
 
 > [!WARNING]
 > `docker compose restart` *does not* take changes to `.env` or `.env.local` into account! It merely restarts the services' containers with the environment variables as when they were originally started. To restart all services with modified/new environment variables, use `down` & `up`, as illustrated above. This should be your default workflow instead.
+
+
+## Architecture
+
+[`docker-compose.yml`](docker-compose.yml) is the core of `ipl-orchestration`; It defines, configures and connects [Compose](https://docs.docker.com/compose/) services.
+
+Most important and/or opinionated (read: MobiData-BW-specific) configuration parameters are abstracted into [Compose variables](https://docs.docker.com/compose/environment-variables/) which are defined in `.env` and `.env.local`.
+
+The subdirectories mimic the a [typical Unix filesystem structure](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard):
+
+- `etc` contains config files with whatever configuration is *not* passed into services as environment variables. These config files are mounted into the respective containers.
+- `bin` contains some helper commands used to manage the running system, e.g. for reloading the configuration of a service. Most of them are mounted into the respective containers.
+- `var` mostly contains data that services create during runtime: downloaded/stored data, various logs files, lockfiles, etc. Most of `var` is Git-ignored; A notable exception is `var/www`, which contains static datasets served by the `caddy` service (see below).
+
+### Port Usage and public HTTP paths
+
+`ipl-orchestration` uses [Docker's bridge networking](https://docs.docker.com/network/network-tutorial-standalone/). We also make most services accessible to the outside world through our ingress/reverse proxy service (see `ingress` below).
+
+This means that each Compose service that exposes a port has
+- a port on the container's IP address (*container port*);
+- a port on the host's IP address (*host port*);
+- an HTTP path on the ingress (*ingress path*), if configured.
+
+### Compose Services
+
+The following table lists all IPL components and their respective Docker Compose services.
+
+| component & functionality                                                           | Compose service      | host port | public HTTP path  |
+|-------------------------------------------------------------------------------------|----------------------|-----------|-------------------|
+| HTTP ingress/reverse proxy ([Traefik Proxy](https://doc.traefik.io/traefik/))       | `traefik`            | 8080      | *-*               |
+| HTTP ingress/reverse proxy (Traefik admin UI)                                       | `traefik`            | 8081      | *-*               |
+| [GeoServer](https://geoserver.org)                                                  | `geoserver`          | 8600      | `/geoserver`      |
+| [Open Charge Point Database (OCPDB)](https://github.com/binary-butterfly/ocpdb)     | `ocpdb-flask`        | 7000      | `/ocpdb`          |
+| OCPDB: Datenbank ([PostgreSQL](https://www.postgresql.org))                         | `ocpdb-db`           | *-*       | *-*               |
+| [ParkApi](https://github.com/mobidata-bw/park-api-v3)                               | `park-api-flask`     | 7500      | `/park-api`       |
+| GBFS: [Lamassu](https://github.com/entur/lamassu)                                   | `lamassu`            | 8500      | `/sharing`        |
+| GBFS: Lamassu (admin UI)                                                            | `lamassu`            | 9002      | *-*               |
+| GBFS: Lamassu Datenbank ([Redis](https://redis.io))                                 | `redis`              | *-*       | *-*               |
+| GBFS: Import ([Dagster](https://docs.dagster.io/getting-started) webserver)         | `dagster-dagit`      | 3000      | *-* (internal)    |
+| GBFS: Import ([PostgreSQL](https://www.postgresql.org))                             | `dagster-postgresql` | *-*       | *-*               |
+| GBFS: Import ([IPL Proxy](https://github.com/mobidata-bw/ipl-proxy))                | `transformer-proxy`  | 8400      | *-* (internal)    |
+| GBFS/RadVIS: Datenbank ([PostgreSQL](https://www.postgresql.org))                   | `ipl-db`             | 5432      | *-*               |
+| GTFS: API ([PostGrest](https://postgrest.org/))                                     | `gtfs-api`           | 4000      | `/gtfs`           |
+| GTFS: Dokumentation ([SwaggerUI](https://swagger.io/tools/swagger-ui/))             | `gtfs-swagger-ui`    | 4001      | `/docs/gtfs`      |
+| GTFS: Datenbank ([PostgreSQL](https://www.postgresql.org))                          | `gtfs-db`            | *-*       | *-*               |
+| GBFS/GTFS: Datenbank-Proxy ([pgbouncer](https://www.pgbouncer.org))                 | `pgbouncer`          | 6432      | *-*               |
+| statische Daten: Webserver ([Caddy](https://caddyserver.com))                       | `caddy`              | 6999      | `/datasets`       |
