@@ -193,23 +193,24 @@ This means that each Compose service that exposes a port has
 
 The following table lists all IPL components and their respective Docker Compose services.
 
-| component & functionality                                                           | Compose service      | host port | public HTTP path  |
-|-------------------------------------------------------------------------------------|----------------------|-----------|-------------------|
-| HTTP ingress/reverse proxy ([Traefik Proxy](https://doc.traefik.io/traefik/))       | `traefik`            | 8080      | *-*               |
-| HTTP ingress/reverse proxy (Traefik admin UI)                                       | `traefik`            | 8081      | *-*               |
-| [GeoServer](https://geoserver.org)                                                  | `geoserver`          | 8600      | `/geoserver`      |
-| [Open Charge Point Database (OCPDB)](https://github.com/binary-butterfly/ocpdb)     | `ocpdb-flask`        | 7000      | `/ocpdb`          |
-| OCPDB: Datenbank ([PostgreSQL](https://www.postgresql.org))                         | `ocpdb-db`           | *-*       | *-*               |
-| [ParkApi](https://github.com/mobidata-bw/park-api-v3)                               | `park-api-flask`     | 7500      | `/park-api`       |
-| GBFS: [Lamassu](https://github.com/entur/lamassu)                                   | `lamassu`            | 8500      | `/sharing`        |
-| GBFS: Lamassu (admin UI)                                                            | `lamassu`            | 9002      | *-*               |
-| GBFS: Lamassu Datenbank ([Redis](https://redis.io))                                 | `redis`              | *-*       | *-*               |
-| GBFS: Import ([Dagster](https://docs.dagster.io/getting-started) webserver)         | `dagster-dagit`      | 3000      | *-* (internal)    |
-| GBFS: Import ([PostgreSQL](https://www.postgresql.org))                             | `dagster-postgresql` | *-*       | *-*               |
-| GBFS: Import ([IPL Proxy](https://github.com/mobidata-bw/ipl-proxy))                | `transformer-proxy`  | 8400      | *-* (internal)    |
-| GBFS/RadVIS: Datenbank ([PostgreSQL](https://www.postgresql.org))                   | `ipl-db`             | 5432      | *-*               |
-| GTFS: API ([PostGrest](https://postgrest.org/))                                     | `gtfs-api`           | 4000      | `/gtfs`           |
-| GTFS: Dokumentation ([SwaggerUI](https://swagger.io/tools/swagger-ui/))             | `gtfs-swagger-ui`    | 4001      | `/docs/gtfs`      |
-| GTFS: Datenbank ([PostgreSQL](https://www.postgresql.org))                          | `gtfs-db`            | *-*       | *-*               |
-| GBFS/GTFS: Datenbank-Proxy ([pgbouncer](https://www.pgbouncer.org))                 | `pgbouncer`          | 6432      | *-*               |
-| statische Daten: Webserver ([Caddy](https://caddyserver.com))                       | `caddy`              | 6999      | `/datasets`       |
+| component & functionality                                                           | Compose service      | permanently running? | host port | public HTTP path  | notes |
+|-------------------------------------------------------------------------------------|----------------------|----------------------|----------:|--------------------|-------|
+| HTTP ingress/reverse proxy ([Traefik Proxy](https://doc.traefik.io/traefik/))       | `traefik`            | ✔︎                    | 8080      | *-*                | exposes all other services via HTTP |
+| HTTP ingress/reverse proxy: admin UI                                                | `traefik`            | ✔︎                    | 8081      | *-*                | allows inspecting Traefik's operating state |
+| [GeoServer](https://geoserver.org)                                                  | `geoserver`          | ✔︎                    | 8600      | `/geoserver`       | serves geospatial data sources via WMS, WFS, WMTS, etc. |
+| [OCPDB](https://github.com/binary-butterfly/ocpdb): API                             | `ocpdb-flask`        | ✔︎                    | 7000      | `/ocpdb`           | aggregates charge point data sources |
+| [ParkApi](https://github.com/ParkenDD/park-api-v3): API                             | `park-api-flask`     | ✔︎                    | 7500      | `/park-api`        | aggregates parking lot data sources |
+| GBFS: [Lamassu](https://github.com/entur/lamassu)                                   | `lamassu`            | ✔︎                    | 8500      | `/sharing`         | aggregates [GBFS](https://gbfs.org) vehicle sharing data sources |
+| GBFS: Lamassu (admin UI)                                                            | `lamassu`            | ✔︎                    | 9002      | *-*                | allows inspecting Lamassu's operating state |
+| GBFS: Lamassu database ([Redis](https://redis.io))                                  | `redis`              | ✔︎                    | *-*       | *-*                |
+| Dagster: UI                                                                         | `dagster-dagit`      | ✔︎                    | 3000      | *-*                | shows logs & results of the scripts |
+| Dagster: database ([PostgreSQL](https://www.postgresql.org))                        | `dagster-postgresql` | ✔︎                    | *-*       | *-*                |
+| [IPL Proxy](https://github.com/mobidata-bw/ipl-proxy)                               | `transformer-proxy`  | ✔︎                    | 8400      | *-*                | on-the-fly patching of HTTP resources from 3rd parties; used by OCPDB, x2gbfs, etc. |
+| GBFS/RadVIS: database ([PostgreSQL](https://www.postgresql.org))                    | `ipl-db`             | ✔︎                    | 5432      | *-*                | stores fetched GBFS & RadVIS data |
+| GTFS: API ([PostgREST](https://postgrest.org/))                                     | `gtfs-api`           | ✔︎                    | 4000      | `/gtfs`            | serves [GTFS](https://gtfs.org/schedule/) data as an API |
+| GTFS: documentation ([Stoplight Elements](https://github.com/stoplightio/elements)) | `gtfs-swagger-ui`    | ✔︎                    | 4001      | `/docs/gtfs`       | UI documenting the GTFS API |
+| GTFS: database ([PostgreSQL](https://www.postgresql.org))                           | `gtfs-db`            | ✔︎                    | *-*       | *-*                | stores imported GTFS data |
+| database proxy ([pgbouncer](https://www.pgbouncer.org))                             | `pgbouncer`          | ✔︎                    | 6432      | *-*                | proxies services' connections to databases (`dagster-postgresql`, `gtfs-db`, etc.) |
+| static data: web server ([Caddy](https://caddyserver.com))                          | `caddy`              | ✔︎                    | 6999      | `/datasets`        | serves static datasets |
+
+todo: explain monitoring
