@@ -1,0 +1,5 @@
+# > XML:
+# >   type: data
+# https://github.com/github-linguist/linguist/blob/ee9119e70111d46842788b2bc1666ec1d1ea9e2a/lib/linguist/languages.yml#L7755-L7756
+# > linguist-detectable – Included in stats, even if language's type is data or prose
+workspaces/*/styles/*.sld linguist-language=XML linguist-detectable
