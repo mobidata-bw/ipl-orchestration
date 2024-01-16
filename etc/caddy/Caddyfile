@@ -3,7 +3,11 @@
 }
 
 http://:80 {
-  root * /var/www
+  # IPL assets
+  handle_path /datasets/* {
+    root * /var/www/datasets
+  }
+
   encode zstd gzip
   file_server {
     precompressed gzip zstd

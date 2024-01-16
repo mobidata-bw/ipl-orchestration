@@ -154,7 +154,8 @@ services:
     image: ${CADDY_IMAGE}
     restart: unless-stopped
     ports:
-      # public IPL assets
+      # public:
+      # - IPL assets
       - 6999:80
       # GoAccess access statistics reports
       - "${GOACCESS_PORT:?'missing/empty env var $GOACCESS_PORT'}:81"
@@ -164,15 +165,14 @@ services:
       # data stored by Caddy itself: certificates, parsed & normalized config, etc.
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
+
       # public IPL assets (served on :80)
-      - ./var/www/:/var/www:ro
+      - ./var/www/datasets:/var/www/datasets:ro
       # GoAccess access statistics reports (served on :81)
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
-      - "traefik.http.routers.caddy.middlewares=caddy-middleware-1"
-      - "traefik.http.middlewares.caddy-middleware-1.stripprefix.prefixes=/datasets"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
 
   # This service requests non-standard sharing provider APIs and generates
