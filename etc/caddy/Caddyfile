@@ -3,6 +3,11 @@
 }
 
 http://:80 {
+  # index page
+  handle / {
+    root * /var/www/index-page
+  }
+
   # IPL assets
   handle_path /datasets/* {
     root * /var/www/datasets

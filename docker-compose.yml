@@ -141,6 +141,7 @@ services:
     restart: unless-stopped
     ports:
       # public:
+      # - index page
       # - IPL assets
       # - well-known URIs (security.txt, favicon.ico, etc.)
       - 6999:80
@@ -153,6 +154,8 @@ services:
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
 
+      # index page (served on :80)
+      - ./etc/index-page:/var/www/index-page:ro
       # public IPL assets (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
@@ -161,7 +164,7 @@ services:
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
+      - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
 
   # This service requests non-standard sharing provider APIs and generates
