@@ -52,6 +52,9 @@ docker-up-detached: init
 .PHONY: docker-down
 docker-down:
 	$(DOCKER_COMPOSE) down --remove-orphans --timeout 60 $(SERVICE)
+.PHONY: docker-kill
+docker-kill:
+	$(DOCKER_COMPOSE) kill --remove-orphans $(SERVICE)
 
 # Restart all containers (default) or only the containers specified by SERVICE (e.g. `make docker-restart SERVICE=redis`)
 .PHONY: docker-restart
