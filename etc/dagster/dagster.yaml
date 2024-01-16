@@ -1,6 +1,11 @@
 telemetry:
   enabled: false
 
+# from https://github.com/dagster-io/dagster/releases/tag/1.1.11:
+# > When running Dagit on your local machine, a prompt will now appear that allows you to […] receive Dagster security updates or subscribe to the Dagster newsletter. This prompt can be […] permanently disabled by adding the following to your dagster.yaml file […].
+nux:
+  enabled: false
+
 scheduler:
   module: dagster.core.scheduler
   class: DagsterDaemonScheduler
