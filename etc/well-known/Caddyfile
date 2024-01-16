@@ -1,6 +1,6 @@
 http://:80 {
 	root * /var/www
-	# The brotli (.br) encoded is not included in the standard caddy distribution.
+	# The brotli (.br) encoding is not included in the standard caddy distribution.
 	encode zstd gzip
 
 	handle /robots.txt {
