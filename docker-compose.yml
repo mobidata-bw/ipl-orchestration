@@ -92,20 +92,6 @@ services:
       retries: 10
     restart: unless-stopped
 
-  well-known-uris:
-    networks: [ipl]
-    image: ${CADDY_IMAGE}
-    restart: unless-stopped
-    ports:
-      - 6998:80
-    volumes:
-      - ./etc/well-known/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./etc/well-known/www:/var/www:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.well-known-uris.rule=PathPrefix(`/.well-known/`) || Path(`/robots.txt`)"
-      - "traefik.http.services.well-known-uris.loadbalancer.server.port=80"
-
   goaccess:
     # > profiles defines a list of named profiles for the service to be enabled under. If unassigned, the service is always started but if assigned, it is only started if the profile is activated.
     # https://github.com/compose-spec/compose-spec/blob/77cc0f9575b560c94ca2a3b94db126c54c9e4759/spec.md#profiles
@@ -156,6 +142,7 @@ services:
     ports:
       # public:
       # - IPL assets
+      # - well-known URIs (security.txt, favicon.ico, etc.)
       - 6999:80
       # GoAccess access statistics reports
       - "${GOACCESS_PORT:?'missing/empty env var $GOACCESS_PORT'}:81"
@@ -168,11 +155,13 @@ services:
 
       # public IPL assets (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
+      # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
+      - ./etc/well-known:/var/www/well-known:ro
       # GoAccess access statistics reports (served on :81)
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`)"
+      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
 
   # This service requests non-standard sharing provider APIs and generates
