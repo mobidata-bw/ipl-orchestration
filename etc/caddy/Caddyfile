@@ -12,6 +12,9 @@ http://:80 {
   handle /robots.txt {
     root * /var/www/well-known
   }
+  handle /favicon.ico {
+    root * /var/www/well-known
+  }
   handle_path /.well-known/* {
     root * /var/www/well-known
   }

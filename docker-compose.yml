@@ -161,7 +161,7 @@ services:
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`)"
+      - "traefik.http.routers.caddy.rule=PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
 
   # This service requests non-standard sharing provider APIs and generates
