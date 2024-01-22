@@ -2,7 +2,8 @@ PARK_API_CONVERTER:
   - ulm
   - freiburg
   - heidelberg
-  - heilbronn
+  # Disable Heilbronn as long as legal status is unclear
+  # - heilbronn
   # Karlsruhe currently fails, see https://github.com/ParkenDD/ParkAPI2-sources/issues/40
   # - karlsruhe
   - mannheim
