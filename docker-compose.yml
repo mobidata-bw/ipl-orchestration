@@ -507,8 +507,6 @@ services:
       # contains the latest import's DB name
       - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
       - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
-      # /docker-entrypoint-initdb.d is bitnami/pgbouncer's default directory for custom init scripts.
-      - ./etc/pgbouncer-write-server_fast_close.sh:/docker-entrypoint-initdb.d/write-server_fast_close.sh
     environment:
       # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
       # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
