@@ -739,6 +739,19 @@ services:
   park-api-rabbitmq:
     <<: *generic-rabbitmq
 
+  sftp:
+    image: ${SFTP_IMAGE}
+    networks: [ipl]
+    ports:
+      - "${SFTP_PORT}:22"
+    volumes:
+      - ./etc/sftp/users.conf:/etc/sftp/users.conf:ro
+      - ./etc/sftp/ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key:ro
+      - ./etc/sftp/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro
+      - ./etc/sftp/polizeibw/keys:/home/polizeibw/.ssh/keys:ro
+      - ./var/traffic:/home/polizeibw/upload
+    restart: unless-stopped
+
 networks:
   ipl:
     driver: bridge

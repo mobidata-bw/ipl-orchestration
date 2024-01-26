@@ -7,6 +7,7 @@ Thumbs.db
 /etc/dagster/logs
 /etc/park-api/config.secrets.yaml
 /etc/ocpdb/config.secrets.yaml
+/etc/sftp
 
 /var
 

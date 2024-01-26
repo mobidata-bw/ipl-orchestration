@@ -12,8 +12,19 @@ PWD :=  $(abspath $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 .PHONY: all
 all: docker-up
 
+# SFTP server config
+etc/sftp/users.conf:
+	mkdir -p etc/sftp
+	touch etc/sftp/users.conf
+etc/sftp/ssh_host_ed25519_key:
+	mkdir -p etc/sftp
+	ssh-keygen -f etc/sftp/ssh_host_ed25519_key -t ed25519 -N '' -C 'MobiData BW SFTP server' -q
+etc/sftp/ssh_host_rsa_key:
+	mkdir -p etc/sftp
+	ssh-keygen -f etc/sftp/ssh_host_rsa_key -t rsa -b 4096 -N '' -C 'MobiData BW SFTP server' -q
+
 .PHONY: init
-init:
+init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_key
 	mkdir -p var/gtfs
 	touch -a var/gtfs/pgbouncer-dsn.txt
 	mkdir -p var/geoserver/datadir
@@ -26,6 +37,7 @@ init:
 	mkdir -p var/ocpdb/temp
 	mkdir -p var/park-api/logs
 	mkdir -p var/park-api/temp
+	mkdir -p var/traffic
 
 # Container management
 # --------------------
@@ -45,7 +57,7 @@ docker-up: init
 .PHONY: docker-up-detached
 docker-up-detached: init
 	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 120 $(SERVICE)
-	# Reload geoserver config. Might fail with service "geoserver"
+	# Reload geoserver config. Might fail with service "geoserver" 
 	# is not running if geoserver has not yet been started. This can be ignored
 	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh || true
 
