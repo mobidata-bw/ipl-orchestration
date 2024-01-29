@@ -4,6 +4,7 @@ set -e
 set -o pipefail
 
 tz="${TZ:?missing/empty \$TZ}"
+keep_last="${GOACCESS_KEEP_LAST_DAYS:?missing/empty \$GOACCESS_KEEP_LAST_DAYS}"
 
 # When this script is run by logrotate, it has to run on the just-rotated (old) log file, which *is not* called access.log (because the latter is already the new log file), so we provide a way to specify the file.
 traefik_access_log_file="/var/log/traefik/${TRAEFIK_ACCESS_LOG_FILENAME:-access.log}"
@@ -20,4 +21,4 @@ echo "importing Traefik access logs from $traefik_access_log_file into GoAccess"
 cat "$traefik_access_log_file" \
   | (grep -E '"entryPointName":\s*"web"' || true) \
   | (grep -v -E '"ClientHost":\s*"10.70.(171|172).20"' || true) \
-  | goaccess --config-file=/etc/goaccess.conf --no-global-config -o /srv/goaccess/report/index.html --restore --persist --tz="$tz" -
+  | goaccess --config-file=/etc/goaccess.conf --no-global-config -o /srv/goaccess/report/index.html --restore --persist --tz="$tz" --keep-last="$keep_last" -

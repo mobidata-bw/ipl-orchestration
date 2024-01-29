@@ -102,6 +102,7 @@ services:
     image: ${GOACCESS_IMAGE}
     environment:
       - TZ=${TZ:?missing/empty}
+      - GOACCESS_KEEP_LAST_DAYS=${GOACCESS_KEEP_LAST_DAYS:?missing/empty}
     volumes:
       # entrypoint script
       - ./bin/goaccess/import.sh:/opt/import.sh:ro
