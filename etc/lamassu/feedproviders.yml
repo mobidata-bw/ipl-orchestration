@@ -69,20 +69,6 @@ lamassu:
         properties:
           DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
           DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
-    - systemId: bird-ulm
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/ulm/gbfs.json"
-      language: en
-    - systemId: donkey_freiburg
-      operatorId: DKY:Operator:donkey
-      operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_freiburg/gbfs.json"
-      language: en
-      # Note: nextbike feeds are accessed via proxy, using http instead of https 
     - systemId: nextbike_df
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
