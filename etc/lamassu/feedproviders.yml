@@ -339,6 +339,12 @@ lamassu:
       codespace: BRD
       url: "https://mds.bird.co/gbfs/v2/public/bulle/gbfs.json"
       language: en
+    - systemId: bird-kloten
+      operatorId: BRD:Operator:bird
+      operatorName: bird
+      codespace: BRD
+      url: "https://mds.bird.co/gbfs/v2/public/kloten/gbfs.json"
+      language: en
     - systemId: bird-uster
       operatorId: BRD:Operator:bird
       operatorName: bird
@@ -357,6 +363,37 @@ lamassu:
       codespace: BRD
       url: "https://mds.bird.co/gbfs/v2/public/zurich/gbfs.json"
       language: en
+    ## Bolt CH
+    - systemId: bolt_basel
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_basel/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: bolt_winterthur
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_winterthur/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: bolt_zurich
+      operatorId: BLT:Operator:bolt
+      operatorName: Bolt
+      codespace: BLT
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_zurich/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
     ## Donkey CH
     - systemId: donkey_ge
       operatorId: DKY:Operator:donkey
@@ -401,18 +438,48 @@ lamassu:
       url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
       language: en
     # Lime CH
+    - systemId: lime_basel
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: LME
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_basel/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
     - systemId: lime_opfikon
       operatorId: LME:Operator:lime
       operatorName: Lime
-      codespace: DKY
+      codespace: LME
       url: "https://data.lime.bike/api/partners/v2/gbfs/opfikon/gbfs.json"
       language: en
-    - systemId: lime_zu
+    - systemId: lime_uster
       operatorId: LME:Operator:lime
       operatorName: Lime
-      codespace: DKY
+      codespace: LME
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_uster/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: lime_zug
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: LME
       url: "https://data.lime.bike/api/partners/v2/gbfs/zug/gbfs.json"
       language: en
+    - systemId: lime_zurich
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: LME
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_zurich/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
     # Link CH
     # - systemId: link_zurich
       # operatorId: LNK:Operator:link
@@ -433,6 +500,54 @@ lamassu:
       # Note: nextbike feeds are accessed via proxy, using http instead of https 
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
       language: en
+    # PubliBike CH
+    - systemId: publibike_ch
+      operatorId: PIB:Operator:publibike
+      operatorName: PubliBike
+      codespace: PIB
+      url: "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
+      language: en
+    - systemId: velospot_ch
+      operatorId: PIB:Operator:velospot
+      operatorName: Velospot
+      codespace: PIB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/velospot/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    # Pick-e-Bike CH
+    - systemId: pickebike_aubonne
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_aubonne/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: pickebike_basel
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_basel/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: pickebike_fribourg
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_fribourg/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
     # Share Birrer CH
     - systemId: share_birrer_ch
       operatorId: SBA:Operator:share_birrer_ag
@@ -440,6 +555,129 @@ lamassu:
       codespace: SBA
       url: "https://www.share-birrer.ch/gbfs/gbfs.json"
       language: de
+    # Tier CH
+    - systemId: tier_basel
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_basel/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: tier_bern
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_bern/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: tier_rotkreuz
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_rotkreuz/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: tier_stgallen
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_stgallen/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: tier_winterthur
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_winterthur/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: tier_zurich
+      operatorId: TIE:Operator:tier
+      operatorName: Tier
+      codespace: TIE
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_zurich/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    # VOI Scooter
+    - systemId: voi_ch
+      operatorId: VOI:Operator:voi
+      operatorName: VOI
+      codespace: VOI
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/voiscooters.com/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    # Others CH
+    - systemId: liemobil_liechtenstein
+      operatorId: LIM:Operator:liemobil
+      operatorName: LIEmobil
+      codespace: LIM
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/liemobil_liechtenstein/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: zem_ch
+      operatorId: ZEM:Operator:zem
+      operatorName: 2EM Car Sharing
+      codespace: ZEM
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/2em_cars/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: mobility_ch
+      operatorId: MOB:Operator:mobility
+      operatorName: Mobility
+      codespace: MOB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: edrivecarsharing_ch
+      operatorId: EDC:Operator:edrivecarsharing
+      operatorName: edrive carsharing
+      codespace: EDC
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/edrivecarsharing/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
+    - systemId: carvelo2go_ch
+      operatorId: CVG:Operator:carvelo2go
+      operatorName: carvelo eCargo-Bike Sharing
+      codespace: CVG
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/carvelo2go/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: mobidatabw-ipl@nvbw.de
     # Feeds FR
     # Bird FR
     - systemId: bird-chalonsenchampagne
