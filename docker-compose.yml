@@ -143,7 +143,7 @@ services:
     ports:
       # public:
       # - index page
-      # - IPL assets
+      # - IPL assets, e.g. traffic data
       # - well-known URIs (security.txt, favicon.ico, etc.)
       - 6999:80
       # GoAccess access statistics reports
@@ -157,7 +157,7 @@ services:
 
       # index page (served on :80)
       - ./etc/index-page:/var/www/index-page:ro
-      # public IPL assets (served on :80)
+      # public IPL assets, e.g. traffic data (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
       - ./etc/well-known:/var/www/well-known:ro
@@ -749,7 +749,7 @@ services:
       - ./etc/sftp/ssh_host_ed25519_key:/etc/ssh/ssh_host_ed25519_key:ro
       - ./etc/sftp/ssh_host_rsa_key:/etc/ssh/ssh_host_rsa_key:ro
       - ./etc/sftp/polizeibw/keys:/home/polizeibw/.ssh/keys:ro
-      - ./var/traffic:/home/polizeibw/upload
+      - ./var/www/datasets/traffic/incidents-bw:/home/polizeibw/upload
     restart: unless-stopped
 
 networks:
