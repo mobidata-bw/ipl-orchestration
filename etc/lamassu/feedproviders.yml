@@ -373,7 +373,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: bolt_winterthur
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
@@ -383,7 +383,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: bolt_zurich
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
@@ -393,7 +393,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## Donkey CH
     - systemId: donkey_ge
       operatorId: DKY:Operator:donkey
@@ -447,7 +447,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: lime_opfikon
       operatorId: LME:Operator:lime
       operatorName: Lime
@@ -463,7 +463,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: lime_zug
       operatorId: LME:Operator:lime
       operatorName: Lime
@@ -479,7 +479,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Link CH
     # - systemId: link_zurich
       # operatorId: LNK:Operator:link
@@ -516,7 +516,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Pick-e-Bike CH
     - systemId: pickebike_aubonne
       operatorId: PEB:Operator:pickebike
@@ -527,7 +527,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: pickebike_basel
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
@@ -537,7 +537,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: pickebike_fribourg
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
@@ -547,7 +547,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Share Birrer CH
     - systemId: share_birrer_ch
       operatorId: SBA:Operator:share_birrer_ag
@@ -565,7 +565,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_bern
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -575,7 +575,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_rotkreuz
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -585,7 +585,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_stgallen
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -595,7 +595,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_winterthur
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -605,7 +605,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_zurich
       operatorId: TIE:Operator:tier
       operatorName: Tier
@@ -615,7 +615,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # VOI Scooter
     - systemId: voi_ch
       operatorId: VOI:Operator:voi
@@ -626,7 +626,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Others CH
     - systemId: liemobil_liechtenstein
       operatorId: LIM:Operator:liemobil
@@ -637,7 +637,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: zem_ch
       operatorId: ZEM:Operator:zem
       operatorName: 2EM Car Sharing
@@ -647,7 +647,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
             # invaiid feed
             #    - systemId: mobility_ch
             #      operatorId: MOB:Operator:mobility
@@ -658,7 +658,7 @@ lamassu:
             #      authentication:
             #        scheme: HTTP_HEADERS
             #        properties:
-            #          Authorization: mobidatabw-ipl@nvbw.de
+            #          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: edrivecarsharing_ch
       operatorId: EDC:Operator:edrivecarsharing
       operatorName: edrive carsharing
@@ -668,7 +668,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: carvelo2go_ch
       operatorId: CVG:Operator:carvelo2go
       operatorName: carvelo eCargo-Bike Sharing
@@ -678,7 +678,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization: mobidatabw-ipl@nvbw.de
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Feeds FR
     # Bird FR
     - systemId: bird-chalonsenchampagne
