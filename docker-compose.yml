@@ -401,6 +401,9 @@ services:
       - IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
       # directory where datasets should stored for publishing (Note: should be mounted as volume)
       - WWW_ROOT_DIR=/var/www/
+      # RadVIS Download credentials
+      - RADVIS_WFS_USER=${RADVIS_WFS_USER:?missing/empty}
+      - RADVIS_WFS_PASSWORD=${RADVIS_WFS_PASSWORD:?missing/empty}
     volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
