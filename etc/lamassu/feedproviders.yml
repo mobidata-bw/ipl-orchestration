@@ -93,21 +93,12 @@ lamassu:
       codespace: NBV
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/gbfs.json"
       language: de
-      # Offenburg currently not available(?). Request sent to nextbike 2023-07-25
-    #  - systemId: nextbike_dl
-    #    operatorId: NBK:Operator:nextbike
-    #    operatorName: Nextbike
-    #    codespace: NBK
-    #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_dl/gbfs.json"
-    #    language: de
-    # Lahr currently not available(?). Request sent to nextbike 2023-07-25
-    #  - systemId: nextbike_lr
-    #    operatorId: NBK:Operator:nextbike
-    #    operatorName: Nextbike
-    #    codespace: NBK
-    #    url: "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_lr/gbfs.json"
-    #    language: de
-    # Bolt DE
+    - systemId: nextbike_eh
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBE
+      url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_eh/gbfs.json"
+      language: de
     - systemId: bolt_karlsruhe
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
