@@ -153,11 +153,54 @@ lamassu:
       codespace: YOO
       url: "https://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
       language: en
+    # Zeus DE
     - systemId: zeus_freiburg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
+      language: en
+    - systemId: zeus_heilbronn
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/heilbronn/gbfs.json"
+      language: en
+    - systemId: zeus_konstanz
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/konstanz/gbfs.json"
+      language: en
+    - systemId: zeus_ludwigsburg
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
+      language: en
+    - systemId: zeus_pforzheim
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/pforzheim/gbfs.json"
+      language: en
+    - systemId: zeus_schwabisch_gmund
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/schwabisch%20gmund/gbfs.json"
+      language: en
+    - systemId: zeus_tubingen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/tubingen/gbfs.json"
+      language: en
+    - systemId: zeus_villingen_schwenningen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
       language: en
     # Tier DE
     - systemId: tier_stuttgart
