@@ -102,6 +102,11 @@ docker-ps:
 reload-geoserver:
 	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh
 
+# Syncs Geoserver's var workspace dir to etc, excluding the overwritten datastore.xml
+.PHONY: prepare-geoserver-workspace-for-commit
+prepare-geoserver-workspace-for-commit:
+	rsync -av --exclude='*/datastore.xml' var/geoserver/datadir/workspaces etc/geoserver
+
 # GTFS data management
 # --------------------
 
