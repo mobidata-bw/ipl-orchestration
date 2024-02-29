@@ -19,7 +19,7 @@
 		</span> Integrationsplattform (IPL)
 	</h1>
 
-	Hier werden Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken und Ladesäulen gebündelt und über offene APIs bereitstellt.</p>
+	Hier werden Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen und Verkehrsmeldungen gebündelt und über offene APIs bereitstellt.</p>
 
 	<p><strong>Die Endpunkte der Integrationsplattform benötigen keine Zugangsdaten und sind für alle offen verfügbar.</strong></p>
 
@@ -33,7 +33,7 @@
 
 	<h2>Sharing-Daten</h2>
 
-	<p>Daten von Leihfahrrädern, Autos und E-Scootern werden über den gebündelten <a href="/sharing/gbfs">GBFS-Feed <code>/sharing/gbfs</code></a> publiziert, der seinerseits GBFS-Feeds für die einzelnen Provider aggregiert.</p>
+	<p>Daten von Autos, Leihfahrrädern, Lastenrädern und E-Scootern werden über den gebündelten <a href="/sharing/gbfs">GBFS-Feed <code>/sharing/gbfs</code></a> publiziert, der seinerseits GBFS-Feeds für die einzelnen Provider aggregiert.</p>
 
 	<h2>Parkdaten</h2>
 
@@ -45,6 +45,10 @@
 
 	<p>Ladesäulendaten werden über die <a href="/ocpdb/documentation/public.html">Open ChargePoint DataBase (OCPDB) unter<code>/ocpdb/api</code></a> publiziert, wobei der Endpunkt <a href="/ocpdb/api/public/v1/locations"><code>/ocpdb/api/public/v1/locations</code></a> detaillierte Informationen aller Ladesäulen aufführt.</p>
 
+	<h2>Verkehrsmeldungen</h2>
+
+	<p>Verkehrsmeldungen werden über den <a href="/datasets/traffic/incidents-bw/TIC3-Meldungen.xml">Endpunkt <code>/datasets/traffic/incidents-bw/TIC3-Meldungen.xml</code></a> im TIC 3 Format publiziert. Die Verkehrsmeldungen werden alle 10 Minuten aktualisiert.</p>
+
 	<h2>Kartendienste</h2>
 
 	<p>Visualisierungen im WMS/WFS-Format bietet unser <a href="/geoserver">Geoserver unter <code>/geoserver</code></a> an, der für die vielfältigen Mobilitätsdaten unterschiedliche Layer enthält.</p>
@@ -54,6 +58,7 @@
 	<ul>
 		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/transit_stations_with_served_routes/">MobiData BW® - Bahnhöfe und Haltestellen (mobidata-bw.de)</a></li>
 		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/transit_stops/">MobiData BW® - Haltesteige (mobidata-bw.de)</a></li>
+		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/transit_shapes_with_routes/">MobiData BW® - ÖPNV-Linien (mobidata-bw.de)</a></li>
 		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/sharing_car/">MobiData BW® - Carsharing-Stationen und -Fahrzeuge (mobidata-bw.de)</a></li>
 		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/sharing_bicycle/">MobiData BW® - Bikesharing-Stationen und -Fahrzeuge (mobidata-bw.de)</a></li>
 		<li><a href="https://www.mobidata-bw.de/daten/darstellung/ipl/sharing_cargo_bicycle/">MobiData BW® - Lastenrad-Leihstationen und -Fahrzeuge (mobidata-bw.de)</a></li>
