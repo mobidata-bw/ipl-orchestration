@@ -52,7 +52,11 @@
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
                   <CssParameter name="fill">#27ae60</CssParameter>
-                </Fill>
+</Fill>
+ <Stroke>
+                     <CssParameter name="stroke">#000000</CssParameter>
+		                       <CssParameter name="stroke-width">0.5</CssParameter>
+				                       </Stroke>
               </Mark>
               <Size>6</Size>
             </Graphic>
@@ -68,6 +72,10 @@
                 <Fill>
                   <CssParameter name="fill">#7f8c8d</CssParameter>
                 </Fill>
+<Stroke>
+                     <CssParameter name="stroke">#000000</CssParameter>
+		                       <CssParameter name="stroke-width">0.5</CssParameter>
+				                       </Stroke>
               </Mark>
               <Size>6</Size>
             </Graphic>
