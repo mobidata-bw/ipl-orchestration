@@ -160,11 +160,11 @@ lamassu:
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
       language: en
-    - systemId: zeus_heilbronn
+    - systemId: zeus_heidelberg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/heilbronn/gbfs.json"
+      url: "https://zeus.city/api/v1/mds/gbfs/heidelberg/gbfs.json"
       language: en
     - systemId: zeus_konstanz
       operatorId: ZEU:Operator:zeus
@@ -202,6 +202,21 @@ lamassu:
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
       language: en
+    - systemId: zeus_hemmingen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
+    - systemId: zeus_renningen_malmsheim
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
+    - systemId: zeus_goppingen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: "https://zeus.city/api/v1/mds/gbfs/goppingen/gbfs.json"
     # Tier DE
     - systemId: tier_stuttgart
       operatorId: TIE:Operator:tier
