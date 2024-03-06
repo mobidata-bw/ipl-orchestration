@@ -207,16 +207,19 @@ lamassu:
       operatorName: Zeus
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
+      language: en
     - systemId: zeus_renningen_malmsheim
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
+      language: en
     - systemId: zeus_goppingen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/goppingen/gbfs.json"
+      language: en
     # Tier DE
     - systemId: tier_stuttgart
       operatorId: TIE:Operator:tier
