@@ -1,0 +1,17 @@
+<layer>
+  <name>roadworks</name>
+  <id>LayerInfoImpl--2f417ac5:18e2df033ce:-7ff0</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--2f417ac5:18e2df033ce:-7e89</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--2f417ac5:18e2df033ce:-7ff1</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-03-11 14:39:41.522 UTC</dateCreated>
+  <dateModified>2024-03-11 14:50:34.854 UTC</dateModified>
+</layer>
