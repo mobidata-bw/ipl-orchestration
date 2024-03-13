@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Changes
 * GBFS Feeds (general): With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/master/Changelog.md), we now support GBFSv3. To request feeds in the new GBFSv3 version, instead of `sharing/gbfs` use `sharing/gbfs/v3/manifest.json`. With this version, accessing feeds which are not yet retreived from upstream will return an http status 502 (BAD GATEWAY) instead of 404 (NOT FOUND). 
+- ⚠️ In the GTFS API (`/gtfs`), all [`geography`](https://postgis.net/docs/manual-3.4/using_postgis_dbmanagement.html#PostGIS_Geography)-based columns have been changed from a hex encoding of the PostGIS-specific binary representation to [GeoJSON](https://geojson.org). If you depend on the current format of `shape_pt_loc` in `/gtfs/shapes` or `stop_loc` in `/gtfs/stops`, you will have to adapt your code. For example, the `stop_loc` format of stop `de:08231:50_Parent` (*Pforzheim Hauptbahnhof*) changes from `"0101000020E6100000D28BDAFD2A68214003098A1F63724840"` to `{"type":"Point","coordinates":[8.703453,48.89365]}`.
 
 ### Fixes
 
