@@ -21,4 +21,5 @@ echo "importing Traefik access logs from $traefik_access_log_file into GoAccess"
 cat "$traefik_access_log_file" \
   | (grep -E '"entryPointName":\s*"web"' || true) \
   | (grep -v -E '"ClientHost":\s*"10.70.(171|172).20"' || true) \
+  | (grep -v -E '"request_User-Agent":\s*"OpenTripPlanner \(MobiData BW\)"' || true) \
   | goaccess --config-file=/etc/goaccess.conf --no-global-config -o /srv/goaccess/report/index.html --restore --persist --tz="$tz" --keep-last="$keep_last" -
