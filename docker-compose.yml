@@ -279,6 +279,7 @@ services:
       - ./etc/geoserver/:/var/geoserver/datadir_template/
       # global.xml is written by geoserver before config reload, so we need to have it mounted already at start
       - ./etc/geoserver/global.xml:/var/geoserver/datadir/global.xml
+      - ./etc/geoserver/logging.xml:/var/geoserver/datadir/logging.xml
       - ./bin/geoserver/geoserver-rest-config.sh:/usr/local/bin/geoserver-rest-config.sh
       - ./bin/geoserver/geoserver-rest-reload.sh:/usr/local/bin/geoserver-rest-reload.sh
     labels:
