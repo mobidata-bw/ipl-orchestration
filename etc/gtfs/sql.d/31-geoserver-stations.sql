@@ -28,7 +28,12 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 				ST_Collect(array_agg(stop_loc::geometry)) AS stop_locs, -- todo: distinct by stop_id?,
 				route_type,
 				-- todo: in case the feed uses extended route_types, these need to be handled here also
-				case when route_type=0 then '20000' when route_type=2 then '10002' when route_type between 3 and 9 then '3000'||route_type else '9000'||route_type end prio_encoded_route_type,
+				case
+					when route_type::int = 0 then '20000'
+					when route_type::int = 2 then '10002'
+					when route_type::int between 3 and 9 then '3000' || route_type::int
+					else '9000' || route_type::int
+				end prio_encoded_route_type,
 				array_agg(DISTINCT route_name) AS route_names
 			FROM (
 				SELECT DISTINCT ON (stop_id, route_id)

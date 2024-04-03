@@ -22,7 +22,7 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 -- allow filtering via Geoserver's CQL
 -- todo: solve properly in gtfs-via-postgres, for all enums
 DROP CAST IF EXISTS (api.route_type_val AS text);
-CREATE CAST (api.route_type_val AS text) WITH INOUT AS IMPLICIT;
+CREATE CAST (api.route_type_val AS text) WITH INOUT AS ASSIGNMENT;
 
 -- todo: primary/unique key?
 CREATE INDEX shapes_with_routes_shape_idx
