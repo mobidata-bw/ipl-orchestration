@@ -39,7 +39,7 @@
         </Rule>
         <Rule>
           <Name>Kreisnetz</Name>
-          <Title>Kreisnetzz</Title>
+          <Title>Kreisnetz</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:PropertyIsEqualTo>
@@ -55,7 +55,7 @@
             </ogc:And>
           </ogc:Filter>
           <!--<MaxScaleDenominator>200000</MaxScaleDenominator>-->
- <LineSymbolizer>
+          <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#008001</CssParameter>
               <CssParameter name="stroke-width">2</CssParameter>
@@ -82,4 +82,3 @@
     </UserStyle>
   </NamedLayer>
 </StyledLayerDescriptor>
-
