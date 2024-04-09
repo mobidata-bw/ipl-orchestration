@@ -7,7 +7,7 @@
   <NamedLayer>
     <Name>mdbw_sharing_vehicles_by_operator</Name>
     <UserStyle>
-      <Title>MobiData-BW Sharing-Farzeuge nach Anbieter</Title>
+      <Title>MobiData-BW Free-Floating-Fahrzeuge nach Anbieter</Title>
       <FeatureTypeStyle>
         <Rule>
           <Title>Nextbike</Title>
