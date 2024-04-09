@@ -7,6 +7,7 @@
       <Abstract></Abstract>
       <FeatureTypeStyle>
         <Rule>
+          <Title>Beide Fahrtrichtungen betroffen</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>direction</ogc:PropertyName>
@@ -29,6 +30,7 @@
           </LineSymbolizer>
         </Rule>
         <Rule>
+          <Title>Eine Fahrtrichtung betroffen</Title>
           <ogc:Filter>
             <ogc:Not>
               <ogc:PropertyIsEqualTo>
@@ -55,7 +57,7 @@
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <!-- Einseitige Sperrungen Smybol -->
+          <Title>Einseitige Sperrung</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:Not>
@@ -104,7 +106,7 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <!-- Einseitige Nicht-Sperrungen Smybol -->
+          <Title>Einseitige Beeinträchtigung</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:Not>
@@ -155,7 +157,7 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <!-- Beidseitige Sperrungen Smybol -->
+          <Title>Vollsperrung</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:PropertyIsEqualTo>
@@ -202,7 +204,7 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <!-- Beidseitige Nicht-Sperrungen Smybol -->
+          <Title>Beeinträchtigung beider Fahrtrichtungen</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:PropertyIsEqualTo>
