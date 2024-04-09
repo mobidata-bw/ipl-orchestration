@@ -29,7 +29,7 @@
               </ogc:Not>
             </ogc:And>
           </ogc:Filter>
-          <!--<MaxScaleDenominator>100000</MaxScaleDenominator>-->
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#0020aa</CssParameter>
@@ -54,7 +54,7 @@
               </ogc:Not>
             </ogc:And>
           </ogc:Filter>
-          <!--<MaxScaleDenominator>200000</MaxScaleDenominator>-->
+          <MaxScaleDenominator>200000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#008001</CssParameter>
