@@ -39,7 +39,7 @@
         </Rule>
         <Rule>
           <Name>Kreisnetz</Name>
-          <Title>Kreisnetzz</Title>
+          <Title>Kreisnetz</Title>
           <ogc:Filter>
             <ogc:And>
               <ogc:PropertyIsEqualTo>
