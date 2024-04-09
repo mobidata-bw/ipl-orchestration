@@ -5,12 +5,12 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <NamedLayer>
-    <Name>mdbw_sharing_default</Name>
+    <Name>mdbw_sharing_vehicles_default</Name>
     <UserStyle>
-      <Title>MobiData-BW Sharing-Stationen</Title>
+      <Title>MobiData-BW Free-Floating-Fahrzeuge</Title>
       <FeatureTypeStyle>
         <Rule>
-          <Title>Nextbike</Title>
+          <Title>Free-Floating-Fahrzeuge</Title>
           <PointSymbolizer>
             <Graphic>
               <Mark>
