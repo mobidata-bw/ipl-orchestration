@@ -9,7 +9,7 @@
     <UserStyle>
       <Title>MobiData-BW Parkhäuser und -plätze</Title>
       <FeatureTypeStyle>
-      <Rule>
+        <Rule>
           <Title>Parkhaus</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
@@ -29,12 +29,12 @@
                   <CssParameter name="stroke-width">0.5</CssParameter>
                 </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
         <Rule>        
-            <Title>Tiefgarage</Title>         
+          <Title>Tiefgarage</Title>         
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
@@ -53,7 +53,7 @@
                   <CssParameter name="stroke-width">0.5</CssParameter>
                 </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
@@ -101,7 +101,7 @@
                   <CssParameter name="stroke-width">0.5</CssParameter>
                 </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
@@ -120,7 +120,7 @@
                   <CssParameter name="stroke-width">0.5</CssParameter>
                 </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
