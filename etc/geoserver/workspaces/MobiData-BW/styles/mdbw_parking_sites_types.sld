@@ -77,7 +77,7 @@
                   <CssParameter name="stroke-width">0.5</CssParameter>
                 </Stroke>
               </Mark>
-              <Size>6</Size>
+              <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
