@@ -27,6 +27,12 @@ lamassu:
       codespace: SMT
       url: "file:///var/gbfs/feeds/stadtmobil_stuttgart/gbfs.json"
       language: de
+    - systemId: stadtmobil_karlsruhe
+      operatorId: SMK:Operator:stadtmobil_karlsruhe
+      operatorName: Stadtmobil Karlsruhe
+      codespace: SMK
+      url: "file:///var/gbfs/feeds/stadtmobil_karlsruhe/gbfs.json"
+      language: de
     - systemId: stadtmobil_suedbaden
       operatorId: SMS:Operator:stadtmobil_suedbaden
       operatorName: Stadtmobil Südbaden
