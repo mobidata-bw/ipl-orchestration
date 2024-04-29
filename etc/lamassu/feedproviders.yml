@@ -119,7 +119,7 @@ lamassu:
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_eh/gbfs.json"
       language: de
     - systemId: nextbike_kk
-      operatorId: NBO:Operator:nextbike
+      operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBO
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_kk/gbfs.json"
