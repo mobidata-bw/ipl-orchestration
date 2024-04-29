@@ -118,6 +118,12 @@ lamassu:
       codespace: NBE
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_eh/gbfs.json"
       language: de
+    - systemId: nextbike_kk
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBO
+      url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_kk/gbfs.json"
+      language: de
     - systemId: bolt_karlsruhe
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
