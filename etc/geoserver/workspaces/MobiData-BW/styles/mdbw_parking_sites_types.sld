@@ -5,9 +5,9 @@
                        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <NamedLayer>
-    <Name>mdbw_parking_site_default</Name>
+    <Name>mdbw_parking_sites_types</Name>
     <UserStyle>
-      <Title>MobiData-BW Parkhäuser und -plätze</Title>
+      <Title>MobiData BW® - Parkhäuser und -plätze (nach Typ)</Title>
       <FeatureTypeStyle>
         <Rule>
           <Title>Parkhaus</Title>
