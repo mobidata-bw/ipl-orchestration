@@ -11,11 +11,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Added bike parking support in ParkAPI: https://github.com/ParkenDD/park-api-v3/pull/106 . Includes database migration
   and more fields in public API: https://api.mobidata-bw.de/park-api/documentation/public.html#/paths/v3-parking-sites/get
+- [Normalizes radius search at ParkAPI](https://github.com/ParkenDD/park-api-v3/pull/133)
 - Added new ParkAPI sources:
   - Barrierefreie Reisekette Baden-Württemberg: PKW-Parkplätze an Bahnhöfen
   - Barrierefreie Reisekette Baden-Württemberg: PKW-Parkplätze an Bushaltestellen
   - Barrierefreie Reisekette Baden-Württemberg: Fahrrad-Parkplätze an Bahnhöfen
   - Barrierefreie Reisekette Baden-Württemberg: Fahrrad-Parkplätze an Bushaltestellen
+  - Stadt Neckarsulm: Fahrrad-Abstellanlagen
+  - Kienzler
+  - Stadt Mannheim
+  - Stadt Buchen
+  - Stadt Reutlingen: Fahrrad-Abstellanlagen
+  - Baden-Württemberg: Parken und Mitfahren
 
 ### Changed
 
@@ -24,6 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   https://pypi.org/project/parkapi-sources/
 - Changed config file layout at ParkAPI, now all sources are defined in the same place. Example config:
   https://github.com/ParkenDD/park-api-v3/blob/75a87ffe6edd3eece57a4b73692f01b6695c74e0/config_dist_dev.yaml
+- Fixes OpenAPI response schema at generic parking site endpoints
 
 ### Removed
 
