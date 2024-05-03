@@ -1,15 +1,3 @@
-PARK_API_CONVERTER:
-  - ulm
-  - freiburg
-  - heidelberg
-  # Disable Heilbronn as long as legal status is unclear
-  # - heilbronn
-  # Karlsruhe currently fails, see https://github.com/ParkenDD/ParkAPI2-sources/issues/40
-  # - karlsruhe
-  - mannheim
-  - bahn_v2
-  - pbw
-
 OPENAPI_CONTACT_MAIL: 'mobidatabw-technik@nvbw.de'
 OPENAPI_TOS: 'https://www.mobidata-bw.de/pages/nutzungsbedingungen'
 OPENAPI_SERVERS:
