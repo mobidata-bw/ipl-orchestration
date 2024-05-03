@@ -76,7 +76,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>ID des Feeds</en>
+        <de>ID des Feeds</de>
       </description>
     </attribute>
     <attribute>
@@ -86,7 +86,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>ID der Station</en>
+        <de>ID der Station</de>
       </description>
     </attribute>
     <attribute>
@@ -96,7 +96,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Name des Fahrzeugs</en>
+        <de>Name des Fahrzeugs</de>
       </description>
     </attribute>
     <attribute>
@@ -106,7 +106,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en>Anzahl verfügbarer Fahrzeuge</en>
+        <de>Anzahl verfügbarer Fahrzeuge</de>
       </description>
     </attribute>
     <attribute>
@@ -116,7 +116,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deeplink zur Buchung (Android)</en>
+        <de>Deeplink zur Buchung (Android)</de>
       </description>
     </attribute>
     <attribute>
@@ -126,7 +126,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deeplink zu Buchung (iOS)</en>
+        <de>Deeplink zu Buchung (iOS)</de>
       </description>
     </attribute>
     <attribute>
@@ -136,7 +136,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en>Deeplink zur Buchung (Web)</en>
+        <de>Deeplink zur Buchung (Web)</de>
       </description>
     </attribute>
     <attribute>
@@ -145,7 +145,7 @@ WHERE st.num_cars_available &gt;= 0
       <maxOccurs>1</maxOccurs>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <en>Zeitpunkt der letzten Aktualisierung</en>
+        <de>Zeitpunkt der letzten Aktualisierung</de>
       </description>
     </attribute>
     <attribute>
@@ -155,7 +155,7 @@ WHERE st.num_cars_available &gt;= 0
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <en>Koordinate der Station</en>
+        <de>Koordinate der Station</de>
       </description>
     </attribute>
   </attributes>

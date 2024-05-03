@@ -41,6 +41,7 @@
     <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
     <useHeadersProxyURL>false</useHeadersProxyURL>
     <proxyBaseUrl></proxyBaseUrl>
+    <defaultLocale>de</defaultLocale>
   </settings>
   <jai>
     <allowInterpolation>false</allowInterpolation>
