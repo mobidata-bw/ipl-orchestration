@@ -48,6 +48,7 @@ FROM sharing_stations s&#xd;
 WHERE st.num_bicycles_available &gt;= 0
 </sql>
         <escapeSql>false</escapeSql>
+        <keyColumn>station_id</keyColumn>
         <geometry>
           <name>geometry</name>
           <type>Point</type>
