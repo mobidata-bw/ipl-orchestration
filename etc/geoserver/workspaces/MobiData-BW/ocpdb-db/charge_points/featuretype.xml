@@ -53,6 +53,7 @@ LEFT JOIN location_power lp&#xd;
        ON lp.location_id = location.id
 </sql>
         <escapeSql>false</escapeSql>
+        <keyColumn>id</keyColumn>
         <geometry>
           <name>geometry</name>
           <type>Point</type>
