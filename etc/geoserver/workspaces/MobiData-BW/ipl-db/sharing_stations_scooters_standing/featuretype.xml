@@ -50,6 +50,11 @@ WHERE st.num_scooters_standing_available &gt;= 0
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>station_id</keyColumn>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
       </virtualTable>
     </entry>
   </metadata>
