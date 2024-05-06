@@ -1,0 +1,17 @@
+<layer>
+  <name>parking_sites_bicycle</name>
+  <id>LayerInfoImpl-4e33b56a:18f49d44d3c:-7fdf</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-4e33b56a:18f49d44d3c:-7fe0</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2024-05-06 13:29:29.385 UTC</dateCreated>
+  <dateModified>2024-05-06 13:40:11.412 UTC</dateModified>
+</layer>
