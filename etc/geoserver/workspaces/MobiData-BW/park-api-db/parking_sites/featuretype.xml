@@ -1,7 +1,7 @@
 <featureType>
   <id>FeatureTypeInfoImpl--5bcdf8b:18bc88075ee:-7ffa</id>
   <name>parking_sites</name>
-  <nativeName>parking_site</nativeName>
+  <nativeName>parking_sites</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
@@ -39,6 +39,31 @@
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <metadata>
+    <entry key="elevation">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>parking_sites</name>
+        <sql>SELECT id, source_id, original_uid, name, operator_name, public_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data, realtime_opening_status, lat, lon, capacity, capacity_disabled, capacity_woman, capacity_family, capacity_charging, capacity_carsharing, capacity_truck, capacity_bus, realtime_capacity, realtime_capacity_disabled, realtime_capacity_woman, realtime_capacity_family, realtime_capacity_charging, realtime_capacity_carsharing, realtime_capacity_truck, realtime_capacity_bus, realtime_free_capacity, realtime_free_capacity_disabled, realtime_free_capacity_woman, realtime_free_capacity_family, realtime_free_capacity_charging, realtime_free_capacity_carsharing, realtime_free_capacity_truck, realtime_free_capacity_bus,  opening_hours, purpose, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at FROM parking_site&#xd;
+WHERE purpose=&apos;CAR&apos;
+</sql>
+        <escapeSql>false</escapeSql>
+        <keyColumn>id</keyColumn>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
+      </virtualTable>
+    </entry>
+    <entry key="time">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
     <entry key="cachingEnabled">false</entry>
   </metadata>
   <store class="dataStore">
