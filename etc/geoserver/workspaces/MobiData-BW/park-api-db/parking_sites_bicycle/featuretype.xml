@@ -1,0 +1,83 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-4e33b56a:18f49d44d3c:-7fe0</id>
+  <name>parking_sites_bicycle</name>
+  <nativeName>parking_sites_bicycle</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
+  </namespace>
+  <title>Fahrradabstellanlagen</title>
+  <keywords>
+    <string>features</string>
+    <string>parking_sites_bicycle</string>
+    <string>Fahrradabstellanlagen\@language=de\;</string>
+    <string>Fahrradparken\@language=de\;</string>
+  </keywords>
+  <nativeCRS>GEOGCS[&quot;WGS 84&quot;,
+  DATUM[&quot;World Geodetic System 1984&quot;,
+    SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+    AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+  PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+  UNIT[&quot;degree&quot;, 0.017453292519943295],
+  AXIS[&quot;Geodetic longitude&quot;, EAST],
+  AXIS[&quot;Geodetic latitude&quot;, NORTH],
+  AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
+  <srs>EPSG:4326</srs>
+  <nativeBoundingBox>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
+    <crs>EPSG:4326</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>7.5</minx>
+    <maxx>10.5</maxx>
+    <miny>47.6</miny>
+    <maxy>49.8</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="elevation">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>parking_sites_bicycle</name>
+        <sql>SELECT id, source_id, original_uid, name, operator_name, public_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, lat, lon, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at FROM parking_site&#xd;
+WHERE purpose=&apos;BIKE&apos;
+</sql>
+        <escapeSql>false</escapeSql>
+        <keyColumn>id</keyColumn>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
+      </virtualTable>
+    </entry>
+    <entry key="time">
+      <dimensionInfo>
+        <enabled>false</enabled>
+      </dimensionInfo>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5bcdf8b:18bc88075ee:-7ffb</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <simpleConversionEnabled>false</simpleConversionEnabled>
+  <internationalTitle/>
+  <internationalAbstract/>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>
