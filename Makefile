@@ -110,6 +110,8 @@ reload-geoserver:
 .PHONY: prepare-geoserver-workspace-for-commit
 prepare-geoserver-workspace-for-commit:
 	rsync -av --exclude='*/datastore.xml' var/geoserver/datadir/workspaces etc/geoserver
+	rsync -av var/geoserver/datadir/gwc etc/geoserver
+	rsync -av var/geoserver/datadir/gwc-layers etc/geoserver
 
 # GTFS data management
 # --------------------
