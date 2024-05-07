@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
  * Addition of `capacity` attribute to sharing stations layers as `java.lang.Integer` in Geoserver
  * Addition of `photo_url` attribute to `parking_sites` and `parking_sites_bicycle`
+ * Add vector tiles support for layer `MobiData-BW:roadworks`.
  
 ### Removed
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gwcConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://geowebcache.org/schema/1.8.0"
+  xsi:schemaLocation="http://geowebcache.org/schema/1.8.0 http://geowebcache.org/schema/1.8.0/geowebcache.xsd">
+  <version>1.8.0</version>
+  <backendTimeout>120</backendTimeout>
+  <serviceInformation>
+    <title>MobiData BW GeoWebCache</title>
+    <description>Map tile service for Baden-Württemberg (DE-BW), part of MobiData BW, provided by NVBW.</description>
+    <keywords>
+      <string>WFS</string>
+      <string>WMS</string>
+      <string>WMTS</string>
+      <string>GEOWEBCACHE</string>
+    </keywords>
+    <serviceProvider>
+      <providerName>NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH</providerName>
+      <providerSite>http://mobidata-bw.de/</providerSite>
+      <individualName>Dr. Thorsten Fröhlinghaus</individualName>
+      <positionName>Technische Leitung Dateninfrastruktur</positionName>
+      <addressType>Work</addressType>
+      <addressStreet>Wilhelmsplatz 11</addressStreet>
+      <addressCity>Stuttgart</addressCity>
+      <addressAdministrativeArea>Baden-Württemberg</addressAdministrativeArea>
+      <addressPostalCode>70182</addressPostalCode>
+      <addressCountry>Deutschland</addressCountry>
+      <phoneNumber>+49 711 23991-138</phoneNumber>
+      <faxNumber>+49 711 23991-23</faxNumber>
+      <addressEmail>Thorsten.Froehlinghaus@nvbw.de</addressEmail>
+    </serviceProvider>
+    <fees>NONE</fees>
+    <accessConstraints>NONE</accessConstraints>
+  </serviceInformation>
+  <gridSets>
+  </gridSets>
+
+  <layers>
+  </layers>
+  
+</gwcConfiguration>
