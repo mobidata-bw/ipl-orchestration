@@ -205,7 +205,7 @@ services:
       LAMASSU_TIER_PASSWORD: ${LAMASSU_TIER_PASSWORD:?missing/empty}
       LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION:?missing/empty}
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
-      LAMASSU_FEED_UPATE_INTERVAL_IN_MS: ${LAMASSU_FEED_UPATE_INTERVAL_IN_MS}
+      LAMASSU_FEED_UPATE_INTERVAL_IN_MS: ${LAMASSU_FEED_UPATE_INTERVAL_IN_MS:?'missing/empty'}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
       JDK_JAVA_OPTIONS:
         -Dspring.config.location=/etc/application-config/application.properties
