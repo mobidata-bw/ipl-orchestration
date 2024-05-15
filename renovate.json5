@@ -1,0 +1,23 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended",
+	],
+	"customManagers": [
+		// Renovate Bot's Docker Compose manager *does not* currently support resolving variables defined in `.env` and used in `docker-compose.yml`. However, we want to be able to use different images (tags) for a Compose service, depending on the deployment [1]. This is why we define a custom manager [2].
+		// Note: It only scans .env using regular expressions for aptly named variables, without any understanding for docker-compose.yml and wether this variable is actually used in a service's `image` field.
+		// [1] see also https://github.com/mobidata-bw/ipl-ansible
+		// [2] https://docs.renovatebot.com/modules/manager/regex/
+		{
+			"customType": "regex",
+			"fileMatch": ["^\\.env$"],
+			"matchStrings": [
+				// some examples from .env:
+				// - `TRANSFORMER_PROXY_IMAGE=ghcr.io/mobidata-bw/ipl-proxy:2024-04-23T16-02`
+				// - `IPL_POSTGIS_IMAGE=postgis/postgis:15-3.3-alpine`
+				"\\w+_IMAGE=(?<packageName>[^:]+):(?<currentValue>.+)"
+			],
+			"datasourceTemplate": "docker",
+		},
+	],
+}
