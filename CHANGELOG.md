@@ -15,6 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 * GBFS Feeds (Lime): for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
 * ParkAPI: Fixes an issue with missing ParkAPI realtime data (see [ParkAPI's v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063)).
 
+### Added
+* Addition of `capacity` attribute to sharing stations layers in Geoserver
+
 ### Removed
 
 * Removed GBFS feeds: bird-bulle, bird-uster, bird-winterthur, tier_rotkreuz
