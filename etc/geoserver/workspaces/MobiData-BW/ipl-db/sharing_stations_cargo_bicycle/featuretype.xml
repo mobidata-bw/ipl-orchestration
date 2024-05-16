@@ -42,7 +42,7 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>cargo_bicycle_sharing_station</name>
-        <sql>SELECT s.feed_id, s.station_id, s.name, st.num_cargo_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
+        <sql>SELECT s.feed_id, s.station_id, s.name, s.capacity, st.num_cargo_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry &#xd;
 FROM sharing_stations s &#xd;
  JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
 WHERE st.num_cargo_bicycles_available &gt;= 0
@@ -97,6 +97,15 @@ WHERE st.num_cargo_bicycles_available &gt;= 0
       <binding>java.lang.String</binding>
       <description>
         <de>Name des Fahrzeugs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Double</binding>
+      <description>
+        <de>Kapazität der Station</de>
       </description>
     </attribute>
     <attribute>
