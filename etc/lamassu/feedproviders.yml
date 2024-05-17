@@ -451,16 +451,6 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: bolt_winterthur
-      operatorId: BLT:Operator:bolt
-      operatorName: Bolt
-      codespace: BLT
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_winterthur/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: bolt_zurich
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
