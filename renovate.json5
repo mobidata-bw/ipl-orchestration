@@ -15,9 +15,40 @@
 				// some examples from .env:
 				// - `TRANSFORMER_PROXY_IMAGE=ghcr.io/mobidata-bw/ipl-proxy:2024-04-23T16-02`
 				// - `IPL_POSTGIS_IMAGE=postgis/postgis:15-3.3-alpine`
-				"\\w+_IMAGE=(?<packageName>[^:]+):(?<currentValue>.+)"
+				"\\w+_IMAGE=(?<packageName>[^:]+):(?<currentValue>.+)",
 			],
 			"datasourceTemplate": "docker",
+		},
+	],
+	"packageRules": [
+		// With a purely date-time-based tagging scheme (e.g. `2024-05-29T01.02`), the `docker` versioning scheme [1] doesn't seem to recognize newer tags as updates. For those images, we configure the `loose` versioning scheme [2], which recognizes newer tags as non-major updates.
+		// Note: `loose` detects the tag's date as the major version, so it will start *wrongly* detecting *major* updates whenever the year has changed.
+		// todo: configure this individually per image?
+		// [1] https://docs.renovatebot.com/modules/versioning/docker/
+		// [2] https://docs.renovatebot.com/modules/versioning/loose/
+		{
+			"matchDatasources": ["docker"],
+			"matchPackageNames": [
+				"entur/lamassu",
+				"ghcr.io/mobidata-bw/dagster-pipeline",
+				"ghcr.io/mobidata-bw/dagster-dagit",
+				"ghcr.io/mobidata-bw/dagster-daemon",
+				"ghcr.io/mobidata-bw/ipl-proxy",
+				"ghcr.io/mobidata-bw/postgis-with-pg-plan-filter",
+				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
+				"ghcr.io/mobidata-bw/x2gbfs",
+			],
+			"versioning": "loose",
+		},
+
+		// `loose` doesn't seem to support a `$major_version-$date-$commit_hash` tagging scheme *correctly* if there is also a "floating" tag `$major_version`. It proposes the switch to `$major_version` as a non-major update, and ignores the `$major_version-$date-$commit_hash` tags completely.
+		// In addition, `gchr.io/mobidata-bw/postgis-gtfs-importer` switched from a tagging scheme without the major version (e.g. `2024-03-29T15.35.15-4758770`) to one with it (e.g. `v3-2024-05-29T13.44.53-81cb966`), so that `loose` wrongly detects an old major-version-less tag as a (major) update.
+		// This is why we ignore both `^v\d+$` and `^[^v]` tags implicitly by only allowing `^v\d+-`.
+		{
+			"matchPackageNames": [
+				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
+			],
+			"allowedVersions": "/^v\\d+-/",
 		},
 	],
 }
