@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Features
+
+* ParkAPI: Deletes ParkingSites if they don't exist in the latest pull / push
+* ParkAPI: Several Improvements for Duplicate Matching Service:
+  * Don't offer ParkingSites with different purposes as duplicates
+  * Don't offer ParkingSites from the same source as duplicates as this is an data source issue
+  * Add several fields at the duplicate JSON / CSV output
+  * Add header line to duplicate CSVs
+  * Give the ability to set the radius from client side
+
+
+### Fixes
+
+* ParkAPI: Add missing fields to OpenAPI documentation
+
+
 ## [2024-05-29]
 
 ### Fixes
