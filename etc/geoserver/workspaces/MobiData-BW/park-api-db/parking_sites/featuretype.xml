@@ -54,8 +54,8 @@ WHERE purpose=&apos;CAR&apos;
         <keyColumn>id</keyColumn>
         <geometry>
           <name>geometry</name>
-          <type>Geometry</type>
-          <srid>-1</srid>
+          <type>Point</type>
+          <srid>4326</srid>
         </geometry>
       </virtualTable>
     </entry>
