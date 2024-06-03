@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * Add several fields at the duplicate JSON / CSV output
   * Add header line to duplicate CSVs
   * Give the ability to set the radius from client side
+ * New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
 
 
 ### Fixes
