@@ -51,6 +51,7 @@
 WHERE purpose=&apos;CAR&apos;
 </sql>
         <escapeSql>false</escapeSql>
+        <keyColumn>id</keyColumn>
         <geometry>
           <name>geometry</name>
           <type>Geometry</type>
