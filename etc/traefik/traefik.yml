@@ -28,8 +28,6 @@ entryPoints:
         # redirect all `http:` requests to `https:`
         # todo: only do this in production
         # - redirect-http-to-https@file
-        # don't sniff the mime type from the response body (will be removed in Traefik v3)
-        - no-mime-sniff@file
         # enable response compression by default
         - compression@file
         # enable CORS including POST by default
