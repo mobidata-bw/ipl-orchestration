@@ -50,7 +50,7 @@ x-park-api-defaults: &park-api-defaults
 
 x-generic-rabbitmq: &generic-rabbitmq
   networks: [ipl]
-  image: rabbitmq:3.12
+  image: rabbitmq:3.13
   user: rabbitmq  # required due eacces-issue: https://github.com/docker-library/rabbitmq/issues/318
   environment:
     # Disable spammy logging
