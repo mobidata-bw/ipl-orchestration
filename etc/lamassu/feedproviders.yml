@@ -172,6 +172,12 @@ lamassu:
       codespace: YOO
       url: "https://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
       language: en
+    - systemId: zeo_bruchsal
+      operatorId: ZEO:Operator:zeo
+      operatorName: Zeo
+      codespace: ZEO
+      url: "https://mds.evemo.io/1a606e0d-fbd7-470f-bf0c-79b946c7c16a/gbfs/2.3/gbfs.json"
+      language: en
     # Zeus DE
     - systemId: zeus_freiburg
       operatorId: ZEU:Operator:zeus

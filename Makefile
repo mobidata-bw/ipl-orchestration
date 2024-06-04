@@ -57,13 +57,14 @@ docker-up: init
 .PHONY: docker-up-detached
 docker-up-detached: init
 	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 120 $(SERVICE)
-	# Reload geoserver config. Might fail with service "geoserver" 
+	# Reload geoserver config. Might fail with service "geoserver"
 	# is not running if geoserver has not yet been started. This can be ignored
 	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh || true
 
 .PHONY: docker-down
 docker-down:
 	$(DOCKER_COMPOSE) down --remove-orphans --timeout 60 $(SERVICE)
+
 .PHONY: docker-kill
 docker-kill:
 	$(DOCKER_COMPOSE) kill --remove-orphans $(SERVICE)

@@ -6,24 +6,52 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Features
+
+* ParkAPI: Deletes ParkingSites if they don't exist in the latest pull / push
+* ParkAPI: Several Improvements for Duplicate Matching Service:
+  * Don't offer ParkingSites with different purposes as duplicates
+  * Don't offer ParkingSites from the same source as duplicates as this is an data source issue
+  * Add several fields at the duplicate JSON / CSV output
+  * Add header line to duplicate CSVs
+  * Give the ability to set the radius from client side
+ * New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
+ * Addition of `capacity` attribute to sharing stations layers in Geoserver
+
+### Fixes
+
+* ParkAPI: Add missing fields to OpenAPI documentation
+
+
+## [2024-05-29]
+
+### Fixes
+
+* [Fixes ParkAPI issues at duplicate generation and downgrade migration](https://github.com/ParkenDD/park-api-v3/releases/tag/0.4.2)
+* [Fixes ParkAPI lat/lon issue at XLSX uploads](https://github.com/ParkenDD/park-api-v3/releases/tag/0.4.3)
+
+
+## [2024-05-21]
+
 ### Added
 
-* [New ParkAPI sources](https://github.com/ParkenDD/parkapi-sources-v3/blob/main/CHANGELOG.md#040)
-* [New experimental ParkAPI source RadVIS](https://github.com/ParkenDD/parkapi-sources-v3/blob/main/CHANGELOG.md#040)
+* [New ParkAPI sources](https://github.com/ParkenDD/parkapi-sources-v3/blob/0.4.0/CHANGELOG.md#040)
+* [New experimental ParkAPI source RadVIS](https://github.com/ParkenDD/parkapi-sources-v3/blob/0.4.0/CHANGELOG.md#040)
 * [Experimental ParkAPI duplicate matching](https://github.com/ParkenDD/park-api-v3/pull/144),
   additional information [at README](https://github.com/ParkenDD/park-api-v3?tab=readme-ov-file#flag-duplicates-via-command-line-interface)
 * ParkAPI data model extension at `ParkingSite.type` (new enum values), `ParkingSite.tags` (generic tag system) and `ParkingSite.photo_url`
   (photos
 * Addition of new bicycle parking style `mdbw_parking_sites_bicycle_types` in GeoServer based on `type` attribute after new bicycle parking layer `MobiData-BW:parking_sites_bicycle` was added
-* Addition of `capacity` attribute to sharing stations layers in Geoserver
+* Addition of `max_height` attribute to parking_sites layer
 
 ### Changed
 
-* [Some converter fixes from ParkAPI sources project](https://github.com/ParkenDD/parkapi-sources-v3/blob/main/CHANGELOG.md#040)
+* [Some converter fixes from ParkAPI sources project](https://github.com/ParkenDD/parkapi-sources-v3/blob/0.4.0/CHANGELOG.md#040)
 
 ### Removed
 
 * bolt_winterthur GBFS feed
+
 
 ## [2024-05-08]
 
