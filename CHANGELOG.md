@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## [2024-06-04]
 
 ### Features
 
@@ -15,7 +15,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * Add several fields at the duplicate JSON / CSV output
   * Add header line to duplicate CSVs
   * Give the ability to set the radius from client side
- * New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
+  * Improved output mechanisms
+* New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
+* ParkAPI: Fixes at Bahn and Karlsruhe Converter
 
 
 ### Fixes
