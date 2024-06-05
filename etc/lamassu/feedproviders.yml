@@ -554,17 +554,6 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Link CH
-    # - systemId: link_zurich
-      # operatorId: LNK:Operator:link
-      # operatorName: Link
-      # codespace: LNK
-      # language: en
-      # invalid feed: endpoints return error message, instead they should return empty collections or not be included in gbfs.json
-      # Suggestion:
-      # Get provider to fix data, or provide dummy data e.g. via transformer-proxy
-      # https://mds.linkyour.city/gbfs/2.2/ch_zurich/system_pricing_plans.json
-      # https://mds.linkyour.city/gbfs/2.2/ch_zurich/geofencing_zones.json
-      # url: "https://mds.linkyour.city/gbfs/ch_zurich/gbfs.json"
     # Nexbike CH
     - systemId: nextbike_ch
       operatorId: NBK:Operator:nextbike
