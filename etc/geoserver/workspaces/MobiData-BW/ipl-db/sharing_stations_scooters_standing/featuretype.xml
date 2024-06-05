@@ -103,8 +103,8 @@ WHERE st.num_scooters_standing_available &gt;= 0
     <attribute>
       <name>capacity</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
-      <binding>java.lang.Double</binding>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
       <description>
         <de>Kapazität der Station</de>
       </description>
