@@ -537,12 +537,6 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: lime_zug
-      operatorId: LME:Operator:lime
-      operatorName: Lime
-      codespace: LME
-      url: "https://data.lime.bike/api/partners/v2/gbfs/zug/gbfs.json"
-      language: en
     - systemId: lime_zurich
       operatorId: LME:Operator:lime
       operatorName: Lime
