@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Features
 
+ * Addition of `capacity` attribute to sharing stations layers in Geoserver
+
+## [2024-06-04]
+
+### Features
+
 * ParkAPI: Deletes ParkingSites if they don't exist in the latest pull / push
 * ParkAPI: Several Improvements for Duplicate Matching Service:
   * Don't offer ParkingSites with different purposes as duplicates
@@ -15,8 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * Add several fields at the duplicate JSON / CSV output
   * Add header line to duplicate CSVs
   * Give the ability to set the radius from client side
- * New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
- * Addition of `capacity` attribute to sharing stations layers in Geoserver
+  * Improved output mechanisms
+* New GBFS feed zeo_bruchsal (https://github.com/mobidata-bw/ipl-orchestration/pull/162)
+* ParkAPI: Fixes at Bahn and Karlsruhe Converter
 
 ### Fixes
 
