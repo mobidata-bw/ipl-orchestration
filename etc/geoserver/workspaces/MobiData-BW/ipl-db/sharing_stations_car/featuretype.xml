@@ -102,7 +102,8 @@ WHERE st.num_cars_available &gt;= 0
     <attribute>
       <name>capacity</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
       <description>
         <de>Kapazität der Station</de>
       </description>
