@@ -371,7 +371,7 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       - PGHOST=pgbouncer
-      - PGPORT=${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      - PGPORT=6432
       - PGUSER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
       - PGPASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       - PGDATABASE=dagster # determined by pgbouncer!
@@ -437,7 +437,7 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGPORT: 6432
       PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
       PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: dagster # determined by pgbouncer!
@@ -461,7 +461,7 @@ services:
     environment:
       # connect via pgbouncer to improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGPORT: 6432
       PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
       PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: dagster # determined by pgbouncer!
@@ -512,8 +512,6 @@ services:
       - gtfs-db
       - dagster-postgresql
     image: ${PGBOUNCER_IMAGE}
-    ports:
-      - ${PGBOUNCER_POSTGRES_PORT:?missing/empty}:6432
     volumes:
       # contains the latest import's DB name
       - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
@@ -580,7 +578,7 @@ services:
     environment:
       # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
       PGHOST: pgbouncer
-      PGPORT: ${PGBOUNCER_POSTGRES_PORT:?missing/empty}
+      PGPORT: 6432
       PGUSER: ${PGBOUNCER_POSTGRES_USER:?missing/empty}
       PGPASSWORD: ${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       PGDATABASE: gtfs # determined by pgbouncer!
