@@ -256,8 +256,6 @@ services:
     image: ${IPL_POSTGIS_IMAGE}
     volumes:
       - ./var/ipl-db/data:/var/lib/postgresql/data
-    ports:
-      - ${IPL_POSTGRES_PORT}:5432
     environment:
       - POSTGRES_DB=${IPL_POSTGRES_DB}
       - POSTGRES_USER=${IPL_POSTGRES_USER}
@@ -383,7 +381,7 @@ services:
       - IPL_LAMASSU_BASE_URL=http://lamassu:8080
       - IPL_LAMASSU_INTERNAL_BASE_URL=http://lamassu:8080/
       - IPL_POSTGRES_HOST=ipl-db
-      - IPL_POSTGRES_PORT
+      - IPL_POSTGRES_PORT=5432
       - IPL_POSTGRES_DB
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
