@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 * ⚠️ The `ipl-db` PostgreSQL database (server) doesn't bind on the host port `$IPL_POSTGRES_PORT` (default `5432`) anymore. – This change is intended to make it harder for adversaries to access the DB, particularly if IPL is deployed on a NAT-/firewall-less machine. You can still access the DB using the container port, whose IP address can be obtained using `docker inspect --format json "$(docker compose --env-file .env --env-file .env.local ps ipl-db --format '{{print .ID}}')" | jq -r '.[0].NetworkSettings.Networks | .[keys_unsorted[0]].IPAddress'`.
 * ⚠️ The `pgbouncer` service doesn't bind on the host port `$PGBOUNCER_POSTGRES_PORT` (default `6432`) anymore. – Refer to the `ipl-db` change above for more details.
+* Upgrade [x2gbfs](https://github.com/mobidata-bw/x2gbfs) to version `2024-06-10T16-07`. [Its changelog](https://github.com/mobidata-bw/x2gbfs/blob/ca00440f6c7ce26542cdd8c6b858755c2de51b75/CHANGELOG.md) documents the following changes:
+  * add discovery uris for `stadtwerk_tauberfranken` (https://github.com/mobidata-bw/x2gbfs/commit/8f1f026e7f2132fae30de2c450965df0746bbbdd)
+  * add additional pricing plans for cantamen-based providers ([#117](https://github.com/mobidata-bw/x2gbfs/pull/117))
+  * fix: deer vehicles with missing extended properties are supported now, vehicles that can't be parsed from source will be ignored and a warning reported ([#116](https://github.com/mobidata-bw/x2gbfs/pull/116))
+  * add deeplinks for MOQO-based providers, i.e. `stadtwerk_tauberfranken`
+  * fix: remove plus and minus (`-`/`+`) chars from cantamen vehicle type ids to workaround lamassu id restriction
 
 ## [2024-06-04]
 
