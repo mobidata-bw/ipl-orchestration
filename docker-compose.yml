@@ -571,7 +571,7 @@ services:
         condition: service_healthy
     links:
       - pgbouncer
-    image: postgrest/postgrest
+    image: ${IPL_GTFS_API_IMAGE:?missing/empty}
     ports:
       - ${IPL_GTFS_API_PORT}:3000
     read_only: true
