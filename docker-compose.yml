@@ -574,6 +574,7 @@ services:
     image: ${IPL_GTFS_API_IMAGE:?missing/empty}
     ports:
       - ${IPL_GTFS_API_PORT}:3000
+      - ${IPL_GTFS_API_ADMIN_PORT:?missing/empty}:3001
     read_only: true
     environment:
       # connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance
@@ -587,6 +588,7 @@ services:
       PGRST_DB_SCHEMAS: api
       PGRST_DB_ANON_ROLE: web_anon
       PGRST_DB_MAX_ROWS: ${IPL_GTFS_API_MAX_ROWS:?missing/empty}
+      PGRST_ADMIN_SERVER_PORT: 3001 # exposes health check & metrics
 
       # > Also set db-channel-enabled to false since LISTEN is not compatible with transaction pooling. Although it should not give any errors if left enabled.
       # https://postgrest.org/en/stable/references/connection_pool.html#external-connection-poolers
