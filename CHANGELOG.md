@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+* ParkAPI: [Multiple new converters at ParkAPI Sources 0.5.0](https://github.com/ParkenDD/parkapi-sources-v3/blob/main/CHANGELOG.md#050)
+
+
 ### Fixes
 
 * ⚠️ The `ipl-db` PostgreSQL database (server) doesn't bind on the host port `$IPL_POSTGRES_PORT` (default `5432`) anymore. – This change is intended to make it harder for adversaries to access the DB, particularly if IPL is deployed on a NAT-/firewall-less machine. You can still access the DB using the container port, whose IP address can be obtained using `docker inspect --format json "$(docker compose --env-file .env --env-file .env.local ps ipl-db --format '{{print .ID}}')" | jq -r '.[0].NetworkSettings.Networks | .[keys_unsorted[0]].IPAddress'`.
@@ -16,6 +21,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * fix: deer vehicles with missing extended properties are supported now, vehicles that can't be parsed from source will be ignored and a warning reported ([#116](https://github.com/mobidata-bw/x2gbfs/pull/116))
   * add deeplinks for MOQO-based providers, i.e. `stadtwerk_tauberfranken`
   * fix: remove plus and minus (`-`/`+`) chars from cantamen vehicle type ids to workaround lamassu id restriction
+* ParkAPI: [Fixes calculating geo-distance at matching service](https://github.com/ParkenDD/park-api-v3/pull/162)
+* ParkAPI: [Multiple fixes at ParkAPI Sources 0.5.0](https://github.com/ParkenDD/parkapi-sources-v3/blob/d606d8e9532ccb39bf855cfebe98e31f8486b26c/CHANGELOG.md#050)
+
 
 ## [2024-06-04]
 
