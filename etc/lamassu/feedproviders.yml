@@ -57,7 +57,7 @@ lamassu:
       operatorName: Call-A-Bike
       codespace: CAB
       # Note: dbconnect feeds are accessed via proxy, using http instead of https 
-      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/RegioRadStuttgart/gbfs"
+      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/v2/de/RegioRadStuttgart/gbfs"
       language: de
       authentication:
         scheme: httpHeaders
@@ -69,7 +69,7 @@ lamassu:
       operatorName: Call-A-Bike
       codespace: CAB
       # Note: dbconnect feeds are accessed via proxy, using http instead of https 
-      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/CallABike/gbfs"
+      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/v2/de/CallABike/gbfs"
       language: de
       authentication:
         scheme: httpHeaders
@@ -81,7 +81,7 @@ lamassu:
       operatorName: Call-A-Bike
       codespace: CAB
       # Note: dbconnect feeds are accessed via proxy, using http instead of https 
-      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/2-2/de/CallABikeICE/gbfs"
+      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/v2/de/CallABikeICE/gbfs"
       language: de
       authentication:
         scheme: httpHeaders
