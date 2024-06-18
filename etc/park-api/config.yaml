@@ -8,3 +8,5 @@ LOKI_ENABLED: true
 LOKI_URL: http://10.70.172.20:3100/loki/api/v1/push
 LOKI_TAGS:
   service: park-api
+
+STATIC_GEOJSON_BASE_URL: https://raw.githubusercontent.com/ParkenDD/parkapi-static-data/main/sources
