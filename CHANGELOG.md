@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * RabbitMQ: Upgrade from v3.12 to v3.13
   * Redis: Upgrade from v6-alpine to v7-alpinw
   * Traefik: Upgrade from v2.11 to v3.0
-
+  * Pipeline: Pin images versions to current version v2024-05-17t14-01
 
 
 ## [2024-06-18]
