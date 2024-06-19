@@ -6,9 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## Changes
+* GBFS Feeds (general): With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/master/Changelog.md), we now support GBFSv3. To request feeds in the new GBFSv3 version, instead of `sharing/gbfs` use `sharing/gbfs/v3/manifest.json`. With this version, accessing feeds which are not yet retreived from upstream will return an http status 502 (BAD GATEWAY) instead of 404 (NOT FOUND). 
+
 ### Fixes
 
 * GBFS Feeds (Lime): for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
+
+
+## Tasks
+
+* Several docker image updates:
+  * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-17T13-28
+  * Geoserver: Upgrade from 2.24.3 to 2.25.2 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
+  * Redis: Upgrade from v6 to v7
+  * Caddy: Upgrade from v2.8.1-alpine to v2.8.4-alpine to 
+  * RabbitMQ: Upgrade from v3.12 to v3.13
+  * Redis: Upgrade from v6-alpine to v7-alpinw
+  * Traefik: Upgrade from v2.11 to v3.0
+
+
 
 ## [2024-06-18]
 
