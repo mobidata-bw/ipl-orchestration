@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixes
+
+* GBFS Feeds (Lime): for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
 
 ## [2024-06-18]
 
