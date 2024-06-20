@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Tasks
 
 * Several docker image updates:
-  * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-17T13-28
+  * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-19T21-49
   * Geoserver: Upgrade from 2.24.3 to 2.25.2 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
   * Redis: Upgrade from v6 to v7
   * Caddy: Upgrade from v2.8.1-alpine to v2.8.4-alpine to 
