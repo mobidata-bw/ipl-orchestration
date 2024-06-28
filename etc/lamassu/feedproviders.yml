@@ -416,29 +416,11 @@ lamassu:
       codespace: BRD
       url: "https://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
       language: en
-    - systemId: bird-bulle
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/bulle/gbfs.json"
-      language: en
     - systemId: bird-kloten
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
       url: "https://mds.bird.co/gbfs/v2/public/kloten/gbfs.json"
-      language: en
-    - systemId: bird-uster
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/uster/gbfs.json"
-      language: en
-    - systemId: bird-winterthur
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/winterthur/gbfs.json"
       language: en
     - systemId: bird-zurich
       operatorId: BRD:Operator:bird
