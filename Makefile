@@ -95,6 +95,10 @@ docker-config:
 docker-ps:
 	$(DOCKER_COMPOSE) ps $(SERVICE)
 
+.PHONY: docker-container-ip
+docker-container-ip:
+	@docker inspect "$$($(DOCKER_COMPOSE) ps $(SERVICE) --format '{{print .Name}}')" | jq -rc '.[0].NetworkSettings.Networks.ipl_ipl.IPAddress'
+
 # Geoserver management
 # --------------------
 
