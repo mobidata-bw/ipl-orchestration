@@ -16,8 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 * ParkAPI: Fixes an issue with missing ParkAPI realtime data (see [ParkAPI's v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063)).
 
 ### Added
-* Addition of `capacity` attribute to sharing stations layers in Geoserver
 
+ * Addition of `capacity` attribute to sharing stations layers as `java.lang.Integer` in Geoserver
+ 
 ### Removed
 
 * bird-bulle, bird-uster, bird-winterthur GBFS feeds
