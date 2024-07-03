@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Removed
 
 * bird-bulle, bird-uster, bird-winterthur GBFS feeds
+* tier_rotkreuz GBFS feed
 
 ## Tasks
 
