@@ -614,16 +614,6 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: tier_rotkreuz
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_rotkreuz/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: tier_stgallen
       operatorId: TIE:Operator:tier
       operatorName: Tier
