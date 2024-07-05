@@ -7,19 +7,47 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ## Changes
-* GBFS Feeds (general): With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/master/Changelog.md), we now support GBFSv3. To request feeds in the new GBFSv3 version, instead of `sharing/gbfs` use `sharing/gbfs/v3/manifest.json`. With this version, accessing feeds which are not yet retreived from upstream will return an http status 502 (BAD GATEWAY) instead of 404 (NOT FOUND). 
+
+- ipl-dagster-pipeline is updated to [v2024-07-05t15-39](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/b8c202575e2ee4596c541cf4a7812c4a8fb81118/CHANGELOG.md#2024-07-05), this includes the following changes:
+  - reduce CPU shares of GTFS import to 512 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/140)
+  - bump dagster to v1.7.12 and dagster-docker to v0.23.12 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/155)
+
+## Added
+* Add vector tiles support for layer `MobiData-BW:roadworks`.
+
+## Fixes
+- WFS: `sharing_station.capacity` is changed to an integer field, `vehicle.max_range_meters` and `vehicle.current_range_meters`, according to the [GBFS spec](https://github.com/MobilityData/gbfs/blob/cd75662c25180f68f76237f88a861d82e940cf3b/gbfs.md?plain=1#L1044), to float.
+- WFS: `sharing_station_status` now reports vehicle availability for the feed's predominant `form_factor`, even for station, which don't have `vehicle_types_available` explicitly stated. 
+
+## Tasks
+
+* Following docker image updates:
+  * Lamassu: Upgrade from v2024-06-19T21-49 to v2024-07-08T06-22
+  * Ipl PostGIS: Upgrade from v15-3.3-alpine to v15-3.4-alpine
+
+## 2024-07-09
+
+## Changes
+- GBFS Feed changes: 
+  - With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/master/Changelog.md), we now support GBFSv3. To request feeds in the new GBFSv3 version, instead of `sharing/gbfs` use `sharing/gbfs/v3/manifest.json`. With this version, accessing feeds which are not yet retreived from upstream will return an http status 502 (BAD GATEWAY) instead of 404 (NOT FOUND). 
+  - my-e-car : added pricing plans for my-e-car (see [x2gbfs v2024-07-03](https://github.com/mobidata-bw/x2gbfs/blob/3c9f6c51aed7648c7f4a7f40858d08b63b739755/CHANGELOG.md#2024-07-03))
 - ⚠️ In the GTFS API (`/gtfs`), all [`geography`](https://postgis.net/docs/manual-3.4/using_postgis_dbmanagement.html#PostGIS_Geography)-based columns have been changed from a hex encoding of the PostGIS-specific binary representation to [GeoJSON](https://geojson.org). If you depend on the current format of `shape_pt_loc` in `/gtfs/shapes` or `stop_loc` in `/gtfs/stops`, you will have to adapt your code. For example, the `stop_loc` format of stop `de:08231:50_Parent` (*Pforzheim Hauptbahnhof*) changes from `"0101000020E6100000D28BDAFD2A68214003098A1F63724840"` to `{"type":"Point","coordinates":[8.703453,48.89365]}`.
+
+ 
 
 ### Fixes
 
-* GBFS Feeds (Lime): for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
+- GBFS Feeds:
+  - Lime: for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
+  - my-e-car, stadtmobil, lastenvelo_fr, voi_raumobil, deer: the vehicle_type.return_constraint was mis-spelled and is now fixed. (https://github.com/mobidata-bw/x2gbfs/pull/129)
+  - nextbike: missing `max_range_meters` and `current_range_meters` are provided for `propulsion_type` != `human`.
+  - bird: empty feeds `station_information`, `station_status` and `free_bike_status`, some of which have invalid lastUpdated values, have been removed.
 * ParkAPI: Fixes an issue with missing ParkAPI realtime data (see [ParkAPI's v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063)).
 
 ### Added
 
  * Addition of `capacity` attribute to sharing stations layers as `java.lang.Integer` in Geoserver
  * Addition of `photo_url` attribute to `parking_sites` and `parking_sites_bicycle`
- * Add vector tiles support for layer `MobiData-BW:roadworks`.
  
 ### Removed
 
@@ -31,11 +59,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-19T21-49
   * Geoserver: Upgrade from 2.24.3 to 2.25.2 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
   * ParkAPI: Upgrade from 0.6.2 to 0.6.3 (see the [v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063))
-  * Redis: Upgrade from v6 to v7
-  * Caddy: Upgrade from v2.8.1-alpine to v2.8.4-alpine to 
+  * Caddy: Upgrade from v2.8.1-alpine to v2.8.4-alpine 
   * RabbitMQ: Upgrade from v3.12 to v3.13
-  * Redis: Upgrade from v6-alpine to v7-alpinw
-  * Traefik: Upgrade from v2.11 to v3.0
+  * Redis: Upgrade from v6-alpine to v7-alpine
+  * Traefik: Upgrade from v2.11 to v3.1
   * Pipeline: Pin images versions to current version v2024-05-17t14-01
 
 
