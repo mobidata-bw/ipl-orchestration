@@ -4,8 +4,7 @@ OPENAPI_SERVERS:
   - url: https://api.mobidata-bw.de/park-api
     description: production
 
-LOKI_ENABLED: true
-LOKI_URL: http://10.70.172.20:3100/loki/api/v1/push
+LOKI_ENABLED: false
 LOKI_TAGS:
   service: park-api
 
