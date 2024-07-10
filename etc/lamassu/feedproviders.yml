@@ -408,25 +408,25 @@ lamassu:
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
+      url: "http://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
       language: en
     - systemId: bird-biel
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
+      url: "http://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
       language: en
     - systemId: bird-kloten
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/kloten/gbfs.json"
+      url: "http://mds.bird.co/gbfs/v2/public/kloten/gbfs.json"
       language: en
     - systemId: bird-zurich
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/zurich/gbfs.json"
+      url: "http://mds.bird.co/gbfs/v2/public/zurich/gbfs.json"
       language: en
     ## Bolt CH
     - systemId: bolt_basel
@@ -507,7 +507,7 @@ lamassu:
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LME
-      url: "https://data.lime.bike/api/partners/v2/gbfs/opfikon/gbfs.json"
+      url: "http://data.lime.bike/api/partners/v2/gbfs/opfikon/gbfs.json"
       language: en
     - systemId: lime_uster
       operatorId: LME:Operator:lime
@@ -719,7 +719,7 @@ lamassu:
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
+      url: "http://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
       language: en
     # Others FR
     - systemId: mulhouse
