@@ -4,3 +4,4 @@ HTTP_TO_HTTPS_HOSTS:
   - apis.deutschebahn.com
   - stables.donkey.bike
   - data.lime.bike
+  - mds.bird.co
