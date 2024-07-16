@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 * Following docker image updates:
   * Lamassu: Upgrade from v2024-06-19T21-49 to v2024-07-08T06-22
-  * Ipl PostGIS: Upgrade from v15-3.3-alpine to v15-3.4-alpine
+  * `ipl-db`: Upgrade PostGIS from `15-3.3-alpine` to `15-3.4-alpine`
 
 ## 2024-07-09
 
