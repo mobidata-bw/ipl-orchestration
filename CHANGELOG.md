@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ipl-dagster-pipeline is updated to [v2024-07-05t15-39](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/b8c202575e2ee4596c541cf4a7812c4a8fb81118/CHANGELOG.md#2024-07-05), this includes the following changes:
   - reduce CPU shares of GTFS import to 512 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/140)
   - bump dagster to v1.7.12 and dagster-docker to v0.23.12 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/155)
- * [ParkAPI 0.7.0 with new converters](https://github.com/ParkenDD/park-api-v3/blob/13c04ce93c0294bf162bc7d00130ba8f4b97c9d3/CHANGELOG.md#version-070)
+ * [ParkAPI 0.7.1 with new converters](https://github.com/ParkenDD/park-api-v3/blob/13c04ce93c0294bf162bc7d00130ba8f4b97c9d3/CHANGELOG.md#version-070)
 
 ## Added
 * Add vector tiles support for layer `MobiData-BW:roadworks`.
