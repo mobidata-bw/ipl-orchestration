@@ -34,7 +34,7 @@ lamassu:
       url: "file:///var/gbfs/feeds/stadtmobil_karlsruhe/gbfs.json"
       language: de
     - systemId: stadtmobil_rhein-neckar
-      operatorId: SMK:Operator:stadtmobil_rhein-neckar
+      operatorId: SMR:Operator:stadtmobil_rhein-neckar
       operatorName: Stadtmobil Rhein-Neckar
       codespace: SMR
       url: "file:///var/gbfs/feeds/stadtmobil_rhein-neckar/gbfs.json"
