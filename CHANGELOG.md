@@ -39,7 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixes
 
 - GBFS Feeds:
-  - Lime: for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md).
+  - Lime: for feeds of provider `Lime`, `station_status` and `station_information` feeds are from gbfs.json, as `Lime` associates all free floating bikes to a single station, which is semantically wrong (see [ipl-proxy v2024-06-19](https://github.com/mobidata-bw/ipl-proxy/blob/ab0f957b57fcf39335e7d4dff496272cba5bf1c4/CHANGELOG.md).
   - my-e-car, stadtmobil, lastenvelo_fr, voi_raumobil, deer: the vehicle_type.return_constraint was mis-spelled and is now fixed. (https://github.com/mobidata-bw/x2gbfs/pull/129)
   - nextbike: missing `max_range_meters` and `current_range_meters` are provided for `propulsion_type` != `human`.
   - bird: empty feeds `station_information`, `station_status` and `free_bike_status`, some of which have invalid lastUpdated values, have been removed.
