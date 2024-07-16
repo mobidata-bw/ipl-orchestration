@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2024-07-16
 
 ## Changes
 
@@ -38,6 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 * ParkAPI: Disable the Loki integration.
 	* Set `LOKI_ENABLED` to `false`. This can be overridden with a `$LOKI_ENABLED` environment variable.
 	* Remove the default value for the `LOKI_URL` config, as it is only required if the Loki integration is enabled. The value was specific to MobiData BW's IPL deployment anyways, so we moved its definition into another (private) repo.
+ * ipl-proxy: updated to 2024-07-10T14-11
+ * x2gbfs: updated to 2024-07-15T12-14
  * Map URLs in `etc/index-page/index.html` updated
 
 
@@ -52,6 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+ * Addition of GBFS feed: stadtmobil_rhein-neckar
  * Addition of `capacity` attribute to sharing stations layers as `java.lang.Integer` in Geoserver
  * Addition of `photo_url` attribute to `parking_sites` and `parking_sites_bicycle`
 
