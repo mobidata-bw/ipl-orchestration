@@ -60,7 +60,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-19T21-49
   * Geoserver: Upgrade from 2.24.3 to 2.25.2 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
   * ParkAPI: Upgrade from 0.6.2 to 0.6.3 (see the [v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063))
-  * Caddy: Upgrade from v2.8.1-alpine to v2.8.4-alpine 
+  * Caddy: Upgrade from `2.8.1-alpine` to `2.8.4-alpine` 
   * RabbitMQ: Upgrade from v3.12 to v3.13
   * Redis: Upgrade from v6-alpine to v7-alpine
   * Traefik: Upgrade from v2.11 to v3.1
