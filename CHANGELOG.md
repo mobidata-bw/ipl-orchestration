@@ -62,7 +62,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   * ParkAPI: Upgrade from 0.6.2 to 0.6.3 (see the [v0.6.3 changelog](https://github.com/ParkenDD/park-api-v3/blob/0.6.3/CHANGELOG.md#version-063))
   * Caddy: Upgrade from `2.8.1-alpine` to `2.8.4-alpine` 
   * RabbitMQ: Upgrade from v3.12 to v3.13
-  * Redis: Upgrade from v6-alpine to v7-alpine
+  * Redis: Upgrade from `6-alpine` to `7-alpine`
   * Traefik: Upgrade from v2.11 to v3.1
   * Pipeline: Pin images versions to current version v2024-05-17t14-01
 
