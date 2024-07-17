@@ -5,6 +5,10 @@
   </workspace>
   <enabled>true</enabled>
   <name>WMS</name>
+  <title>WMS MobiData BW® Integrationsplattform</title>
+  <internationalTitle/>
+  <abstrct>Der WMS-Dienst von MobiData BW® für Baden-Württemberg. Der Dienst liefert die in der Integrationsplattform gebündelten und vereinheitlichten Daten über den GeoServer aus. Dies umschließt neben Daten aus dem Sharing-Bereich auch Fahrplan-, Park-, Lade- und infrastrukturelle Daten sowie Arbeitsstellen.</abstrct>
+  <internationalAbstract/>
   <versions>
     <org.geotools.util.Version>
       <version>1.1.1</version>
@@ -13,9 +17,34 @@
       <version>1.3.0</version>
     </org.geotools.util.Version>
   </versions>
+  <keywords>
+    <string>Sharing</string>
+    <string>Parken</string>
+    <string>Fahrpläne</string>
+    <string>Arbeitsstellen</string>
+    <string>Ladeinfrastruktur</string>
+    <string>RadNETZ BW</string>
+  </keywords>
   <citeCompliant>false</citeCompliant>
   <schemaBaseURL>http://schemas.opengis.net</schemaBaseURL>
   <verbose>false</verbose>
+  <metadata>
+    <entry key="disableDatelineWrappingHeuristic">false</entry>
+    <entry key="kmlSuperoverlayMode">auto</entry>
+    <entry key="kmlReflectorMode">refresh</entry>
+    <entry key="rootLayerInCapabilities">true</entry>
+    <entry key="svgAntiAlias">false</entry>
+    <entry key="kmlPlacemark">false</entry>
+    <entry key="kmlKmscore">40</entry>
+    <entry key="mapWrapping">true</entry>
+    <entry key="pngCompression">25</entry>
+    <entry key="jpegCompression">25</entry>
+    <entry key="advancedProjectionDensification">false</entry>
+    <entry key="advancedProjectionHandling">true</entry>
+    <entry key="kmlAttr">true</entry>
+    <entry key="MarkFactoryList"></entry>
+    <entry key="scalehintMapunitsPixel">false</entry>
+  </metadata>
   <bboxForEachCRS>false</bboxForEachCRS>
   <watermark>
     <enabled>false</enabled>
@@ -31,6 +60,8 @@
   <maxRequestMemory>0</maxRequestMemory>
   <maxRenderingTime>0</maxRenderingTime>
   <maxRenderingErrors>0</maxRenderingErrors>
+  <internationalRootLayerTitle/>
+  <internationalRootLayerAbstract/>
   <maxRequestedDimensionValues>100</maxRequestedDimensionValues>
   <cacheConfiguration>
     <enabled>false</enabled>
@@ -40,5 +71,6 @@
   <remoteStyleMaxRequestTime>60000</remoteStyleMaxRequestTime>
   <remoteStyleTimeout>30000</remoteStyleTimeout>
   <defaultGroupStyleEnabled>true</defaultGroupStyleEnabled>
+  <transformFeatureInfoDisabled>false</transformFeatureInfoDisabled>
   <autoEscapeTemplateValues>false</autoEscapeTemplateValues>
 </wms>

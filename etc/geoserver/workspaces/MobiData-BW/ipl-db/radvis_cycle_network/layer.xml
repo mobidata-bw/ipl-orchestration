@@ -17,6 +17,18 @@
     <logoWidth>0</logoWidth>
     <logoHeight>0</logoHeight>
   </attribution>
+  <authorityURLs>
+    <AuthorityURL>
+      <name>MobiData BW®</name>
+      <href>https://registry.gdi-de.org/id/de.bw.mobidata-bw</href>
+    </AuthorityURL>
+  </authorityURLs>
+  <identifiers>
+    <Identifier>
+      <authority>MobiData BW®</authority>
+      <identifier>http://www.de.bw.mobidata-bw/c3f3c45c-89e2-4835-a4ac-d34972c23955</identifier>
+    </Identifier>
+  </identifiers>
   <dateCreated>2023-10-25 15:39:36.504 UTC</dateCreated>
-  <dateModified>2024-04-16 11:00:07.26 UTC</dateModified>
+  <dateModified>2024-07-17 11:16:30.652 UTC</dateModified>
 </layer>

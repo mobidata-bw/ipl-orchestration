@@ -5,10 +5,12 @@
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>RadNETZ-BW</title>
+  <title>MobiData BW® - RadNETZ Baden-Württemberg</title>
+  <abstract>Radnetzdaten aus RadVIS. Dieser Dienst liefert das RadNETZ BW sowie das Kreis- und das kommunale Netz</abstract>
   <keywords>
-    <string>features</string>
-    <string>RadNETZ-BW</string>
+    <string>RadNETZ BW</string>
+    <string>RadVIS</string>
+    <string>Baden-Württemberg</string>
   </keywords>
   <nativeCRS class="projected">PROJCS[&quot;ETRS89 / UTM zone 32N&quot;, 
   GEOGCS[&quot;ETRS89&quot;, 
