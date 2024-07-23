@@ -8,10 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Changes
 
-- ParkAPI 0.7.6 with [better logging](https://github.com/ParkenDD/park-api-v3/pull/178)
-  and [fixes in Karlsruhe converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/75)
+- ParkAPI 0.8.0 with [better logging](https://github.com/ParkenDD/park-api-v3/pull/178) ,
+  [Goldbeck converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/68) and
+  [fixes in Karlsruhe converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/75)
 
-  
+
+
 ## 2024-07-16
 
 ## Changes
