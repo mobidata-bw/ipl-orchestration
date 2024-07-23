@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+## Changes
+
+- ParkAPI 0.7.6 with [better logging](https://github.com/ParkenDD/park-api-v3/pull/178)
+  and [fixes in Karlsruhe converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/75)
+
+  
 ## 2024-07-16
 
 ## Changes
