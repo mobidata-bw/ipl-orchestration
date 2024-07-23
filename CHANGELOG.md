@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   [Goldbeck converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/68) and
   [fixes in Karlsruhe converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/75)
 
+### Added
+
+ * Reactivation of GBFS feed: stadtmobil_rhein-neckar
 
 
 ## 2024-07-16
