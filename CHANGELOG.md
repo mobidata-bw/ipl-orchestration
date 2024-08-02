@@ -6,19 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-###
+### Changes
 
 - `gtfs-api`: Upgrade PostgREST from 12.2.2 to [12.2.3](https://github.com/PostgREST/postgrest/releases/tag/v12.2.3)
 
 ## 2024-07-31
 
-## Changes
+### Changes
 
 - Geoserver: Upgrade from 2.25.2 to 2.25.3 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
 
 ## 2024-07-23
 
-## Changes
+### Changes
 
 - ParkAPI 0.8.0 with [better logging](https://github.com/ParkenDD/park-api-v3/pull/178) ,
   [Goldbeck converter](https://github.com/ParkenDD/parkapi-sources-v3/pull/68) and
@@ -31,21 +31,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## 2024-07-16
 
-## Changes
+### Changes
 
 - ipl-dagster-pipeline is updated to [v2024-07-05t15-39](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/b8c202575e2ee4596c541cf4a7812c4a8fb81118/CHANGELOG.md#2024-07-05), this includes the following changes:
   - reduce CPU shares of GTFS import to 512 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/140)
   - bump dagster to v1.7.12 and dagster-docker to v0.23.12 (https://github.com/mobidata-bw/ipl-dagster-pipeline/pull/155)
  * [ParkAPI 0.7.1 with new converters](https://github.com/ParkenDD/park-api-v3/blob/13c04ce93c0294bf162bc7d00130ba8f4b97c9d3/CHANGELOG.md#version-070)
 
-## Added
+### Added
 * Add vector tiles support for layer `MobiData-BW:roadworks`.
 
-## Fixes
+### Fixes
 - WFS: `sharing_station.capacity` is changed to an integer field, `vehicle.max_range_meters` and `vehicle.current_range_meters`, according to the [GBFS spec](https://github.com/MobilityData/gbfs/blob/cd75662c25180f68f76237f88a861d82e940cf3b/gbfs.md?plain=1#L1044), to float.
 - WFS: `sharing_station_status` now reports vehicle availability for the feed's predominant `form_factor`, even for station, which don't have `vehicle_types_available` explicitly stated.
 
-## Tasks
+### Tasks
 
 * Following docker image updates:
   * Lamassu: Upgrade from v2024-06-19T21-49 to v2024-07-08T06-22
@@ -54,7 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## 2024-07-09
 
-## Changes
+### Changes
 - GBFS Feed changes:
   - With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/94db9e69fe841621617b91bc2948cb902475d5ca/Changelog.md), we now support GBFS 3.0. To request feeds in the new GBFS 3.0 version, instead of `sharing/gbfs` use `sharing/gbfs/v3/manifest.json`.
   - ⚠️ With Lamassu [v2024-06-17T13-28](https://github.com/entur/lamassu/blob/94db9e69fe841621617b91bc2948cb902475d5ca/Changelog.md), accessing feeds which are not yet retreived from upstream will return an http status 502 (BAD GATEWAY) instead of 404 (NOT FOUND).
@@ -87,7 +87,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 * Removed GBFS feeds: bird-bulle, bird-uster, bird-winterthur, tier_rotkreuz
 
-## Tasks
+### Tasks
 
 * Several docker image updates:
   * Lamassu: Upgrade from v2024-04-29T06-37 to v2024-06-19T21-49
