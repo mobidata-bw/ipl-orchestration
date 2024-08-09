@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- ParkAPI 0.9.0 with [Swiss OpenData](https://github.com/ParkenDD/park-api-v3/blob/ff4d20ed47ebcdc1cc9bf5c9ea7fbf48218cba68/CHANGELOG.md#090)
+
+
 ### Changes
 
 - `gtfs-api`: Upgrade PostgREST from 12.2.2 to [12.2.3](https://github.com/PostgREST/postgrest/releases/tag/v12.2.3)
+- ParkAPI 0.9.0 with [Fixes for Ellwangen, Karlsruhe, Goldbeck, Ulm, Herrenberg, BFRK](https://github.com/ParkenDD/park-api-v3/blob/ff4d20ed47ebcdc1cc9bf5c9ea7fbf48218cba68/CHANGELOG.md#090):
+
 
 ## 2024-07-31
 
