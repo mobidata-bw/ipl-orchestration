@@ -9,7 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changes
 
 - ParkAPI 0.10.0 with [Parking Site Groups](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100)
-- ParkAPI 0.10.0 with [Kienzler SplitUp](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100)
+- ⚠️ ParkAPI 0.10.0 with [Kienzler SplitUp](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100).
+  If you used the `kienzler` converter before, please make sure that you update your config.
 
 ### Fixes
 
