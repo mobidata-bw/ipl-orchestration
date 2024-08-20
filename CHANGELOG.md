@@ -6,16 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 [Unreleased]
 
+## 2024-08-20
+
 ### Changes
 
 - ParkAPI 0.10.0 with [Parking Site Groups](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100)
 - ⚠️ ParkAPI 0.10.0 with [Kienzler SplitUp](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100).
   If you used the `kienzler` converter before, please make sure that you update your config.
+- ParkAPI 0.11.0 with [new converters for Konstanz, Bondorf, Kirchheim, Neustadt and Vaihingen](https://github.com/ParkenDD/park-api-v3/blob/d7255dcb6d005202cbbca99817ab499db35469ef/CHANGELOG.md#0110)
 
 ### Fixes
 
 - ParkAPI 0.10.0 with [Karlsruhe Converter Fix](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100)
 - ParkAPI 0.10.0 with [SQL Query optimizations for faster responses](https://github.com/ParkenDD/park-api-v3/blob/9a02a9694bcda107bb5a8dd2100591b8ddc3b7d3/CHANGELOG.md#0100)
+- ParkAPI 0.11.0 with [a fix for Kienzler split-up introduced in 0.10.0](https://github.com/ParkenDD/park-api-v3/blob/d7255dcb6d005202cbbca99817ab499db35469ef/CHANGELOG.md#0110)
 
 
 ## 2024-08-13
