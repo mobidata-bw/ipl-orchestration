@@ -45,6 +45,8 @@ x-park-api-defaults: &park-api-defaults
   volumes:
     - ./etc/park-api/config.yaml:/app/config.yaml
     - ./etc/park-api/config.secrets.yaml:/app/config.secrets.yaml
+    - ./etc/park-api/mobilithek-mobidata.crt.pem /app/config/mobilithek-mobidata.crt.pem
+    - ./etc/park-api/mobilithek-mobidata.key.pem /app/config/mobilithek-mobidata.key.pem
     - ./var/park-api/logs:/app/logs
     - ./var/park-api/temp:/app/temp
 
