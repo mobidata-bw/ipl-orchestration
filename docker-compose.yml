@@ -45,7 +45,7 @@ x-park-api-defaults: &park-api-defaults
   volumes:
     - ./etc/park-api/config.yaml:/app/config.yaml
     - ./etc/park-api/config.secrets.yaml:/app/config.secrets.yaml
-    - ./etc/park-api/files  /app/files
+    - ./etc/park-api/files:/app/files
     - ./var/park-api/logs:/app/logs
     - ./var/park-api/temp:/app/temp
 
