@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 [Unreleased]
 
+### Features
+
+- ⚠️ ParkAPI 0.12.0 with [using BFRK API](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#featues).
+  If you used the `bfrk` converters before, please make sure that you update your config.
+- ParkAPI 0.12.0 with [max_with support](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#featues).
+
+
+### Changes
+
+- ParkAPI 0.12.0 with [dynamic Realtime Setting at Karlsruhe](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#fixes)
+- ParkAPI 0.12.0 [fixing VRS UID mapping](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#fixes)
+
+
 ## 2024-08-20
 
 ### Changes
