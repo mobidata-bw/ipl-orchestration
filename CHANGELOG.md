@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-[Unreleased]
+## 2024-09-03
 
 ### Features
 
@@ -17,6 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - ParkAPI 0.12.0 with [dynamic Realtime Setting at Karlsruhe](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#fixes)
 - ParkAPI 0.12.0 [fixing VRS UID mapping](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#fixes)
+- ipl-proxy: updated to 2024-09-03T06-27
+- x2gbfs: updated to :2024-09-03T06-22
 
 
 ## 2024-08-20
