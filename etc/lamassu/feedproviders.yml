@@ -732,11 +732,11 @@ lamassu:
       operatorId: VLC:Operator:velocite
       operatorName: velocite
       codespace: VLC
-      url: "https://transport.data.gouv.fr/gbfs/mulhouse/gbfs.json"
+      url: "https://api.cyclocity.fr/contracts/mulhouse/gbfs/gbfs.json"
       language: fr
     - systemId: nancy
       operatorId: VLS:Operator:velostanlib
       operatorName: velostanlib
       codespace: VLS
-      url: "https://transport.data.gouv.fr/gbfs/nancy/gbfs.json"
+      url: "https://api.cyclocity.fr/contracts/nancy/gbfs/gbfs.json"
       language: fr
