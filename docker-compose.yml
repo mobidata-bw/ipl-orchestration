@@ -188,6 +188,8 @@ services:
       - CANTAMEN_IXSI_API_URL=${CANTAMEN_IXSI_API_URL:?missing/empty}
       - CANTAMEN_IXSI_API_TIMEOUT=${CANTAMEN_IXSI_API_TIMEOUT:?missing/empty}
       - MOQO_API_TOKEN=${MOQO_API_TOKEN:?missing/empty}
+      - FLINKSTER_CLIENT_ID=${FLINKSTER_CLIENT_ID:?missing/empty}
+      - FLINKSTER_SECRET=${FLINKSTER_SECRET:?missing/empty}
     restart: unless-stopped
 
   lamassu:
