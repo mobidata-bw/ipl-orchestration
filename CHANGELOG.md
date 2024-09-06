@@ -8,7 +8,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 - GBFS Feed for new carsharing provided flinkster added (via x2gbs version 2024-09-05T12-13)
-- GeoServer: Added `station_id` to `sharing_vehicle` table
 
 
 ## 2024-09-03
