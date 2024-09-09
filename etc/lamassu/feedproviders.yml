@@ -173,12 +173,6 @@ lamassu:
           tokenUrl: ${LAMASSU_BOLT_AUTH_URL}
           clientId: ${LAMASSU_BOLT_CLIENT_ID}
           clientPassword: ${LAMASSU_BOLT_CLIENT_PASSWORD}
-    - systemId: roxy_freiburg
-      operatorId: RXY:Operator:roxy
-      operatorName: Roxy
-      codespace: RXY
-      url: "https://roxy.rideatom.com/gbfs/v2_2/en/gbfs?id=1227"
-      language: en
     - systemId: yoio_freiburg
       operatorId: YOO:Operator:yoio
       operatorName: Yoio
