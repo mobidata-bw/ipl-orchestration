@@ -234,12 +234,12 @@ lamassu:
       codespace: ZEU
       url: "https://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
       language: en
-    - systemId: zeus_hemmingen
-      operatorId: ZEU:Operator:zeus
-      operatorName: Zeus
-      codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
-      language: en
+#    - systemId: zeus_hemmingen
+#      operatorId: ZEU:Operator:zeus
+#      operatorName: Zeus
+#      codespace: ZEU
+#      url: "https://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
+#      language: en
     - systemId: zeus_renningen_malmsheim
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
