@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ParkAPI 0.13.0 with [new Hüfner Push Converter](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#features)
 - GeoServer: Added `station_id` to `MobiData-BW:sharing_vehicles` and removed sharing stations where `station_id` is null
 - GeoServer: Added the new category "Keine Echtzeitdaten" (no realtime data) to the `mdbw_sharing_stations_default` style
+- GeoServer: Added an INSPIRE plugin
 
 
 ### Changes
