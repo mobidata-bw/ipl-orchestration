@@ -51,6 +51,7 @@
   <simpleConversionEnabled>false</simpleConversionEnabled>
   <internationalTitle/>
   <internationalAbstract/>
+  <cqlFilter>station_id is null</cqlFilter>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
@@ -64,6 +65,16 @@
       <binding>java.lang.String</binding>
       <description>
         <de>ID des Fahrzeugs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>station_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID der zum Fahrzeug dazugehörigen Station</de>
       </description>
     </attribute>
     <attribute>
