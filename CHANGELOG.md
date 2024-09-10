@@ -7,13 +7,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 ### Added
+
 - GBFS Feed for new carsharing provided flinkster added (via x2gbs version 2024-09-05T12-13)
+- ParkAPI 0.13.0 with [new Hüfner Push Converter](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#features)
 - GeoServer: Added `station_id` to `MobiData-BW:sharing_vehicles` and removed sharing stations where `station_id` is null
 - GeoServer: Added the new category "Keine Echtzeitdaten" (no realtime data) to the `mdbw_sharing_stations_default` style
 
+
+### Changes
+
+- ParkApi 0.13.0 with [BFRK: Make URL configurable](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
+- ParkApi 0.13.0 with [Karlsruhe Bike: Ignore missing capacities](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
+- ParkApi 0.13.0 with [APCOA: Ignore missing coordinates](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
+- ParkApi 0.13.0 with [APCOA: Fix OSM Opening Times](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
+- ParkApi 0.13.1 with [has_fee True at all Heidelberg parking sites](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes)
+
+
 ## 2024-09-03
 
-### Features
+### Added
 
 - ⚠️ ParkAPI 0.12.0 with [using BFRK API](https://github.com/ParkenDD/park-api-v3/blob/10fa3303ac21247a5ef1dc57cd9eb100bc18964f/CHANGELOG.md#featues).
   If you used the `bfrk` converters before, please make sure that you update your config.
