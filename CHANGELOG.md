@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2024-09-10
 
 ### Added
 
@@ -21,7 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ParkApi 0.13.0 with [APCOA: Ignore missing coordinates](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
 - ParkApi 0.13.0 with [APCOA: Fix OSM Opening Times](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes-1)
 - ParkApi 0.13.1 with [has_fee True at all Heidelberg parking sites](https://github.com/ParkenDD/park-api-v3/blob/d59e1fe9dbc0e6203bf4b1d663c29c8dbe7c0156/CHANGELOG.md#fixes)
-
+- ipl-proxy: updated to 2024-09-09T13-44
+- x2gbfs: updated to 2024-09-10T05-57
 
 ## 2024-09-03
 
