@@ -728,6 +728,14 @@ lamassu:
       codespace: BRD
       url: "http://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
       language: en
+    # Nexbike FR
+    - systemId: nextbike_ae
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBA
+      # Note: nextbike feeds are accessed via proxy, using http instead of https 
+      url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ae/gbfs.json"
+      language: en
     # Others FR
     - systemId: mulhouse
       operatorId: VLC:Operator:velocite
