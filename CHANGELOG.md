@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - GBFS Feed nextbike_ae for Nextbike Strasbourg
+- ParkAPI 0.14.0 with (Herrenberg Bike Converter)[https://github.com/ParkenDD/park-api-v3/blob/c196845d5de7419ce3753a498e9c5e943935427f/CHANGELOG.md#0140]
+
+### Changes
+
+- ParkAPI 0.14.0 with (Fixes at Documentation)[https://github.com/ParkenDD/park-api-v3/blob/c196845d5de7419ce3753a498e9c5e943935427f/CHANGELOG.md#0140]
+- ParkAPI 0.14.0 with (Park and Ride at BFRK)[https://github.com/ParkenDD/park-api-v3/blob/c196845d5de7419ce3753a498e9c5e943935427f/CHANGELOG.md#0140]
+
 
 ## 2024-09-10
 
