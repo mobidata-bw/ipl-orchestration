@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+[upcoming release]
+
+### Added
+
+- GBFS Feed nextbike_ae for Nextbike Strasbourg
+
 ## 2024-09-10
 
 ### Added
