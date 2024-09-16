@@ -15,6 +15,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - ParkAPI 0.14.0 with (Fixes at Documentation)[https://github.com/ParkenDD/park-api-v3/blob/c196845d5de7419ce3753a498e9c5e943935427f/CHANGELOG.md#0140]
 - ParkAPI 0.14.0 with (Park and Ride at BFRK)[https://github.com/ParkenDD/park-api-v3/blob/c196845d5de7419ce3753a498e9c5e943935427f/CHANGELOG.md#0140]
+- lamassu: updated to 2024-09-16T06-09. This i.e. includes the following changes:
+  - https://github.com/entur/lamassu/pull/518: Add subscription update interceptor to add systemId to update logs
+  - https://github.com/entur/lamassu/pull/530: Improve: allow configurable minimum max-age for cache-control directive
+  - https://github.com/entur/lamassu/pull/527: Add bounding box search functionality to vehicles and stations queries
+  - https://github.com/entur/lamassu/pull/516: Improve id validation (now conformant to GBFS spec)
+  - https://github.com/entur/lamassu/pull/512: Map current_range_meters as provided instead of setting a missing value to 0.0
 
 
 ## 2024-09-10
