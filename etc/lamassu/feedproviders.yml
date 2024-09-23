@@ -51,6 +51,12 @@ lamassu:
       codespace: MEC
       url: "file:///var/gbfs/feeds/my-e-car/gbfs.json"
       language: de
+    - systemId: teilauto_neckar-alb
+      operatorId: TAN:Operator:teilauto_neckar-alb
+      operatorName: teilAuto Neckar-Alb
+      codespace: TAN
+      url: "file:///var/gbfs/feeds/teilauto_neckar-alb/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
