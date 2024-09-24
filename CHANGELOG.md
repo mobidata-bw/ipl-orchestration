@@ -6,11 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 [upcoming release]
 
-### Changes
+### 2024-09-24
 
 - [ParkAPI 0.14.1 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0141)
 - [ParkAPI 0.14.2 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0142)
-
+- ipl-proxy: updated to 2024-09-17T05-58
+- x2gbfs: updated to 2024-09-23T09-55
 
 ## 2024-09-17
 
