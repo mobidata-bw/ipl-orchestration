@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-[upcoming release]
+## [upcoming release]
 
-### 2024-09-24
+### Changed
+
+- `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v4-2024-09-24T15.06.43-9a66d7d`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/9a66d7d)
+
+## 2024-09-24
+
+### Changed
 
 - [ParkAPI 0.14.1 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0141)
 - [ParkAPI 0.14.2 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0142)

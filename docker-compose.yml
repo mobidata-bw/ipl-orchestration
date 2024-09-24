@@ -627,6 +627,7 @@ services:
       - ./etc/gtfs:/etc/gtfs
     environment:
       PGHOST: gtfs-db
+      PGPORT: 5432
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty}
       PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty}
       # the default DB, used by gtfs-importer to keep track of imports
@@ -635,6 +636,7 @@ services:
       GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty}
+      GTFS_IMPORTER_SCHEMA: api
       # path to the file containing the latest import's DB name
       GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
