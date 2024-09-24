@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 [upcoming release]
 
+### Changes
+
+- [ParkAPI 0.14.1 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0141)
+- [ParkAPI 0.14.2 with multiple smaller fixes](https://github.com/ParkenDD/park-api-v3/blob/e9276c2d3f6c3c59f07088671223abe3ec2c28de/CHANGELOG.md#0142)
+
+
+## 2024-09-17
+
 ### Added
 
 - GBFS Feed nextbike_ae for Nextbike Strasbourg
