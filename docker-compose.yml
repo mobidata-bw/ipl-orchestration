@@ -637,6 +637,8 @@ services:
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty}
       GTFS_IMPORTER_SCHEMA: api
+      # gtfstidy: Don't remove stops duplicates (--remove-red-stops).
+      GTFSTIDY_REMOVE_REDUNDANT_STOPS: 'false'
       # path to the file containing the latest import's DB name
       GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs

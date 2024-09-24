@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v4-2024-09-24T15.06.43-9a66d7d`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/9a66d7d)
+- `gtfs-importer`: changed it not to remove redundant stops (i.e. with all fields being equal) before importing
 - `gtfs-importer`: changed it to download GTFS datasets as `IPL (MobiData-BW)` (previously just `MobiData-BW`)
 
 ## 2024-09-24
