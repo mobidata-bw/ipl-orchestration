@@ -401,6 +401,7 @@ services:
       - IPL_GTFS_DB_POSTGRES_PASSWORD
       - IPL_GTFS_DB_POSTGRES_DB
       - IPL_GTFS_DB_POSTGRES_DB_PREFIX
+      - IPL_GTFS_IMPORTER_SCHEMA=${IPL_GTFS_IMPORTER_SCHEMA:?missing/empty}
       - IPL_GTFS_DB_POSTGREST_USER
       - IPL_GTFS_DB_POSTGREST_PASSWORD
       # Required to mount volumes for docker-in-docker executions
@@ -636,7 +637,7 @@ services:
       GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
       # the prefix of all DBs created for imports by gtfs-importer
       GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty}
-      GTFS_IMPORTER_SCHEMA: api
+      GTFS_IMPORTER_SCHEMA: ${IPL_GTFS_IMPORTER_SCHEMA:?missing/empty}
       # gtfstidy: Don't remove stops duplicates (--remove-red-stops).
       GTFSTIDY_REMOVE_REDUNDANT_STOPS: 'false'
       # path to the file containing the latest import's DB name
