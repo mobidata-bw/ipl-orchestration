@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [upcoming release]
 
+### Changed
+- `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-09-27T11-21](https://hub.docker.com/layers/entur/lamassu/2024-09-27T11-21/images/sha256-0f849baac422c1af11e2844e7dcd540a81a36414805e22c75243be2cea375a85?context=explore). This i.e. includes the `stationEntityCacheMinimumTtl` and `stationEntityCacheMaximumTtl`configuration options.
+
+## 2024-10-01
+
 ### Added
 - GeoServer: added `MobiData-BW:parking_sites_item` as a new layer
 - GeoServer: `purpose` attribute added to `MobiData-BW:parking_sites_bicycle`
