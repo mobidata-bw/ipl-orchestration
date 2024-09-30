@@ -57,6 +57,12 @@ lamassu:
       codespace: TAN
       url: "file:///var/gbfs/feeds/teilauto_neckar-alb/gbfs.json"
       language: de
+    - systemId: teilauto_biberach
+      operatorId: TAB:Operator:teilauto_biberach
+      operatorName: teilAuto Biberach
+      codespace: TAB
+      url: "file:///var/gbfs/feeds/teilauto_biberach/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
