@@ -20,6 +20,10 @@
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
                 <ogc:Literal>my-e-car</ogc:Literal>
               </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>teilauto_neckar-alb</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
             </ogc:Or>
           </ogc:Filter>
           <PointSymbolizer>
@@ -51,6 +55,10 @@
                   <ogc:PropertyIsEqualTo>
                     <ogc:PropertyName>feed_id</ogc:PropertyName>
                     <ogc:Literal>my-e-car</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>teilauto_neckar-alb</ogc:Literal>
                   </ogc:PropertyIsEqualTo>
                 </ogc:Or>
               </ogc:Not>
