@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `gtfs-importer`: changed it to download GTFS datasets as `IPL (MobiData-BW)` (previously just `MobiData-BW`)
 - GeoServer: updated style `mdbw_sharing_stations_default`
 - GeoServer: updated `purpose` attribute in `MobiData-BW:parking_sites`
+- `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2024-10-01T12-53`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/f70996808fb4128cf6f5ceea4d7ac9be3646c614/CHANGELOG.md#2024-10-01)
 
 ## 2024-09-24
 
