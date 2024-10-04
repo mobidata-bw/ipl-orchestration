@@ -1,5 +1,5 @@
 <layer>
-  <name>parking_sites</name>
+  <name>parking_sites_car</name>
   <id>LayerInfoImpl--5bcdf8b:18bc88075ee:-7ff9</id>
   <type>VECTOR</type>
   <defaultStyle>
@@ -18,5 +18,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2023-11-13 11:50:05.514 UTC</dateCreated>
-  <dateModified>2024-09-26 13:08:41.232 UTC</dateModified>
+  <dateModified>2024-10-04 09:06:19.751 UTC</dateModified>
 </layer>

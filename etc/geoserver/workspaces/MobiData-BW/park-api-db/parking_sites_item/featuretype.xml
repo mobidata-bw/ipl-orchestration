@@ -43,7 +43,7 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>parking_sites_item</name>
-        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, lat, lon, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at FROM parking_site&#xd;
+        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at FROM parking_site&#xd;
 WHERE purpose=&apos;ITEM&apos;
 </sql>
         <escapeSql>false</escapeSql>
@@ -55,7 +55,7 @@ WHERE purpose=&apos;ITEM&apos;
         </geometry>
       </virtualTable>
     </entry>
-  <entry key="time">
+    <entry key="time">
       <dimensionInfo>
         <enabled>false</enabled>
       </dimensionInfo>
@@ -80,6 +80,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>ID der Parkanlage (von parkAPI erzeugt)</de>
+      </description>
     </attribute>
     <attribute>
       <name>source_id</name>
@@ -87,6 +90,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>ID des Datengebers (von parkAPI erzeugt)</de>
+      </description>
     </attribute>
     <attribute>
       <name>original_uid</name>
@@ -94,6 +100,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+      </description>
     </attribute>
     <attribute>
       <name>purpose</name>
@@ -101,6 +110,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Zweck der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>name</name>
@@ -108,27 +120,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
-      <name>operator_name</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
-      <name>public_url</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
-      <name>photo_url</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
+      <description>
+        <de>Name der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>address</name>
@@ -136,6 +130,39 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Adresse der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>operator_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Betreiber der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>public_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Link zu weiterführenden Informationen der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>photo_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Link zu einem Foto der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>description</name>
@@ -143,6 +170,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung</de>
+      </description>
     </attribute>
     <attribute>
       <name>type</name>
@@ -150,6 +180,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Art der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>max_stay</name>
@@ -157,6 +190,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Maximale Parkdauer</de>
+      </description>
     </attribute>
     <attribute>
       <name>has_lighting</name>
@@ -164,6 +200,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Beleuchtung?</de>
+      </description>
     </attribute>
     <attribute>
       <name>fee_description</name>
@@ -171,6 +210,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung der Gebühren</de>
+      </description>
     </attribute>
     <attribute>
       <name>has_fee</name>
@@ -178,6 +220,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Gebührenpflichtig?</de>
+      </description>
     </attribute>
     <attribute>
       <name>park_and_ride_type</name>
@@ -185,6 +230,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Art der B+R-Anlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>has_realtime_data</name>
@@ -192,27 +240,19 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitdaten?</de>
+      </description>
     </attribute>
     <attribute>
       <name>realtime_opening_status</name>
-      <minOccurs>1</minOccurs>
+      <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.String</binding>
-    </attribute>
-    <attribute>
-      <name>lat</name>
-      <minOccurs>1</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.math.BigDecimal</binding>
-    </attribute>
-    <attribute>
-      <name>lon</name>
-      <minOccurs>1</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.math.BigDecimal</binding>
+      <description>
+        <de>Echtzeit-Status der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>capacity</name>
@@ -220,6 +260,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze</de>
+      </description>
     </attribute>
     <attribute>
       <name>realtime_capacity</name>
@@ -227,13 +270,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
-    </attribute>
-    <attribute>
-      <name>realtime_free_capacity</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze (Echtzeit)</de>
+      </description>
     </attribute>
     <attribute>
       <name>capacity_charging</name>
@@ -241,6 +280,19 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze mit Lademöglichkeit</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_free_capacity</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl freier Stellplätze (Echtzeit)</de>
+      </description>
     </attribute>
     <attribute>
       <name>realtime_capacity_charging</name>
@@ -248,6 +300,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+      </description>
     </attribute>
     <attribute>
       <name>realtime_free_capacity_charging</name>
@@ -255,6 +310,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+      </description>
     </attribute>
     <attribute>
       <name>opening_hours</name>
@@ -262,6 +320,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Öffnungszeiten</de>
+      </description>
     </attribute>
     <attribute>
       <name>is_covered</name>
@@ -269,6 +330,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Überdacht?</de>
+      </description>
     </attribute>
     <attribute>
       <name>supervision_type</name>
@@ -276,6 +340,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Art der Überwachung</de>
+      </description>
     </attribute>
     <attribute>
       <name>related_location</name>
@@ -283,6 +350,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Ortsbezug der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>geometry</name>
@@ -290,6 +360,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
+      <description>
+        <de>Koordinate der Parkanlage</de>
+      </description>
     </attribute>
     <attribute>
       <name>created_at</name>
@@ -297,6 +370,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Erstellungsdatum in der parkAPI</de>
+      </description>
     </attribute>
     <attribute>
       <name>modified_at</name>
@@ -304,6 +380,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Zeitpunkt der letzten Änderung in der parkAPI</de>
+      </description>
     </attribute>
     <attribute>
       <name>static_data_updated_at</name>
@@ -311,6 +390,9 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
+      </description>
     </attribute>
     <attribute>
       <name>realtime_data_updated_at</name>
@@ -318,8 +400,11 @@ WHERE purpose=&apos;ITEM&apos;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+      </description>
     </attribute>
-  </attributes>  
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
