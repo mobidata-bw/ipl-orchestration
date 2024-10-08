@@ -4,7 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [upcoming release]
+## 2024-10-08
+
+### Added
+- ParkAPI: added 26 units for provider kienzler_bike_and_ride
 
 ### Changed
 - `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-09-27T11-21](https://hub.docker.com/layers/entur/lamassu/2024-09-27T11-21/images/sha256-0f849baac422c1af11e2844e7dcd540a81a36414805e22c75243be2cea375a85?context=explore). This i.e. includes the `stationEntityCacheMinimumTtl` and `stationEntityCacheMaximumTtl`configuration options.
