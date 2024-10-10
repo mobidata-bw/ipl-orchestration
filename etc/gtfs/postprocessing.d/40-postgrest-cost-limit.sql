@@ -40,4 +40,7 @@ SELECT pg_temp._alter_db(current_database(), 'session_preload_libraries', 'plan_
 -- [3] https://github.com/PostgREST/postgrest/issues/3045
 
 -- Limit postgrest's & web_anon's queries by the query planner's estimated cost.
-ALTER ROLE postgrest SET plan_filter.statement_cost_limit = 1000000.0;
+-- Use $POSTGREST_STATEMENT_COST_LIMIT, fall back to 1000000.
+\set cost_limit `echo -n "${POSTGREST_STATEMENT_COST_LIMIT:1000000}"`
+-- https://stackoverflow.com/a/18730455/1072129
+ALTER ROLE postgrest SET plan_filter.statement_cost_limit = :'cost_limit';
