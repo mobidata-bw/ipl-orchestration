@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Added
+
+### Changed
+
+- ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v4-2024-10-24T17.43.02-76b148e`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/76b148e) – This is a breaking change because it switches the GTFS import back (from keeping all of them) to retaining only 2 databases, similar to the old (2024-09-17) behaviour of keeping only the most recent ones.
+
 ## 2024-10-17
 
 ### Added
