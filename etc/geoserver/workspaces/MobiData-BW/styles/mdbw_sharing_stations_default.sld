@@ -16,13 +16,29 @@
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
                 <ogc:Literal>stadtmobil*</ogc:Literal>
               </ogc:PropertyIsLike>
+              <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>teilauto*</ogc:Literal>
+              </ogc:PropertyIsLike>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
                 <ogc:Literal>my-e-car</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
-                <ogc:Literal>teilauto_neckar-alb</ogc:Literal>
+                <ogc:Literal>oekostadt_renningen</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>gruene_flotte_freiburg</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>swu2go</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>conficars_ulm</ogc:Literal>
               </ogc:PropertyIsEqualTo>
             </ogc:Or>
           </ogc:Filter>
@@ -52,13 +68,29 @@
                     <ogc:PropertyName>feed_id</ogc:PropertyName>
                     <ogc:Literal>stadtmobil*</ogc:Literal>
                   </ogc:PropertyIsLike>
+                  <ogc:PropertyIsLike wildCard="*" singleChar="#" escape="!">
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>teilauto*</ogc:Literal>
+                  </ogc:PropertyIsLike>
                   <ogc:PropertyIsEqualTo>
                     <ogc:PropertyName>feed_id</ogc:PropertyName>
                     <ogc:Literal>my-e-car</ogc:Literal>
                   </ogc:PropertyIsEqualTo>
                   <ogc:PropertyIsEqualTo>
                     <ogc:PropertyName>feed_id</ogc:PropertyName>
-                    <ogc:Literal>teilauto_neckar-alb</ogc:Literal>
+                    <ogc:Literal>oekostadt_renningen</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>gruene_flotte_freiburg</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>swu2go</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>conficars_ulm</ogc:Literal>
                   </ogc:PropertyIsEqualTo>
                 </ogc:Or>
               </ogc:Not>
