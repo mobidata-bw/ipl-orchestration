@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2024-10-17
 
 ### Added
 
@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - ParkAPI 0.15.0 with several [converter enhancements and fixes](https://github.com/ParkenDD/park-api-v3/blob/cf3b138151fd52b94cb2668ae34f9037a4d7be9c/CHANGELOG.md#0150)
-
+- x2gbfs: updated to 2024-10-17T09-25
 
 ## 2024-10-08
 
