@@ -8,7 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- ParkAPI 0.15.0 with new [Kienzler VVS Converter](https://github.com/ParkenDD/park-api-v3/blob/cf3b138151fd52b94cb2668ae34f9037a4d7be9c/CHANGELOG.md#0150)
+
 ### Changed
+
+- ParkAPI 0.15.0 with several [converter enhancements and fixes](https://github.com/ParkenDD/park-api-v3/blob/cf3b138151fd52b94cb2668ae34f9037a4d7be9c/CHANGELOG.md#0150)
+
 
 ## 2024-10-08
 
