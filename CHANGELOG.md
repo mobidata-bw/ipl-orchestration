@@ -7,10 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2024-10-17
 
 ### Added
+- GeoServer: added descriptions to `parking_sites` attributes; updated `MobiData-BW:mdbw_sharing_stations_default` for current and upcoming static GBFS feeds
 
 - ParkAPI 0.15.0 with new [Kienzler VVS Converter](https://github.com/ParkenDD/park-api-v3/blob/cf3b138151fd52b94cb2668ae34f9037a4d7be9c/CHANGELOG.md#0150)
 
 ### Changed
+- GeoServer: updated GeoServer from 2.25.3 to 2.26.0; renamed `parking_sites` to `parking_sites_car`
 
 - ParkAPI 0.15.0 with several [converter enhancements and fixes](https://github.com/ParkenDD/park-api-v3/blob/cf3b138151fd52b94cb2668ae34f9037a4d7be9c/CHANGELOG.md#0150)
 - x2gbfs: updated to 2024-10-17T09-25
@@ -23,7 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 - `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-09-27T11-21](https://hub.docker.com/layers/entur/lamassu/2024-09-27T11-21/images/sha256-0f849baac422c1af11e2844e7dcd540a81a36414805e22c75243be2cea375a85?context=explore). This i.e. includes the `stationEntityCacheMinimumTtl` and `stationEntityCacheMaximumTtl`configuration options.
 - [ParkAPI 0.14.3 with a fix at BFRK converter](https://github.com/ParkenDD/park-api-v3/blob/9061cdeaaa16a2336e2d7a874d7331f5c2c2d2bd/CHANGELOG.md#0143)
-
 
 ## 2024-10-01
 
