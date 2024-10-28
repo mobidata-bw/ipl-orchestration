@@ -63,6 +63,12 @@ lamassu:
       codespace: TAB
       url: "file:///var/gbfs/feeds/teilauto_biberach/gbfs.json"
       language: de
+    - systemId: oekostadt_renningen
+      operatorId: ORE:Operator:oekostadt_renningen
+      operatorName: Ökostadt Renningen
+      codespace: ORE
+      url: "file:///var/gbfs/feeds/oekostadt_renningen/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
