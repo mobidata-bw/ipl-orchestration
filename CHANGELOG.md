@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v4-2024-10-24T17.43.02-76b148e`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/76b148e) – This is a breaking change because it switches the GTFS import back (from keeping all of them) to retaining only 2 databases, similar to the old (2024-09-17) behaviour of keeping only the most recent ones.
+- `gtfs-importer`: work around [possible GTFS download bug in `postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer/issues/10) by using plain `curl`
 - GeoServer: rollback from version `2.26.0` to `2.25.3`
 - ParkAPI 0.15.1 with [minor fixes and plugin maintenance](https://github.com/ParkenDD/park-api-v3/blob/bdd2c5a5596403220696fdb9e33b6ce5bc9ba842/CHANGELOG.md#0151)
 - x2gbfs: updated to 2024-10-28T06-10
