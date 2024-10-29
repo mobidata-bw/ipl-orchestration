@@ -626,6 +626,8 @@ services:
     volumes:
       - ./var/gtfs:/var/gtfs
       - ./etc/gtfs:/etc/gtfs
+      # mount modified download script
+      - ./etc/gtfs/download.sh:/importer/download.sh
     environment:
       PGHOST: gtfs-db
       PGPORT: 5432
