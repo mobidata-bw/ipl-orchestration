@@ -45,12 +45,12 @@ lamassu:
       codespace: SMS
       url: "file:///var/gbfs/feeds/stadtmobil_suedbaden/gbfs.json"
       language: de
-    - systemId: my-e-car
-      operatorId: MEC:Operator:my_e_car
-      operatorName: my-e-car
-      codespace: MEC
-      url: "file:///var/gbfs/feeds/my-e-car/gbfs.json"
-      language: de
+#    - systemId: my-e-car
+#      operatorId: MEC:Operator:my_e_car
+#      operatorName: my-e-car
+#      codespace: MEC
+#      url: "file:///var/gbfs/feeds/my-e-car/gbfs.json"
+#      language: de
     - systemId: teilauto_neckar-alb
       operatorId: TAN:Operator:teilauto_neckar-alb
       operatorName: teilAuto Neckar-Alb
