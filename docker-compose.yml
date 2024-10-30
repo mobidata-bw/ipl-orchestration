@@ -160,6 +160,8 @@ services:
       - ./etc/index-page:/var/www/index-page:ro
       # public IPL assets, e.g. traffic data (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
+      # password protected webcam data (served on :80)
+      - ./var/webcam:/var/www/webcam:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
       - ./etc/well-known:/var/www/well-known:ro
       # GoAccess access statistics reports (served on :81)
@@ -168,6 +170,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
+      - "traefik.http.routers.caddy-webcam.rule=Path(`/webcam`)"
+      - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
