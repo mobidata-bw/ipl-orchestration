@@ -432,10 +432,11 @@ services:
       # Roadworks download url
       - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL:?missing/empty}
       # Webcam settings
-      - WEBCAM_FTP_SERVER=${WEBCAM_FTP_SERVER:?missing/empty}
-      - WEBCAM_FTP_USER=${WEBCAM_FTP_USER:?missing/empty}
-      - WEBCAM_FTP_PASSWORD=${WEBCAM_FTP_PASSWORD:?missing/empty}
+      - IPL_WEBCAM_SERVER=${WEBCAM_FTP_SERVER:?missing/empty}
+      - IPL_WEBCAM_USER=${WEBCAM_FTP_USER:?missing/empty}
+      - IPL_WEBCAM_PASSWORD=${WEBCAM_FTP_PASSWORD:?missing/empty}
       - WEBCAM_KEEP_DAYS=${WEBCAM_KEEP_DAYS:?missing/empty}
+      - IPL_WEBCAM_KEEP_DAYS=${WEBCAM_KEEP_DAYS:?missing/empty}
     volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
