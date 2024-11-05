@@ -15,6 +15,7 @@ http://:80 {
   # Webcam
   handle_path /webcam/* {
     root * /var/www/webcam
+    file_server browse
   }
 
   # well-known URIs (security.txt, favicon.ico, etc.)

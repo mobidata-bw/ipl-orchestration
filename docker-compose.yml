@@ -169,8 +169,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
+      - "traefik.http.routers.caddy-webcam.rule=PathPrefix(`/webcam`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
-      - "traefik.http.routers.caddy-webcam.rule=Path(`/webcam`)"
+      - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
       - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
