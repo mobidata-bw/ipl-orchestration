@@ -4,9 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## 2024-10-30
+## 2024-11-05
 
-### Added
+### Changed
+
+## 2024-10-30
+- deactivate Cantamen provider `my-e-car`
 
 ### Changed
 
