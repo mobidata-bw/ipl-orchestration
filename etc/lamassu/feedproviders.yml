@@ -69,6 +69,12 @@ lamassu:
       codespace: ORE
       url: "file:///var/gbfs/feeds/oekostadt_renningen/gbfs.json"
       language: de
+    - systemId: gruene-flotte_freiburg
+      operatorId: GFC:Operator:gruene-flotte_freiburg
+      operatorName: Grüne Flotte Carsharing
+      codespace: GFC
+      url: "file:///var/gbfs/feeds/gruene-flotte_freiburg/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
