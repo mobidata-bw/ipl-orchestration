@@ -5,3 +5,4 @@ HTTP_TO_HTTPS_HOSTS:
   - stables.donkey.bike
   - data.lime.bike
   - mds.bird.co
+  - gbfs.prod.sharedmobility.ch
