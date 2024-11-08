@@ -74,6 +74,5 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 	LEFT JOIN api.stops s ON s.stop_id = t.station_id
 	;
 
-
--- todo: index?
+CREATE UNIQUE INDEX stations_with_served_routes_idx ON geoserver.stations_with_served_routes(station_id);
 -- todo: spatial index?
