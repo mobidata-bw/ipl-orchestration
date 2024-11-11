@@ -608,7 +608,8 @@ lamassu:
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
       codespace: PEB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_basel/gbfs"
+      # Note: pickebike_basel feed is accessed via proxy, using http instead of https 
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_basel/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
