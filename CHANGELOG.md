@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - add Cantamen provider gruene-flotte_freiburg
 - `ingesss`: upgraded [`traefik`](https://hub.docker.com/_/traefik) to [`v3.2`](https://hub.docker.com/layers/library/traefik/v3.2/images/sha256-e8a75d3640365b5a9f2b5fbcd8c745becdceabf3b7dc4e202094fb2bf03c1d37?context=explore)
 - fix `natural order without a primary key` exception for layer transit_stations_with_served_routes
+- updated `mdbw_sharing_stations_default` style as `feed_id`s of static carsharing feeds changed
 
 ## 2024-11-05
 
