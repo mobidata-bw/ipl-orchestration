@@ -160,7 +160,7 @@ services:
       - ./etc/index-page:/var/www/index-page:ro
       # public IPL assets, e.g. traffic data (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
-      # password protected webcam data (served on :80)
+      # webcam data (served on :80, password-protected by the `ingress` service)
       - ./var/webcam:/var/www/webcam:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
       - ./etc/well-known:/var/www/well-known:ro
