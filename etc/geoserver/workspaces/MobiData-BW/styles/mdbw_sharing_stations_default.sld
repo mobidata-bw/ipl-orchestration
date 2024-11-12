@@ -22,15 +22,11 @@
               </ogc:PropertyIsLike>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
-                <ogc:Literal>my-e-car</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-              <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>feed_id</ogc:PropertyName>
                 <ogc:Literal>oekostadt_renningen</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
-                <ogc:Literal>gruene_flotte_freiburg</ogc:Literal>
+                <ogc:Literal>gruene-flotte_freiburg</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
