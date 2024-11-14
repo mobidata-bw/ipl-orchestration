@@ -182,9 +182,6 @@ services:
       - DEER_API_URL
       - DEER_USER=${DEER_USER:?missing/empty}
       - DEER_PASSWORD=${DEER_PASSWORD:?missing/empty}
-      - VOI_API_URL
-      - VOI_USER=${VOI_USER:?missing/empty}
-      - VOI_PASSWORD=${VOI_PASSWORD:?missing/empty}
       - CANTAMEN_IXSI_API_URL=${CANTAMEN_IXSI_API_URL:?missing/empty}
       - CANTAMEN_IXSI_API_TIMEOUT=${CANTAMEN_IXSI_API_TIMEOUT:?missing/empty}
       - MOQO_API_TOKEN=${MOQO_API_TOKEN:?missing/empty}
