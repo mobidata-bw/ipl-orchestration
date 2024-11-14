@@ -215,7 +215,7 @@ lamassu:
         properties:
           tokenUrl: ${LAMASSU_VOI_AUTH_URL}
           clientId: ${LAMASSU_VOI_CLIENT_ID}
-          clientPassword: ${LAMASSU_VOID_CLIENT_PASSWORD}  
+          clientPassword: ${LAMASSU_VOI_CLIENT_PASSWORD}  
     - systemId: yoio_freiburg
       operatorId: YOO:Operator:yoio
       operatorName: Yoio
