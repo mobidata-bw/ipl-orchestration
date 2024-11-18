@@ -683,7 +683,7 @@ services:
     # This is a 3rd-part Elements CLI built by the community.
     # https://github.com/skriptfabrik/elements-cli
     # see also https://github.com/stoplightio/elements/issues/765#issuecomment-1152620255
-    image: skriptfabrik/elements-cli:0.5.1
+    image: skriptfabrik/elements-cli:0.5.2
     command:
       - "preview"
       # listen on container port 8080
