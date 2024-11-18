@@ -12,6 +12,11 @@ http://:80 {
   handle_path /datasets/* {
     root * /var/www/datasets
   }
+  # Webcam
+  handle_path /webcam/* {
+    root * /var/www/webcam
+    file_server browse
+  }
 
   # well-known URIs (security.txt, favicon.ico, etc.)
   handle /robots.txt {

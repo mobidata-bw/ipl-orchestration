@@ -6,18 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
+### Added
+- add Cantamen provider gruene-flotte_freiburg
+- add GBFS feed voi_de
+
 ### Changed
 
-- add Cantamen provider gruene-flotte_freiburg
+- deactivate GBFS feed voi_karlsruhe
 - `ingesss`: upgraded [`traefik`](https://hub.docker.com/_/traefik) to [`v3.2`](https://hub.docker.com/layers/library/traefik/v3.2/images/sha256-e8a75d3640365b5a9f2b5fbcd8c745becdceabf3b7dc4e202094fb2bf03c1d37?context=explore)
 - fix `natural order without a primary key` exception for layer transit_stations_with_served_routes
+- `lamassu` container now depends on `x2gbfs` container startup, so feeds read from file system can be created before lamassu starts. To make sure all feeds have been created, set `X2GBFS_HEALTHCHECK_START_INTERVAL` to e.g. `60s`. For production use
+- [Several ParkAPI Fixes](https://github.com/ParkenDD/park-api-v3/blob/fe93f699b3d6764c23fa7da8b00c7040865eb80f/CHANGELOG.md#0152)
 - updated `mdbw_sharing_stations_default` style as `feed_id`s of static carsharing feeds changed
+
 
 ## 2024-11-05
 
 ### Changed
 - deactivate Cantamen provider `my-e-car`
- 
+
 ## 2024-10-30
 
 ### Changed

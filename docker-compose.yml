@@ -160,6 +160,8 @@ services:
       - ./etc/index-page:/var/www/index-page:ro
       # public IPL assets, e.g. traffic data (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
+      # webcam data (served on :80, password-protected by the `ingress` service)
+      - ./var/webcam:/var/www/webcam:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
       - ./etc/well-known:/var/www/well-known:ro
       # GoAccess access statistics reports (served on :81)
@@ -167,7 +169,10 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
+      - "traefik.http.routers.caddy-webcam.rule=PathPrefix(`/webcam`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
+      - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
+      - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
@@ -182,15 +187,23 @@ services:
       - DEER_API_URL
       - DEER_USER=${DEER_USER:?missing/empty}
       - DEER_PASSWORD=${DEER_PASSWORD:?missing/empty}
-      - VOI_API_URL
-      - VOI_USER=${VOI_USER:?missing/empty}
-      - VOI_PASSWORD=${VOI_PASSWORD:?missing/empty}
       - CANTAMEN_IXSI_API_URL=${CANTAMEN_IXSI_API_URL:?missing/empty}
       - CANTAMEN_IXSI_API_TIMEOUT=${CANTAMEN_IXSI_API_TIMEOUT:?missing/empty}
       - MOQO_API_TOKEN=${MOQO_API_TOKEN:?missing/empty}
       - FLINKSTER_CLIENT_ID=${FLINKSTER_CLIENT_ID:?missing/empty}
       - FLINKSTER_SECRET=${FLINKSTER_SECRET:?missing/empty}
     restart: unless-stopped
+    healthcheck:
+      test: ps aux | grep -q 'x2gbfs\.x2gbfs' || exit 1
+      # If you want to wait until all feeds have been generated 
+      # before depending lamassu starts subscribing them, 
+      # configure an appropriate startup_period, e.g. 60s
+      # Otherwise, lamassu might update them only after the 
+      # update interval period has passed, which for test might
+      # last several hours.
+      start_interval: ${X2GBFS_HEALTHCHECK_START_INTERVAL:-1s}
+      start_period: 1s
+      interval: 60s
 
   lamassu:
     networks: [ipl]
@@ -207,6 +220,9 @@ services:
       LAMASSU_TIER_API_URL: ${LAMASSU_TIER_API_URL:?missing/empty}
       LAMASSU_TIER_USER: ${LAMASSU_TIER_USER:?missing/empty}
       LAMASSU_TIER_PASSWORD: ${LAMASSU_TIER_PASSWORD:?missing/empty}
+      LAMASSU_VOI_AUTH_URL: ${LAMASSU_VOI_AUTH_URL:?missing/empty}
+      LAMASSU_VOI_CLIENT_ID: ${LAMASSU_VOI_CLIENT_ID:?missing/empty}
+      LAMASSU_VOI_CLIENT_PASSWORD: ${LAMASSU_VOI_CLIENT_PASSWORD:?missing/empty}
       LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION:?missing/empty}
       LAMASSU_BASE_URL: ${LAMASSU_BASE_URL}
       LAMASSU_FEED_UPATE_INTERVAL_IN_MS: ${LAMASSU_FEED_UPATE_INTERVAL_IN_MS:?missing/empty}
@@ -233,6 +249,8 @@ services:
         redis:
           condition: service_healthy
         transformer-proxy:
+          condition: service_started
+        x2gbfs:
           condition: service_started
     restart: unless-stopped
 
@@ -414,6 +432,12 @@ services:
       - RADVIS_WFS_PASSWORD=${RADVIS_WFS_PASSWORD:?missing/empty}
       # Roadworks download url
       - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL:?missing/empty}
+      # Webcam settings
+      - IPL_WEBCAM_SERVER=${WEBCAM_FTP_SERVER:?missing/empty}
+      - IPL_WEBCAM_USER=${WEBCAM_FTP_USER:?missing/empty}
+      - IPL_WEBCAM_PASSWORD=${WEBCAM_FTP_PASSWORD:?missing/empty}
+      - IPL_WEBCAM_KEEP_DAYS=${WEBCAM_KEEP_DAYS:?missing/empty}
+      - IPL_WEBCAM_WORKER=${WEBCAM_WORKER:?missing/empty}
     volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
@@ -421,6 +445,8 @@ services:
       - ./var/dagster/storage/:/opt/dagster/dagster_home/storage/
       # mount www dir to republish downloaded datasets
       - ./var/www/datasets/:/var/www/
+      # Mount webcam dir
+      - ./var/webcam:/var/webcam
     depends_on:
         pgbouncer:
           condition: service_healthy
