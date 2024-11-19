@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - fix `natural order without a primary key` exception for layer transit_stations_with_served_routes
 - `lamassu` container now depends on `x2gbfs` container startup, so feeds read from file system can be created before lamassu starts. To make sure all feeds have been created, set `X2GBFS_HEALTHCHECK_START_INTERVAL` to e.g. `60s`. For production use
 - [Several ParkAPI Fixes](https://github.com/ParkenDD/park-api-v3/blob/fe93f699b3d6764c23fa7da8b00c7040865eb80f/CHANGELOG.md#0152)
+- updated `mdbw_sharing_stations_default` style as `feed_id`s of static carsharing feeds changed
 
 
 ## 2024-11-05
