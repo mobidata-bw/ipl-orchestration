@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+2024-11-20
+
+### Changed
+
+- [ParkAPI 0.15.3 Hotfix with a required database migration](https://github.com/ParkenDD/park-api-v3/blob/3a8fb1dd526b0def3d96790045d90daa05940beb/CHANGELOG.md)
+
+
 ## 2024-11-19
 
 ### Added
