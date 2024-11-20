@@ -22,6 +22,14 @@ print_bold "Downloading the GTFS feed from $GTFS_DOWNLOAD_URL."
 
 mkdir -p "$gtfs_tmp_dir"
 
+# For debugging purposes, query the server-calculated md5 hash of the file.
+# see also https://github.com/mobidata-bw/postgis-gtfs-importer/issues/10#issuecomment-2446692051
+# Note: We omit `-f` because we want to continue if this request fails.
+curl \
+	-sSL \
+	-H "User-Agent: $ua" \
+	"$gtfs_url.md5"
+
 # The following section is modified to (try to) work around https://github.com/mobidata-bw/postgis-gtfs-importer/issues/10.
 # To emulate atomic behaviour, first download to `$zip_path.download`, then rename to `$zip_path`.
 rm -f "$zip_path.download" "$zip_path"
@@ -32,3 +40,7 @@ curl \
 	-o "$zip_path.download" \
 	"$gtfs_url"
 mv "$zip_path.download" "$zip_path"
+
+# For debugging purposes, calculate the md5 hash of the just-downloaded file.
+# see also https://github.com/mobidata-bw/postgis-gtfs-importer/issues/10#issuecomment-2446692051
+md5sum "$zip_path"
