@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Better validation and therefore more valid parking sites at OpenData Swiss
   - Fix datetime format of Karlsruhe because they changed it
   - Code cleanup and other smaller improvements
+- [ParkAPI 0.16.2 with a fix for static data imports via celery heartbeat](https://github.com/ParkenDD/park-api-v3/blob/451b1f511f377efbfb4552123070be6aff754dae/CHANGELOG.md#0162)
 
 
 ## 2024-11-20
