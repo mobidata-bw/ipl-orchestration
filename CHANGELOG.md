@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+### Changed
+
+- [ParkAPI 0.16.1](https://github.com/ParkenDD/park-api-v3/blob/908d1c4fe912ad3c7076098e20899458eb0db0c4/CHANGELOG.md#0161) with
+  - Better logging and exception handling at converters
+  - Moving access to static data to the night
+  - Extended data at Kienzler source (GeoJSON PATCH system)
+  - Better validation and therefore more valid parking sites at OpenData Swiss
+  - Fix datetime format of Karlsruhe because they changed it
+  - Code cleanup and other smaller improvements
+- [ParkAPI 0.16.2 with a fix for static data imports via celery heartbeat](https://github.com/ParkenDD/park-api-v3/blob/451b1f511f377efbfb4552123070be6aff754dae/CHANGELOG.md#0162)
+
+
 ## 2024-11-20
 
 ### Changed
