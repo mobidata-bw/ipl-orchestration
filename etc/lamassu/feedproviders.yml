@@ -200,7 +200,7 @@ lamassu:
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
-      codespace: VOI
+      codespace: VOJ
       url: "https://api.voiapp.io/gbfs/v2/gbfs.json"
       language: en
       authentication:
