@@ -201,7 +201,8 @@ lamassu:
       operatorId: VOI:Operator:voi
       operatorName: VOI
       codespace: VOJ
-      url: "https://api.voiapp.io/gbfs/v2/gbfs.json"
+      # Note: voi_de feed is accessed via proxy, using http instead of https
+      url: "http://api.voiapp.io/gbfs/v2/gbfs.json"
       language: en
       authentication:
         scheme: OAUTH2_CLIENT_CREDENTIALS_GRANT
