@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2024-12-10
 
 ### Added
 
 - `gtfs-api`: Expose GTFS import date+time (`SELECT gtfs_data_imported_at()`) as a Prometheus metric under `/gtfs/rpc/gtfs_data_imported_at_metric`.
+
+### Changed
+
+- new namespace for GBFS feed voi_de to avoid conflict with voi_ch
 
 ## 2024-12-04
 
