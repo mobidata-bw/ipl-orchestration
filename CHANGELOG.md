@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-12-11T11-40](https://hub.docker.com/layers/entur/lamassu/2024-12-11T11-40/images/sha256-0ed6066cec348ed8cd8b6f5637183134d3a095e1605f671dc899d8ccdf853108?context=explore). This i.e. includes immediate update after successful feed subscription (https://github.com/entur/lamassu/pull/592). As consequence, `X2GBFS_HEALTHCHECK_START_INTERVAL` is not necessary any longer and has been removed.
 - `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2024-12-03t09-35`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/7ceecb4f622dc3a6ac9e6a3179885b4d17b62301/CHANGELOG.md#2024-12-03)
 
 
