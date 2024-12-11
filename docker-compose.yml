@@ -440,6 +440,8 @@ services:
       - ./var/www/datasets/:/var/www/
       # Mount webcam dir
       - ./var/webcam:/var/webcam
+      # dagster-pipeline now reads dagster.yml, so the mounted config is needed
+      - ./etc/dagster:/opt/dagster/dagster_home/
     depends_on:
         pgbouncer:
           condition: service_healthy
