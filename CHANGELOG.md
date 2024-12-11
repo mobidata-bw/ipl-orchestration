@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## unreleased
+## 2024-12-11
 
 ### Added
-- add MOQO providers oberschwabenmobil, gmuend_bewegt
+- add MOQO providers flinkster_carsharing, oberschwabenmobil, gmuend_bewegt
+
+### Changed
+- VRS parking providers obtain new Mobilithek subscription ids
 
 ## 2024-12-10
 
