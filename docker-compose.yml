@@ -190,13 +190,6 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ps aux | grep -q 'x2gbfs\.x2gbfs' || exit 1
-      # If you want to wait until all feeds have been generated
-      # before depending lamassu starts subscribing them,
-      # configure an appropriate startup_period, e.g. 60s
-      # Otherwise, lamassu might update them only after the
-      # update interval period has passed, which for test might
-      # last several hours.
-      start_interval: ${X2GBFS_HEALTHCHECK_START_INTERVAL:-1s}
       start_period: 1s
       interval: 60s
 
