@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Upcoming
+
+### Changed
+
+- `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2024-12-03t09-35`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/7ceecb4f622dc3a6ac9e6a3179885b4d17b62301/CHANGELOG.md#2024-12-03)
+
+
 ## 2024-12-10
 
 ### Added
