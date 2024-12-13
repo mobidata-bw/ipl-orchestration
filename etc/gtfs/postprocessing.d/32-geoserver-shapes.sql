@@ -5,9 +5,9 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 		route_type,
 		array_to_string(array_agg(DISTINCT route_id), ', ') AS route_ids,
 		array_to_string(array_agg(DISTINCT route_name), ', ') AS route_names,
-		agency.agency_id,
-    		agency.agency_name,
-    		agency.agency_url
+		min(agency.agency_id) AS agency_id, -- Aggregation, um Mehrdeutigkeiten zu vermeiden
+		min(agency.agency_name) AS agency_name,
+		min(agency.agency_url) AS agency_url
 	FROM (
 		SELECT DISTINCT ON (shape_id, route_id)
 			shapes.shape_id,
