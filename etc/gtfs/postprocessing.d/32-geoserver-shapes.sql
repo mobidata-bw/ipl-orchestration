@@ -4,7 +4,7 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 		st_setsrid(min(shape), 4326) AS shape,
 		route_type,
 		array_to_string(array_agg(DISTINCT route_id), ', ') AS route_ids,
-		array_to_string(array_agg(DISTINCT route_name), ', ') AS route_names
+		array_to_string(array_agg(DISTINCT route_name), ', ') AS route_names,
 		agency_id,
 		agency_name,
 		agency_url
@@ -14,7 +14,7 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 			shape,
 			routes.route_id,
 			route_type, -- todo: normalize into basic route type?
-			coalesce(route_short_name, route_long_name) AS route_name
+			coalesce(route_short_name, route_long_name) AS route_name,
 			agency.agency_id,
 			agency.agency_name,
 			agency.agency_url
