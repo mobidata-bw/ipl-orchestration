@@ -5,9 +5,9 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 		route_type,
 		array_to_string(array_agg(DISTINCT route_id), ', ') AS route_ids,
 		array_to_string(array_agg(DISTINCT route_name), ', ') AS route_names,
-		min(agency.agency_id) AS agency_id, -- Aggregation, um Mehrdeutigkeiten zu vermeiden
-		min(agency.agency_name) AS agency_name,
-		min(agency.agency_url) AS agency_url
+		array_to_string(array_agg(DISTINCT agency_id), ', ') AS agency_ids,
+		array_to_string(array_agg(DISTINCT agency_name), ', ') AS agency_names,
+		array_to_string(array_agg(DISTINCT agency_url), ', ') AS agency_urls
 	FROM (
 		SELECT DISTINCT ON (shape_id, route_id)
 			shapes.shape_id,
@@ -21,7 +21,7 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 		FROM api.shapes_aggregated shapes
 		JOIN api.trips ON shapes.shape_id = trips.shape_id
 		JOIN api.routes ON trips.route_id = routes.route_id
-		JOIN api.agency ON routes.agency_id = agency.agency_id
+		JOIN api.agency ON routes.agency_id = agency.agency_id	
 		WHERE route_short_name NOT LIKE '%SEV%'
 	) t
 	GROUP BY shape_id, route_type;
