@@ -725,16 +725,16 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: zem_ch
-      operatorId: ZEM:Operator:zem
-      operatorName: 2EM Car Sharing
-      codespace: ZEM
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/2em_cars/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: zem_ch
+#      operatorId: ZEM:Operator:zem
+#      operatorName: 2EM Car Sharing
+#      codespace: ZEM
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/2em_cars/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
             # invaiid feed
             #    - systemId: mobility_ch
             #      operatorId: MOB:Operator:mobility
