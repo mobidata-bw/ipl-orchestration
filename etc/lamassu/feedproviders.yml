@@ -578,17 +578,16 @@ lamassu:
 #        scheme: HTTP_HEADERS
 #        properties:
 #          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-            # invaiid feed
-            #    - systemId: mobility_ch
-            #      operatorId: MOB:Operator:mobility
-            #      operatorName: Mobility
-            #      codespace: MOB
-            #      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
-            #      language: en
-            #      authentication:
-            #        scheme: HTTP_HEADERS
-            #        properties:
-            #          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+    - systemId: mobility_ch
+      operatorId: MOB:Operator:mobility
+      operatorName: Mobility
+      codespace: MOB
+      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: edrivecarsharing_ch
       operatorId: EDC:Operator:edrivecarsharing
       operatorName: edrive carsharing
