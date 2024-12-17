@@ -496,56 +496,56 @@ lamassu:
       url: "https://www.share-birrer.ch/gbfs/gbfs.json"
       language: de
     # Tier CH
-    - systemId: tier_basel
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_basel/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: tier_bern
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_bern/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: tier_stgallen
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_stgallen/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: tier_winterthur
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_winterthur/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    - systemId: tier_zurich
-      operatorId: TIE:Operator:tier
-      operatorName: Tier
-      codespace: TIE
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_zurich/gbfs"
-      language: en
-      authentication:
-        scheme: HTTP_HEADERS
-        properties:
-          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: tier_basel
+#      operatorId: TIE:Operator:tier
+#      operatorName: Tier
+#      codespace: TIE
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_basel/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: tier_bern
+#      operatorId: TIE:Operator:tier
+#      operatorName: Tier
+#      codespace: TIE
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_bern/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: tier_stgallen
+#      operatorId: TIE:Operator:tier
+#      operatorName: Tier
+#      codespace: TIE
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_stgallen/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: tier_winterthur
+#      operatorId: TIE:Operator:tier
+#      operatorName: Tier
+#      codespace: TIE
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_winterthur/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+#    - systemId: tier_zurich
+#      operatorId: TIE:Operator:tier
+#      operatorName: Tier
+#      codespace: TIE
+#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_zurich/gbfs"
+#      language: en
+#      authentication:
+#        scheme: HTTP_HEADERS
+#        properties:
+#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # VOI Scooter
     - systemId: voi_ch
       operatorId: VOI:Operator:voi
