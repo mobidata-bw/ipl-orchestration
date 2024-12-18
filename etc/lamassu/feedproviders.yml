@@ -365,6 +365,13 @@ lamassu:
       # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
       language: en
+    - systemId: donkey_le_locle
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKY
+      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
+      language: en
     - systemId: donkey_neuchatel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
