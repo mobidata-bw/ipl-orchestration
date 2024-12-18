@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - upgrade OCPDB to 1.2.1 with BNetzA Import Fix
 - `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2024-12-03t09-35`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/7ceecb4f622dc3a6ac9e6a3179885b4d17b62301/CHANGELOG.md#2024-12-03)
 - `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-12-17T19-37](https://hub.docker.com/layers/entur/lamassu/2024-12-17T19-37/images/sha256-7fb67b8f7a7395a9ec726dda7ed411679ef900fe0c4f3ec2da636cd4da5f603a). This i.e. includes immediate update after successful feed subscription (https://github.com/entur/lamassu/pull/592). As consequence, `X2GBFS_HEALTHCHECK_START_INTERVAL` is not necessary any longer and has been removed.
+- `gtfs-api`: fix `gtfs_data_imported_at` Prometheus metric:
+  - move `text/plain` PostgreSQL domain into the `api` schema
 
 
 ## 2024-12-20
