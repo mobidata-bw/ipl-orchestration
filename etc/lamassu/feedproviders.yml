@@ -211,6 +211,31 @@ lamassu:
           tokenUrl: ${LAMASSU_BOLT_AUTH_URL}
           clientId: ${LAMASSU_BOLT_CLIENT_ID}
           clientPassword: ${LAMASSU_BOLT_CLIENT_PASSWORD}
+    ## Donkey DE
+    - systemId: donkey_bamberg
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKA
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_bamberg/gbfs.json"
+      language: en
+    - systemId: donkey_kiel
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKB
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kiel/gbfs.json"
+      language: en
+    - systemId: donkey_munich
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKC
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_munich/gbfs.json"
+      language: en
+    - systemId: donkey_regensburg
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKD
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
+      language: en
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
@@ -354,51 +379,45 @@ lamassu:
     - systemId: donkey_ge
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
+      codespace: DKN
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
       language: de
     - systemId: donkey_kreuzlingen
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
+      codespace: DKO
+      # Note: donkey feeds is temporarilly accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
       language: en
     - systemId: donkey_le_locle
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
+      codespace: DKP
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
       language: en
     - systemId: donkey_neuchatel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
+      codespace: DKQ
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
       language: en
     - systemId: donkey_sion
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
+      codespace: DKR
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
       language: en
     - systemId: donkey_thun
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
+      codespace: DKS
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
       language: en
     - systemId: donkey_yverdon-les-bains
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKY
-      # Note: donkey feeds are temporarilly accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
+      codespace: DKT
+      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
       language: en
     # Lime CH
     - systemId: lime_basel
