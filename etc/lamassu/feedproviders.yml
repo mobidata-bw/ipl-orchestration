@@ -224,16 +224,10 @@ lamassu:
       codespace: DKB
       url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kiel/gbfs.json"
       language: en
-    - systemId: donkey_munich
-      operatorId: DKY:Operator:donkey
-      operatorName: Donkey Republic
-      codespace: DKC
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_munich/gbfs.json"
-      language: en
     - systemId: donkey_regensburg
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
-      codespace: DKD
+      codespace: DKC
       url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
       language: german
     - systemId: voi_de
