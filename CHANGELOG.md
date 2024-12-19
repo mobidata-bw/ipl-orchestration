@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `gtfs-api`: fix `gtfs_data_imported_at` Prometheus metric:
+  - fix the format
   - grant access to the PostgreSQL function to PostgREST
   - move `text/plain` PostgreSQL domain into the `api` schema
 
