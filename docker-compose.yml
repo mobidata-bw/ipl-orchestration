@@ -162,6 +162,8 @@ services:
       - ./var/www/datasets:/var/www/datasets:ro
       # webcam data (served on :80, password-protected by the `ingress` service)
       - ./var/webcam:/var/www/webcam:ro
+      # non-public gbfs feeds
+      - ./var/gbfs/feeds/free2move_stuttgart:/var/www/gbfs/free2move_stuttgart:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
       - ./etc/well-known:/var/www/well-known:ro
       # GoAccess access statistics reports (served on :81)
@@ -173,6 +175,9 @@ services:
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
       - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
       - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
+      - "traefik.http.routers.caddy-gbfs.rule=PathPrefix(`/gbfs`)"
+      - "traefik.http.routers.caddy-gbfs.middlewares=caddy-gbfs"
+      - "traefik.http.middlewares.caddy-gbfs.basicauth.users=${GBFS_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
@@ -182,6 +187,7 @@ services:
     image: ${X2GBFS_IMAGE}
     volumes:
       - ./var/gbfs/feeds:/app/out/
+      - ./var/gbfs/temp:/app/temp/
     command: -p ${X2GBFS_PROVIDERS:?missing/empty} -b file:///var/gbfs/feeds -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty}
     environment:
       - DEER_API_URL
@@ -192,6 +198,9 @@ services:
       - MOQO_API_TOKEN=${MOQO_API_TOKEN:?missing/empty}
       - FLINKSTER_CLIENT_ID=${FLINKSTER_CLIENT_ID:?missing/empty}
       - FLINKSTER_SECRET=${FLINKSTER_SECRET:?missing/empty}
+      - FREE2MOVE_USER=${X2GBFS_FREE2MOVE_USER:?missing/empty}
+      - FREE2MOVE_PASSWORD=${X2GBFS_FREE2MOVE_PASSWORD:?missing/empty}
+      - CACHE_DIR=/app/temp
     restart: unless-stopped
     healthcheck:
       test: ps aux | grep -q 'x2gbfs\.x2gbfs' || exit 1
