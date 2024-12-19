@@ -177,7 +177,7 @@ services:
       - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
       - "traefik.http.routers.caddy-gbfs.rule=PathPrefix(`/gbfs`)"
       - "traefik.http.routers.caddy-gbfs.middlewares=caddy-gbfs"
-      - "traefik.http.middlewares.caddy-gbfs.basicauth.usersfile=./var/caddy/usersfile"
+      - "traefik.http.middlewares.caddy-gbfs.basicauth.users=${GBFS_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
   # a gbfs feed intended for local import into Lamassu. The volume needs to be
