@@ -235,7 +235,7 @@ lamassu:
       operatorName: Donkey Republic
       codespace: DKD
       url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
-      language: en
+      language: german
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
