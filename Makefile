@@ -37,7 +37,10 @@ init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_ke
 	mkdir -p var/ocpdb/temp
 	mkdir -p var/park-api/logs
 	mkdir -p var/park-api/temp
+	mkdir -p var/gbfs/temp
 	mkdir -p var/www/datasets/traffic/incidents-bw
+	mkdir -p var/caddy/
+	touch -a var/caddy/usersfile
 
 # Container management
 # --------------------

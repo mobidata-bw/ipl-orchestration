@@ -18,6 +18,11 @@ http://:80 {
     file_server browse
   }
 
+  # private gbfs feeds. Access restricted via traefik
+  handle_path /gbfs/* {
+    root * /var/www/gbfs
+  }
+
   # well-known URIs (security.txt, favicon.ico, etc.)
   handle /robots.txt {
     root * /var/www/well-known
