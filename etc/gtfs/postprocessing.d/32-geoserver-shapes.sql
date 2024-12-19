@@ -23,7 +23,7 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 		JOIN api.routes ON trips.route_id = routes.route_id
 		JOIN api.agency ON routes.agency_id = agency.agency_id
 		WHERE route_short_name NOT LIKE '%SEV%'
-	)	
+	) t	
 	GROUP BY shape_id, route_type, agency_id, agency_name, agency_url;
 
 -- allow filtering via Geoserver's CQL
