@@ -139,41 +139,47 @@ lamassu:
         properties:
           DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
           DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
-    - systemId: nextbike_df
+    - systemId: nextbike_df  # Frelo Freiburg
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBK
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_df/gbfs.json"
       language: de
-    - systemId: nextbike_fg
+    - systemId: nextbike_fg  # 	KVV.nextbike
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBF
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/gbfs.json"
       language: de
-    - systemId: nextbike_ds
+    - systemId: nextbike_ds  # 	SAP Walldorf
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBD
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ds/gbfs.json"
       language: de
-    - systemId: nextbike_vn
+    - systemId: nextbike_vn  # 	VRNnextbike
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBV
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/gbfs.json"
       language: de
-    - systemId: nextbike_eh
+    - systemId: nextbike_eh  # EinfachMobil, Ortenaukreis
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBE
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_eh/gbfs.json"
       language: de
-    - systemId: nextbike_kk
+    - systemId: nextbike_kk  # Mein konrad, Konstanz
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
       codespace: NBO
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_kk/gbfs.json"
+      language: de
+    - systemId: nextbike_nn  # Norderstedt
+      operatorId: NBK:Operator:nextbike
+      operatorName: Nextbike
+      codespace: NBN
+      url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_nn/gbfs.json"
       language: de
     - systemId: bolt_karlsruhe
       operatorId: BLT:Operator:bolt
