@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+### Added
+- add `agency_id`, `agency_name` and `agency_url` to materialized view `shapes_with_routes`
+
 ## 2024-12-11
 
 ### Added
