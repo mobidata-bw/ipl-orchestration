@@ -18,7 +18,7 @@ x-ocpdb-defaults: &ocpdb-defaults
   depends_on:
     ocpdb-db:
       condition: service_healthy
-    ocpdb-rabbitmq:
+    rabbitmq:
       condition: service_healthy
   volumes:
     - ./etc/ocpdb/config.yaml:/app/config.yaml
@@ -40,7 +40,7 @@ x-park-api-defaults: &park-api-defaults
   depends_on:
     park-api-db:
       condition: service_healthy
-    park-api-rabbitmq:
+    rabbitmq:
       condition: service_healthy
   volumes:
     - ./etc/park-api/config.yaml:/app/config.yaml
@@ -48,20 +48,6 @@ x-park-api-defaults: &park-api-defaults
     - ./etc/park-api/files:/app/files
     - ./var/park-api/logs:/app/logs
     - ./var/park-api/temp:/app/temp
-
-x-generic-rabbitmq: &generic-rabbitmq
-  networks: [ipl]
-  image: rabbitmq:3.13
-  user: rabbitmq  # required due eacces-issue: https://github.com/docker-library/rabbitmq/issues/318
-  environment:
-    # Disable spammy logging
-    RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
-  healthcheck:
-    test: rabbitmq-diagnostics -q ping
-    interval: 3s
-    timeout: 1s
-    retries: 20
-  restart: unless-stopped
 
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.
@@ -204,10 +190,10 @@ services:
     restart: unless-stopped
     healthcheck:
       test: ps aux | grep -q 'x2gbfs\.x2gbfs' || exit 1
-      # If you want to wait until all feeds have been generated 
-      # before depending lamassu starts subscribing them, 
+      # If you want to wait until all feeds have been generated
+      # before depending lamassu starts subscribing them,
       # configure an appropriate startup_period, e.g. 60s
-      # Otherwise, lamassu might update them only after the 
+      # Otherwise, lamassu might update them only after the
       # update interval period has passed, which for test might
       # last several hours.
       start_interval: ${X2GBFS_HEALTHCHECK_START_INTERVAL:-1s}
@@ -711,6 +697,24 @@ services:
       - "traefik.http.services.gtfs-api-docs.loadbalancer.server.port=8080"
     restart: unless-stopped
 
+  rabbitmq:
+    networks: [ipl]
+    image: ${RABBITMQ_VERSION}
+    user: rabbitmq  # required due eacces-issue: https://github.com/docker-library/rabbitmq/issues/318
+    environment:
+      # Disable spammy logging
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit log [{console,[{level,warning}]}]'
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      start_period: 20s
+      start_interval: 5s
+      timeout: 10s
+    volumes:
+      - ./etc/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./etc/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json
+    restart: unless-stopped
+
   ocpdb-flask:
     <<: *ocpdb-defaults
     command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
@@ -728,6 +732,11 @@ services:
     <<: *ocpdb-defaults
     restart: unless-stopped
     command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+
+  ocpdb-heartbeat:
+    <<: *ocpdb-defaults
+    restart: unless-stopped
+    command: ["celery", "-A", "webapp.entry_point_celery", "beat", "-s", "/tmp/celerybeat-schedule"]
 
   ocpdb-init:
     <<: *ocpdb-defaults
@@ -748,9 +757,6 @@ services:
       timeout: 3s
       retries: 3
     restart: unless-stopped
-
-  ocpdb-rabbitmq:
-    <<: *generic-rabbitmq
 
   park-api-flask:
     <<: *park-api-defaults
@@ -794,9 +800,6 @@ services:
       timeout: 3s
       retries: 3
     restart: unless-stopped
-
-  park-api-rabbitmq:
-    <<: *generic-rabbitmq
 
   sftp:
     image: ${SFTP_IMAGE}
