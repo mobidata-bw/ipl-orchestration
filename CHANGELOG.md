@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+### Added
+- GeoServer: added ferry and furnicular to `mdbw_transit_stations_default` and `mdbw_transit_routes_default` gtfs styles 
+
 ## 2024-12-20
 
 ### Added
