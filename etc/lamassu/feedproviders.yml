@@ -336,12 +336,12 @@ lamassu:
       codespace: BRD
       url: "http://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
       language: en
-    - systemId: bird-biel
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "http://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
-      language: en
+#    - systemId: bird-biel
+#      operatorId: BRD:Operator:bird
+#      operatorName: bird
+#      codespace: BRD
+#      url: "http://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
+#      language: en
     - systemId: bird-kloten
       operatorId: BRD:Operator:bird
       operatorName: bird
