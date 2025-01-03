@@ -7,7 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 ### Added
-- GeoServer: added ferry and furnicular to `mdbw_transit_stations_default` and `mdbw_transit_routes_default` gtfs styles 
+- GeoServer: added ferry and funicular to `mdbw_transit_stations_default` and `mdbw_transit_routes_default` gtfs styles
+- OCPDB 1.2 with Stadtwerke Stuttgart
+- OCPDB 1.2 with cron mechanisms for permanent data pulling
+
+### Changed
+
+- Centralize rabbitmq for better performance
+- Improve rabbitmq healthcheck for better performance
+- upgrade OCPDB to 1.2.1 with BNetzA Import Fix
+
 
 ## 2024-12-20
 
@@ -18,6 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 - remove obsolete GBFS providers tier_basel, tier_bern, tier_stgallen, tier_winterthur, tier_zurich
 
+
 ## 2024-12-11
 
 ### Added
@@ -25,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 - VRS parking providers obtain new Mobilithek subscription ids
+
 
 ## 2024-12-10
 
@@ -35,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - new namespace for GBFS feed voi_de to avoid conflict with voi_ch
+
 
 ## 2024-12-04
 
