@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Centralize rabbitmq for better performance
 - Improve rabbitmq healthcheck for better performance
-- OCPDB 1.2 with BNetzA Import Fix
+- upgrade OCPDB to 1.2.1 with BNetzA Import Fix
 
 
 ## 2024-12-20
