@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - fix the format
   - grant access to the PostgreSQL function to PostgREST
   - move `text/plain` PostgreSQL domain into the `api` schema
+- [ParkAPI 0.16.4 with fixes in Loki at Celery and Celery Crontab](https://github.com/ParkenDD/park-api-v3/blob/1227d469f877bf7a9b257cee3be6ea9e1531454e/CHANGELOG.md#0164)
 
 
 ## 2024-12-20
