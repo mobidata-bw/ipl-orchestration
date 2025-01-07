@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - grant access to the PostgreSQL function to PostgREST
   - move `text/plain` PostgreSQL domain into the `api` schema
 - [ParkAPI 0.16.4 with fixes in Loki at Celery and Celery Crontab](https://github.com/ParkenDD/park-api-v3/blob/1227d469f877bf7a9b257cee3be6ea9e1531454e/CHANGELOG.md#0164)
+- [ParkAPI 0.16.5 with fixes in config loading](https://github.com/ParkenDD/park-api-v3/blob/2076f5863d655fae1090350903d7cabc54427a70/CHANGELOG.md#0165)
 - [x2gbfs 2024-12-19: rename stadtmobil_suedbaden to naturenergie_sharing](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-12-19)
 
 
