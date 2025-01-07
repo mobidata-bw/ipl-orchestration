@@ -32,18 +32,12 @@ lamassu:
       codespace: SMR
       url: "file:///var/gbfs/feeds/stadtmobil_rhein-neckar/gbfs.json"
       language: de
-    - systemId: stadtmobil_suedbaden
-      operatorId: SMS:Operator:stadtmobil_suedbaden
-      operatorName: Stadtmobil Südbaden
-      codespace: SMS
-      url: "file:///var/gbfs/feeds/stadtmobil_suedbaden/gbfs.json"
+    - systemId: naturenergie_sharing
+      operatorId: NES:Operator:naturenergie_sharing
+      operatorName: naturenergie sharing
+      codespace: NES
+      url: "file:///var/gbfs/feeds/naturenergie_sharing/gbfs.json"
       language: de
-#    - systemId: my-e-car
-#      operatorId: MEC:Operator:my_e_car
-#      operatorName: my-e-car
-#      codespace: MEC
-#      url: "file:///var/gbfs/feeds/my-e-car/gbfs.json"
-#      language: de
     - systemId: teilauto_neckar-alb
       operatorId: TAN:Operator:teilauto_neckar-alb
       operatorName: teilAuto Neckar-Alb
