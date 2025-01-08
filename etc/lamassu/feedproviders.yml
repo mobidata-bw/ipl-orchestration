@@ -133,6 +133,98 @@ lamassu:
         properties:
           DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
           DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
+    ## Dott DE
+    - systemId: dott_boblingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOA
+      url: "https://gbfs.api.ridedott.com/public/v2/boblingen/gbfs.json"
+      language: en
+    - systemId: dott_friedrichshafen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOB
+      url: "https://gbfs.api.ridedott.com/public/v2/friedrichshafen/gbfs.json"
+      language: en
+    - systemId: dott_heidelberg
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOC
+      url: "https://gbfs.api.ridedott.com/public/v2/heidelberg/gbfs.json"
+      language: en
+    - systemId: dott_karlsruhe
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOD
+      url: "https://gbfs.api.ridedott.com/public/v2/karlsruhe/gbfs.json"
+      language: en
+    - systemId: dott_lindau
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOE
+      url: "https://gbfs.api.ridedott.com/public/v2/lindau/gbfs.json"
+      language: en
+    - systemId: dott_ludwigsburg
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOF
+      url: "https://gbfs.api.ridedott.com/public/v2/ludwigsburg/gbfs.json"
+      language: en
+    - systemId: dott_mannheim
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOG
+      url: "https://gbfs.api.ridedott.com/public/v2/mannheim/gbfs.json"
+      language: en
+    - systemId: dott_reutlingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOH
+      url: "https://gbfs.api.ridedott.com/public/v2/reutlingen/gbfs.json"
+      language: en
+    - systemId: dott_schaffhausen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOI
+      url: "https://gbfs.api.ridedott.com/public/v2/schaffhausen/gbfs.json"
+      language: en
+    - systemId: dott_stuttgart
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOJ
+      url: "https://gbfs.api.ridedott.com/public/v2/stuttgart/gbfs.json"
+      language: en
+    - systemId: dott_tubingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOK
+      url: "https://gbfs.api.ridedott.com/public/v2/tubingen/gbfs.json"
+      language: en
+    - systemId: dott_uberlingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOL
+      url: "https://gbfs.api.ridedott.com/public/v2/uberlingen/gbfs.json"
+      language: en
+    - systemId: dott_ulm
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOM
+      url: "https://gbfs.api.ridedott.com/public/v2/ulm/gbfs.json"
+      language: en
+    - systemId: dott_kaiserslautern
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DON
+      url: "https://gbfs.api.ridedott.com/public/v2/kaiserslautern/gbfs.json"
+      language: en
+    - systemId: dott_mainz
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOO
+      url: "https://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
+      language: en
+    ## Nextbike DE
     - systemId: nextbike_df  # Frelo Freiburg
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
