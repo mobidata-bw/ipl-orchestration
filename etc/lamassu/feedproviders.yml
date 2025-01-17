@@ -152,6 +152,12 @@ lamassu:
       codespace: DOC
       url: "https://gbfs.api.ridedott.com/public/v2/heidelberg/gbfs.json"
       language: en
+    - systemId: dott_heilbronn
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOU
+      url: "https://gbfs.api.ridedott.com/public/v2/heilbronn/gbfs.json"
+      language: en
     - systemId: dott_karlsruhe
       operatorId: DOT:Operator:dott
       operatorName: Dott
