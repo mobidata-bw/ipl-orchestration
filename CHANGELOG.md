@@ -4,23 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-01-21
 
 ### Added
 
 - [ParkAPI: Add plausibility check for realtime_free_capacity values](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
 - [ParkAPI Sources: Add VRN Park and Ride Realtime Converter](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
 - [ParkAPI Sources: Add bahnv2 bike parking locked and open](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
+- add dott_heilbronn GBFS feed
 
 ### Changed
 
 - [ParkAPI Sources: opendata_swiss: change to new source_url](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#fixes-2)
-
-
-## 2025-01-21
-
-### Changed
-
 - OCPDB: Fix issue [with missing field at sw_stuttgart](https://github.com/binary-butterfly/ocpdb/blob/86cdd0d46afc5970a92458b5a0b306013958b605/CHANGELOG.md#version-123)
 
 
