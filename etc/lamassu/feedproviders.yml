@@ -731,7 +731,8 @@ lamassu:
       operatorId: MOB:Operator:mobility
       operatorName: Mobility
       codespace: MOB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
+      # Note: mobility_ch feed is accessed via proxy, using http instead of https 
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
