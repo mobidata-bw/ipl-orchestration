@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+- [x2gbfs 2024-12-19: add Cantamen provider teilauto_schwaebisch_hall](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-12-19)
+
 ### Changed
 
 - `gtfs-api`: Upgrade PostgREST from 12.2.3 to [12.2.5](https://github.com/PostgREST/postgrest/releases/tag/v12.2.5)
