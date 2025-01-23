@@ -50,6 +50,12 @@ lamassu:
       codespace: TAB
       url: "file:///var/gbfs/feeds/teilauto_biberach/gbfs.json"
       language: de
+    - systemId: teilauto_schwaebisch_hall
+      operatorId: TAS:Operator:teilauto_schwaebisch_hall
+      operatorName: teilAuto Schwäbisch Hall
+      codespace: TAS
+      url: "file:///var/gbfs/feeds/teilauto_schwaebisch_hall/gbfs.json"
+      language: de
     - systemId: oekostadt_renningen
       operatorId: ORE:Operator:oekostadt_renningen
       operatorName: Ökostadt Renningen
