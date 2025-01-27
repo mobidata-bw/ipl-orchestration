@@ -4,9 +4,60 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## [Unreleased]
+
 ### Added
+- [x2gbfs 2024-12-19: add Cantamen provider teilauto_schwaebisch_hall](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-12-19)
 - GeoServer: add vector tile caching to all layers, edit sql statement of `MobiData-BW:charge_points`, change bounding boxes of `MobiData-BW:charge_points` and `MobiData-BW:transit_shapes_with_routes`
+
+### Changed
+
+- `gtfs-api`: Upgrade PostgREST from 12.2.3 to [12.2.5](https://github.com/PostgREST/postgrest/releases/tag/v12.2.5)
+
+
+## 2025-01-21
+
+### Added
+
+- [ParkAPI: Add plausibility check for realtime_free_capacity values](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
+- [ParkAPI Sources: Add VRN Park and Ride Realtime Converter](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
+- [ParkAPI Sources: Add bahnv2 bike parking locked and open](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#features)
+- add dott_heilbronn GBFS feed
+
+### Changed
+
+- [ParkAPI Sources: opendata_swiss: change to new source_url](https://github.com/ParkenDD/park-api-v3/blob/c92c028b0f97bbfe3c40a0c708d7042a555ea225/CHANGELOG.md#fixes-2)
+- OCPDB: Fix issue [with missing field at sw_stuttgart](https://github.com/binary-butterfly/ocpdb/blob/86cdd0d46afc5970a92458b5a0b306013958b605/CHANGELOG.md#version-123)
+
+
+## 2025-01-15
+
+### Added
+- add dott de and dott ch feeds
+
+
+## 2025-01-07
+
+### Added
+- GeoServer: added ferry and funicular to `mdbw_transit_stations_default` and `mdbw_transit_routes_default` gtfs styles
+- OCPDB 1.2 with Stadtwerke Stuttgart
+- OCPDB 1.2 with cron mechanisms for permanent data pulling
+
+### Changed
+
+- Centralize rabbitmq for better performance
+- Improve rabbitmq healthcheck for better performance
+- upgrade OCPDB to 1.2.1 with BNetzA Import Fix
+- `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2024-12-03t09-35`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/7ceecb4f622dc3a6ac9e6a3179885b4d17b62301/CHANGELOG.md#2024-12-03)
+- `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2024-12-17T19-37](https://hub.docker.com/layers/entur/lamassu/2024-12-17T19-37/images/sha256-7fb67b8f7a7395a9ec726dda7ed411679ef900fe0c4f3ec2da636cd4da5f603a). This i.e. includes immediate update after successful feed subscription (https://github.com/entur/lamassu/pull/592). As consequence, `X2GBFS_HEALTHCHECK_START_INTERVAL` is not necessary any longer and has been removed.
+- `gtfs-api`: fix `gtfs_data_imported_at` Prometheus metric:
+  - fix the format
+  - grant access to the PostgreSQL function to PostgREST
+  - move `text/plain` PostgreSQL domain into the `api` schema
+- [ParkAPI 0.16.4 with fixes in Loki at Celery and Celery Crontab](https://github.com/ParkenDD/park-api-v3/blob/1227d469f877bf7a9b257cee3be6ea9e1531454e/CHANGELOG.md#0164)
+- [ParkAPI 0.16.5 with fixes in config loading](https://github.com/ParkenDD/park-api-v3/blob/2076f5863d655fae1090350903d7cabc54427a70/CHANGELOG.md#0165)
+- [x2gbfs 2024-12-19: rename stadtmobil_suedbaden to naturenergie_sharing](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-12-19)
+
 
 ## 2024-12-20
 ### Added
@@ -20,6 +71,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 - remove obsolete GBFS providers tier_basel, tier_bern, tier_stgallen, tier_winterthur, tier_zurich
 
+
 ## 2024-12-11
 
 ### Added
@@ -27,6 +79,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 - VRS parking providers obtain new Mobilithek subscription ids
+
 
 ## 2024-12-10
 
@@ -37,6 +90,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - new namespace for GBFS feed voi_de to avoid conflict with voi_ch
+
 
 ## 2024-12-04
 

@@ -32,18 +32,12 @@ lamassu:
       codespace: SMR
       url: "file:///var/gbfs/feeds/stadtmobil_rhein-neckar/gbfs.json"
       language: de
-    - systemId: stadtmobil_suedbaden
-      operatorId: SMS:Operator:stadtmobil_suedbaden
-      operatorName: Stadtmobil Südbaden
-      codespace: SMS
-      url: "file:///var/gbfs/feeds/stadtmobil_suedbaden/gbfs.json"
+    - systemId: naturenergie_sharing
+      operatorId: NES:Operator:naturenergie_sharing
+      operatorName: naturenergie sharing
+      codespace: NES
+      url: "file:///var/gbfs/feeds/naturenergie_sharing/gbfs.json"
       language: de
-#    - systemId: my-e-car
-#      operatorId: MEC:Operator:my_e_car
-#      operatorName: my-e-car
-#      codespace: MEC
-#      url: "file:///var/gbfs/feeds/my-e-car/gbfs.json"
-#      language: de
     - systemId: teilauto_neckar-alb
       operatorId: TAN:Operator:teilauto_neckar-alb
       operatorName: teilAuto Neckar-Alb
@@ -55,6 +49,12 @@ lamassu:
       operatorName: teilAuto Biberach
       codespace: TAB
       url: "file:///var/gbfs/feeds/teilauto_biberach/gbfs.json"
+      language: de
+    - systemId: teilauto_schwaebisch_hall
+      operatorId: TAS:Operator:teilauto_schwaebisch_hall
+      operatorName: teilAuto Schwäbisch Hall
+      codespace: TAS
+      url: "file:///var/gbfs/feeds/teilauto_schwaebisch_hall/gbfs.json"
       language: de
     - systemId: oekostadt_renningen
       operatorId: ORE:Operator:oekostadt_renningen
@@ -139,6 +139,104 @@ lamassu:
         properties:
           DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
           DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
+    ## Dott DE
+    - systemId: dott_boblingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOA
+      url: "https://gbfs.api.ridedott.com/public/v2/boblingen/gbfs.json"
+      language: en
+    - systemId: dott_friedrichshafen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOB
+      url: "https://gbfs.api.ridedott.com/public/v2/friedrichshafen/gbfs.json"
+      language: en
+    - systemId: dott_heidelberg
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOC
+      url: "https://gbfs.api.ridedott.com/public/v2/heidelberg/gbfs.json"
+      language: en
+    - systemId: dott_heilbronn
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOU
+      url: "https://gbfs.api.ridedott.com/public/v2/heilbronn/gbfs.json"
+      language: en
+    - systemId: dott_karlsruhe
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOD
+      url: "https://gbfs.api.ridedott.com/public/v2/karlsruhe/gbfs.json"
+      language: en
+    - systemId: dott_lindau
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOE
+      url: "https://gbfs.api.ridedott.com/public/v2/lindau/gbfs.json"
+      language: en
+    - systemId: dott_ludwigsburg
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOF
+      url: "https://gbfs.api.ridedott.com/public/v2/ludwigsburg/gbfs.json"
+      language: en
+    - systemId: dott_mannheim
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOG
+      url: "https://gbfs.api.ridedott.com/public/v2/mannheim/gbfs.json"
+      language: en
+    - systemId: dott_reutlingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOH
+      url: "https://gbfs.api.ridedott.com/public/v2/reutlingen/gbfs.json"
+      language: en
+    - systemId: dott_schaffhausen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOI
+      url: "https://gbfs.api.ridedott.com/public/v2/schaffhausen/gbfs.json"
+      language: en
+    - systemId: dott_stuttgart
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOJ
+      url: "https://gbfs.api.ridedott.com/public/v2/stuttgart/gbfs.json"
+      language: en
+    - systemId: dott_tubingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOK
+      url: "https://gbfs.api.ridedott.com/public/v2/tubingen/gbfs.json"
+      language: en
+    - systemId: dott_uberlingen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOL
+      url: "https://gbfs.api.ridedott.com/public/v2/uberlingen/gbfs.json"
+      language: en
+    - systemId: dott_ulm
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOM
+      url: "https://gbfs.api.ridedott.com/public/v2/ulm/gbfs.json"
+      language: en
+    - systemId: dott_kaiserslautern
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DON
+      url: "https://gbfs.api.ridedott.com/public/v2/kaiserslautern/gbfs.json"
+      language: en
+    - systemId: dott_mainz
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOO
+      url: "https://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
+      language: en
+    ## Nextbike DE
     - systemId: nextbike_df  # Frelo Freiburg
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
@@ -230,12 +328,12 @@ lamassu:
       codespace: DKB
       url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kiel/gbfs.json"
       language: en
-    - systemId: donkey_regensburg
-      operatorId: DKY:Operator:donkey
-      operatorName: Donkey Republic
-      codespace: DKC
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
-      language: german
+#    - systemId: donkey_regensburg
+#      operatorId: DKY:Operator:donkey
+#      operatorName: Donkey Republic
+#      codespace: DKC
+#      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
+#      language: german
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
@@ -336,12 +434,12 @@ lamassu:
       codespace: BRD
       url: "http://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
       language: en
-    - systemId: bird-biel
-      operatorId: BRD:Operator:bird
-      operatorName: bird
-      codespace: BRD
-      url: "http://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
-      language: en
+#    - systemId: bird-biel
+#      operatorId: BRD:Operator:bird
+#      operatorName: bird
+#      codespace: BRD
+#      url: "http://mds.bird.co/gbfs/v2/public/biel/gbfs.json"
+#      language: en
     - systemId: bird-kloten
       operatorId: BRD:Operator:bird
       operatorName: bird
@@ -418,6 +516,37 @@ lamassu:
       operatorName: Donkey Republic
       codespace: DKT
       url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
+      language: en
+    ## Dott CH
+    - systemId: dott_basel
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOP
+      url: "https://gbfs.api.ridedott.com/public/v2/basel/gbfs.json"
+      language: en
+    - systemId: dott_bregenz
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOQ
+      url: "https://gbfs.api.ridedott.com/public/v2/bregenz/gbfs.json"
+      language: en
+    - systemId: dott_st_gallen
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOR
+      url: "https://gbfs.api.ridedott.com/public/v2/st.-gallen/gbfs.json"
+      language: en
+    - systemId: dott_winterthur
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOS
+      url: "https://gbfs.api.ridedott.com/public/v2/winterthur/gbfs.json"
+      language: en
+    - systemId: dott_zurich
+      operatorId: DOT:Operator:dott
+      operatorName: Dott
+      codespace: DOT
+      url: "https://gbfs.api.ridedott.com/public/v2/zurich/gbfs.json"
       language: en
     # Lime CH
     - systemId: lime_basel
@@ -608,7 +737,8 @@ lamassu:
       operatorId: MOB:Operator:mobility
       operatorName: Mobility
       codespace: MOB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
+      # Note: mobility_ch feed is accessed via proxy, using http instead of https 
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/mobility/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS

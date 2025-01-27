@@ -10,4 +10,9 @@ OPENAPI_SERVERS:
 # So far, we don't have credentials, so we can put REMOTE_SERVERS here
 REMOTE_SERVERS:
   BNETZA:
-    url: https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Energie/Unternehmen_Institutionen/E_Mobilitaet/Ladesaeulenregister.xlsx
+    url: https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Energie/Unternehmen_Institutionen/E_Mobilitaet/Ladesaeulenregister_01122024.xlsx
+  SW_STUTTGART:
+    url: 'https://new-poi.chargecloud.de'
+
+AUTO_FETCH_SOURCES:
+  - sw_stuttgart
