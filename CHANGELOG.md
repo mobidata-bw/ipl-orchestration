@@ -13,8 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [OCPDB 1.3: Mitigate OCPI compatibility issues](https://github.com/binary-butterfly/ocpdb/blob/cc53f403c32e8d9a645064b36f22b9b3992060f5/CHANGELOG.md#version-130)
 
 ⚠️ The OCPDB changes might have effects on clients, as it changes the type if `id` from integer (which was wrong) to
-string, and creates a clear logic how to name upstream field identifiers. More details on that can be found
-[at the issue](https://github.com/binary-butterfly/ocpdb/issues/81).
+string in OCPDBs public JSON output, and creates a clear logic how to name upstream field identifiers. More details on
+that can be found [at the issue](https://github.com/binary-butterfly/ocpdb/issues/81).
 
 The OCPI changes also introduce a new `strict` mode: with `?strict=true`, you will get OCPI objects without
 additional attributes.
