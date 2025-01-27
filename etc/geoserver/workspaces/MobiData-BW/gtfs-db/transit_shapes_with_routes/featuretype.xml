@@ -5,7 +5,7 @@
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>ÖPNV-Linien</title>
+  <title>ÖPNV-Linien</title> 
   <abstract>Streckenverläufe der ÖPNV-Linien</abstract>
   <keywords>
     <string>features</string>
@@ -13,16 +13,17 @@
   </keywords>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>4.3</minx>
+    <maxx>15.4</maxx>
+    <miny>45.9</miny>
+    <maxy>53.9</maxy>
+    <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>4.3</minx>
+    <maxx>15.4</maxx>
+    <miny>45.9</miny>
+    <maxy>53.9</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>

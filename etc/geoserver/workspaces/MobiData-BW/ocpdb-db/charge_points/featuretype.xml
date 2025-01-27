@@ -22,16 +22,17 @@
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.0</minx>
-    <maxx>10.5</maxx>
-    <miny>48.0</miny>
-    <maxy>52.0</maxy>
+    <minx>5.2</minx>
+    <maxx>15.9</maxx>
+    <miny>47.3</miny>
+    <maxy>55.7</maxy>
+    <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.0</minx>
-    <maxx>10.5</maxx>
-    <miny>48.0</miny>
-    <maxy>52.0</maxy>
+    <minx>5.2</minx>
+    <maxx>15.9</maxx>
+    <miny>47.3</miny>
+    <maxy>55.7</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
@@ -40,26 +41,45 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>charge_points</name>
-        <sql>WITH location_power AS (SELECT location_id, max(max_electric_power) max_electric_power &#xd;
-                       FROM evse&#xd;
-                       JOIN connector&#xd;
-                         on evse.id = connector.evse_id&#xd;
-                      GROUP BY location_id)&#xd;
-&#xd;
-SELECT location.id, location.lat, location.lon, location.name, location.address, chargepoint_available_count, chargepoint_unknown_count, chargepoint_static_count, chargepoint_bike_count, max_electric_power, geometry&#xd;
+        <sql>WITH location_power AS (&#xd;
+  SELECT location_id, &#xd;
+         MAX(max_electric_power) AS max_electric_power &#xd;
+    FROM evse&#xd;
+    JOIN connector&#xd;
+      ON evse.id = connector.evse_id&#xd;
+  GROUP BY location_id&#xd;
+)&#xd;
+SELECT location.id, &#xd;
+       location.lat, &#xd;
+       location.lon, &#xd;
+       location.source, &#xd;
+       location.name, &#xd;
+       location.address, &#xd;
+       cp.chargepoint_available_count, &#xd;
+       cp.chargepoint_unknown_count, &#xd;
+       cp.chargepoint_static_count, &#xd;
+       cp.chargepoint_bike_count, &#xd;
+       lp.max_electric_power, &#xd;
+       location.geometry,&#xd;
+       business.name AS operator_name&#xd;
 FROM location&#xd;
-LEFT JOIN (SELECT location_id, COUNT(es.id) as chargepoint_count,&#xd;
-                  SUM(CASE WHEN es.status = &apos;AVAILABLE&apos; THEN 1 ELSE 0 END) as chargepoint_available_count,&#xd;
-                  SUM(CASE WHEN es.status = &apos;UNKNOWN&apos; THEN 1 ELSE 0 END) as chargepoint_unknown_count,&#xd;
-                  SUM(CASE WHEN es.status = &apos;STATIC&apos; THEN 1 ELSE 0 END) as chargepoint_static_count,&#xd;
-                  SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) as chargepoint_bike_count &#xd;
-             FROM location l&#xd;
-             JOIN evse es&#xd;
-               ON l.id =  es.location_id &#xd;
-            GROUP BY location_id) AS cp&#xd;
+LEFT JOIN (&#xd;
+  SELECT location_id, &#xd;
+         COUNT(es.id) AS chargepoint_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;AVAILABLE&apos; THEN 1 ELSE 0 END) AS chargepoint_available_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;UNKNOWN&apos; THEN 1 ELSE 0 END) AS chargepoint_unknown_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;STATIC&apos; THEN 1 ELSE 0 END) AS chargepoint_static_count,&#xd;
+         SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) AS chargepoint_bike_count &#xd;
+    FROM location l&#xd;
+    JOIN evse es&#xd;
+      ON l.id = es.location_id &#xd;
+  GROUP BY location_id&#xd;
+) AS cp&#xd;
   ON cp.location_id = location.id&#xd;
 LEFT JOIN location_power lp&#xd;
-       ON lp.location_id = location.id
+  ON lp.location_id = location.id&#xd;
+LEFT JOIN business&#xd;
+  ON location.operator_id = business.id
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -83,6 +103,99 @@ LEFT JOIN location_power lp&#xd;
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>lat</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.math.BigDecimal</binding>
+    </attribute>
+    <attribute>
+      <name>lon</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.math.BigDecimal</binding>
+    </attribute>
+    <attribute>
+      <name>source</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>operator_name</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>address</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_available_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_unknown_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_static_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_bike_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>max_electric_power</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+    </attribute>
+    <attribute>
+      <name>geometry</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>org.locationtech.jts.geom.Point</binding>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
