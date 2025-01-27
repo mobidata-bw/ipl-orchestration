@@ -7,12 +7,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 ### Added
+
 - [x2gbfs 2024-12-19: add Cantamen provider teilauto_schwaebisch_hall](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-12-19)
 - GeoServer: add vector tile caching to all layers, edit sql statement of `MobiData-BW:charge_points`, change bounding boxes of `MobiData-BW:charge_points` and `MobiData-BW:transit_shapes_with_routes`
+- [OCPDB 1.3: Mitigate OCPI compatibility issues](https://github.com/binary-butterfly/ocpdb/blob/cc53f403c32e8d9a645064b36f22b9b3992060f5/CHANGELOG.md#version-130)
+
+⚠️ The OCPDB changes might have effects on clients, as it changes the type if `id` from integer (which was wrong) to
+string, and creates a clear logic how to name upstream field identifiers. More details on that can be found
+[at the issue](https://github.com/binary-butterfly/ocpdb/issues/81).
+
+The OCPI changes also introduce a new `strict` mode: with `?strict=true`, you will get OCPI objects without
+additional attributes.
+
 
 ### Changed
 
 - `gtfs-api`: Upgrade PostgREST from 12.2.3 to [12.2.5](https://github.com/PostgREST/postgrest/releases/tag/v12.2.5)
+- [ParkAPI 0.17.3: Better sources output and documentation](https://github.com/ParkenDD/park-api-v3/blob/c9822011c8808349d528ae7e2af2d86f7a66834f/CHANGELOG.md#0173)
 
 
 ## 2025-01-21
