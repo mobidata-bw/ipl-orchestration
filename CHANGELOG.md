@@ -4,7 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+### Added
+- GeoServer: add vector tile caching to all layers, edit sql statement of `MobiData-BW:charge_points`, change bounding boxes of `MobiData-BW:charge_points` and `MobiData-BW:transit_shapes_with_routes`
+
 ## 2024-12-20
+### Added
+- add `agency_id`, `agency_name` and `agency_url` to materialized view `shapes_with_routes`
+- add GBFS providers donkey_bamberg, donkey_kiel, donkey_regensburg, donkey_le_locle, nextbike_nn
 
 ### Added
 - add `agency_id`, `agency_name` and `agency_url` to materialized view `shapes_with_routes`
