@@ -1,8 +1,8 @@
 <GeoServerTileLayer>
-  <id>LayerInfoImpl--2f417ac5:18e2df033ce:-7ff0</id>
+  <id>LayerInfoImpl-4e33b56a:18f49d44d3c:-7fdf</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>MobiData-BW:roadworks</name>
+  <name>MobiData-BW:parking_sites_bicycle</name>
   <mimeFormats>
     <string>application/vnd.mapbox-vector-tile</string>
   </mimeFormats>
@@ -16,19 +16,18 @@
     <int>4</int>
     <int>4</int>
   </metaWidthHeight>
-  <expireCache>60</expireCache>
-  <expireClients>30</expireClients>
+  <expireCache>0</expireCache>
+  <expireClients>0</expireClients>
   <parameterFilters>
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <allowedStyles class="sorted-set"/>
       <availableStyles class="sorted-set">
-        <string>MobiData-BW:mdbw_traffic_roadworks_detailed</string>
+        <string>MobiData-BW:mdbw_parking_sites_types_bicycle</string>
       </availableStyles>
-      <defaultStyle>MobiData-BW:mdbw_traffic_roadworks_default</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_parking_sites_default</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
-  <gutter>15</gutter>
+  <gutter>0</gutter>
   <cacheWarningSkips/>
 </GeoServerTileLayer>

@@ -26,6 +26,7 @@
   <gutter>0</gutter>
   <defaultCachingGridSetIds>
     <string>EPSG:4326</string>
+    <string>WebMercatorQuadx2</string>
     <string>EPSG:900913</string>
   </defaultCachingGridSetIds>
   <defaultCoverageCacheFormats>
@@ -38,7 +39,6 @@
     <string>image/jpeg</string>
   </defaultVectorCacheFormats>
   <defaultOtherCacheFormats>
-    <string>application/vnd.mapbox-vector-tile</string>
     <string>image/png</string>
     <string>image/jpeg</string>
   </defaultOtherCacheFormats>
