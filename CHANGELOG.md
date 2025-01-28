@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Next release
+
+## Changed
+
+- `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2025-01-28t15-57`](https://github.com/mobidata-bw/ipl-dagster-pipeline/commit/6b1448ce788b6997df8c1db90dc9369da4bb0001), fixes #306 and the root cause of a WFS2.0.0 issue caused by missing primary keys.
+
 ## 2025-01-28
 
 ### Added
