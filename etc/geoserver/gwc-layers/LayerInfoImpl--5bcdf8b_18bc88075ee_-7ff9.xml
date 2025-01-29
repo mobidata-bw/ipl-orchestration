@@ -16,8 +16,8 @@
     <int>4</int>
     <int>4</int>
   </metaWidthHeight>
-  <expireCache>0</expireCache>
-  <expireClients>0</expireClients>
+  <expireCache>60</expireCache>
+  <expireClients>55</expireClients>
   <parameterFilters>
     <styleParameterFilter>
       <key>STYLES</key>

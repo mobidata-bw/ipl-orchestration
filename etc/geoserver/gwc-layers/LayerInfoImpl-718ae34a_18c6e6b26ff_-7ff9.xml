@@ -9,20 +9,30 @@
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
-      <minCachedLevel>5</minCachedLevel>
+      <extent>
+        <coords>
+          <double>578861.3521250226</double>
+          <double>5991179.924651756</double>
+          <double>1769979.9036130498</double>
+          <double>7498924.477653491</double>
+        </coords>
+      </extent>
+      <minCachedLevel>6</minCachedLevel>
     </gridSubset>
   </gridSubsets>
   <metaWidthHeight>
     <int>4</int>
     <int>4</int>
   </metaWidthHeight>
-  <expireCache>0</expireCache>
-  <expireClients>0</expireClients>
+  <expireCache>60</expireCache>
+  <expireClients>55</expireClients>
   <parameterFilters>
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <availableStyles class="sorted-set"/>
+      <availableStyles class="sorted-set">
+        <string>MobiData-BW:mdbw_charge_points_dynamic</string>
+      </availableStyles>
       <defaultStyle>MobiData-BW:mdbw_charge_points_default</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>

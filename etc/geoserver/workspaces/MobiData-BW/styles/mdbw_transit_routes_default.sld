@@ -81,17 +81,11 @@
         <Rule>
           <Title>Andere Linie</Title>
           <ElseFilter />
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#dddddd</CssParameter>
-                </Fill>
-              </Mark>
-              <Size>6</Size>
-            </Graphic>
-          </PointSymbolizer>
+          <LineSymbolizer>
+            <Stroke> 
+              <CssParameter name="stroke">#cacaca</CssParameter> 
+            </Stroke>    
+          </LineSymbolizer>
         </Rule>
       </FeatureTypeStyle>
     </UserStyle>
