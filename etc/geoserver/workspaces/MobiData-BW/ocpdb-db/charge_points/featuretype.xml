@@ -58,6 +58,9 @@ SELECT location.id, &#xd;
        cp.chargepoint_available_count, &#xd;
        cp.chargepoint_unknown_count, &#xd;
        cp.chargepoint_static_count, &#xd;
+       cp.chargepoint_charging_count, &#xd;
+       cp.chargepoint_inoperative_count, &#xd;
+       cp.chargepoint_outoforder_count, &#xd;
        cp.chargepoint_bike_count, &#xd;
        lp.max_electric_power, &#xd;
        location.geometry,&#xd;
@@ -69,6 +72,9 @@ LEFT JOIN (&#xd;
          SUM(CASE WHEN es.status = &apos;AVAILABLE&apos; THEN 1 ELSE 0 END) AS chargepoint_available_count,&#xd;
          SUM(CASE WHEN es.status = &apos;UNKNOWN&apos; THEN 1 ELSE 0 END) AS chargepoint_unknown_count,&#xd;
          SUM(CASE WHEN es.status = &apos;STATIC&apos; THEN 1 ELSE 0 END) AS chargepoint_static_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;CHARGING&apos; THEN 1 ELSE 0 END) AS chargepoint_charging_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;INOPERATIVE&apos; THEN 1 ELSE 0 END) AS chargepoint_inoperative_count,&#xd;
+         SUM(CASE WHEN es.status = &apos;OUTOFORDER&apos; THEN 1 ELSE 0 END) AS chargepoint_outoforder_count,&#xd;
          SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) AS chargepoint_bike_count &#xd;
     FROM location l&#xd;
     JOIN evse es&#xd;
@@ -161,10 +167,28 @@ LEFT JOIN business&#xd;
       <binding>java.lang.Long</binding>
     </attribute>
     <attribute>
+      <name>chargepoint_charging_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
       <name>chargepoint_unknown_count</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_inoperative_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Long</binding>
+    </attribute>
+    <attribute>
+      <name>chargepoint_outoforder_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
       <binding>java.lang.Long</binding>
     </attribute>
     <attribute>

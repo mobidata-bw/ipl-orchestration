@@ -9,15 +9,15 @@
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
-      <minCachedLevel>5</minCachedLevel>
+      <minCachedLevel>6</minCachedLevel>
     </gridSubset>
   </gridSubsets>
   <metaWidthHeight>
     <int>4</int>
     <int>4</int>
   </metaWidthHeight>
-  <expireCache>60</expireCache>
-  <expireClients>30</expireClients>
+  <expireCache>86400</expireCache>
+  <expireClients>86400</expireClients>
   <parameterFilters>
     <styleParameterFilter>
       <key>STYLES</key>
