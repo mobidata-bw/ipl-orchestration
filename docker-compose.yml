@@ -766,7 +766,7 @@ services:
 
   park-api-init:
     <<: *park-api-defaults
-    command: ["bash", "-c", "flask db upgrade && flask source init-converters"]
+    command: ["sh", "-c", "flask db upgrade && flask source init-converters"]
 
   park-api-worker:
     <<: *park-api-defaults

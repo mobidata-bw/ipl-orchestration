@@ -9,6 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2025-01-28T15-57`]
+- [ParkAPI: Switch to Alpine base image and Python 3.12](https://github.com/ParkenDD/park-api-v3/blob/454c2418eca7e938e0c5f7af5fd3f372a049ea63/CHANGELOG.md#0180)
+- [ParkAPI Sources: Add required attributes at several converters](https://github.com/ParkenDD/park-api-v3/blob/454c2418eca7e938e0c5f7af5fd3f372a049ea63/CHANGELOG.md#fixes)
+
 
 ## 2025-01-28
 
