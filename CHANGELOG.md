@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- [ipl-proxy: add converter for `gbfs.api.ridedott.com` feeds](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-01-29)
+- [ipl-proxy: replace converter for `gbfs.prod.sharedmobility.ch/v2/gbfs/mobility` feed](https://github.com/mobidata-bw/ipl-proxy/edit/main/CHANGELOG.md#2025-01-24)
 - `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2025-01-28T15-57`]
 - [ParkAPI: Switch to Alpine base image and Python 3.12](https://github.com/ParkenDD/park-api-v3/blob/454c2418eca7e938e0c5f7af5fd3f372a049ea63/CHANGELOG.md#0180)
 - [ParkAPI Sources: Add required attributes at several converters](https://github.com/ParkenDD/park-api-v3/blob/454c2418eca7e938e0c5f7af5fd3f372a049ea63/CHANGELOG.md#fixes)
