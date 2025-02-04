@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+### Changed
+
+- [ParkAPI: Hotfix ParkAPI OpeningTime output for ParkAPI v1](https://github.com/ParkenDD/park-api-v3/blob/dca14b8195cb015f8e5076bce79d46861445c604/CHANGELOG.md#0181)
+
+
 ## 2025-02-04
 
 ### Added
