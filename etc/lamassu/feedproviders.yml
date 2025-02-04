@@ -144,97 +144,113 @@ lamassu:
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOA
-      url: "https://gbfs.api.ridedott.com/public/v2/boblingen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/boblingen/gbfs.json"
       language: en
     - systemId: dott_friedrichshafen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOB
-      url: "https://gbfs.api.ridedott.com/public/v2/friedrichshafen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/friedrichshafen/gbfs.json"
       language: en
     - systemId: dott_heidelberg
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOC
-      url: "https://gbfs.api.ridedott.com/public/v2/heidelberg/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/heidelberg/gbfs.json"
       language: en
     - systemId: dott_heilbronn
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOU
-      url: "https://gbfs.api.ridedott.com/public/v2/heilbronn/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/heilbronn/gbfs.json"
       language: en
     - systemId: dott_karlsruhe
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOD
-      url: "https://gbfs.api.ridedott.com/public/v2/karlsruhe/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/karlsruhe/gbfs.json"
       language: en
     - systemId: dott_lindau
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOE
-      url: "https://gbfs.api.ridedott.com/public/v2/lindau/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/lindau/gbfs.json"
       language: en
     - systemId: dott_ludwigsburg
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOF
-      url: "https://gbfs.api.ridedott.com/public/v2/ludwigsburg/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/ludwigsburg/gbfs.json"
       language: en
     - systemId: dott_mannheim
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOG
-      url: "https://gbfs.api.ridedott.com/public/v2/mannheim/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/mannheim/gbfs.json"
       language: en
     - systemId: dott_reutlingen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOH
-      url: "https://gbfs.api.ridedott.com/public/v2/reutlingen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/reutlingen/gbfs.json"
       language: en
     - systemId: dott_schaffhausen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOI
-      url: "https://gbfs.api.ridedott.com/public/v2/schaffhausen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/schaffhausen/gbfs.json"
       language: en
     - systemId: dott_stuttgart
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOJ
-      url: "https://gbfs.api.ridedott.com/public/v2/stuttgart/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/stuttgart/gbfs.json"
       language: en
     - systemId: dott_tubingen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOK
-      url: "https://gbfs.api.ridedott.com/public/v2/tubingen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/tubingen/gbfs.json"
       language: en
     - systemId: dott_uberlingen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOL
-      url: "https://gbfs.api.ridedott.com/public/v2/uberlingen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/uberlingen/gbfs.json"
       language: en
     - systemId: dott_ulm
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOM
-      url: "https://gbfs.api.ridedott.com/public/v2/ulm/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/ulm/gbfs.json"
       language: en
     - systemId: dott_kaiserslautern
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DON
-      url: "https://gbfs.api.ridedott.com/public/v2/kaiserslautern/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/kaiserslautern/gbfs.json"
       language: en
     - systemId: dott_mainz
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOO
-      url: "https://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
       language: en
     ## Nextbike DE
     - systemId: nextbike_df  # Frelo Freiburg
@@ -522,31 +538,36 @@ lamassu:
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOP
-      url: "https://gbfs.api.ridedott.com/public/v2/basel/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/basel/gbfs.json"
       language: en
     - systemId: dott_bregenz
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOQ
-      url: "https://gbfs.api.ridedott.com/public/v2/bregenz/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/bregenz/gbfs.json"
       language: en
     - systemId: dott_st_gallen
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOR
-      url: "https://gbfs.api.ridedott.com/public/v2/st.-gallen/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/st.-gallen/gbfs.json"
       language: en
     - systemId: dott_winterthur
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOS
-      url: "https://gbfs.api.ridedott.com/public/v2/winterthur/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/winterthur/gbfs.json"
       language: en
     - systemId: dott_zurich
       operatorId: DOT:Operator:dott
       operatorName: Dott
       codespace: DOT
-      url: "https://gbfs.api.ridedott.com/public/v2/zurich/gbfs.json"
+      # Note: doot feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.api.ridedott.com/public/v2/zurich/gbfs.json"
       language: en
     # Lime CH
     - systemId: lime_basel
