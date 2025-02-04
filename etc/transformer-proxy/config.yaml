@@ -7,3 +7,4 @@ HTTP_TO_HTTPS_HOSTS:
   - mds.bird.co
   - gbfs.prod.sharedmobility.ch
   - api.voiapp.io
+  - gbfs.api.ridedott.com
