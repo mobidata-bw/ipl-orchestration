@@ -184,6 +184,7 @@ services:
       - MOQO_API_TOKEN=${MOQO_API_TOKEN:?missing/empty}
       - FLINKSTER_CLIENT_ID=${FLINKSTER_CLIENT_ID:?missing/empty}
       - FLINKSTER_SECRET=${FLINKSTER_SECRET:?missing/empty}
+      - FREE2MOVE_BASE_URL=${X2GBFS_FREE2MOVE_BASE_URL:?missing/empty}
       - FREE2MOVE_USER=${X2GBFS_FREE2MOVE_USER:?missing/empty}
       - FREE2MOVE_PASSWORD=${X2GBFS_FREE2MOVE_PASSWORD:?missing/empty}
       - CACHE_DIR=/app/temp
