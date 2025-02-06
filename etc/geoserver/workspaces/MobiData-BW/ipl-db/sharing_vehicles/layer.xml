@@ -1,5 +1,5 @@
 <layer>
-  <name>vehicles</name>
+  <name>sharing_vehicles</name>
   <id>LayerInfoImpl--1e02d99c:189997e81fa:-79df</id>
   <type>VECTOR</type>
   <defaultStyle>
@@ -18,5 +18,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2023-07-28 12:38:08.640 UTC</dateCreated>
-  <dateModified>2023-12-19 00:23:04.33 UTC</dateModified>
+  <dateModified>2025-02-06 15:39:15.315 UTC</dateModified>
 </layer>
