@@ -1,5 +1,5 @@
 <layer>
-  <name>stations_with_served_routes</name>
+  <name>transit_stations_with_served_routes</name>
   <id>LayerInfoImpl-24a0a30e:18ad176585a:-7ff9</id>
   <type>VECTOR</type>
   <defaultStyle>
@@ -13,5 +13,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2023-09-26 13:08:33.159 UTC</dateCreated>
-  <dateModified>2023-09-26 13:16:08.527 UTC</dateModified>
+  <dateModified>2025-02-06 15:41:22.759 UTC</dateModified>
 </layer>

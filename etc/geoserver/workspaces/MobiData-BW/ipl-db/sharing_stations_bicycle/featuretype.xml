@@ -23,17 +23,17 @@
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>6.0</minx>
+    <maxx>13.5</maxx>
+    <miny>45.8</miny>
+    <maxy>54.6</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>6.0</minx>
+    <maxx>13.5</maxx>
+    <miny>45.8</miny>
+    <maxy>54.6</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
@@ -126,7 +126,7 @@ WHERE st.num_bicycles_available &gt;= 0
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-	<de>Deeplink zur Buchung (Android)</de>
+        <de>Deeplink zur Buchung (Android)</de>
       </description>
     </attribute>
     <attribute>
