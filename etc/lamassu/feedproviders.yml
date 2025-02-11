@@ -108,7 +108,7 @@ lamassu:
       operatorName: Car-ship
       codespace: CAS
       url: "https://app.car-ship.jetzt/gbfs/2.3/gbfs"
-      language: en
+      language: de
     - systemId: regiorad_stuttgart
       operatorId: CAB:Operator:callabike
       operatorName: Call-A-Bike
