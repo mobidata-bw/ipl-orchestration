@@ -8,7 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 - remove `INSPIRE` plugin from GeoServer
 - GeoServer: several changes related to vector tiles
-  
+- [Duplicate query: Add source_id and source_uid: ParkAPI](https://github.com/ParkenDD/park-api-v3/blob/835db0601821daae82c16a7c2d72641dd574072e/CHANGELOG.md#0190)
+
+
 ## 2025-02-04 2nd
 
 ### Changed
