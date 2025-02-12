@@ -10,7 +10,7 @@ http:
       # - `Accept: foo, text/html; q=0.91, bar; q=0.9` (generous spacing)
       # - `Accept: foo,text/html; q=0.91,bar; q=0.9` (unusual spacing)
       # todo: leverage a proper content negotiation algorithm for this
-      rule: "Method(`GET`, `HEAD`) && Path(`/gtfs`, `/gtfs/`) && HeaderRegexp(`Accept`, `\\b(text/html|application/xhtml\\+xml)([,;\\s]|$)`)"
+      rule: "(Method(`GET`) || Method(`HEAD`)) && (Path(`/gtfs`) || Path(`/gtfs/`)) && HeaderRegexp(`Accept`, `\\b(text/html|application/xhtml\\+xml)([,;\\s]|$)`)"
       middlewares: gtfs-redirect-docs
       # https://github.com/traefik/traefik/issues/7242
       service: noop@internal
