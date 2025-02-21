@@ -36,6 +36,10 @@
                 <ogc:PropertyName>feed_id</ogc:PropertyName>
                 <ogc:Literal>conficars_ulm</ogc:Literal>
               </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>feed_id</ogc:PropertyName>
+                <ogc:Literal>naturenergie_sharing</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
             </ogc:Or>
           </ogc:Filter>
           <PointSymbolizer>
@@ -87,6 +91,10 @@
                   <ogc:PropertyIsEqualTo>
                     <ogc:PropertyName>feed_id</ogc:PropertyName>
                     <ogc:Literal>conficars_ulm</ogc:Literal>
+                  </ogc:PropertyIsEqualTo>
+                  <ogc:PropertyIsEqualTo>
+                    <ogc:PropertyName>feed_id</ogc:PropertyName>
+                    <ogc:Literal>naturenergie_sharing</ogc:Literal>
                   </ogc:PropertyIsEqualTo>
                 </ogc:Or>
               </ogc:Not>

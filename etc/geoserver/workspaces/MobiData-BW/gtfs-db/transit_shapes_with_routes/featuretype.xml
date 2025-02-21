@@ -36,9 +36,7 @@
   </store>
   <serviceConfiguration>false</serviceConfiguration>
   <simpleConversionEnabled>false</simpleConversionEnabled>
-  <internationalTitle>
-    <de>shapes_with_routes</de>
-  </internationalTitle>
+  <internationalTitle/>
   <internationalAbstract/>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
