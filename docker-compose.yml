@@ -48,6 +48,7 @@ x-park-api-defaults: &park-api-defaults
     - ./etc/park-api/files:/app/files
     - ./var/park-api/logs:/app/logs
     - ./var/park-api/temp:/app/temp
+    - ./var/park-api/data:/app/data
 
 services:
   # Traefik is our ingress: requests enter our infrastructure through it.

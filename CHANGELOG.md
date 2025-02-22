@@ -6,10 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+
 ### Changed
 
 - ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-02-19T00.49.01-20c1b09`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/20c1b09) – This is a breaking change because future GTFS imports won't work without a manual migration step. Please run `docker compose --env-file .env --env-file .env.local exec gtfs-db /bin/sh -c 'env PGUSER="$POSTGRES_USER" PGPASSWORD="$POSTGRES_PASSWORD" psql gtfs_importer -1 -c "CREATE TABLE IF NOT EXISTS latest_successful_imports (db_name TEXT PRIMARY KEY, imported_at INTEGER NOT NULL, feed_digest TEXT NOT NULL); INSERT INTO latest_successful_imports (db_name, imported_at, feed_digest) SELECT db_name, split_part(db_name, '\''_'\'', 2)::integer AS imported_at, split_part(db_name, '\''_'\'', 3) AS feed_digest FROM latest_import"'` to adapt the `gtfs_importer` database to the new way `postgis-gtfs-importer` keeps track of the imports (a table `latest_successful_imports`).
 - GeoServer: add `naturenergie_sharing` to `mdbw_sharing_stations_default` with static data and other minor changes
+- [ParkAPI 0.20.2](https://github.com/ParkenDD/park-api-v3/blob/002de448407ad2aaa2359f644990225f736e972a/CHANGELOG.md#0202)
+  fixing an issue with client certificates being reused in follow-up-request, leading to a fail of `bahn_v2` converter
+- ⚠️ [ParkAPI 0.20.0](https://github.com/ParkenDD/park-api-v3/blob/002de448407ad2aaa2359f644990225f736e972a/CHANGELOG.md#0200)
+  with a new, abstract Datex II approach. This means that expected config values for `vrs_*` converters have to be
+  converted to the new, abstract format. If you don't use VRS converters, no change is necessary.
+- [ParkAPI 0.20.0](https://github.com/ParkenDD/park-api-v3/blob/002de448407ad2aaa2359f644990225f736e972a/CHANGELOG.md#0200)
+  with [a new debug mode](https://github.com/ParkenDD/park-api-v3/blob/002de448407ad2aaa2359f644990225f736e972a/README.md#debugging-data-sources).
+
 
 ## 2025-02-12
 
