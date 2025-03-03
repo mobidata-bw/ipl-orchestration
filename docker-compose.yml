@@ -283,6 +283,8 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
+    # Currently, there's no linux/arm64 image.
+    platform: linux/amd64
     user: *local-user
     volumes:
       # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
