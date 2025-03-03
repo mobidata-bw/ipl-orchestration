@@ -4,12 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+
 ## [Unreleased]
 
 ### Changed
 
 - GeoServer: fix image name in `.env` (`geoserver` -> `ipl-geoserver`), pulling the image should now be possible again
 - GeoServer: hard-code platform `linux/amd64` because there are currently no other platforms supported
+- `lamassu`: upgraded [`lamassu`](https://github.com/entur/lamassu) to [2025-03-01T04-51](https://hub.docker.com/layers/entur/lamassu/2025-03-01T04-51/images/sha256-742f539b77ded7173da2e5b66db922e8cd657d344531417de7e86cd5591fd7d5). This i.e. includes an internal refactoring which reduces redis memory usage and improves graphql performance. For details see https://github.com/entur/lamassu/blob/master/Changelog.md?plain=1#L9C64-L17
+- [dagster-pipeline/dagster-daemon/dagster-dagit: upgrade to `2025-03-03t11-50`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md?plain=1#L6-L10)
+- [x2gbfs 2025-03-03T13-17:](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-03-03)
+  - fix: update `deer` pricing plans
+  - round vehicle and station coords to at most six decimal places
+  - some x2gbfs deployment related changes, see x2gbfs [CHANGELOG]((https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2024-03-03)) for these
+
 
 ## 2025-02-25
 
