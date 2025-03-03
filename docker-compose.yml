@@ -175,7 +175,7 @@ services:
     volumes:
       - ./var/gbfs/feeds:/app/out/
       - ./var/gbfs/temp:/app/temp/
-    command: -p ${X2GBFS_PROVIDERS:?missing/empty} -b file:///var/gbfs/feeds -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty}
+    command: -p ${X2GBFS_PROVIDERS:?missing/empty} -b file:///var/gbfs/feeds -c ${X2GBFS_CUSTOM_BASE_URL?missing/empty} -i ${X2GBFS_UPDATE_INTERVAL_SECONDS:?missing/empty}
     environment:
       - DEER_API_URL
       - DEER_USER=${DEER_USER:?missing/empty}
