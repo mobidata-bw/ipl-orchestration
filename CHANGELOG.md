@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - GeoServer: fix image name in `.env` (`geoserver` -> `ipl-geoserver`), pulling the image should now be possible again
+- GeoServer: hard-code platform `linux/amd64` because there are currently no other platforms supported
 
 ## 2025-02-25
 
