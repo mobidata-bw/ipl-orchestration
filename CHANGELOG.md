@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+### Changed
+
+- [ParkAPI Sources: Fix and reduce validation errors in converters](https://github.com/ParkenDD/park-api-v3/blob/68b36bcbf75189a740085c1b6163c5c0e6bb222b/CHANGELOG.md#0203)
+
+
 ## 2025-03-04
 
 ### Changed
