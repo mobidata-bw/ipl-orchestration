@@ -156,5 +156,5 @@ park-api-upgrade:
 
 .PHONY: park-api-shell
 park-api-shell:
-	$(DOCKER_COMPOSE) exec park-api-flask /bin/bash
+	$(DOCKER_COMPOSE) exec park-api-flask /bin/sh
 
