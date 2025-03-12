@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - remove deactivated GBFS feed `dott_st_gallen`
+- GeoServer: add MatrixTileSet WebMercatorQuad for vector tile layer roadworks
 
 ## 2025-03-11
 
