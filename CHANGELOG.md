@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- [x2gbfs 2025-03-13T08-15:](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-13)
+- [ipl-proxy 2025-03-14T13-00](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-03-10)
+- [x2gbfs 2025-03-13T08-15](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-13)
 - remove deactivated GBFS feed `dott_st_gallen`
 - GeoServer: add MatrixTileSet WebMercatorQuad for vector tile layer roadworks
 
