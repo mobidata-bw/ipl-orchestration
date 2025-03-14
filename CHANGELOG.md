@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [x2gbfs 2025-03-13T08-15](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-13)
 - remove deactivated GBFS feed `dott_st_gallen`
 - GeoServer: add MatrixTileSet WebMercatorQuad for vector tile layer roadworks
+- Lamassu: With the 2025-03-04 release, lamassu was upgraded to version [2025-03-01T04-51](https://hub.docker.com/layers/entur/lamassu/2025-03-01T04-51/images/sha256-742f539b77ded7173da2e5b66db922e8cd657d344531417de7e86cd5591fd7d5). This had side effects which clients need to adapt to:
+  - Endpoint `/sharing/graphql` now only accepts `POST` requests. Sending GraphQL queries vie `GET` with `query` parameter is not supported any longer
+  - the `graphiql` client needs to explicitly specify `/sharing/graphql` as `path` param, e.g. `https://<host:port>/sharing/graphiql?path=/sharing/graphql` 
 
 ## 2025-03-11
 
