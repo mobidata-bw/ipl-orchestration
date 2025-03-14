@@ -258,6 +258,21 @@ lamassu:
       # Note: doot feeds are accessed via proxy, using http instead of https
       url: "http://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
       language: en
+    ## Lime DE
+    - systemId: lime_hamburg
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: LME
+      # Note: lime feeds are accessed via proxy, using http instead of https
+      url: "http://data.lime.bike/api/partners/v2/gbfs/hamburg/gbfs.json"
+      language: en
+    - systemId: lime_frankfurt
+      operatorId: LME:Operator:lime
+      operatorName: Lime
+      codespace: LMF
+      # Note: lime feeds are accessed via proxy, using http instead of https
+      url: "http://data.lime.bike/api/partners/v2/gbfs/frankfurt/gbfs.json"
+      language: en
     ## Nextbike DE
     - systemId: nextbike_df  # Frelo Freiburg
       operatorId: NBK:Operator:nextbike
@@ -381,7 +396,7 @@ lamassu:
       codespace: ZEO
       url: "https://mds.evemo.io/1a606e0d-fbd7-470f-bf0c-79b946c7c16a/gbfs/2.3/gbfs.json"
       language: en
-    # Zeus DE
+    ## Zeus DE
     - systemId: zeus_freiburg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -568,7 +583,7 @@ lamassu:
       # Note: doot feeds are accessed via proxy, using http instead of https
       url: "http://gbfs.api.ridedott.com/public/v2/zurich/gbfs.json"
       language: en
-    # Lime CH
+    ## Lime CH
     - systemId: lime_basel
       operatorId: LME:Operator:lime
       operatorName: Lime
@@ -610,7 +625,7 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Link CH
-    # Nexbike CH
+    ## Nextbike CH
     - systemId: nextbike_ch
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
@@ -618,7 +633,7 @@ lamassu:
       # Note: nextbike feeds are accessed via proxy, using http instead of https 
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ch/gbfs.json"
       language: en
-    # PubliBike CH
+    ## PubliBike CH
     - systemId: publibike_ch
       operatorId: PIB:Operator:publibike
       operatorName: PubliBike
@@ -635,7 +650,7 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    # Pick-e-Bike CH
+    ## Pick-e-Bike CH
     - systemId: pickebike_aubonne
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
@@ -667,65 +682,14 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    # Share Birrer CH
+    ## Share Birrer CH
     - systemId: share_birrer_ch
       operatorId: SBA:Operator:share_birrer_ag
       operatorName: Share Birrer AG
       codespace: SBA
       url: "https://www.share-birrer.ch/gbfs/gbfs.json"
       language: de
-    # Tier CH
-#    - systemId: tier_basel
-#      operatorId: TIE:Operator:tier
-#      operatorName: Tier
-#      codespace: TIE
-#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_basel/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-#    - systemId: tier_bern
-#      operatorId: TIE:Operator:tier
-#      operatorName: Tier
-#      codespace: TIE
-#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_bern/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-#    - systemId: tier_stgallen
-#      operatorId: TIE:Operator:tier
-#      operatorName: Tier
-#      codespace: TIE
-#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_stgallen/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-#    - systemId: tier_winterthur
-#      operatorId: TIE:Operator:tier
-#      operatorName: Tier
-#      codespace: TIE
-#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_winterthur/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-#    - systemId: tier_zurich
-#      operatorId: TIE:Operator:tier
-#      operatorName: Tier
-#      codespace: TIE
-#      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/tier_zurich/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    # VOI Scooter
+    ## VOI Scooter
     - systemId: voi_ch
       operatorId: VOI:Operator:voi
       operatorName: VOI
@@ -736,7 +700,7 @@ lamassu:
         scheme: HTTP_HEADERS
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
-    # Others CH
+    ## Others CH
     - systemId: liemobil_liechtenstein
       operatorId: LIM:Operator:liemobil
       operatorName: LIEmobil
@@ -789,7 +753,7 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     # Feeds FR
-    # Bird FR
+    ## Bird FR
     - systemId: bird-chalonsenchampagne
       operatorId: BRD:Operator:bird
       operatorName: bird
@@ -802,7 +766,7 @@ lamassu:
       codespace: BRD
       url: "http://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
       language: en
-    # Nexbike FR
+    ## Nextbike FR
     - systemId: nextbike_ae
       operatorId: NBK:Operator:nextbike
       operatorName: Nextbike
@@ -810,7 +774,7 @@ lamassu:
       # Note: nextbike feeds are accessed via proxy, using http instead of https 
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ae/gbfs.json"
       language: en
-    # Others FR
+    ## Others FR
     - systemId: mulhouse
       operatorId: VLC:Operator:velocite
       operatorName: velocite
