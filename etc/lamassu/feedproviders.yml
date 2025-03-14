@@ -573,7 +573,8 @@ lamassu:
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LME
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_basel/gbfs"
+      # Note: lime feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_basel/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -583,13 +584,15 @@ lamassu:
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LME
+      # Note: lime feeds are accessed via proxy, using http instead of https
       url: "http://data.lime.bike/api/partners/v2/gbfs/opfikon/gbfs.json"
       language: en
     - systemId: lime_uster
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LME
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_uster/gbfs"
+      # Note: lime feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_uster/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -599,7 +602,8 @@ lamassu:
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LME
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_zurich/gbfs"
+      # Note: lime feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/lime_zurich/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
