@@ -8,8 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-add MOQO provider coono
-add lime_hamburg, lime_frankfurt feeds
+- add MOQO provider coono
+- add lime_hamburg, lime_frankfurt feeds
 
 ### Changed
 
