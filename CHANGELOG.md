@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2025-03-25 (under development)
+
+### Changed
+
+- Lamassu: Bump to 2025-03-19 release, which 
+  - provides metrics for outdated feeds (https://github.com/entur/lamassu/pull/659)
+  - fixes an issue with stations not declaring (optional) `isVirtualStation` (https://github.com/entur/lamassu/issues/655)
+
+
 ## 2025-03-20
 
 ### Changed
