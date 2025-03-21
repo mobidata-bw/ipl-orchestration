@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: Bump to 2025-03-19 release, which 
   - provides metrics for outdated feeds (https://github.com/entur/lamassu/pull/659)
   - fixes an issue with stations not declaring (optional) `isVirtualStation` (https://github.com/entur/lamassu/issues/655)
-
+- Dagster: Bump to [2025-03-15T08-20](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/d9e295224ce577aa2e577ebecb335b2efc5baaa4/CHANGELOG.md?plain=1#L5-L10)
 
 ## 2025-03-20
 
