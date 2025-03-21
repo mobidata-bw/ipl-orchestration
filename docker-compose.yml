@@ -224,6 +224,7 @@ services:
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
+      - ./etc/lamassu/logback.xml:/app/resources/logback.xml
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.lamassu.rule=PathPrefix(`/sharing`)"
