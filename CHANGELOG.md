@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-04-02 [upcoming release]
 
 ### Changed
-- [x2gbfs 2025-03-28T09-44](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-13)
+- [x2gbfs 2025-03-28T09-44](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
 
 ## 2025-03-26
 
