@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 - [x2gbfs 2025-03-28T09-44](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
+- `goaccess`: upgrade GoAccess to [v1.9.4](https://goaccess.io/release-notes#release-1.9.4)
 
 ## 2025-03-26
 
