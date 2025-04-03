@@ -209,13 +209,6 @@ lamassu:
       # Note: doot feeds are accessed via proxy, using http instead of https
       url: "http://gbfs.api.ridedott.com/public/v2/reutlingen/gbfs.json"
       language: en
-    - systemId: dott_schaffhausen
-      operatorId: DOT:Operator:dott
-      operatorName: Dott
-      codespace: DOI
-      # Note: doot feeds are accessed via proxy, using http instead of https
-      url: "http://gbfs.api.ridedott.com/public/v2/schaffhausen/gbfs.json"
-      language: en
     - systemId: dott_stuttgart
       operatorId: DOT:Operator:dott
       operatorName: Dott
