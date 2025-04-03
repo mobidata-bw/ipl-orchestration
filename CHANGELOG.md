@@ -4,20 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## 2025-04-02 [upcoming release]
+## 2025-04-03 [upcoming release]
 
 ### Changed
+
 - [x2gbfs 2025-03-28T09-44](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
+- [Several smaller ParkAPI fixes](https://github.com/ParkenDD/park-api-v3/releases/tag/0.20.4)
 - `goaccess`: upgrade GoAccess to [v1.9.4](https://goaccess.io/release-notes#release-1.9.4)
+
 
 ## 2025-03-26
 
 ### Changed
 
-- Lamassu: Bump to 2025-03-19 release, which 
+- Lamassu: Bump to 2025-03-19 release, which
   - provides metrics for outdated feeds (https://github.com/entur/lamassu/pull/659)
   - fixes an issue with stations not declaring (optional) `isVirtualStation` (https://github.com/entur/lamassu/issues/655)
 - Dagster: Bump to [2025-03-15T08-20](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/d9e295224ce577aa2e577ebecb335b2efc5baaa4/CHANGELOG.md?plain=1#L5-L10)
+
 
 ## 2025-03-20
 
@@ -41,7 +45,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add MatrixTileSet WebMercatorQuad for vector tile layer roadworks
 - Lamassu: With the 2025-03-04 release, lamassu was upgraded to version [2025-03-01T04-51](https://hub.docker.com/layers/entur/lamassu/2025-03-01T04-51/images/sha256-742f539b77ded7173da2e5b66db922e8cd657d344531417de7e86cd5591fd7d5). This had side effects which clients need to adapt to:
   - Endpoint `/sharing/graphql` now only accepts `POST` requests. Sending GraphQL queries vie `GET` with `query` parameter is not supported any longer
-  - the `graphiql` client needs to explicitly specify `/sharing/graphql` as `path` param, e.g. `https://<host:port>/sharing/graphiql?path=/sharing/graphql` 
+  - the `graphiql` client needs to explicitly specify `/sharing/graphql` as `path` param, e.g. `https://<host:port>/sharing/graphiql?path=/sharing/graphql`
+
 
 ## 2025-03-11
 
