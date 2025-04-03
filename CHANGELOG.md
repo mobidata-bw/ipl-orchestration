@@ -11,7 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [x2gbfs 2025-03-28T15-49](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
 - [Several smaller ParkAPI fixes](https://github.com/ParkenDD/park-api-v3/releases/tag/0.20.4)
 - `goaccess`: upgrade GoAccess to [v1.9.4](https://goaccess.io/release-notes#release-1.9.4)
-
+- remove deactivated feed `dott_schaffhausen`
+- remove obsolete feed `callabike_ice`, which is not part of `callabike`
 
 ## 2025-03-26
 
