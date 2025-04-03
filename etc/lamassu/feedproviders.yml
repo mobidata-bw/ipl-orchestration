@@ -133,18 +133,6 @@ lamassu:
         properties:
           DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
           DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
-    - systemId: callabike_ice
-      operatorId: CAB:Operator:callabike
-      operatorName: Call-A-Bike
-      codespace: CAB
-      # Note: dbconnect feeds are accessed via proxy, using http instead of https 
-      url: "http://apis.deutschebahn.com/db-api-marketplace/apis/shared-mobility-gbfs/v2/de/CallABikeICE/gbfs"
-      language: de
-      authentication:
-        scheme: httpHeaders
-        properties:
-          DB-Client-Id: ${LAMASSU_DB_CONNECT_CLIENT_ID}
-          DB-Api-Key: ${LAMASSU_DB_CONNECT_API_KEY}
     ## Dott DE
     - systemId: dott_boblingen
       operatorId: DOT:Operator:dott
