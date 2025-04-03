@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- [x2gbfs 2025-03-28T15-49](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
+- [x2gbfs 2025-04-03T08-11](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-04-03)
 - [Several smaller ParkAPI fixes](https://github.com/ParkenDD/park-api-v3/releases/tag/0.20.4)
 - `goaccess`: upgrade GoAccess to [v1.9.4](https://goaccess.io/release-notes#release-1.9.4)
 - remove deactivated feed `dott_schaffhausen`
