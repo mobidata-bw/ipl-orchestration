@@ -4,11 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## 2025-04-03 [upcoming release]
+## 2025-04-03
 
 ### Changed
 
-- [x2gbfs 2025-03-28T09-44](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
+- [x2gbfs 2025-03-28T15-49](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-03-28)
 - [Several smaller ParkAPI fixes](https://github.com/ParkenDD/park-api-v3/releases/tag/0.20.4)
 - `goaccess`: upgrade GoAccess to [v1.9.4](https://goaccess.io/release-notes#release-1.9.4)
 
