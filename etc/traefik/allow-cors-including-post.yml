@@ -11,3 +11,7 @@ http:
           - OPTIONS
           - HEAD
         accesscontrolalloworiginlist: "*"
+        accesscontrolallowheaders:
+          - "Content-Type"
+        accesscontrolexposeheaders:
+          - "Content-Type"
