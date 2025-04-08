@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Changed
+
+- `ingress`: Configure Traefik's handling of CORS preflight requests to allow requests with a `Content-Type` header.
+  - Since the Lamassu upgrade in the [2025-03-26 release](#2025-03-26), GraphQL requests must be sent to it using `POST`, which was not possible cross-origin due to CORS restrictions.
+
 ## 2025-04-03
 
 ### Changed
@@ -18,9 +25,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- Lamassu: Bump to 2025-03-19 release, which
+- ⚠️ Lamassu: Bump to [the 2025-03-19 release](https://github.com/entur/lamassu/releases/tag/2025-03-19T09-09), which
   - provides metrics for outdated feeds (https://github.com/entur/lamassu/pull/659)
   - fixes an issue with stations not declaring (optional) `isVirtualStation` (https://github.com/entur/lamassu/issues/655)
+  – is a breaking change [because GraphQL requests must now be made via `POST`](https://github.com/entur/lamassu/blob/2025-03-19T09-09/Changelog.md?plain=1#L11)
 - Dagster: Bump to [2025-03-15T08-20](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/d9e295224ce577aa2e577ebecb335b2efc5baaa4/CHANGELOG.md?plain=1#L5-L10)
 
 
