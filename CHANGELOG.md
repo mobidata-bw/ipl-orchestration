@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Since the Lamassu upgrade in the [2025-03-26 release](#2025-03-26), GraphQL requests must be sent to it using `POST`, which was not possible cross-origin due to CORS restrictions.
   - Sending a `User-Agent` is also allowed now.
   - CORS Clients (e.g. browsers) are now allowed to cache the preflight results for 1 hour.
+- [x2gbfs 2025-04-08T14-06](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-04-08)
 
 ## 2025-04-03
 
