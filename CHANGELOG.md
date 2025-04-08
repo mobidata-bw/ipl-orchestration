@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `ingress`: Configure Traefik's handling of CORS preflight requests to allow requests with a `Content-Type` header.
   - Since the Lamassu upgrade in the [2025-03-26 release](#2025-03-26), GraphQL requests must be sent to it using `POST`, which was not possible cross-origin due to CORS restrictions.
   - Sending a `User-Agent` is also allowed now.
+  - CORS Clients (e.g. browsers) are now allowed to cache the preflight results for 1 hour.
 
 ## 2025-04-03
 

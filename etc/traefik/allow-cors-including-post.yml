@@ -17,3 +17,5 @@ http:
         accesscontrolexposeheaders:
           - "Content-Type"
           - "User-Agent"
+        # allow clients to cache results of preflight requests for 1 hour
+        accesscontrolmaxage: "3600"
