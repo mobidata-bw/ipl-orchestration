@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+## Changed
+
+- [Major ParkAPI update 0.21.0 introducing ParkSpots](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0210)
+- [Several clarifications at ParkAPI OpenAPI documentation](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0211)
+
+
 ## 2025-04-11
 
 ### Changed
