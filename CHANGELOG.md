@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2025-04-22
+
+### Changed
+
+- [ParkAPI 0.21.1](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0211)
+  This release introduces automated OpenAPI docs testing in integration tests.
+- [ParkAPI 0.21.0](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0210)
+  This release is a major change, as it introduces parking spots.
+
 ## 2025-04-11
 
 ### Changed
