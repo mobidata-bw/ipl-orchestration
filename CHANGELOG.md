@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Upcoming release
+
+### Changed
+
+- remove invalid feed `donkey_le_locle` and empty feed `donkey_le_sion`
+
 ## 2025-04-22
 
 ### Changed
