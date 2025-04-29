@@ -7,12 +7,13 @@ OPENAPI_SERVERS:
   - url: https://api.mobidata-bw.de/ocpdb
     description: production
 
-# So far, we don't have credentials, so we can put REMOTE_SERVERS here
+# Will be overwritten by the config.secrets.yml, but in order to have a working public setup, we maintain the public
+# data sources here anyway
 REMOTE_SERVERS:
   BNETZA:
     url: https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Energie/Unternehmen_Institutionen/E_Mobilitaet/Ladesaeulenregister_01122024.xlsx
   SW_STUTTGART:
-    url: 'https://new-poi.chargecloud.de'
+    url: 'https://new-poi.chargecloud.de/SW-Stuttgart'
 
 AUTO_FETCH_SOURCES:
   - sw_stuttgart
