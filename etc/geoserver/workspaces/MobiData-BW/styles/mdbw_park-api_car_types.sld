@@ -5,16 +5,16 @@
                        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <NamedLayer>
-    <Name>mdbw_parking_sites_types_bicycle</Name>
+    <Name>mdbw_park-api_car_types</Name>
     <UserStyle>
-      <Title>MobiData BW® - Fahrradabstellanlagen</Title>
+      <Title>MobiData BW® - Auto-Parkplätze (nach Typ)</Title>
       <FeatureTypeStyle>
         <Rule>
-          <Title>Vorderradhalter</Title>
+          <Title>Parkhaus</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>WALL_LOOPS</ogc:Literal>
+              <ogc:Literal>CAR_PARK</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -24,18 +24,21 @@
                 <Fill>
                   <CssParameter name="fill">#5587eb</CssParameter> 
                 </Fill>
-                <Stroke/>
+                <Stroke>
+                  <CssParameter name="fill">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
               <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
         <Rule>        
-          <Title>Anlehnbügel</Title>         
+          <Title>Tiefgarage</Title>         
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>STANDS</ogc:Literal>
+              <ogc:Literal>UNDERGROUND</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -45,18 +48,21 @@
                 <Fill>
                   <CssParameter name="fill">#BF91B6</CssParameter>
                 </Fill>
-                <Stroke/>
+                <Stroke>
+                  <CssParameter name="fill">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
               <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Schließfach</Title>
+          <Title>Straßenparkplatz</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>LOCKERS</ogc:Literal>
+              <ogc:Literal>ON_STREET</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -66,18 +72,21 @@
                 <Fill>
                   <CssParameter name="fill">#ff9933</CssParameter>
                 </Fill>
-                <Stroke/>
+                <Stroke>
+                  <CssParameter name="fill">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
               <Size>10</Size>
             </Graphic>
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Doppelstöckig</Title>
+          <Title>Parkplatz abseits der Straße</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>TWO_TIER</ogc:Literal>
+              <ogc:Literal>OFF_STREET_PARKING_GROUND</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -87,70 +96,10 @@
                 <Fill>
                   <CssParameter name="fill">#009688</CssParameter>
                 </Fill>
-                <Stroke/>
-              </Mark>
-              <Size>10</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Sammelanlage</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>SHED</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#ee5959</CssParameter>
-                </Fill>
-                <Stroke/>
-              </Mark>
-              <Size>10</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Parkhaus</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>BUILDING</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#c2e72a</CssParameter>
-                </Fill>
-                <Stroke/>
-              </Mark>
-              <Size>10</Size>
-            </Graphic>
-          </PointSymbolizer>
-        </Rule>
-        <Rule>
-          <Title>Automatisches Parksystem</Title>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>AUTOMATIC_BUILDING</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <PointSymbolizer>
-            <Graphic>
-              <Mark>
-                <WellKnownName>circle</WellKnownName>
-                <Fill>
-                  <CssParameter name="fill">#14eae3</CssParameter>
-                </Fill>
-                <Stroke/>
+                <Stroke>javascript:;
+                  <CssParameter name="fill">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
               <Size>10</Size>
             </Graphic>
@@ -166,7 +115,10 @@
                 <Fill>
                   <CssParameter name="fill">#cacaca</CssParameter>
                 </Fill>
-                <Stroke/>
+                <Stroke>
+                  <CssParameter name="fill">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
               </Mark>
               <Size>10</Size>
             </Graphic>

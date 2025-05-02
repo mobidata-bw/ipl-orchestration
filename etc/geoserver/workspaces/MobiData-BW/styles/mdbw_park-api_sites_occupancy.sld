@@ -5,9 +5,9 @@
                        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <NamedLayer>
-    <Name>mdbw_parking_sites_default</Name>
+    <Name>mdbw_park-api_sites_occupancy</Name>
     <UserStyle>
-      <Title>MobiData BW® - Parkhäuser und -plätze</Title>
+      <Title>MobiData BW® - Parkbau und -streifen (nach Belegung)</Title>
       <FeatureTypeStyle>
         <Rule>
           <Title>Geschlossen</Title>
@@ -32,10 +32,10 @@
         </Rule>
         <Rule>        
           <Title>Keine Echtzeitdaten</Title>         
-          <ogc:Filter>
-            <ogc:PropertyIsNull>
-              <ogc:PropertyName>realtime_free_capacity</ogc:PropertyName>
-            </ogc:PropertyIsNull>
+          <ogc:Filter>            
+              <ogc:PropertyIsNull>
+                <ogc:PropertyName>realtime_free_capacity</ogc:PropertyName>
+              </ogc:PropertyIsNull>         
           </ogc:Filter>
           <PointSymbolizer>
             <Graphic>

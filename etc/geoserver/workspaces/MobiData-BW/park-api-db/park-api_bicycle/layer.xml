@@ -1,0 +1,25 @@
+<layer>
+  <name>park-api_bicycle</name>
+  <id>LayerInfoImpl-81c86dc:196803575e1:-7faf</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-81c86dc:196803575e1:-7fcd</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--6af51648:18f7af6d14f:-7fd4</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-81c86dc:196803575e1:-7fb0</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2025-04-30 12:21:09.552 UTC</dateCreated>
+  <dateModified>2025-05-02 13:34:42.690 UTC</dateModified>
+</layer>

@@ -2,13 +2,21 @@
   <id>LayerInfoImpl--61f921fe:19227952649:-7f66</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>MobiData-BW:parking_sites_item</name>
+  <name>MobiData-BW:park-api_item</name>
   <mimeFormats>
     <string>application/vnd.mapbox-vector-tile</string>
   </mimeFormats>
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
+      <extent>
+        <coords>
+          <double>857160.0791082064</double>
+          <double>6057089.852937814</double>
+          <double>1124326.857012063</double>
+          <double>6360130.740921419</double>
+        </coords>
+      </extent>
       <minCachedLevel>6</minCachedLevel>
     </gridSubset>
   </gridSubsets>
@@ -22,9 +30,9 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <allowedStyles class="sorted-set"/>
+      <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
       <availableStyles class="sorted-set"/>
-      <defaultStyle>MobiData-BW:mdbw_parking_sites_default</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_park-api_default</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>

@@ -1,8 +1,8 @@
 <GeoServerTileLayer>
-  <id>LayerInfoImpl--5bcdf8b:18bc88075ee:-7ff9</id>
+  <id>LayerInfoImpl-81c86dc:196803575e1:-7faf</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>MobiData-BW:park-api_car_buildings</name>
+  <name>MobiData-BW:park-api_bicycle</name>
   <mimeFormats>
     <string>application/vnd.mapbox-vector-tile</string>
   </mimeFormats>
@@ -11,10 +11,10 @@
       <gridSetName>WebMercatorQuadx2</gridSetName>
       <extent>
         <coords>
-          <double>656784.9956803141</double>
-          <double>5748356.801602935</double>
-          <double>1881299.394406323</double>
-          <double>7323146.544576741</double>
+          <double>796993.1188488408</double>
+          <double>6031673.1733124005</double>
+          <double>1497434.279233553</double>
+          <double>7124289.192384393</double>
         </coords>
       </extent>
       <minCachedLevel>6</minCachedLevel>
@@ -30,10 +30,8 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <availableStyles class="sorted-set">
-        <string>MobiData-BW:mdbw_parking_sites_types</string>
-      </availableStyles>
-      <defaultStyle>MobiData-BW:mdbw_park-api_default</defaultStyle>
+      <availableStyles class="sorted-set"/>
+      <defaultStyle>point</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>
