@@ -1,13 +1,19 @@
 <layer>
-  <name>parking_sites_bicycle</name>
+  <name>park-api_car_on-street</name>
   <id>LayerInfoImpl-4e33b56a:18f49d44d3c:-7fdf</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+    <id>StyleInfoImpl-81c86dc:196803575e1:-7fcd</id>
   </defaultStyle>
   <styles class="linked-hash-set">
     <style>
-      <id>StyleInfoImpl--6af51648:18f7af6d14f:-7fd4</id>
+      <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-81c86dc:196803575e1:-7fc7</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--5bcdf8b:18bc88075ee:-7ff7</id>
     </style>
   </styles>
   <resource class="featureType">
@@ -18,5 +24,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2024-05-06 13:29:29.385 UTC</dateCreated>
-  <dateModified>2025-02-06 15:33:37.482 UTC</dateModified>
+  <dateModified>2025-05-02 13:35:56.430 UTC</dateModified>
 </layer>

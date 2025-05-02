@@ -1,54 +1,52 @@
 <featureType>
-  <id>FeatureTypeInfoImpl-4e33b56a:18f49d44d3c:-7fe0</id>
-  <name>parking_sites_bicycle</name>
-  <nativeName>parking_sites_bicycle</nativeName>
+  <id>FeatureTypeInfoImpl--61f921fe:19227952649:-7f67</id>
+  <name>park-api_item</name>
+  <nativeName>park-api_item</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Fahrradabstellanlagen</title>
+  <title>Fahrradboxen an Abstellanlagen</title>
   <keywords>
+    <string>parking_sites_item</string>
     <string>features</string>
-    <string>parking_sites_bicycle</string>
-    <string>Fahrradabstellanlagen\@language=de\;</string>
+    <string>Fahrradboxen\@language=de\;</string>
     <string>Fahrradparken\@language=de\;</string>
+    <string>Schließfächer\@language=de\;</string>
   </keywords>
-  <nativeCRS>GEOGCS[&quot;WGS 84&quot;,
-  DATUM[&quot;World Geodetic System 1984&quot;,
-    SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
-    AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
-  PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
-  UNIT[&quot;degree&quot;, 0.017453292519943295],
-  AXIS[&quot;Geodetic longitude&quot;, EAST],
-  AXIS[&quot;Geodetic latitude&quot;, NORTH],
+  <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
+  DATUM[&quot;World Geodetic System 1984&quot;, 
+    SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], 
+    AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]], 
+  PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], 
+  UNIT[&quot;degree&quot;, 0.017453292519943295], 
+  AXIS[&quot;Geodetic longitude&quot;, EAST], 
+  AXIS[&quot;Geodetic latitude&quot;, NORTH], 
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.1</minx>
-    <maxx>13.4</maxx>
-    <miny>47.5</miny>
-    <maxy>53.7</maxy>
+    <minx>7.7</minx>
+    <maxx>10.1</maxx>
+    <miny>47.7</miny>
+    <maxy>49.5</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.1</minx>
-    <maxx>13.4</maxx>
-    <miny>47.5</miny>
-    <maxy>53.7</maxy>
+    <minx>7.7</minx>
+    <maxx>10.1</maxx>
+    <miny>47.7</miny>
+    <maxy>49.5</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <metadata>
-    <entry key="elevation">
-      <dimensionInfo>
-        <enabled>false</enabled>
-      </dimensionInfo>
-    </entry>
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
-        <name>parking_sites_bicycle</name>
-        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at FROM parking_site&#xd;
-WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
+        <name>park-api_item</name>
+        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at,&#xd;
+&apos;site&apos; as parking_object&#xd;
+FROM parking_site&#xd;
+WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -85,7 +83,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der Parkanlage (von parkAPI erzeugt)</de>
+        <en-US>ID der Parkanlage (von parkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -95,7 +93,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID des Datengebers (von parkAPI erzeugt)</de>
+        <en-US>ID des Datengebers (von parkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -105,7 +103,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+        <en-US>Ursprüngliche ID der Parkanlage beim Datengeber</en-US>
       </description>
     </attribute>
     <attribute>
@@ -115,7 +113,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Zweck der Parkanlage</de>
+        <en-US>Zweck der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -125,37 +123,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Name der Parkanlage</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>operator_name</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Betreiber der Parkanlage</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>public_url</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Link zu weiterführenden Informationen der Parkanlage</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>photo_url</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Link zu einem Foto der Parkanlage</de>
+        <en-US>Name der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -165,7 +133,37 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Adresse der Parkanlage</de>
+        <en-US>Adresse der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>operator_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Betreiber der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>public_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Link zu weiterführenden Informationen der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>photo_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Link zu einem Foto der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -175,7 +173,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Beschreibung</de>
+        <en-US>Beschreibung</en-US>
       </description>
     </attribute>
     <attribute>
@@ -185,7 +183,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der Parkanlage</de>
+        <en-US>Art der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -195,7 +193,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Maximale Parkdauer</de>
+        <en-US>Maximale Parkdauer</en-US>
       </description>
     </attribute>
     <attribute>
@@ -205,7 +203,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Beleuchtung?</de>
+        <en-US>Beleuchtung?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -215,7 +213,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Beschreibung der Gebühren</de>
+        <en-US>Beschreibung der Gebühren</en-US>
       </description>
     </attribute>
     <attribute>
@@ -225,7 +223,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Gebührenpflichtig?</de>
+        <en-US>Gebührenpflichtig?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -235,7 +233,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der B+R-Anlage</de>
+        <en-US>Art der B+R-Anlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -245,7 +243,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten?</de>
+        <en-US>Echtzeitdaten?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -255,7 +253,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Echtzeit-Status der Parkanlage</de>
+        <en-US>Echtzeit-Status der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -265,17 +263,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>capacity_charging</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Integer</binding>
-      <description>
-        <de>Anzahl Stellplätze mit Lademöglichkeit</de>
+        <en-US>Anzahl Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -285,7 +273,17 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Stellplätze (Echtzeit)</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_charging</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <en-US>Anzahl Stellplätze mit Lademöglichkeit</en-US>
       </description>
     </attribute>
     <attribute>
@@ -295,7 +293,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -305,7 +303,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+        <en-US>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -315,7 +313,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+        <en-US>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -325,7 +323,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Öffnungszeiten</de>
+        <en-US>Öffnungszeiten</en-US>
       </description>
     </attribute>
     <attribute>
@@ -335,7 +333,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Überdacht?</de>
+        <en-US>Überdacht?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -345,7 +343,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der Überwachung</de>
+        <en-US>Art der Überwachung</en-US>
       </description>
     </attribute>
     <attribute>
@@ -355,7 +353,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Ortsbezug der Parkanlage</de>
+        <en-US>Ortsbezug der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -365,7 +363,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <de>Koordinate der Parkanlage</de>
+        <en-US>Koordinate der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -375,7 +373,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Erstellungsdatum in der parkAPI</de>
+        <en-US>Erstellungsdatum in der parkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -385,7 +383,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Änderung in der parkAPI</de>
+        <en-US>Zeitpunkt der letzten Änderung in der parkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -395,7 +393,7 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
+        <en-US>Letzter Aktualisierungszeitpunkt der statischen Daten</en-US>
       </description>
     </attribute>
     <attribute>
@@ -405,7 +403,16 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+        <en-US>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_object</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Parkobjekt</en-US>
       </description>
     </attribute>
   </attributes>

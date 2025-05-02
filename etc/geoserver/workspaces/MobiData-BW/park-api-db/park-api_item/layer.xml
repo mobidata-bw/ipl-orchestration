@@ -1,10 +1,15 @@
 <layer>
-  <name>parking_sites_item</name>
+  <name>park-api_item</name>
   <id>LayerInfoImpl--61f921fe:19227952649:-7f66</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+    <id>StyleInfoImpl-81c86dc:196803575e1:-7fcd</id>
   </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--3cb38bb4:18bc8a9af4b:-7ffb</id>
+    </style>
+  </styles>
   <resource class="featureType">
     <id>FeatureTypeInfoImpl--61f921fe:19227952649:-7f67</id>
   </resource>
@@ -13,5 +18,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2024-09-26 13:13:11.131 UTC</dateCreated>
-  <dateModified>2025-02-06 15:34:34.135 UTC</dateModified>
+  <dateModified>2025-05-02 13:40:59.725 UTC</dateModified>
 </layer>

@@ -2,13 +2,21 @@
   <id>LayerInfoImpl-4e33b56a:18f49d44d3c:-7fdf</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>MobiData-BW:parking_sites_bicycle</name>
+  <name>MobiData-BW:park-api_car_on-street</name>
   <mimeFormats>
     <string>application/vnd.mapbox-vector-tile</string>
   </mimeFormats>
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
+      <extent>
+        <coords>
+          <double>790368.3846322423</double>
+          <double>6024072.119373783</double>
+          <double>1491681.1766298658</double>
+          <double>7113543.379420638</double>
+        </coords>
+      </extent>
       <minCachedLevel>6</minCachedLevel>
     </gridSubset>
   </gridSubsets>
@@ -23,9 +31,9 @@
       <key>STYLES</key>
       <defaultValue></defaultValue>
       <availableStyles class="sorted-set">
-        <string>MobiData-BW:mdbw_parking_sites_types_bicycle</string>
+        <string>MobiData-BW:mdbw_park-api_default</string>
       </availableStyles>
-      <defaultStyle>MobiData-BW:mdbw_parking_sites_default</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_park-api_on-street</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>
