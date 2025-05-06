@@ -8,7 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- GeoServer: add new park-api layer for on-street parking, add new table parking_spot 
+- GeoServer
+	- add new park-api layer `MobiData-BW:park-api_car_on-street` for on-street parking
+ 	- rename other existing layers like `MobiData-BW:park-api_car_buildings` (`MobiData-BW:parking_sites_car` before), `MobiData-BW:park-api_bicycle` (`MobiData-BW:parking_sites_bicycle` before) and `MobiData-BW:park-api_item` (`MobiData-BW:parking_sites_item` before)
+  	- remove all parking sites from `MobiData-BW:park-api_car_buildings` with the type `ON_STREET`
+  	- rename several styles like `mdbw_park-api_sites_occupancy` (`mdbw_parking_sites_default` before), `mdbw_parking_sites_types_bicycle` (`mdbw_park-api_bicycle_types` before), `mdbw_park-api_car_types` (`mdbw_parking_sites_types` before)
+  	- add new `styles mdbw_park-api_spots_occupancy` and `mdbw_park-api_parking-object`
 - [ipl-proxy 2025-05-06T05-07](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-05-05)
 - [x2gbfs 2025-05-06T06-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-05-06)
 
