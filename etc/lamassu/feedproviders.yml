@@ -338,20 +338,16 @@ lamassu:
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKA
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_bamberg/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_bamberg/gbfs.json"
       language: en
     - systemId: donkey_kiel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKB
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_kiel/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_kiel/gbfs.json"
       language: en
-#    - systemId: donkey_regensburg
-#      operatorId: DKY:Operator:donkey
-#      operatorName: Donkey Republic
-#      codespace: DKC
-#      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_regensburg/gbfs.json"
-#      language: german
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
@@ -369,7 +365,8 @@ lamassu:
       operatorId: YOO:Operator:yoio
       operatorName: Yoio
       codespace: YOO
-      url: "https://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
+      # Note: yoio feed is accessed via proxy, using http instead of https
+      url: "http://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
       language: en
     - systemId: zeo_bruchsal
       operatorId: ZEO:Operator:zeo
@@ -382,67 +379,77 @@ lamassu:
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
       language: en
     - systemId: zeus_heidelberg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/heidelberg/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/heidelberg/gbfs.json"
       language: en
     - systemId: zeus_konstanz
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/konstanz/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/konstanz/gbfs.json"
       language: en
     - systemId: zeus_ludwigsburg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
       language: en
     - systemId: zeus_pforzheim
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/pforzheim/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/pforzheim/gbfs.json"
       language: en
     - systemId: zeus_schwabisch_gmund
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/schwabisch%20gmund/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/schwabisch%20gmund/gbfs.json"
       language: en
     - systemId: zeus_tubingen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/tubingen/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/tubingen/gbfs.json"
       language: en
     - systemId: zeus_villingen_schwenningen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
       language: en
 #    - systemId: zeus_hemmingen
 #      operatorId: ZEU:Operator:zeus
 #      operatorName: Zeus
 #      codespace: ZEU
-#      url: "https://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/hemmingen/gbfs.json"
 #      language: en
     - systemId: zeus_renningen_malmsheim
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
       language: en
     - systemId: zeus_goppingen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
-      url: "https://zeus.city/api/v1/mds/gbfs/goppingen/gbfs.json"
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/goppingen/gbfs.json"
       language: en
     # Feeds CH
     ## Bird CH
@@ -450,6 +457,7 @@ lamassu:
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
+      # Note: bird feeds are accessed via proxy, using http instead of https
       url: "http://mds.bird.co/gbfs/v2/public/basel/gbfs.json"
       language: en
 #    - systemId: bird-biel
@@ -462,12 +470,14 @@ lamassu:
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
+      # Note: bird feeds are accessed via proxy, using http instead of https
       url: "http://mds.bird.co/gbfs/v2/public/kloten/gbfs.json"
       language: en
     - systemId: bird-zurich
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
+      # Note: bird feeds are accessed via proxy, using http instead of https
       url: "http://mds.bird.co/gbfs/v2/public/zurich/gbfs.json"
       language: en
     ## Bolt CH
@@ -475,7 +485,8 @@ lamassu:
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
       codespace: BLT
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_basel/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_basel/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -485,7 +496,8 @@ lamassu:
       operatorId: BLT:Operator:bolt
       operatorName: Bolt
       codespace: BLT
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_zurich/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/bolt_zurich/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -496,44 +508,48 @@ lamassu:
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKN
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_ge/gbfs.json"
       language: de
     - systemId: donkey_kreuzlingen
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKO
-      # Note: donkey feeds is temporarilly accessed via proxy, using http instead of https
+      # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_kreuzlingen/gbfs.json"
       language: en
 #    - systemId: donkey_le_locle
 #      operatorId: DKY:Operator:donkey
 #      operatorName: Donkey Republic
 #      codespace: DKP
-#      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
+#      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
 #      language: en
     - systemId: donkey_neuchatel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKQ
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_neuchatel/gbfs.json"
       language: en
 #    - systemId: donkey_sion
 #      operatorId: DKY:Operator:donkey
 #      operatorName: Donkey Republic
 #      codespace: DKR
-#      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
+#      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
 #      language: en
     - systemId: donkey_thun
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKS
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_thun/gbfs.json"
       language: en
     - systemId: donkey_yverdon-les-bains
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
       codespace: DKT
-      url: "https://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_yverdon-les-bains/gbfs.json"
       language: en
     ## Dott CH
     - systemId: dott_basel
@@ -625,7 +641,8 @@ lamassu:
       operatorId: PIB:Operator:velospot
       operatorName: Velospot
       codespace: PIB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/velospot/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/velospot/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -636,7 +653,8 @@ lamassu:
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
       codespace: PEB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_aubonne/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_aubonne/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -657,7 +675,8 @@ lamassu:
       operatorId: PEB:Operator:pickebike
       operatorName: PickeBike
       codespace: PEB
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_fribourg/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http//gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_fribourg/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -675,7 +694,8 @@ lamassu:
       operatorId: VOI:Operator:voi
       operatorName: VOI
       codespace: VOI
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/voiscooters.com/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/voiscooters.com/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -686,7 +706,8 @@ lamassu:
       operatorId: LIM:Operator:liemobil
       operatorName: LIEmobil
       codespace: LIM
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/liemobil_liechtenstein/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/liemobil_liechtenstein/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -696,7 +717,8 @@ lamassu:
       operatorId: ZEM:Operator:zem
       operatorName: 2EM Car Sharing
       codespace: ZEM
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/2em_cars/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/2em_cars/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -717,7 +739,8 @@ lamassu:
       operatorId: EDC:Operator:edrivecarsharing
       operatorName: edrive carsharing
       codespace: EDC
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/edrivecarsharing/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/edrivecarsharing/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -727,7 +750,8 @@ lamassu:
       operatorId: CVG:Operator:carvelo2go
       operatorName: carvelo eCargo-Bike Sharing
       codespace: CVG
-      url: "https://gbfs.prod.sharedmobility.ch/v2/gbfs/carvelo2go/gbfs"
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/carvelo2go/gbfs"
       language: en
       authentication:
         scheme: HTTP_HEADERS
@@ -739,12 +763,14 @@ lamassu:
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
-      url: "https://mds.bird.co/gbfs/v2/public/chalonsenchampagne/gbfs.json"
+      # Note: bird feeds are accessed via proxy, using http instead of https
+      url: "http://mds.bird.co/gbfs/v2/public/chalonsenchampagne/gbfs.json"
       language: en
     - systemId: bird-sarreguemines
       operatorId: BRD:Operator:bird
       operatorName: bird
       codespace: BRD
+      # Note: bird feeds are accessed via proxy, using http instead of https
       url: "http://mds.bird.co/gbfs/v2/public/sarreguemines/gbfs.json"
       language: en
     ## Nextbike FR
