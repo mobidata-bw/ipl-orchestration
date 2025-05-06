@@ -4,16 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Upcoming release
+## 2025-05-06
+
+### Changed
 
 - GeoServer: add new park-api layer for on-street parking, add new table parking_spot 
+- [ipl-proxy 2025-05-06T05-07](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-05-05)
 
 ## 2025-04-29
 
 ### Changed
 
 - remove invalid feed `donkey_le_locle` and empty feed `donkey_le_sion`
-- [OCPDB 1.5.1 with Albwerk, Pfozheim and BNetzA API support](https://github.com/binary-butterfly/ocpdb/blob/4db1c82d72f324461909b7d36a70f5b6f25a4495/CHANGELOG.md#version-150)
+- [OCPDB 1.5.1 with Albwerk, Pforzheim and BNetzA API support](https://github.com/binary-butterfly/ocpdb/blob/4db1c82d72f324461909b7d36a70f5b6f25a4495/CHANGELOG.md#version-150)
 
 
 ## 2025-04-22
