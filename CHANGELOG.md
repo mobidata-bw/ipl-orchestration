@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - GeoServer: add new park-api layer for on-street parking, add new table parking_spot 
 - [ipl-proxy 2025-05-06T05-07](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-05-05)
+- [x2gbfs 2025-05-06T06-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-05-06)
 
 ## 2025-04-29
 
