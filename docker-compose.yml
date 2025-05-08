@@ -409,6 +409,8 @@ services:
       - IPL_GTFS_DB_POSTGRES_DB
       - IPL_GTFS_DB_POSTGRES_DB_PREFIX
       - IPL_GTFS_IMPORTER_SCHEMA=${IPL_GTFS_IMPORTER_SCHEMA:?missing/empty}
+      - IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME
+      - IPL_GTFS_IMPORTER_EXTRA_HOST_IP
       - IPL_GTFS_DB_POSTGREST_USER
       - IPL_GTFS_DB_POSTGREST_PASSWORD
       # Required to mount volumes for docker-in-docker executions
