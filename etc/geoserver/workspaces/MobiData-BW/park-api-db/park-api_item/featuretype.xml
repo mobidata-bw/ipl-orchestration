@@ -7,11 +7,12 @@
   </namespace>
   <title>Fahrradboxen an Abstellanlagen</title>
   <keywords>
-    <string>parking_sites_item</string>
     <string>features</string>
     <string>Fahrradboxen\@language=de\;</string>
     <string>Fahrradparken\@language=de\;</string>
     <string>Schließfächer\@language=de\;</string>
+    <string>ParkAPI\@language=de\;</string>
+    <string>Fahrrad\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 

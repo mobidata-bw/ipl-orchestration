@@ -10,6 +10,7 @@
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
       <minCachedLevel>6</minCachedLevel>
+      <maxCachedLevel>15</maxCachedLevel>
     </gridSubset>
   </gridSubsets>
   <metaWidthHeight>
@@ -22,9 +23,7 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue>MobiData-BW:mdbw_radvis_cn_all</defaultValue>
-      <allowedStyles class="sorted-set">
-        <string>MobiData-BW:mdbw_radvis_cn_all</string>
-      </allowedStyles>
+      <allowedStyles class="sorted-set"/>
       <availableStyles class="sorted-set">
         <string>MobiData-BW:mdbw_radvis_cn_all</string>
       </availableStyles>

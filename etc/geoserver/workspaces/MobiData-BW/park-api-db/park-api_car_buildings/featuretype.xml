@@ -6,12 +6,16 @@
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
   <title>Parkplätze und Parkbauten</title>
+  <abstract>Parkhäuser und Tiefgaragen, P+R-Anlagen an Haltepunkten sowie öffentliche Plätze mit Parkplätzen (mit und ohne Parkraumbewirtschaftung)</abstract>
   <keywords>
     <string>features</string>
-    <string>parking_sites</string>
     <string>Parkplätze\@language=de\;</string>
     <string>Parkhäuser\@language=de\;</string>
     <string>Autoparken\@language=de\;</string>
+    <string>Tiefgaragen\@language=de\;</string>
+    <string>Parken\@language=de\;</string>
+    <string>ParkAPI\@language=de\;</string>
+    <string>Auto\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
