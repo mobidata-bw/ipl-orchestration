@@ -10,6 +10,7 @@
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
       <minCachedLevel>6</minCachedLevel>
+      <maxCachedLevel>15</maxCachedLevel>
     </gridSubset>
   </gridSubsets>
   <metaWidthHeight>

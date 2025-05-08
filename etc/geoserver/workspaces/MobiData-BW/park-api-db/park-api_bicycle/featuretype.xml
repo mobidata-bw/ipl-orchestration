@@ -8,7 +8,10 @@
   <title>Fahrradabstellanlagen</title>
   <keywords>
     <string>features</string>
-    <string>park-api_bicycle</string>
+    <string>Fahrradabstellanlagen\@language=de\;</string>
+    <string>Fahrrad\@language=de\;</string>
+    <string>Parken\@language=de\;</string>
+    <string>ParkAPI\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 

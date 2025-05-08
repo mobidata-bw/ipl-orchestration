@@ -9,15 +9,8 @@
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
-      <extent>
-        <coords>
-          <double>857160.0791082064</double>
-          <double>6057089.852937814</double>
-          <double>1124326.857012063</double>
-          <double>6360130.740921419</double>
-        </coords>
-      </extent>
       <minCachedLevel>6</minCachedLevel>
+      <maxCachedLevel>15</maxCachedLevel>
     </gridSubset>
   </gridSubsets>
   <metaWidthHeight>
@@ -31,8 +24,10 @@
       <key>STYLES</key>
       <defaultValue></defaultValue>
       <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
-      <availableStyles class="sorted-set"/>
-      <defaultStyle>MobiData-BW:mdbw_park-api_default</defaultStyle>
+      <availableStyles class="sorted-set">
+        <string>MobiData-BW:mdbw_park-api_sites_occupancy</string>
+      </availableStyles>
+      <defaultStyle>MobiData-BW:mdbw_park-api_parking-object</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>
