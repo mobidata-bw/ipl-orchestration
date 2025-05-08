@@ -644,7 +644,7 @@ services:
       # mount modified download script
       - ./etc/gtfs/download.sh:/importer/download.sh
     extra_hosts:
-      - "${IPL_GTFS_IMPORTER_EXTRA_HOST:?missing/empty}"
+      - "${IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME:?missing/empty}=${IPL_GTFS_IMPORTER_EXTRA_HOST_IP:?missing/empty}"
     environment:
       PGHOST: gtfs-db
       PGPORT: 5432
