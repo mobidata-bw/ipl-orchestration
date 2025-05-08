@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `gtfs-importer`: Allow manually resolving a domain name.
   - To make the GTFS import work with the *MobiData-BW IPL deployment*, we manually resolve the GTFS server's domain.
   - However, the IPL default configuration resolves `random.alt` (an RFC 6761 special-use domain) to `127.0.0.1`, so it shouldn't interfere with IPL setups elsewhere.
-  - GeoServer: reduce maxZoom levels for vector tile caching and add description to some layers
+- GeoServer: reduce maxZoom levels for vector tile caching and add description to some layers
 
 ## 2025-05-06
 
