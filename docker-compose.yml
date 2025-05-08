@@ -505,6 +505,9 @@ services:
   gtfs-db:
     networks: [ipl]
     image: ${IPL_GTFS_DB_IMAGE}
+    # mobidata-bw/postgis-with-pg-plan-filter currently only supports linux/amd64
+    # see https://github.com/mobidata-bw/postgis-with-pg-plan-filter/issues/1
+    platform: linux/amd64
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql/data
     environment:
