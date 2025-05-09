@@ -13,6 +13,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - To make the GTFS import work with the *MobiData-BW IPL deployment*, we manually resolve the GTFS server's domain.
   - However, the IPL default configuration resolves `random.alt` (an RFC 6761 special-use domain) to `127.0.0.1`, so it shouldn't interfere with IPL setups elsewhere.
 - GeoServer: reduce maxZoom levels for vector tile caching and add description to some layers
+- [ParkAPI 0.21.3 fixing realtime updates](https://github.com/ParkenDD/park-api-v3/blob/8b0f03237a096fd462efefd482580b43a44aa640/CHANGELOG.md#0213)
+
 
 ## 2025-05-06
 
