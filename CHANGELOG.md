@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- `dagster-pipeline`/`dagster-daemon`/`dagster-dagit`: upgrade to [`2025-05-09T14-13`](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/2025-05-09/CHANGELOG.md#2025-05-09)
 - GTFS import: Allow manually resolving a domain name using `$IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME` & `$IPL_GTFS_IMPORTER_EXTRA_HOST_IP`.
   - This applies to the Compose services `gtfs-importer` and `dagster-pipeline`.
   - To make the GTFS import work with the *MobiData-BW IPL deployment*, we manually resolve the GTFS server's domain.
