@@ -43,7 +43,39 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>park-api_bicycle</name>
-        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at,&#xd;
+        <sql>SELECT id, &#xd;
+source_id, &#xd;
+original_uid, &#xd;
+purpose, &#xd;
+name, &#xd;
+operator_name, &#xd;
+public_url, &#xd;
+photo_url, &#xd;
+address, &#xd;
+description, &#xd;
+type, &#xd;
+max_stay, &#xd;
+has_lighting, &#xd;
+fee_description, &#xd;
+has_fee, &#xd;
+park_and_ride_type, &#xd;
+has_realtime_data,  &#xd;
+realtime_opening_status, &#xd;
+capacity, &#xd;
+realtime_capacity, &#xd;
+realtime_free_capacity,  &#xd;
+capacity_charging, &#xd;
+realtime_capacity_charging, &#xd;
+realtime_free_capacity_charging, &#xd;
+opening_hours, &#xd;
+is_covered, &#xd;
+supervision_type, &#xd;
+related_location, &#xd;
+geometry, created_at, &#xd;
+modified_at, &#xd;
+static_data_updated_at, &#xd;
+realtime_data_updated_at,&#xd;
+(realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
 WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
@@ -70,6 +102,357 @@ WHERE purpose=&apos;BIKE&apos; AND duplicate_of_parking_site_id IS NULL
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Long</binding>
+      <description>
+        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>source_id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Long</binding>
+      <description>
+        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>original_uid</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>purpose</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Zweck der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>name</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>operator_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Betreiber der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>public_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Link zur Webseite</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>photo_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Link zu einem Foto der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>address</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Adresse der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>description</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Art der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>max_stay</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Maximale Parkdauer</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>has_lighting</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Beleuchtung?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>has_fee</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Gebührenpflichtig?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>fee_description</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung der Gebühren</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>park_and_ride_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Art der B+R-Anlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>has_realtime_data</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_opening_status</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Echtzeit-Status der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_capacity</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_free_capacity</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl freier Stellplätze (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_charging</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze mit Lademöglichkeit</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_capacity_charging</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_free_capacity_charging</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>opening_hours</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Öffnungszeiten</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>is_covered</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Überdacht?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>supervision_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Art der Überwachung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>related_location</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ortsbezug der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>geometry</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>org.locationtech.jts.geom.Point</binding>
+      <description>
+        <de>Koordinate der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>created_at</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Erstellungsdatum in der ParkAPI</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>modified_at</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>static_data_updated_at</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_updated_at</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.sql.Timestamp</binding>
+      <description>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen älter als 15 Minuten?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_object</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Parkobjekt</de>
+      </description>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
