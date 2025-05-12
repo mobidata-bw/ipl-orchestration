@@ -31,11 +31,11 @@
           </PointSymbolizer>
         </Rule>
         <Rule>        
-          <Title>Keine Echtzeitdaten</Title>         
+          <Title>Keine Echtzeitinformationen</Title>         
           <ogc:Filter>            
-              <ogc:PropertyIsNull>
-                <ogc:PropertyName>realtime_free_capacity</ogc:PropertyName>
-              </ogc:PropertyIsNull>         
+            <ogc:PropertyIsNull>
+              <ogc:PropertyName>realtime_free_capacity</ogc:PropertyName>
+            </ogc:PropertyIsNull>         
           </ogc:Filter>
           <PointSymbolizer>
             <Graphic>
@@ -43,6 +43,27 @@
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
                   <CssParameter name="fill">#615fdf</CssParameter>
+                </Fill>
+                <Stroke/>
+              </Mark>
+              <Size>10</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+        <Rule>        
+          <Title>Veraltete Echtzeitinformationen</Title>         
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>realtime_data_outdated</ogc:PropertyName>
+              <ogc:Literal>true</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#cacaca</CssParameter>
                 </Fill>
                 <Stroke/>
               </Mark>
@@ -73,6 +94,10 @@
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>realtime_opening_status</ogc:PropertyName>
                 <ogc:Literal>CLOSED</ogc:Literal>
+              </ogc:PropertyIsNotEqualTo>
+              <ogc:PropertyIsNotEqualTo>
+                <ogc:PropertyName>realtime_data_outdated</ogc:PropertyName>
+                <ogc:Literal>true</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
             </ogc:And>
           </ogc:Filter>
@@ -118,6 +143,10 @@
                 <ogc:PropertyName>realtime_opening_status</ogc:PropertyName>
                 <ogc:Literal>CLOSED</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
+              <ogc:PropertyIsNotEqualTo>
+                <ogc:PropertyName>realtime_data_outdated</ogc:PropertyName>
+                <ogc:Literal>true</ogc:Literal>
+              </ogc:PropertyIsNotEqualTo>
             </ogc:And>
           </ogc:Filter>
           <PointSymbolizer>
@@ -160,6 +189,10 @@
               <ogc:PropertyIsNotEqualTo>
                 <ogc:PropertyName>realtime_opening_status</ogc:PropertyName>
                 <ogc:Literal>CLOSED</ogc:Literal>
+              </ogc:PropertyIsNotEqualTo>
+              <ogc:PropertyIsNotEqualTo>
+                <ogc:PropertyName>realtime_data_outdated</ogc:PropertyName>
+                <ogc:Literal>true</ogc:Literal>
               </ogc:PropertyIsNotEqualTo>
             </ogc:And>
           </ogc:Filter>

@@ -44,7 +44,40 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>park-api_item</name>
-        <sql>SELECT id, source_id, original_uid, purpose, name, operator_name, public_url, photo_url, address, description, type, max_stay, has_lighting, fee_description, has_fee, park_and_ride_type, has_realtime_data,  realtime_opening_status, capacity, realtime_capacity, realtime_free_capacity,  capacity_charging, realtime_capacity_charging, realtime_free_capacity_charging, opening_hours, is_covered, supervision_type, related_location, geometry, created_at, modified_at, static_data_updated_at, realtime_data_updated_at,&#xd;
+        <sql>SELECT id, &#xd;
+source_id, &#xd;
+original_uid, &#xd;
+purpose, &#xd;
+name, &#xd;
+operator_name, &#xd;
+public_url, &#xd;
+photo_url, &#xd;
+address, &#xd;
+description, &#xd;
+type, &#xd;
+max_stay, &#xd;
+has_lighting, &#xd;
+fee_description, &#xd;
+has_fee, &#xd;
+park_and_ride_type, &#xd;
+has_realtime_data, &#xd;
+realtime_opening_status, &#xd;
+capacity, &#xd;
+realtime_capacity, &#xd;
+realtime_free_capacity,  &#xd;
+capacity_charging, &#xd;
+realtime_capacity_charging, &#xd;
+realtime_free_capacity_charging, &#xd;
+opening_hours, &#xd;
+is_covered, &#xd;
+supervision_type, &#xd;
+related_location, &#xd;
+geometry, &#xd;
+created_at, &#xd;
+modified_at, &#xd;
+static_data_updated_at, &#xd;
+realtime_data_updated_at,&#xd;
+(realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
 WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
@@ -84,7 +117,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der Parkanlage (von parkAPI erzeugt)</de>
+        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -94,7 +127,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID des Datengebers (von parkAPI erzeugt)</de>
+        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -244,7 +277,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten?</de>
+        <de>Echtzeitinformationen?</de>
       </description>
     </attribute>
     <attribute>
@@ -374,7 +407,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Erstellungsdatum in der parkAPI</de>
+        <de>Erstellungsdatum in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -384,7 +417,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Änderung in der parkAPI</de>
+        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -404,7 +437,16 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen älter als 15 Minuten?</de>
       </description>
     </attribute>
     <attribute>

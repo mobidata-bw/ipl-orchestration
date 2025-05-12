@@ -77,24 +77,18 @@
   capacity_family,&#xd;
   capacity_charging,&#xd;
   capacity_carsharing,&#xd;
-  capacity_truck,&#xd;
-  capacity_bus,&#xd;
   realtime_capacity,&#xd;
   realtime_capacity_disabled,&#xd;
   realtime_capacity_woman,&#xd;
   realtime_capacity_family,&#xd;
   realtime_capacity_charging,&#xd;
   realtime_capacity_carsharing,&#xd;
-  realtime_capacity_truck,&#xd;
-  realtime_capacity_bus,&#xd;
   realtime_free_capacity,&#xd;
   realtime_free_capacity_disabled,&#xd;
   realtime_free_capacity_woman,&#xd;
   realtime_free_capacity_family,&#xd;
   realtime_free_capacity_charging,&#xd;
   realtime_free_capacity_carsharing,&#xd;
-  realtime_free_capacity_truck,&#xd;
-  realtime_free_capacity_bus,&#xd;
   opening_hours,&#xd;
   max_height,&#xd;
   purpose,&#xd;
@@ -106,6 +100,7 @@
   modified_at,&#xd;
   static_data_updated_at,&#xd;
   realtime_data_updated_at,&#xd;
+  (realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
   &apos;site&apos; AS parking_object,&#xd;
   NULL AS restriction_type,    &#xd;
   NULL AS restriction_hours,          &#xd;
@@ -141,24 +136,18 @@ SELECT &#xd;
   NULL AS capacity_family,&#xd;
   NULL AS capacity_charging,&#xd;
   NULL AS capacity_carsharing,&#xd;
-  NULL AS capacity_truck,&#xd;
-  NULL AS capacity_bus,&#xd;
   NULL AS realtime_capacity,&#xd;
   NULL AS realtime_capacity_disabled,&#xd;
   NULL AS realtime_capacity_woman,&#xd;
   NULL AS realtime_capacity_family,&#xd;
   NULL AS realtime_capacity_charging,&#xd;
   NULL AS realtime_capacity_carsharing,&#xd;
-  NULL AS realtime_capacity_truck,&#xd;
-  NULL AS realtime_capacity_bus,&#xd;
   NULL AS realtime_free_capacity,&#xd;
   NULL AS realtime_free_capacity_disabled,&#xd;
   NULL AS realtime_free_capacity_woman,&#xd;
   NULL AS realtime_free_capacity_family,&#xd;
   NULL AS realtime_free_capacity_charging,&#xd;
   NULL AS realtime_free_capacity_carsharing,&#xd;
-  NULL AS realtime_free_capacity_truck,&#xd;
-  NULL AS realtime_free_capacity_bus,&#xd;
   NULL AS opening_hours,&#xd;
   NULL AS max_height,&#xd;
   ps.purpose::text::purposetype,&#xd;
@@ -170,6 +159,7 @@ SELECT &#xd;
   ps.modified_at,&#xd;
   ps.static_data_updated_at,&#xd;
   ps.realtime_data_updated_at,&#xd;
+  (realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
   &apos;spot&apos; AS parking_object,&#xd;
   pr.type AS restriction_type,&#xd;
   pr.hours AS restriction_hours,&#xd;
@@ -213,7 +203,7 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der Parkanlage (von parkAPI erzeugt)</de>
+        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -223,7 +213,7 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID des Datengebers (von parkAPI erzeugt)</de>
+        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -234,6 +224,15 @@ WHERE ps.purpose = &apos;CAR&apos;
       <binding>java.lang.String</binding>
       <description>
         <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_site_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID des übergeordneten Parkstreifens</de>
       </description>
     </attribute>
     <attribute>
@@ -373,7 +372,7 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten?</de>
+        <de>Echtzeitinformationen?</de>
       </description>
     </attribute>
     <attribute>
@@ -407,6 +406,15 @@ WHERE ps.purpose = &apos;CAR&apos;
       </description>
     </attribute>
     <attribute>
+      <name>capacity_carsharing</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Carsharing-Stellplätze</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>realtime_capacity</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -437,6 +445,15 @@ WHERE ps.purpose = &apos;CAR&apos;
       </description>
     </attribute>
     <attribute>
+      <name>realtime_capacity_carsharing</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Carsharing-Stellplätze (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>realtime_free_capacity_charging</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -444,6 +461,15 @@ WHERE ps.purpose = &apos;CAR&apos;
       <binding>java.lang.Integer</binding>
       <description>
         <de>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_free_capacity_carsharing</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl freier Carsharing-Stellplätze (Echtzeit)</de>
       </description>
     </attribute>
     <attribute>
@@ -503,7 +529,7 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Erstellungsdatum in der parkAPI</de>
+        <de>Erstellungsdatum in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -513,7 +539,7 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Änderung in der parkAPI</de>
+        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -533,7 +559,25 @@ WHERE ps.purpose = &apos;CAR&apos;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen älter als 15 Minuten?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_status</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Echtzeit-Belegungsstatus</de>
       </description>
     </attribute>
     <attribute>
@@ -570,15 +614,6 @@ WHERE ps.purpose = &apos;CAR&apos;
       <binding>java.lang.String</binding>
       <description>
         <de>Parkbeschränkung - Aufenthaltsdauer</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>realtime_status</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Echtzeit-Belegungsstatus</de>
       </description>
     </attribute>
   </attributes>

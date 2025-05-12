@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Changed
+
+- GeoServer
+	- add `realtime_data_outdated` attribute to ParkAPI layers
+ 	- add additional layer for outdated realtimedata to `mdbw_park-api_sites_occupancy` and `mdbw_park-api_sites_occupancy`
+  	- add attribut descriptions to `MobiData-BW:park-api_bicycle`
+  	- remove truck and bus capacity attributes from ParkAPI layers
+  	- add charging capacity attributes to `MobiData-BW:park-api_car_on-street`
+
 ## 2025-05-12
 
 ### Changed
