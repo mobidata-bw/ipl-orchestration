@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   	- add attribut descriptions to `MobiData-BW:park-api_bicycle`
   	- remove truck and bus capacity attributes from ParkAPI layers
   	- add charging capacity attributes to `MobiData-BW:park-api_car_on-street`
+- activate OCPDB sources `pforzheim` and `ochp_albwerk`
 
 ## 2025-05-12
 
