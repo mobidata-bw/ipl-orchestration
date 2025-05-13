@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Changed
+
+- GeoServer: change default style for `MobiData-BW:charge_points` to `mdbw_charge_points_dynamic`
+
 ## 2025-05-13
 
 ### Changed
