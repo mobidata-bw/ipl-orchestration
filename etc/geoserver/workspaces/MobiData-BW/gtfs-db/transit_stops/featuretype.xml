@@ -22,17 +22,17 @@
   AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</nativeCRS>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>-9.1</minx>
+    <maxx>30.5</maxx>
+    <miny>38.7</miny>
+    <maxy>56.9</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>7.5</minx>
-    <maxx>10.5</maxx>
-    <miny>47.6</miny>
-    <maxy>49.8</maxy>
+    <minx>-9.1</minx>
+    <maxx>30.5</maxx>
+    <miny>38.7</miny>
+    <maxy>56.9</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>NONE</projectionPolicy>
@@ -61,6 +61,117 @@
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>stop_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID des Haltesteigs oder der Station</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>stop_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>stop_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name des Haltesteigs oder der Station</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>stop_desc</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>stop_loc</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>org.locationtech.jts.geom.Point</binding>
+    </attribute>
+    <attribute>
+      <name>zone_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>stop_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>location_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Handelt es sich um eine Station oder einen Haltesteig?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parent_station</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Zu welcher Station gehört der Haltesteig?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>stop_timezone</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>wheelchair_boarding</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ist der Haltesteig oder die Station für Rollstühle barrierefrei?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>level_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+    </attribute>
+    <attribute>
+      <name>platform_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Bezeichnung des Bahnsteigs</de>
+      </description>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>

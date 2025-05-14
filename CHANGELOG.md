@@ -8,7 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
-- GeoServer: change default style for `MobiData-BW:charge_points` to `mdbw_charge_points_dynamic`
+- GeoServer:
+	- change default style for `MobiData-BW:charge_points` to `mdbw_charge_points_dynamic`
+   	- change bounding boxes and add attribute names for gtfs layers for `MobiData-BW:transit_shapes_with_routes`, `MobiData-BW:transit_stations_with_served_routes` and `MobiData-BW:transit_stops`
+   	- remove restriction to Baden-Wuerttemberg for `MobiData-BW:transit_stations_with_served_routes`
 
 ## 2025-05-13
 

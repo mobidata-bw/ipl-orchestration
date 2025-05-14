@@ -1,5 +1,5 @@
 <layer>
-  <name>stops</name>
+  <name>transit_stops</name>
   <id>LayerInfoImpl--3b38816a:18a8b06ea7a:-7ff3</id>
   <type>VECTOR</type>
   <defaultStyle>
@@ -13,5 +13,5 @@
     <logoHeight>0</logoHeight>
   </attribution>
   <dateCreated>2023-09-12 20:27:19.936 UTC</dateCreated>
-  <dateModified>2023-09-12 20:39:55.865 UTC</dateModified>
+  <dateModified>2025-05-15 08:32:37.269 UTC</dateModified>
 </layer>

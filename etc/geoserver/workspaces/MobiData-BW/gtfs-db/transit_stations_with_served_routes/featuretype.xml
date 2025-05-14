@@ -5,7 +5,6 @@
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Bahnhöfe und Haltestellen</title>
   <abstract>Bahnhöfe und Haltestellen mit den von ihnen bedienten Linien</abstract>
   <keywords>
     <string>stations_with_served_routes</string>
@@ -53,6 +52,65 @@
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>station_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID der Haltestelle oder des Bahnhofs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>station_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name der Haltestelle oder des Bahnhofs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>centroid</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>org.locationtech.jts.geom.Geometry</binding>
+      <description>
+        <de>Koordinate der Haltestelle oder des Bahnhofs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>prio_route_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Verkehrsmittel, das die Haltestelle oder den Bahnhof bedient</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>routes</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Bediente Linien der Haltestelle oder des Bahnhofs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>render_prio</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
