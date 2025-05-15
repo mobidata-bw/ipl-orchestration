@@ -64,7 +64,7 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 					JOIN api.stops stops ON stops.stop_id = st.stop_id
 					LEFT JOIN api.stops stations ON stations.stop_id = stops.parent_station
 					WHERE route_short_name NOT LIKE '%SEV%' -- no rail replacement service
-					AND st.stop_id LIKE 'de:08%' -- only stops in DE-BW
+					--AND st.stop_id LIKE 'de:08%' -- only stops in DE-BW
 				) t
 			) t
 			GROUP BY station_id, route_type

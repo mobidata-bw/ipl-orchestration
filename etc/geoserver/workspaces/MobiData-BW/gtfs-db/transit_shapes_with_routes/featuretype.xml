@@ -13,17 +13,17 @@
   </keywords>
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
-    <minx>4.3</minx>
+    <minx>4.8</minx>
     <maxx>15.4</maxx>
-    <miny>45.8</miny>
-    <maxy>53.8</maxy>
+    <miny>45.6</miny>
+    <maxy>53.9</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
-    <minx>4.3</minx>
+    <minx>4.8</minx>
     <maxx>15.4</maxx>
-    <miny>45.8</miny>
-    <maxy>53.8</maxy>
+    <miny>45.6</miny>
+    <maxy>53.9</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
@@ -42,6 +42,88 @@
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>shape_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID der ÖPNV-Linie</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>shape</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>org.locationtech.jts.geom.Geometry</binding>
+      <description>
+        <de>Linien-Geometrie der ÖPNV-Linie</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>route_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Verkehrsmittel, das auf dieser Linie verkehrt</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>route_ids</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID der Verbindung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>route_names</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name der Verbindung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>agency_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID des Betreibers</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>agency_name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name des Betreibers</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>agency_url</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Webseite des Betreibers</de>
+      </description>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
