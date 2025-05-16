@@ -261,10 +261,10 @@ lamassu:
       # Note: lime feeds are accessed via proxy, using http instead of https
       url: "http://data.lime.bike/api/partners/v2/gbfs_transit/gbfs.json"
       language: en
-        authentication:
-            scheme: BEARER_TOKEN
-            properties:
-                accessToken: ${LAMASSU_LIME_BEARER_TOKEN}
+      authentication:
+        scheme: BEARER_TOKEN
+        properties:
+          accessToken: ${LAMASSU_LIME_BEARER_TOKEN}
     ## Nextbike DE
     - systemId: nextbike_df  # Frelo Freiburg
       operatorId: NBK:Operator:nextbike
