@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Lamassu:
   - add feed `lime_stuttgart`, `herrenberg_alf`, `herrenberg_fare`, `herrenberg_guelf`, `herrenberg_stadtrad`
+  - Bump to [the 2025-05-12T15-10 release](https://github.com/entur/lamassu/releases/tag/2025-05-12T15-10), which includes
+    - Fix: Use station coords for docked vehicles without coords [bump serialization id] https://github.com/entur/lamassu/pull/662
+    - Feature/graphql subscriptions https://github.com/entur/lamassu/pull/670
+  - Bump to Redis-8
 - GeoServer:
 	- change default style for `MobiData-BW:charge_points` to `mdbw_charge_points_dynamic`
    	- change bounding boxes and add attribute names for gtfs layers for `MobiData-BW:transit_shapes_with_routes`, `MobiData-BW:transit_stations_with_served_routes` and `MobiData-BW:transit_stops`
