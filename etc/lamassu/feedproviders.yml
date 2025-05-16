@@ -254,7 +254,7 @@ lamassu:
       # Note: lime feeds are accessed via proxy, using http instead of https
       url: "http://data.lime.bike/api/partners/v2/gbfs/frankfurt/gbfs.json"
       language: en
-    - systemId: lime_de
+    - systemId: lime_stuttgart
       operatorId: LME:Operator:lime
       operatorName: Lime
       codespace: LMG
