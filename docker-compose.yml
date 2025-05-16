@@ -245,7 +245,7 @@ services:
 
   redis:
     networks: [ipl]
-    image: redis:7-alpine
+    image: redis:8-alpine
     # Redis tries to use all memory it gets, and doesn't query the container's memory limit.
     # see also https://stackoverflow.com/a/70779280
     # --save '' should explicitly disable saving to volume data, avoiding no space left on devide errors
