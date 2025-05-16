@@ -259,7 +259,7 @@ lamassu:
       operatorName: Lime
       codespace: LMG
       # Note: lime feeds are accessed via proxy, using http instead of https
-      url: "https://data.lime.bike/api/partners/v2/gbfs_transit/gbfs.json"
+      url: "http://data.lime.bike/api/partners/v2/gbfs_transit/gbfs.json"
       language: en
         authentication:
             scheme: BEARER_TOKEN
