@@ -239,6 +239,31 @@ lamassu:
       # Note: doot feeds are accessed via proxy, using http instead of https
       url: "http://gbfs.api.ridedott.com/public/v2/mainz/gbfs.json"
       language: en
+    ## Herrenberg cargo bikes
+    - systemId: herrenberg_alf
+      operatorId: HBG:Operator:alf
+      operatorName: ALF - das Affst\u00e4tter Lastenfahrrad
+      codespace: HBG
+      url: "file:///var/gbfs/feeds/herrenberg_alf/gbfs.json"
+      language: de
+    - systemId: herrenberg_fare
+      operatorId: HBG:Operator:fare
+      operatorName: FaRe - das Bananologen Lastenrad
+      codespace: HBG
+      url: "file:///var/gbfs/feeds/herrenberg_fare/gbfs.json"
+      language: de
+    - systemId: herrenberg_guelf
+      operatorId: HBG:Operator:guelf
+      operatorName: G\u00fclf - das G\u00fcltsteiner Lastenrad
+      codespace: HBG
+      url: "file:///var/gbfs/feeds/herrenberg_guelf/gbfs.json"
+      language: de
+    - systemId: herrenberg_stadtrad
+      operatorId: HBG:Operator:stadtrad
+      operatorName: stadtRad - das stadtnavi Lastenrad
+      codespace: HBG
+      url: "file:///var/gbfs/feeds/herrenberg_stadtrad/gbfs.json"
+      language: de
     ## Lime DE
     - systemId: lime_hamburg
       operatorId: LME:Operator:lime
