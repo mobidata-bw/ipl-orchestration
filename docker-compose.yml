@@ -742,7 +742,7 @@ services:
 
   ocpdb-init:
     <<: *ocpdb-defaults
-    command: ["sh", "-c", "flask db upgrade && flask source fetch-all"]
+    command: ["sh", "-c", "flask db upgrade && flask import all"]
 
   ocpdb-db:
     networks: [ipl]
