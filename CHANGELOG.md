@@ -20,6 +20,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
    	- change bounding boxes and add attribute names for gtfs layers for `MobiData-BW:transit_shapes_with_routes`, `MobiData-BW:transit_stations_with_served_routes` and `MobiData-BW:transit_stops`
    	- remove restriction to Baden-Wuerttemberg for `MobiData-BW:transit_stations_with_served_routes`
 - [ipl-proxy 2025-05-19T05-02](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-05-16)
+- [⚠️ Breaking OCPDB 2.0](https://github.com/binary-butterfly/ocpdb/blob/5b0d8ceb455d9a7ba21ca465514e9e026fae696a/CHANGELOG.md#version-200)
+    - With new config file layout
+    - With new OpenTelemetry compatible logging system
+    - With normalized naming schema for importers
+    - With OpenData Swiss as data source
+    - With Heilbronn Neckarbogen as data source
+
 
 ## 2025-05-13
 
