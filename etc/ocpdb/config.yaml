@@ -8,12 +8,37 @@ OPENAPI_SERVERS:
     description: production
 
 # Will be overwritten by the config.secrets.yml, but in order to have a working public setup, we maintain the public
-# data sources here anyway
-REMOTE_SERVERS:
-  BNETZA:
-    url: https://data.bundesnetzagentur.de/Bundesnetzagentur/SharedDocs/Downloads/DE/Sachgebiete/Energie/Unternehmen_Institutionen/E_Mobilitaet/Ladesaeulenregister_01122024.xlsx
-  SW_STUTTGART:
-    url: 'https://new-poi.chargecloud.de/SW-Stuttgart'
+# data sources here
+SOURCES:
+  bnetza_api:
+  chargecloud_pforzheim:
+  chargecloud_stuttgart:
+  opendata_swiss:
 
-AUTO_FETCH_SOURCES:
-  - sw_stuttgart
+LOGGING:
+  version: 1
+  formatters:
+    human_readable:
+      format: '%(asctime)s %(levelname)s: %(message)s'
+  handlers:
+    console_stdout:
+      class: logging.StreamHandler
+      level: INFO
+      formatter: human_readable
+      stream: ext://sys.stdout
+    console_stderr:
+      class: logging.StreamHandler
+      level: ERROR
+      formatter: human_readable
+      stream: ext://sys.stderr
+    split_log_file:
+      class: webapp.common.logging.split_log_file_handler.SplitLogFileHandler
+      level: INFO
+      log_path: /app/logs
+      formatter: human_readable
+  loggers:
+    webapp:
+      handlers:
+        - split_log_file
+        - console_stdout
+        - console_stderr
