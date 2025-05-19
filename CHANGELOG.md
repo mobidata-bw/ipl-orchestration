@@ -28,6 +28,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - With Heilbronn Neckarbogen as data source
 - [OCPDB 2.1](https://github.com/binary-butterfly/ocpdb/blob/4e8da81da52c8dbffb48acc1b30f3467ae2a8c17/CHANGELOG.md#features)
     - With simple filter mechanism for BNetzA operators
+- [ParkAPI 0.23.0](https://github.com/ParkenDD/park-api-v3/blob/b01f82092548c0fb035e6303f05d3a1b29a7e407/CHANGELOG.md#0230)
+    - With ParkingSite patch system
+    - With Freiburg ParkingSpots
+    - With Ulm Sensors ParkingSites and ParkingSpots
+    - With ParkingSpot type support for Friedrichshafen Sensors
 
 
 ## 2025-05-13
