@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - With normalized naming schema for importers
     - With OpenData Swiss as data source
     - With Heilbronn Neckarbogen as data source
+- [OCPDB 2.1](https://github.com/binary-butterfly/ocpdb/blob/4e8da81da52c8dbffb48acc1b30f3467ae2a8c17/CHANGELOG.md#features)
+    - With simple filter mechanism for BNetzA operators
 
 
 ## 2025-05-13
