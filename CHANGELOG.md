@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Lamassu:
   - add feed `lime_stuttgart`, `herrenberg_alf`, `herrenberg_fare`, `herrenberg_guelf`, `herrenberg_stadtrad`
+  - remove feed `pickebike_fribourg`
   - Bump to [the 2025-05-12T15-10 release](https://github.com/entur/lamassu/releases/tag/2025-05-12T15-10), which includes
     - Fix: Use station coords for docked vehicles without coords [bump serialization id] https://github.com/entur/lamassu/pull/662
     - Feature/graphql subscriptions https://github.com/entur/lamassu/pull/670
