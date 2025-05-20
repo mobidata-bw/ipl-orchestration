@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2025-05-20 2nd
+
+### Changed
+
+- Lamassu:
+  - deactivate feed `mobility_ch` because of duplicate station_ids
+
 ## 2025-05-20
 
 ### Changed
