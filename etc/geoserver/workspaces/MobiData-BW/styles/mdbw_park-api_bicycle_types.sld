@@ -56,7 +56,7 @@
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>LOCKERS</ogc:Literal>
+              <ogc:Literal>LOCKBOX</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -64,7 +64,7 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#ff9933</CssParameter>
+                  <CssParameter name="fill">#FFFFFF</CssParameter>
                 </Fill>
                 <Stroke/>
               </Mark>
@@ -136,11 +136,11 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Automatisches Parksystem</Title>
+          <Title>Abstellfläche</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>type</ogc:PropertyName>
-              <ogc:Literal>AUTOMATIC_BUILDING</ogc:Literal>
+              <ogc:Literal>FLOOR</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -148,7 +148,49 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#14eae3</CssParameter>
+                  <CssParameter name="fill">#000</CssParameter>
+                </Fill>
+                <Stroke/>
+              </Mark>
+              <Size>10</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+         <Rule>
+          <Title>Vorderradhalter mit Sicherung</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>type</ogc:PropertyName>
+              <ogc:Literal>SAFE_WALL_LOOPS</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#30D5C8</CssParameter>
+                </Fill>
+                <Stroke/>
+              </Mark>
+              <Size>10</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+          <Rule>
+          <Title>Fahrradschrank</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>type</ogc:PropertyName>
+              <ogc:Literal>LOCKERS</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#ff9933</CssParameter>
                 </Fill>
                 <Stroke/>
               </Mark>
