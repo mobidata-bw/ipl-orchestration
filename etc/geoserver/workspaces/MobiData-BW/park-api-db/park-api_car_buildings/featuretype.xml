@@ -52,7 +52,9 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>park-api_car_buildings</name>
-        <sql>SELECT id, &#xd;
+        <sql>SELECT &#xd;
+id, &#xd;
+NULL AS parking_site_id,&#xd;
 source_id, &#xd;
 original_uid, &#xd;
 name, &#xd;
@@ -69,6 +71,7 @@ has_fee, &#xd;
 park_and_ride_type, &#xd;
 has_realtime_data, &#xd;
 realtime_opening_status, &#xd;
+NULL AS realtime_status,&#xd;
 capacity, &#xd;
 capacity_disabled, &#xd;
 capacity_woman, &#xd;
@@ -99,9 +102,72 @@ modified_at, &#xd;
 static_data_updated_at, &#xd;
 realtime_data_updated_at,&#xd;
 (realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
+NULL AS restriction_type,    &#xd;
+NULL AS restriction_hours,          &#xd;
+NULL AS restriction_max_stay,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
-WHERE purpose=&apos;CAR&apos; AND duplicate_of_parking_site_id IS NULL
+WHERE purpose=&apos;CAR&apos; AND duplicate_of_parking_site_id IS NULL&#xd;
+&#xd;
+UNION&#xd;
+&#xd;
+SELECT &#xd;
+  ps.id,&#xd;
+  ps.parking_site_id,&#xd;
+  ps.source_id,&#xd;
+  ps.original_uid,&#xd;
+  ps.name,&#xd;
+  NULL AS operator_name,&#xd;
+  NULL AS public_url,&#xd;
+  NULL AS photo_url,&#xd;
+  NULL AS address,&#xd;
+  NULL AS description,&#xd;
+  NULL AS type,&#xd;
+  NULL AS max_stay,&#xd;
+  NULL AS has_lighting,&#xd;
+  NULL AS fee_description,&#xd;
+  NULL AS has_fee,&#xd;
+  NULL AS park_and_ride_type,&#xd;
+  ps.has_realtime_data,&#xd;
+  NULL AS realtime_opening_status, &#xd;
+  ps.realtime_status,&#xd;
+  NULL AS capacity,&#xd;
+  NULL AS capacity_disabled,&#xd;
+  NULL AS capacity_woman,&#xd;
+  NULL AS capacity_family,&#xd;
+  NULL AS capacity_charging,&#xd;
+  NULL AS capacity_carsharing,&#xd;
+  NULL AS realtime_capacity,&#xd;
+  NULL AS realtime_capacity_disabled,&#xd;
+  NULL AS realtime_capacity_woman,&#xd;
+  NULL AS realtime_capacity_family,&#xd;
+  NULL AS realtime_capacity_charging,&#xd;
+  NULL AS realtime_capacity_carsharing,&#xd;
+  NULL AS realtime_free_capacity,&#xd;
+  NULL AS realtime_free_capacity_disabled,&#xd;
+  NULL AS realtime_free_capacity_woman,&#xd;
+  NULL AS realtime_free_capacity_family,&#xd;
+  NULL AS realtime_free_capacity_charging,&#xd;
+  NULL AS realtime_free_capacity_carsharing,&#xd;
+  NULL AS opening_hours,&#xd;
+  NULL AS max_height,&#xd;
+  ps.purpose::text::purposetype,&#xd;
+  NULL AS is_covered,&#xd;
+  NULL AS supervision_type,&#xd;
+  NULL AS related_location,&#xd;
+  ps.geometry,&#xd;
+  ps.created_at,&#xd;
+  ps.modified_at,&#xd;
+  ps.static_data_updated_at,&#xd;
+  ps.realtime_data_updated_at,&#xd;
+  (realtime_data_updated_at &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated, &#xd;
+  pr.type AS restriction_type,&#xd;
+  pr.hours AS restriction_hours,&#xd;
+  pr.max_stay AS restriction_max_stay,&#xd;
+ &apos;spot&apos; AS parking_object&#xd;
+FROM parking_spot ps&#xd;
+LEFT JOIN parking_restriction pr ON ps.id = pr.parking_spot_id&#xd;
+WHERE ps.purpose = &apos;CAR&apos;
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -160,6 +226,24 @@ WHERE purpose=&apos;CAR&apos; AND duplicate_of_parking_site_id IS NULL
       <binding>java.lang.String</binding>
       <description>
         <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_site_id</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>ID der übergeordneten Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_object</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Parkobjekt</de>
       </description>
     </attribute>
     <attribute>
@@ -602,12 +686,39 @@ WHERE purpose=&apos;CAR&apos; AND duplicate_of_parking_site_id IS NULL
       </description>
     </attribute>
     <attribute>
-      <name>parking_object</name>
+      <name>realtime_status</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkobjekt</de>
+        <de>Echtzeit-Belegungsstatus</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>restriction_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Parkbeschränkung - Personengruppen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>restriction_hours</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Parkbeschränkung - Uhrzeit</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>restriction_max_stay</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Parkbeschränkung - Aufenthaltsdauer</de>
       </description>
     </attribute>
   </attributes>
