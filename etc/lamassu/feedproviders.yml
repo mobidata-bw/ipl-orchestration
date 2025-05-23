@@ -265,20 +265,20 @@ lamassu:
       url: "file:///var/gbfs/feeds/herrenberg_stadtrad/gbfs.json"
       language: de
     ## Lime DE
-    - systemId: lime_hamburg
-      operatorId: LME:Operator:lime
-      operatorName: Lime
-      codespace: LME
-      # Note: lime feeds are accessed via proxy, using http instead of https
-      url: "http://data.lime.bike/api/partners/v2/gbfs/hamburg/gbfs.json"
-      language: en
-    - systemId: lime_frankfurt
-      operatorId: LME:Operator:lime
-      operatorName: Lime
-      codespace: LMF
-      # Note: lime feeds are accessed via proxy, using http instead of https
-      url: "http://data.lime.bike/api/partners/v2/gbfs/frankfurt/gbfs.json"
-      language: en
+#    - systemId: lime_hamburg
+#      operatorId: LME:Operator:lime
+#      operatorName: Lime
+#      codespace: LME
+#      # Note: lime feeds are accessed via proxy, using http instead of https
+#      url: "http://data.lime.bike/api/partners/v2/gbfs/hamburg/gbfs.json"
+#      language: en
+#    - systemId: lime_frankfurt
+#      operatorId: LME:Operator:lime
+#      operatorName: Lime
+#      codespace: LMF
+#      # Note: lime feeds are accessed via proxy, using http instead of https
+#      url: "http://data.lime.bike/api/partners/v2/gbfs/frankfurt/gbfs.json"
+#      language: en
     - systemId: lime_stuttgart
       operatorId: LME:Operator:lime
       operatorName: Lime
