@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.13`](https://github.com/skriptfabrik/elements-cli/commits/0.5.13)
 - GeoServer: add parking spots to `MobiData-BW:park-api_car_buildings`, add more types to style `mdbw_park-api_bicycle_types`
+- [2025-05-23T14-24](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-05-23)
 
 ## 2025-05-20 2nd
 
