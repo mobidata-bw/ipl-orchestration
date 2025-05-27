@@ -432,6 +432,8 @@ services:
       - IPL_WEBCAM_PASSWORD=${WEBCAM_FTP_PASSWORD:?missing/empty}
       - IPL_WEBCAM_KEEP_DAYS=${WEBCAM_KEEP_DAYS:?missing/empty}
       - IPL_WEBCAM_WORKER=${WEBCAM_WORKER:?missing/empty}
+      - IPL_WEBCAM_IMAGE_PATH=/var/webcam
+      - IPL_WEBCAM_SYMLINK_PATH=/var/webcam/overview
     volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
