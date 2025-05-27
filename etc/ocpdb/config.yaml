@@ -7,6 +7,8 @@ OPENAPI_SERVERS:
   - url: https://api.mobidata-bw.de/ocpdb
     description: production
 
+PUBLIC_IMAGE_PATH: /ocpdb/images
+
 # Will be overwritten by the config.secrets.yml, but in order to have a working public setup, we maintain the public
 # data sources here
 SOURCES:
