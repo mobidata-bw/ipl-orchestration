@@ -25,6 +25,7 @@ x-ocpdb-defaults: &ocpdb-defaults
     - ./etc/ocpdb/config.secrets.yaml:/app/config.secrets.yaml
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
+    - ./var/ocpdb/data:/app/data
 
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
@@ -142,13 +143,14 @@ services:
       # data stored by Caddy itself: certificates, parsed & normalized config, etc.
       - ./var/caddy/data:/data
       - ./var/caddy/config:/config
-
       # index page (served on :80)
       - ./etc/index-page:/var/www/index-page:ro
       # public IPL assets, e.g. traffic data (served on :80)
       - ./var/www/datasets:/var/www/datasets:ro
       # webcam data (served on :80, password-protected by the `ingress` service)
       - ./var/webcam:/var/www/webcam:ro
+      # OCPDB images
+      - ./var/ocpdb/data/images:/var/www/ocpdb:ro
       # non-public gbfs feeds
       - ./var/gbfs/feeds/free2move_stuttgart:/var/www/gbfs/free2move_stuttgart:ro
       # well-known URIs: security.txt, favicon.ico, etc. (served on :80)
@@ -157,7 +159,7 @@ services:
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`)"
+      - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`) || PathPrefix(`/ocpdb/images`)"
       - "traefik.http.routers.caddy-webcam.rule=PathPrefix(`/webcam`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
       - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
@@ -725,7 +727,7 @@ services:
       - ${OCPDB_API_PORT}:5000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`)"
+      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`) && !PathPrefix(`/ocpdb/images`)"
       - "traefik.http.services.ocpdb-flask.loadbalancer.server.port=5000"
       - "traefik.http.routers.ocpdb-flask.middlewares=ocpdb-stripprefix"
       - "traefik.http.middlewares.ocpdb-stripprefix.stripprefix.prefixes=/ocpdb"
@@ -733,7 +735,8 @@ services:
   ocpdb-worker:
     <<: *ocpdb-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+    # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   ocpdb-heartbeat:
     <<: *ocpdb-defaults
@@ -780,7 +783,8 @@ services:
   park-api-worker:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+    # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   park-api-heartbeat:
     <<: *park-api-defaults
