@@ -735,7 +735,7 @@ services:
   ocpdb-worker:
     <<: *ocpdb-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   ocpdb-heartbeat:
     <<: *ocpdb-defaults
@@ -782,7 +782,7 @@ services:
   park-api-worker:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   park-api-heartbeat:
     <<: *park-api-defaults
