@@ -735,6 +735,7 @@ services:
   ocpdb-worker:
     <<: *ocpdb-defaults
     restart: unless-stopped
+    # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
     command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   ocpdb-heartbeat:
@@ -782,6 +783,7 @@ services:
   park-api-worker:
     <<: *park-api-defaults
     restart: unless-stopped
+    # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
     command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
 
   park-api-heartbeat:
