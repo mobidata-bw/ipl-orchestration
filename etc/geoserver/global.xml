@@ -2,12 +2,12 @@
   <settings>
     <contact>
       <id>contact</id>
-      <address>Wilhelmsplatz 11</address>
+      <address>Rosensteinstraße 37B</address>
       <!-- Need to configure addressDeliveryPoint for WFS, see https://osgeo-org.atlassian.net/browse/GEOS-10663 -->
-      <addressDeliveryPoint>Wilhelmsplatz 11</addressDeliveryPoint>
+      <addressDeliveryPoint>Rosensteinstraße 37B</addressDeliveryPoint>
       <addressCity>Stuttgart</addressCity>
       <addressCountry>Deutschland</addressCountry>
-      <addressPostalCode>70182</addressPostalCode>
+      <addressPostalCode>70191</addressPostalCode>
       <addressState>Baden-Württemberg</addressState>
       <contactEmail>mobidatabw-technik@nvbw.de</contactEmail>
       <contactOrganization>MobiData BW</contactOrganization>
