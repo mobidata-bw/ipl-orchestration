@@ -727,7 +727,7 @@ services:
       - ${OCPDB_API_PORT}:5000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`)"
+      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`) && !PathPrefix(`/ocpdb/images`)"
       - "traefik.http.services.ocpdb-flask.loadbalancer.server.port=5000"
       - "traefik.http.routers.ocpdb-flask.middlewares=ocpdb-stripprefix"
       - "traefik.http.middlewares.ocpdb-stripprefix.stripprefix.prefixes=/ocpdb"
