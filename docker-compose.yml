@@ -159,7 +159,7 @@ services:
       - ./var/goaccess/report:/var/goaccess/report:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`) || Path(`/ocpdb/images`)"
+      - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`) || PathPrefix(`/ocpdb/images`)"
       - "traefik.http.routers.caddy-webcam.rule=PathPrefix(`/webcam`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
       - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
