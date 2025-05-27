@@ -11,11 +11,11 @@
     <id>contact</id>
     <addressCity>Stuttgart</addressCity>
     <addressCountry>Deutschland</addressCountry>
-    <addressPostalCode>70182</addressPostalCode>
+    <addressPostalCode>70191</addressPostalCode>
     <addressState>Baden-Württemberg</addressState>
     <!-- Need to configure addressDeliveryPoint for WFS, see https://osgeo-org.atlassian.net/browse/GEOS-10663 -->
-    <addressDeliveryPoint>Wilhelmsplatz 11</addressDeliveryPoint>
-    <address>Wilhelmsplatz 11</address>
+    <addressDeliveryPoint>Rosensteinstraße 37B</addressDeliveryPoint>
+    <address>Rosensteinstraße 37B</address>
     <contactEmail>Thorsten.Froehlinghaus@nvbw.de</contactEmail>
     <contactFacsimile>+49 711 23991-23</contactFacsimile>
     <contactOrganization>NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH</contactOrganization>
