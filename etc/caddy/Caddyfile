@@ -19,7 +19,7 @@ http://:80 {
   }
 
   # OCPDB Images
-  handle_path /webcam/* {
+  handle_path /ocpdb/* {
     root * /var/www/ocpdb
   }
 
