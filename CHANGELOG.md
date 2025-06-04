@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
 ## 2025-07-30
 
 - [OCPDB 2.2.2](https://github.com/binary-butterfly/ocpdb/blob/7e50004633cec56daef787cb472220af0b507e56/CHANGELOG.md#version-222)
@@ -91,7 +93,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add `realtime_data_outdated` to `MobiData-BW:sharing_stations_car`, `MobiData-BW:sharing_stations_bicycle` and `MobiData-BW:sharing_stations_cargo_bicycle`
 
 
-### 2025-06-02
+## 2025-06-02
 
 - [ParkAPI 0.23.1](https://github.com/ParkenDD/park-api-v3/blob/6ac1413954fe5c484fe9d604364cf7c342e238e2/CHANGELOG.md#0231)
   with extended static data for Freiburg
