@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-06-04T13.05.23-eceb5b0`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/eceb5b0)
+
 ## 2025-07-30
 
 - [OCPDB 2.2.2](https://github.com/binary-butterfly/ocpdb/blob/7e50004633cec56daef787cb472220af0b507e56/CHANGELOG.md#version-222)
@@ -76,6 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - [x2gbfs 2025-06-24T05-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
 - [ParkAPI 0.25.0 with Freiburg P+R Converters](https://github.com/ParkenDD/park-api-v3/blob/596044d678d34e0a648ed4d8c20a197ba3444912/CHANGELOG.md#0250)
+
 
 ## 2025-06-06
 
