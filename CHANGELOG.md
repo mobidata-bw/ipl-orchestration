@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## [Unreleased]
 
-### 20-06-02
+## 20-06-02
 
 - [ParkAPI 0.23.1](https://github.com/ParkenDD/park-api-v3/blob/6ac1413954fe5c484fe9d604364cf7c342e238e2/CHANGELOG.md#0231)
   with extended static data for Freiburg
