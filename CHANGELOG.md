@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-06-04T13.05.23-eceb5b0`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/eceb5b0)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v13.0.2`](https://github.com/PostgREST/postgrest/tree/v13.0.2)
 
 ## 2025-07-30
 
