@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-06-04T13.05.23-eceb5b0`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/eceb5b0)
+
+
 ## 2025-06-06
 
 - [ipl dagster pipeline 2025-06-06](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/205a5afa47fc35be6b422912647923a02686e0f4/CHANGELOG.md#2025-06-06)
