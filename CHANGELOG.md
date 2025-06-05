@@ -4,20 +4,18 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
-
+## 2025-06-25
 
 - [ParkAPI 0.24.0](https://github.com/ParkenDD/park-api-v3/blob/97a9f7293ad895a58d7539cfb771759addc81f46/CHANGELOG.md#0240)
   with an admin REST API for pushing sources and parking spots without ParkAPI Sources converter.
 - GeoServer: add `realtime_data_outdated` to `MobiData-BW:sharing_stations_car`, `MobiData-BW:sharing_stations_bicycle` and `MobiData-BW:sharing_stations_cargo_bicycle`
 
-
-### 20-06-02
+### 2025-06-02
 
 - [ParkAPI 0.23.1](https://github.com/ParkenDD/park-api-v3/blob/6ac1413954fe5c484fe9d604364cf7c342e238e2/CHANGELOG.md#0231)
   with extended static data for Freiburg
 
-## 20-05-27
+## 2025-05-27
 
 ### Changed
 
