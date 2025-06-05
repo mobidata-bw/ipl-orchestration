@@ -42,9 +42,20 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>bicycle_sharing_stations</name>
-        <sql>SELECT s.feed_id, s.station_id, s.name, s.capacity, st.num_bicycles_available num_vehicles_available, s.rental_uris_android, s.rental_uris_ios, s.rental_uris_web, st.last_reported, s.geometry&#xd;
+        <sql>SELECT &#xd;
+s.feed_id, &#xd;
+s.station_id, &#xd;
+s.name, &#xd;
+s.capacity, &#xd;
+st.num_bicycles_available AS num_vehicles_available, &#xd;
+s.rental_uris_android, &#xd;
+s.rental_uris_ios, &#xd;
+s.rental_uris_web, &#xd;
+st.last_reported, &#xd;
+(st.last_reported &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated, &#xd;
+s.geometry&#xd;
 FROM sharing_stations s&#xd;
- JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
+JOIN sharing_station_status st ON s.station_id=st.station_id&#xd;
 WHERE st.num_bicycles_available &gt;= 0
 </sql>
         <escapeSql>false</escapeSql>
@@ -156,6 +167,15 @@ WHERE st.num_bicycles_available &gt;= 0
       <binding>java.sql.Timestamp</binding>
       <description>
         <de>Zeitpunkt der letzten Aktualisierung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen älter als 15 Minuten?</de>
       </description>
     </attribute>
     <attribute>

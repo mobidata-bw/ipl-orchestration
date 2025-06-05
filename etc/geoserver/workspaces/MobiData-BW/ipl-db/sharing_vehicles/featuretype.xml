@@ -194,7 +194,7 @@
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <de>Koordinate des Farzeugs</de>
+        <de>Koordinate des Fahrzeugs</de>
       </description>
     </attribute>
   </attributes>
