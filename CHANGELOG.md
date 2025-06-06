@@ -4,16 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## 2025-06-25
+## Unreleased
+
+- [ipl dagster pipeline 2025-06-06](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/205a5afa47fc35be6b422912647923a02686e0f4/CHANGELOG.md#2025-06-06)
+  with enhanced webcam download and change to Python 3.12
+
+
+## 2025-06-05
 
 - [ParkAPI 0.24.0](https://github.com/ParkenDD/park-api-v3/blob/97a9f7293ad895a58d7539cfb771759addc81f46/CHANGELOG.md#0240)
   with an admin REST API for pushing sources and parking spots without ParkAPI Sources converter.
 - GeoServer: add `realtime_data_outdated` to `MobiData-BW:sharing_stations_car`, `MobiData-BW:sharing_stations_bicycle` and `MobiData-BW:sharing_stations_cargo_bicycle`
 
+
 ### 2025-06-02
 
 - [ParkAPI 0.23.1](https://github.com/ParkenDD/park-api-v3/blob/6ac1413954fe5c484fe9d604364cf7c342e238e2/CHANGELOG.md#0231)
   with extended static data for Freiburg
+
 
 ## 2025-05-27
 
@@ -24,6 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [2025-05-23T14-24](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-05-23)
 - [OCPDB 2.1.1](https://github.com/binary-butterfly/ocpdb/blob/35e70c0b3d8d7cd2151e54743166090c7462cc5c/CHANGELOG.md#version-210)
   with more efficient evse status updates, fixing BNetzA Cron and other small fixes
+
 
 ## 2025-05-20 2nd
 
