@@ -18,6 +18,11 @@ http://:80 {
     file_server browse
   }
 
+  # OCPDB Images
+  handle_path /ocpdb/images/* {
+    root * /var/www/ocpdb
+  }
+
   # private gbfs feeds. Access restricted via traefik
   handle_path /gbfs/* {
     root * /var/www/gbfs
