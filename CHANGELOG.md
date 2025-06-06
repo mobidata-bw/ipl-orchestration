@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   with enhanced webcam download and change to Python 3.12
 - Lamassu:
   - reactivate feed `mobility_ch`
-
+- [x2gbfs 2025-06-06T13-38](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-06)
 
 ## 2025-06-05
 
