@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- [x2gbfs 2025-06-23T10-06](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
+
 ## 2025-06-06
 
 - [ipl dagster pipeline 2025-06-06](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/205a5afa47fc35be6b422912647923a02686e0f4/CHANGELOG.md#2025-06-06)
