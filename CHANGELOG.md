@@ -4,11 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2025-06-24
 
-- [x2gbfs 2025-06-23T10-06](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
+- [x2gbfs 2025-06-24T05-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
 - [ParkAPI 0.25.0 with Freiburg P+R Converters](https://github.com/ParkenDD/park-api-v3/blob/596044d678d34e0a648ed4d8c20a197ba3444912/CHANGELOG.md#0250)
-
 
 ## 2025-06-06
 
