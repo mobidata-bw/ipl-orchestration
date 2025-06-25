@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- Lamassu: add `stella` feed
+
 ## 2025-06-24
 
 - [x2gbfs 2025-06-24T05-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
