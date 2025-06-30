@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `stella` feed
 - GeoServer: add `WebMercatorQuadx2` GridSet to `MobiData-BW:roadworks`, change style `MobiData-BW:mdbw_charge_points_dynamic`, update `MobiData-BW:radvis_cycle_network` bounding box
 - [x2gbfs 2025-06-30T07-46](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-25)
+- [ipl-proxy 2025-06-30T08-38](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-06-25)
 
 ## 2025-06-24
 
