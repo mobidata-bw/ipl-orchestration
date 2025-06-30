@@ -23,7 +23,7 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue>MobiData-BW:mdbw_radvis_cn_all</defaultValue>
-      <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
+      <allowedStyles class="sorted-set"/>
       <availableStyles class="sorted-set">
         <string>MobiData-BW:mdbw_radvis_cn_all</string>
       </availableStyles>
