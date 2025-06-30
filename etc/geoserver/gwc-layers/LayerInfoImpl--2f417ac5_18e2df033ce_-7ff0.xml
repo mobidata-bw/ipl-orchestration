@@ -8,6 +8,11 @@
   </mimeFormats>
   <gridSubsets>
     <gridSubset>
+      <gridSetName>WebMercatorQuad</gridSetName>
+      <minCachedLevel>6</minCachedLevel>
+      <maxCachedLevel>15</maxCachedLevel>
+    </gridSubset>
+    <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
       <minCachedLevel>6</minCachedLevel>
       <maxCachedLevel>15</maxCachedLevel>

@@ -12,10 +12,10 @@
         <Rule>
           <Title>Statische Ladepunkte</Title>          
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">
-            <ogc:PropertyIsNotEqualTo>
-              <ogc:PropertyName>chargepoint_static_count</ogc:PropertyName>
-              <ogc:Literal>0</ogc:Literal>
-            </ogc:PropertyIsNotEqualTo>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>source</ogc:PropertyName>
+              <ogc:Literal>bnetza_api</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
             <Graphic>
