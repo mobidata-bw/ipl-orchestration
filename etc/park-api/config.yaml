@@ -10,4 +10,4 @@ LOKI_TAGS:
 
 STATIC_GEOJSON_BASE_URL: https://raw.githubusercontent.com/ParkenDD/parkapi-static-data/main/sources
 
-PARKING_SITE_PATCH_DIR: /app/files/static/patches
+PARKING_SITE_PATCH_DIR: /app/files/static/patches/parking-sites
