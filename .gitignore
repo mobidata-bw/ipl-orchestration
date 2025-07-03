@@ -8,6 +8,7 @@ Thumbs.db
 /etc/park-api/config.secrets.yaml
 /etc/park-api/files/mobilithek-mobidata.crt.pem
 /etc/park-api/files/mobilithek-mobidata.key.pem
+/etc/park-api/files/static/patches
 
 /etc/ocpdb/config.secrets.yaml
 /etc/sftp

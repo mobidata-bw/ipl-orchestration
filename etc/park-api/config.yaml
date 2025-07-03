@@ -9,3 +9,5 @@ LOKI_TAGS:
   service: park-api
 
 STATIC_GEOJSON_BASE_URL: https://raw.githubusercontent.com/ParkenDD/parkapi-static-data/main/sources
+
+PARKING_SITE_PATCH_DIR: /app/files/static/patches
