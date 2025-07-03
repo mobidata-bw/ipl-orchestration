@@ -68,6 +68,12 @@ lamassu:
       codespace: GFC
       url: "file:///var/gbfs/feeds/gruene-flotte_freiburg/gbfs.json"
       language: de
+    - systemId: swu2go
+      operatorId: SWU:Operator:swu2go
+      operatorName: SWU Stadtwerke Ulm/Neu-Ulm
+      codespace: SWU
+      url: "file:///var/gbfs/feeds/swu2go/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
