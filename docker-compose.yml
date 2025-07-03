@@ -331,13 +331,13 @@ services:
           -XX:ParallelGCThreads=20
           -XX:ConcGCThreads=5
           -Dorg.geotools.coverage.jaiext.enabled=$${JAIEXT_ENABLED}
-          -Dorg.geotools.shapefile.datetime=true
-          -Dorg.geotools.referencing.forceXY=true
+          -Dorg.geotools.shapefile.datetime=true          
           -DGEOSERVER_LOG_LOCATION=$${GEOSERVER_LOG_LOCATION}
           -DGEOWEBCACHE_CONFIG_DIR=$${GEOWEBCACHE_CONFIG_DIR}
           -DGEOWEBCACHE_CACHE_DIR=$${GEOWEBCACHE_CACHE_DIR}
           -DNETCDF_DATA_DIR=$${NETCDF_DATA_DIR}
           -DGRIB_CACHE_DIR=$${GRIB_CACHE_DIR}
+          -Dorg.geotools.referencing.forceXY=true
       # The following parameters are *not* picked up by geosoultionsit/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
       - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
       - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
