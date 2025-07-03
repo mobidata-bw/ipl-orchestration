@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- GeoServer: change sql statements for `MobiData-BW:park-api_car_on-street` and `MobiData-BW:park-api_car_buildings`, add `forceXY` to startup options
+
 ## 2025-07-02
 
 - Hotfix for geoserver radvis_cycle_network layer
