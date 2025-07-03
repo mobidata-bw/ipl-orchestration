@@ -332,6 +332,7 @@ services:
           -XX:ConcGCThreads=5
           -Dorg.geotools.coverage.jaiext.enabled=$${JAIEXT_ENABLED}
           -Dorg.geotools.shapefile.datetime=true
+          -Dorg.geotools.referencing.forceXY=true
           -DGEOSERVER_LOG_LOCATION=$${GEOSERVER_LOG_LOCATION}
           -DGEOWEBCACHE_CONFIG_DIR=$${GEOWEBCACHE_CONFIG_DIR}
           -DGEOWEBCACHE_CACHE_DIR=$${GEOWEBCACHE_CACHE_DIR}
