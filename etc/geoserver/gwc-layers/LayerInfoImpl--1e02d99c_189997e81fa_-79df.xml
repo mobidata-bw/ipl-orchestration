@@ -24,9 +24,7 @@
       <key>STYLES</key>
       <defaultValue></defaultValue>
       <allowedStyles class="sorted-set"/>
-      <availableStyles class="sorted-set">
-        <string>MobiData-BW:mdbw_sharing_vehicles_by_operator</string>
-      </availableStyles>
+      <availableStyles class="sorted-set"/>
       <defaultStyle>MobiData-BW:mdbw_sharing_vehicles_default</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
