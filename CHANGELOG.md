@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Lamassu: add `swu2go` feed
 - [x2gbfs 2025-07-03T12-57](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-07-03)
+- [ParkAPI 0.25.1 with small fixes in Freiburg converters](https://github.com/ParkenDD/park-api-v3/blob/d19ff10ba5df722f54146eb1c34365ff0fdf4965/CHANGELOG.md#0251)
 
 ## 2025-07-02
 
