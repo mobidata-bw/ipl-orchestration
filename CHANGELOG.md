@@ -8,10 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Lamassu: add `swu2go` feed
 - [x2gbfs 2025-07-03T12-57](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-07-03)
+- [ParkAPI 0.25.1 with small fixes in Freiburg converters](https://github.com/ParkenDD/park-api-v3/blob/d19ff10ba5df722f54146eb1c34365ff0fdf4965/CHANGELOG.md#0251)
 - GeoServer:
   	- summarize `MobiData-BW:sharing_stations_car`, `MobiData-BW:sharing_stations_bicycle`, `MobiData-BW:sharing_stations_scooters_standing`, `MobiData-BW:sharing_stations_cargo_bicycle` into new layer `MobiData-BW:sharing_stations`
   	- filter `ON_STREET` parking spots for `MobiData-BW:park-api_car_buildings` and `MobiData-BW:park-api_on-street` where `type` is set
-  	  
+
 ## 2025-07-02
 
 - Hotfix for geoserver radvis_cycle_network layer
