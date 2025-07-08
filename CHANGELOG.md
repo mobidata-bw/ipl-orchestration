@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2025-07-08
 
 - Lamassu: add `swu2go` feed
 - [x2gbfs 2025-07-03T12-57](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-07-03)
