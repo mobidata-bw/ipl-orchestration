@@ -59,8 +59,8 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Fahrzeuge verfügbar</Title>
-          <ogc:Filter>
+          <Title>Fahrzeuge verfügbar</Title>  
+          <ogc:Filter>     
             <ogc:And>
               <ogc:Not>
                 <ogc:Or>
@@ -97,12 +97,30 @@
                     <ogc:Literal>naturenergie_sharing</ogc:Literal>
                   </ogc:PropertyIsEqualTo>
                 </ogc:Or>
-              </ogc:Not>
-              <ogc:PropertyIsGreaterThan>
-                <ogc:PropertyName>num_vehicles_available</ogc:PropertyName>
-                <ogc:Literal>0</ogc:Literal>
-              </ogc:PropertyIsGreaterThan>
-            </ogc:And>
+              </ogc:Not>   
+              <ogc:Or>
+                <ogc:PropertyIsGreaterThan>
+                  <ogc:PropertyName>num_cars_available</ogc:PropertyName>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:PropertyIsGreaterThan>
+                <ogc:PropertyIsGreaterThan>
+                  <ogc:PropertyName>num_bicycles_available</ogc:PropertyName>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:PropertyIsGreaterThan>
+                <ogc:PropertyIsGreaterThan>
+                  <ogc:PropertyName>num_scooters_standing_available</ogc:PropertyName>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:PropertyIsGreaterThan>
+                <ogc:PropertyIsGreaterThan>
+                  <ogc:PropertyName>num_cargo_bicycles_available</ogc:PropertyName>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:PropertyIsGreaterThan>
+                <ogc:PropertyIsGreaterThan>
+                  <ogc:PropertyName>num_mopeds_available</ogc:PropertyName>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:PropertyIsGreaterThan>
+              </ogc:Or>
+            </ogc:And>           
           </ogc:Filter>
           <PointSymbolizer>
             <Graphic>

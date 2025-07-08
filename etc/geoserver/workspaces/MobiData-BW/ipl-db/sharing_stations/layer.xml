@@ -1,0 +1,17 @@
+<layer>
+  <name>sharing_stations</name>
+  <id>LayerInfoImpl--443320ad:197d40f2798:-7fce</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-582a934f:18c7db0b402:-7dc3</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--443320ad:197d40f2798:-7fcf</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2025-07-07 07:18:14.2 UTC</dateCreated>
+  <dateModified>2025-07-07 13:39:47.226 UTC</dateModified>
+</layer>

@@ -63,7 +63,7 @@ public_url, &#xd;
 photo_url, &#xd;
 address, &#xd;
 description, &#xd;
-type, &#xd;
+type::text, &#xd;
 max_stay, &#xd;
 has_lighting, &#xd;
 fee_description, &#xd;
@@ -107,7 +107,7 @@ NULL AS restriction_hours,          &#xd;
 NULL AS restriction_max_stay,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
-WHERE purpose=&apos;CAR&apos; AND duplicate_of_parking_site_id IS NULL&#xd;
+WHERE purpose=&apos;CAR&apos; AND type &lt;&gt; &apos;ON_STREET&apos; AND duplicate_of_parking_site_id IS NULL&#xd;
 &#xd;
 UNION&#xd;
 &#xd;
@@ -122,7 +122,7 @@ SELECT &#xd;
   NULL AS photo_url,&#xd;
   NULL AS address,&#xd;
   NULL AS description,&#xd;
-  NULL AS type,&#xd;
+  ps.type::text AS type,&#xd;
   NULL AS max_stay,&#xd;
   NULL AS has_lighting,&#xd;
   NULL AS fee_description,&#xd;
@@ -167,7 +167,7 @@ SELECT &#xd;
  &apos;spot&apos; AS parking_object&#xd;
 FROM parking_spot ps&#xd;
 LEFT JOIN parking_restriction pr ON ps.id = pr.parking_spot_id&#xd;
-WHERE ps.purpose = &apos;CAR&apos;
+WHERE ps.purpose = &apos;CAR&apos; AND (ps.type &lt;&gt; &apos;ON_STREET&apos; OR ps.type is null)
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -192,7 +192,6 @@ WHERE ps.purpose = &apos;CAR&apos;
   <simpleConversionEnabled>false</simpleConversionEnabled>
   <internationalTitle/>
   <internationalAbstract/>
-  <cqlFilter>NOT(type=&apos;ON_STREET&apos;)</cqlFilter>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
