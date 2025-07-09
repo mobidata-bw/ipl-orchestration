@@ -1,18 +1,19 @@
 <featureType>
-  <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-79e0</id>
+  <id>FeatureTypeInfoImpl-1fc7ce46:197e8a02911:-7fcf</id>
   <name>sharing_vehicles</name>
-  <nativeName>vehicles</nativeName>
+  <nativeName>sharing_vehicles</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
-  <title>Freefloating Sharing-Fahrzeuge</title>
+  <title>Free-Floating Sharing-Fahrzeuge</title>
   <keywords>
-    <string>features</string>
-    <string>sharing_vehicles</string>
-    <string>Sharing-Fahrzeuge</string>
-    <string>Freefloating</string>
-    <string>Leihrad</string>
-    <string>Scooter</string>
+    <string>Sharing-Fahrzeuge\@language=de\;</string>
+    <string>Scooter\@language=de\;</string>
+    <string>Fahrrad\@language=de\;</string>
+    <string>Moped\@language=de\;</string>
+    <string>Lastenrad\@language=de\;</string>
+    <string>Auto\@language=de\;</string>
+    <string>Free-Floating\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
@@ -41,8 +42,37 @@
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
   <enabled>true</enabled>
   <metadata>
-    <entry key="cacheAgeMax">60</entry>
-    <entry key="cachingEnabled">true</entry>
+    <entry key="JDBC_VIRTUAL_TABLE">
+      <virtualTable>
+        <name>sharing_vehicles</name>
+        <sql>SELECT &#xd;
+feed_id, &#xd;
+vehicle_id, &#xd;
+station_id, &#xd;
+form_factor, &#xd;
+name, &#xd;
+propulsion_type, &#xd;
+current_fuel_percent,&#xd;
+current_range_meters,&#xd;
+max_range_meters,&#xd;
+rental_uris_android, &#xd;
+rental_uris_ios, &#xd;
+rental_uris_web, &#xd;
+last_reported, &#xd;
+(last_reported &lt; now() - interval &apos;15 minutes&apos;) AS realtime_data_outdated,&#xd;
+geometry&#xd;
+FROM vehicles
+</sql>
+        <escapeSql>false</escapeSql>
+        <keyColumn>vehicle_id</keyColumn>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
+      </virtualTable>
+    </entry>
+    <entry key="cachingEnabled">false</entry>
   </metadata>
   <store class="dataStore">
     <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
@@ -59,7 +89,7 @@
   <attributes>
     <attribute>
       <name>vehicle_id</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
@@ -185,6 +215,16 @@
       <binding>java.sql.Timestamp</binding>
       <description>
         <de>Zuletzt übermittelt</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitinformationen älter als 15 Minuten?</de>
       </description>
     </attribute>
     <attribute>
