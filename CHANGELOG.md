@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- GeoServer: change `MobiData-BW:sharing_vehicles` from `feature type` to `sql view`, add attribute `realtime_data_outdated`
+  	
 ## 2025-07-08
 
 - Lamassu: add `swu2go` feed

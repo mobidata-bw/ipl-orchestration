@@ -1,17 +1,17 @@
 <layer>
   <name>sharing_vehicles</name>
-  <id>LayerInfoImpl--1e02d99c:189997e81fa:-79df</id>
+  <id>LayerInfoImpl-1fc7ce46:197e8a02911:-7fce</id>
   <type>VECTOR</type>
   <defaultStyle>
     <id>StyleInfoImpl-113972e5:18a7881cbca:-7ff6</id>
   </defaultStyle>
   <resource class="featureType">
-    <id>FeatureTypeInfoImpl--1e02d99c:189997e81fa:-79e0</id>
+    <id>FeatureTypeInfoImpl-1fc7ce46:197e8a02911:-7fcf</id>
   </resource>
   <attribution>
     <logoWidth>0</logoWidth>
     <logoHeight>0</logoHeight>
   </attribution>
-  <dateCreated>2023-07-28 12:38:08.640 UTC</dateCreated>
-  <dateModified>2025-06-05 10:25:01.962 UTC</dateModified>
+  <dateCreated>2025-07-08 14:18:16.862 UTC</dateCreated>
+  <dateModified>2025-07-08 14:26:36.126 UTC</dateModified>
 </layer>
