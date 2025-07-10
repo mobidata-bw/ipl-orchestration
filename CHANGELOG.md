@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-07-10
 - Lamassu:
   - add `bird-biel`, `bird-grenchen` feeds
-  - remove obsolete `pickebike_basel`, `liemobil_liechtenstein`feeds
+  - remove obsolete `pickebike_basel`, `pickebike_aubonne`, `liemobil_liechtenstein`feeds
 - GeoServer:
   	- change `MobiData-BW:sharing_vehicles` from `feature type` to `sql view`, add attribute `realtime_data_outdated`
   	- set attribute `realtime_data_outdated` from 15 to 20 minutes
