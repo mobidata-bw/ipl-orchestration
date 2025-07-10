@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [unreleased]
 
-- GeoServer: change `MobiData-BW:sharing_vehicles` from `feature type` to `sql view`, add attribute `realtime_data_outdated`
+- GeoServer:
+  	- change `MobiData-BW:sharing_vehicles` from `feature type` to `sql view`, add attribute `realtime_data_outdated`
+  	- set attribute `realtime_data_outdated` from 15 to 20 minutes
   	
 ## 2025-07-08
 
