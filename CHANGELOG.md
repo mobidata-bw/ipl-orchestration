@@ -4,14 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.26.0](https://github.com/ParkenDD/park-api-v3/blob/d17d0e90e8daa4f152d09f1e67fe92f5e7497491/CHANGELOG.md#0260):
+   - Integrate B+B Parkhaus Push Converter
+   - Freiburg: fixed closed status
+
+
 ## 2025-07-10
+
 - Lamassu:
   - add `bird-biel`, `bird-grenchen` feeds
   - remove obsolete `pickebike_basel`, `pickebike_aubonne`, `liemobil_liechtenstein`feeds
 - GeoServer:
   	- change `MobiData-BW:sharing_vehicles` from `feature type` to `sql view`, add attribute `realtime_data_outdated`
   	- set attribute `realtime_data_outdated` from 15 to 20 minutes
-  	
+
 ## 2025-07-08
 
 - Lamassu: add `swu2go` feed
