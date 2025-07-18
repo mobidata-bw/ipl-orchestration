@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- Lamassu:
+  - add `mikar` feed
+  - reactivate `pickebike_aubonne`, `pickebike_basel`, `pickebike_fribourg`, `liemobil_liechtenstein` feeds
+- [x2gbfs 2025-07-16T14-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-07-16)
+
 ## 2025-07-15
 
 - [ParkAPI 0.26.0](https://github.com/ParkenDD/park-api-v3/blob/d17d0e90e8daa4f152d09f1e67fe92f5e7497491/CHANGELOG.md#0260):
