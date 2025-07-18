@@ -723,17 +723,39 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## Pick-e-Bike CH
-#    - systemId: pickebike_aubonne
-#      operatorId: PEB:Operator:pickebike
-#      operatorName: PickeBike
-#      codespace: PEB
-#      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
-#      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_aubonne/gbfs"
-#      language: en
-#      authentication:
-#        scheme: HTTP_HEADERS
-#        properties:
-#          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+    - systemId: pickebike_aubonne
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_aubonne/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+    - systemId: pickebike_basel
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_basel/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
+    - systemId: pickebike_fribourg
+      operatorId: PEB:Operator:pickebike
+      operatorName: PickeBike
+      codespace: PEB
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/pickebike_fribourg/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## Share Birrer CH
     - systemId: share_birrer_ch
       operatorId: SBA:Operator:share_birrer_ag
@@ -754,6 +776,17 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## Others CH
+    - systemId: liemobil_liechtenstein
+      operatorId: LIM:Operator:liemobil
+      operatorName: LIEmobil
+      codespace: LIM
+      # Note: sharedmobility feeds are accessed via proxy, using http instead of https
+      url: "http://gbfs.prod.sharedmobility.ch/v2/gbfs/liemobil_liechtenstein/gbfs"
+      language: en
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     - systemId: zem_ch
       operatorId: ZEM:Operator:zem
       operatorName: 2EM Car Sharing
