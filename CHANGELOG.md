@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - add `mikar` feed
   - reactivate `pickebike_aubonne`, `pickebike_basel`, `pickebike_fribourg`, `liemobil_liechtenstein` feeds
 - [x2gbfs 2025-07-16T14-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-07-16)
-- [OCPDB 2.2.0](https://github.com/binary-butterfly/ocpdb/blob/f55753055d601908bf67317c575249079adcf2c0/CHANGELOG.md#version-220)
+- [OCPDB 2.2.1](https://github.com/binary-butterfly/ocpdb/blob/f55753055d601908bf67317c575249079adcf2c0/CHANGELOG.md#version-220)
   - with new source filters
   - with better opendata swiss status handling
 
