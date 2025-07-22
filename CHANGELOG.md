@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [OCPDB 2.2.1](https://github.com/binary-butterfly/ocpdb/blob/f55753055d601908bf67317c575249079adcf2c0/CHANGELOG.md#version-220)
   - with new source filters
   - with better opendata swiss status handling
+- [ParkAPI 0.27.0](https://github.com/ParkenDD/park-api-v3/blob/e8570b33bc8f24c84059951da79377df95916f35/CHANGELOG.md#0270)
+  - with generic parking site push endpoint
+  - with fixes at Friedrichshafen Datex2 converter
+  - with more parking spots per default
+  - with maintenance updates
 - [fix various webcam overview page issues by using mtime at webcam sync](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/145770fdbcf447b326a674bea5be9adfa15dba4f/CHANGELOG.md#2025-07-21)
 
 ## 2025-07-15
