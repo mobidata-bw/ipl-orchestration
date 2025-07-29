@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-[unreleased]
+## 2025-07-29
 
 - Lamassu: add `dott_ellwangen`, `dott_schwabisch_gmund`feeds
 - [ParkAPI 0.28.0](https://github.com/ParkenDD/park-api-v3/blob/57cac0e5a41e5c91041fcd80eb6bc4422357ffb5/CHANGELOG.md#0280)
