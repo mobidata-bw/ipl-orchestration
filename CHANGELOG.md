@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 [unreleased]
 
 - Lamassu: add `dott_ellwangen`, `dott_schwabisch_gmund`feeds
+- [ParkAPI 0.28.0](https://github.com/ParkenDD/park-api-v3/blob/57cac0e5a41e5c91041fcd80eb6bc4422357ffb5/CHANGELOG.md#0280)
+  - ⚠️ From admin management perspective, this release is breaking, as the endpoint for generic uploads changes from
+    `/api/admin/v1/generic-parking-sites` to `/api/admin/v1/generic`. Data consumers do not experience any breaking
+    changes.
+  - larger data model extension
+  - new data sources: Esslingen, Freiburg Scanner, Heidelberg EasyPark, Keltern, Reutlingen Disabled
 
 ## 2025-07-22
 
