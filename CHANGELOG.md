@@ -4,11 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## unreleased
+## 2025-07-30
 
 - [OCPDB 2.2.2](https://github.com/binary-butterfly/ocpdb/blob/7e50004633cec56daef787cb472220af0b507e56/CHANGELOG.md#version-222)
   - with bnetza fix after bnetza api change
-
 
 ## 2025-07-29
 
