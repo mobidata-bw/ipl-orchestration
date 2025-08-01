@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+### Changed
+
+- `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-06-04T13.05.23-eceb5b0`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/eceb5b0)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v13.0.2`](https://github.com/PostgREST/postgrest/tree/v13.0.2)
+- ⚠️ `gtfs-db`: upgrade [`postgis-with-pg-plan-filter`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter) to [`2025-06-16T14.11.57-5ca387b`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter/tree/5ca387b) – Because this upgrades PostgreSQL to v16, to upgrade, you will have to
+  1. stop `gtfs-db` (`make docker-down SERVICE=gtfs-db`),
+  2. delete the DB directory (`rm -r var/gtfs/gtfs-db`),
+  3. apply the upgrade (`git pull`/`git checkout`),
+  4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
+  5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
+
 ## 2025-07-30
 
 - [OCPDB 2.2.2](https://github.com/binary-butterfly/ocpdb/blob/7e50004633cec56daef787cb472220af0b507e56/CHANGELOG.md#version-222)
@@ -75,6 +88,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [x2gbfs 2025-06-24T05-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-06-23)
 - [ParkAPI 0.25.0 with Freiburg P+R Converters](https://github.com/ParkenDD/park-api-v3/blob/596044d678d34e0a648ed4d8c20a197ba3444912/CHANGELOG.md#0250)
 
+
 ## 2025-06-06
 
 - [ipl dagster pipeline 2025-06-06](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/205a5afa47fc35be6b422912647923a02686e0f4/CHANGELOG.md#2025-06-06)
@@ -91,7 +105,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add `realtime_data_outdated` to `MobiData-BW:sharing_stations_car`, `MobiData-BW:sharing_stations_bicycle` and `MobiData-BW:sharing_stations_cargo_bicycle`
 
 
-### 2025-06-02
+## 2025-06-02
 
 - [ParkAPI 0.23.1](https://github.com/ParkenDD/park-api-v3/blob/6ac1413954fe5c484fe9d604364cf7c342e238e2/CHANGELOG.md#0231)
   with extended static data for Freiburg
