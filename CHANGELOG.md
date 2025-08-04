@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [OCPDB 2.3.0](https://github.com/binary-butterfly/ocpdb/blob/44309e836c0c19d5e80d759c24321d940d55e820/CHANGELOG.md#version-230)
+  - with more search params
+  - with `chargecloud tuebingen` importer
+
+
 ## 2025-07-30
 
 - [OCPDB 2.2.2](https://github.com/binary-butterfly/ocpdb/blob/7e50004633cec56daef787cb472220af0b507e56/CHANGELOG.md#version-222)
