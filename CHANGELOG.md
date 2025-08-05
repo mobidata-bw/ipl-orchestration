@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Upcoming
+- Geoserver: Upgrade from 2.25.3 to 2.27.1 (see [geoserver/releases](https://github.com/geoserver/geoserver/releases/))
+
 ## 2025-08-05
 
 - [OCPDB 2.3.0](https://github.com/binary-butterfly/ocpdb/blob/44309e836c0c19d5e80d759c24321d940d55e820/CHANGELOG.md#version-230)
