@@ -77,7 +77,7 @@ created_at, &#xd;
 modified_at, &#xd;
 static_data_updated_at, &#xd;
 realtime_data_updated_at,&#xd;
-(realtime_data_updated_at &lt; now() - interval &apos;20 minutes&apos;) AS realtime_data_outdated,&#xd;
+(realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
 WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
@@ -446,7 +446,7 @@ WHERE purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 20 Minuten?</de>
+        <de>Echtzeitdaten älter als 30 Minuten?</de>
       </description>
     </attribute>
     <attribute>

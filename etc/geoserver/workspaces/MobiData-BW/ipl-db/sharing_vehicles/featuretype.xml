@@ -59,7 +59,7 @@ rental_uris_android, &#xd;
 rental_uris_ios, &#xd;
 rental_uris_web, &#xd;
 last_reported, &#xd;
-(last_reported &lt; now() - interval &apos;20 minutes&apos;) AS realtime_data_outdated,&#xd;
+(last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
 geometry&#xd;
 FROM vehicles
 </sql>
@@ -224,7 +224,7 @@ FROM vehicles
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 20 Minuten?</de>
+        <de>Echtzeitdaten älter als 30 Minuten?</de>
       </description>
     </attribute>
     <attribute>

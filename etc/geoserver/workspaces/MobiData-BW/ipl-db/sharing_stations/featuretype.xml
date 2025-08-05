@@ -54,7 +54,7 @@ s.rental_uris_android, &#xd;
 s.rental_uris_ios, &#xd;
 s.rental_uris_web, &#xd;
 st.last_reported, &#xd;
-(st.last_reported &lt; now() - interval &apos;20 minutes&apos;) AS realtime_data_outdated, s.geometry&#xd;
+(st.last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated, s.geometry&#xd;
 FROM sharing_stations s&#xd;
 JOIN sharing_station_status st ON s.station_id=st.station_id
 </sql>
@@ -219,7 +219,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 20 Minuten?</de>
+        <de>Echtzeitdaten älter als 30 Minuten?</de>
       </description>
     </attribute>
     <attribute>
