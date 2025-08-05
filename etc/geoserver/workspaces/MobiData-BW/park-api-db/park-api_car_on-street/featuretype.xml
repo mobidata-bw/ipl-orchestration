@@ -100,7 +100,7 @@
   modified_at,&#xd;
   static_data_updated_at,&#xd;
   realtime_data_updated_at,&#xd;
-  (realtime_data_updated_at &lt; now() - interval &apos;20 minutes&apos;) AS realtime_data_outdated,&#xd;
+  (realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
   &apos;site&apos; AS parking_object,&#xd;
   NULL AS restriction_type,    &#xd;
   NULL AS restriction_hours,          &#xd;
@@ -159,7 +159,7 @@ SELECT &#xd;
   ps.modified_at,&#xd;
   ps.static_data_updated_at,&#xd;
   ps.realtime_data_updated_at,&#xd;
-  (realtime_data_updated_at &lt; now() - interval &apos;20 minutes&apos;) AS realtime_data_outdated,&#xd;
+  (realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
   &apos;spot&apos; AS parking_object,&#xd;
   pr.type AS restriction_type,&#xd;
   pr.hours AS restriction_hours,&#xd;
@@ -568,7 +568,7 @@ WHERE ps.purpose = &apos;CAR&apos; AND (ps.type = &apos;ON_STREET&apos; OR ps.ty
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 20 Minuten?</de>
+        <de>Echtzeitdaten älter als 30 Minuten?</de>
       </description>
     </attribute>
     <attribute>

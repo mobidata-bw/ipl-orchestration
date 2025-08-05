@@ -43,7 +43,7 @@
         <name>charge_points</name>
         <sql>WITH location_power AS (&#xd;
   SELECT location_id, &#xd;
-         MAX(max_electric_power) AS max_electric_power &#xd;
+         MAX(max_electric_power) AS max_electric_power        &#xd;
     FROM evse&#xd;
     JOIN connector&#xd;
       ON evse.id = connector.evse_id&#xd;
@@ -61,10 +61,11 @@ SELECT location.id, &#xd;
        cp.chargepoint_charging_count, &#xd;
        cp.chargepoint_inoperative_count, &#xd;
        cp.chargepoint_outoforder_count, &#xd;
+       cp.chargepoint_reserved_count, &#xd;
        cp.chargepoint_bike_count, &#xd;
        lp.max_electric_power, &#xd;
        location.geometry,&#xd;
-       business.name AS operator_name&#xd;
+       business.name AS operator_name     &#xd;
 FROM location&#xd;
 LEFT JOIN (&#xd;
   SELECT location_id, &#xd;
@@ -75,7 +76,8 @@ LEFT JOIN (&#xd;
          SUM(CASE WHEN es.status = &apos;CHARGING&apos; THEN 1 ELSE 0 END) AS chargepoint_charging_count,&#xd;
          SUM(CASE WHEN es.status = &apos;INOPERATIVE&apos; THEN 1 ELSE 0 END) AS chargepoint_inoperative_count,&#xd;
          SUM(CASE WHEN es.status = &apos;OUTOFORDER&apos; THEN 1 ELSE 0 END) AS chargepoint_outoforder_count,&#xd;
-         SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) AS chargepoint_bike_count &#xd;
+         SUM(CASE WHEN es.status = &apos;RESERVED&apos; THEN 1 ELSE 0 END) AS chargepoint_reserved_count,&#xd;
+         SUM(CASE WHEN es.parking_restrictions &amp; 64 = 64 THEN 1 ELSE 0 END) AS chargepoint_bike_count         &#xd;
     FROM location l&#xd;
     JOIN evse es&#xd;
       ON l.id = es.location_id &#xd;
@@ -116,20 +118,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
-    </attribute>
-    <attribute>
-      <name>lat</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.math.BigDecimal</binding>
-    </attribute>
-    <attribute>
-      <name>lon</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.math.BigDecimal</binding>
+      <description>
+        <de>ID des Ladestandortes</de>
+      </description>
     </attribute>
     <attribute>
       <name>source</name>
@@ -137,6 +128,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Datengeber</de>
+      </description>
     </attribute>
     <attribute>
       <name>name</name>
@@ -144,6 +138,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Name des Ladestandortes</de>
+      </description>
     </attribute>
     <attribute>
       <name>operator_name</name>
@@ -151,13 +148,19 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Betreiber des Ladestandortes</de>
+      </description>
     </attribute>
     <attribute>
       <name>address</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
+      <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Adresse des Ladestandortes</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_available_count</name>
@@ -165,12 +168,19 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes, die verfügbar sind</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_charging_count</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit Belegung</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_unknown_count</name>
@@ -178,18 +188,29 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit unbekanntem Status</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_inoperative_count</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes, die außer Betrieb sind</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_outoforder_count</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit einem Defekt</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_static_count</name>
@@ -197,6 +218,19 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes ohne Echtzeitinformation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>chargepoint_reserved_count</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
+      </description>
     </attribute>
     <attribute>
       <name>chargepoint_bike_count</name>
@@ -204,6 +238,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
+      <description>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
+      </description>
     </attribute>
     <attribute>
       <name>max_electric_power</name>
@@ -211,6 +248,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
+      <description>
+        <de>Maximale elektrische Leistung des Ladestandortes</de>
+      </description>
     </attribute>
     <attribute>
       <name>geometry</name>
@@ -218,6 +258,9 @@ LEFT JOIN business&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
+      <description>
+        <de>Koordinaten des Ladestandortes</de>
+      </description>
     </attribute>
   </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
