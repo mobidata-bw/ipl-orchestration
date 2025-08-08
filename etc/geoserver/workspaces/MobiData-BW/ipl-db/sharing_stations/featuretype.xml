@@ -53,6 +53,7 @@ st.num_mopeds_available,&#xd;
 s.rental_uris_android, &#xd;
 s.rental_uris_ios, &#xd;
 s.rental_uris_web, &#xd;
+s.is_virtual_station,&#xd;
 st.last_reported, &#xd;
 (st.last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated, s.geometry&#xd;
 FROM sharing_stations s&#xd;
@@ -119,6 +120,15 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <binding>java.lang.Integer</binding>
       <description>
         <de>Kapazität der Station</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>is_virtual_station</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Handelt es sich um eine virtuelle Station?</de>
       </description>
     </attribute>
     <attribute>
