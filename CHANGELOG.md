@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: add `is_virtual_station` to sharing stations layer
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.17`](https://github.com/skriptfabrik/elements-cli/commits/0.5.17)
 
 ## 2026-08-06
 
