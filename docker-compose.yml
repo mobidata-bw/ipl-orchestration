@@ -726,7 +726,7 @@ services:
 
   ocpdb-flask:
     <<: *ocpdb-defaults
-    command: ["gunicorn", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    command: ["gunicorn", "--workers", "${OCPDB_GUNICORN_WORKER_COUNT}", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
     restart: unless-stopped
     ports:
       - ${OCPDB_API_PORT}:5000
@@ -741,7 +741,7 @@ services:
     <<: *ocpdb-defaults
     restart: unless-stopped
     # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "${OCPDB_CELERY_WORKER_COUNT}", "--logfile=/dev/null"]
 
   ocpdb-heartbeat:
     <<: *ocpdb-defaults
@@ -771,7 +771,7 @@ services:
   park-api-flask:
     <<: *park-api-defaults
     restart: unless-stopped
-    command: ["gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "300", "webapp.entry_point_gunicorn:app"]
+    command: ["gunicorn", "--workers", "${PARK_API_GUNICORN_WORKER_COUNT}", "--bind", "0.0.0.0:5000", "--timeout", "300", "webapp.entry_point_gunicorn:app"]
     ports:
       - ${PARK_API_API_PORT}:5000
     labels:
@@ -789,7 +789,7 @@ services:
     <<: *park-api-defaults
     restart: unless-stopped
     # --logfile=/dev/null disabled the automagic logger by celery and therefore prevents log message duplicates
-    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "2", "--logfile=/dev/null"]
+    command: ["celery", "-A", "webapp.entry_point_celery", "worker", "-c", "${PARK_API_CELERY_WORKER_COUNT}", "--logfile=/dev/null"]
 
   park-api-heartbeat:
     <<: *park-api-defaults
