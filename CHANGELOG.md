@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `ford_carsharing_autohausbaur`feed
 - [x2gbfs 2025-08-11T13-59](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-11)
 - ParkAPI and OCPI: add more workers to server more concurrent requests
-
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.18`](https://github.com/skriptfabrik/elements-cli/commits/0.5.18)
 
 ## 2026-08-08
 
