@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- Lamassu: add `ford_carsharing_autohausbaur`feed
+- [x2gbfs 2025-08-11T13-59](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-11)
+
 ## 2026-08-08
 
 - GeoServer: add `is_virtual_station` to sharing stations layer
