@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2025-08-12
 
 - Lamassu: add `ford_carsharing_autohausbaur`feed
 - [x2gbfs 2025-08-11T13-59](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-11)
@@ -13,13 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Unified Patching to supporting ParkingSpot patches
   - Additional type filter
 
-
-## 2026-08-08
+## 2025-08-08
 
 - GeoServer: add `is_virtual_station` to sharing stations layer
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.17`](https://github.com/skriptfabrik/elements-cli/commits/0.5.17)
 
-## 2026-08-06
+## 2025-08-06
 
 - GeoServer: set `realtime_data_outdated` to 30 minutes and add `RESERVED` for `status` for `MobiData-BW:charge_points`
 
