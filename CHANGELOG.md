@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-08-12
 
 - Lamassu: add `ford_carsharing_autohausbaur`feed
-- [x2gbfs 2025-08-11T13-59](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-11)
+- [x2gbfs 2025-08-12T08-45](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-11)
 - [ParkAPI 0.29.0](https://github.com/ParkenDD/park-api-v3/blob/49713526091ac5488acd405b92f9f32f5fc9aa07/CHANGELOG.md#0290):
   - Aalen and Konstanz Disabled converter
   - Unified Patching to supporting ParkingSpot patches
