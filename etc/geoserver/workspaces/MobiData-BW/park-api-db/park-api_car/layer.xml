@@ -1,0 +1,17 @@
+<layer>
+  <name>park-api_car</name>
+  <id>LayerInfoImpl-2c1ad41d:1989d7bbf03:-7fce</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-81c86dc:196803575e1:-7fcd</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-2c1ad41d:1989d7bbf03:-7fcf</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2025-08-14 11:57:09.27 UTC</dateCreated>
+  <dateModified>2025-08-18 08:10:02.710 UTC</dateModified>
+</layer>
