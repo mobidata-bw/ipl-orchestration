@@ -4,11 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-08-19
 
 - GeoServer: create new layer `MobiData-BW:park-api_car` that contains combined data from `MobiData-BW:park-api_car_buildings` and `MobiData-BW:park-api_car_on-street`, add purpose == `ITEM` to `MobiData-BW:park-api_bicycle`
 - [ParkAPI 0.29.1 with several fixes, smaller data improvements and dependency updates](https://github.com/ParkenDD/park-api-v3/blob/419363ce2d14ad5a79df2f4d49c60dda49c9dc33/CHANGELOG.md#fixes)
-
 
 ## 2025-08-12
 
