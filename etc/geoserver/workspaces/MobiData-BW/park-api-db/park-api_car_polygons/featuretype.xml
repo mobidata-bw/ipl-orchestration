@@ -223,8 +223,8 @@ WHERE&#xd;
     </attribute>
     <attribute>
       <name>has_realtime_data</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.Boolean</binding>
       <description>
         <de>Echtzeitinformationen?</de>
@@ -233,7 +233,7 @@ WHERE&#xd;
     <attribute>
       <name>realtime_status</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
         <de>Echtzeit-Belegungsstatus</de>
