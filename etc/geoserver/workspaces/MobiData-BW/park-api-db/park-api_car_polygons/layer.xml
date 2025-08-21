@@ -1,0 +1,17 @@
+<layer>
+  <name>park-api_car_polygons</name>
+  <id>LayerInfoImpl--5b823788:198cb41d09b:-7fcc</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--5b823788:198cb41d09b:-7ffe</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5b823788:198cb41d09b:-7fcd</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2025-08-21 07:59:01.372 UTC</dateCreated>
+  <dateModified>2025-08-21 10:12:59.408 UTC</dateModified>
+</layer>

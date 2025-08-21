@@ -47,7 +47,7 @@ s.name, &#xd;
 s.capacity, &#xd;
 st.num_cars_available, &#xd;
 st.num_bicycles_available, &#xd;
-st.num_scooters_standing_available,&#xd;
+st.num_scooters_standing_available AS num_scooters_available,&#xd;
 st.num_cargo_bicycles_available,&#xd;
 st.num_mopeds_available,&#xd;
 s.rental_uris_android, &#xd;
@@ -89,7 +89,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>ID des Feeds</de>
+        <en-US>ID des Feeds</en-US>
       </description>
     </attribute>
     <attribute>
@@ -99,7 +99,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>ID der Station</de>
+        <en-US>ID der Station</en-US>
       </description>
     </attribute>
     <attribute>
@@ -109,7 +109,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Name des Fahrzeugs</de>
+        <en-US>Name des Fahrzeugs</en-US>
       </description>
     </attribute>
     <attribute>
@@ -119,7 +119,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Kapazität der Station</de>
+        <en-US>Kapazität der Station</en-US>
       </description>
     </attribute>
     <attribute>
@@ -128,7 +128,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <maxOccurs>1</maxOccurs>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Handelt es sich um eine virtuelle Station?</de>
+        <en-US>Handelt es sich um eine virtuelle Station?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -139,7 +139,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <binding>java.lang.Integer</binding>
       <source>num_cars_available</source>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
@@ -149,17 +149,18 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
-      <name>num_scooters_standing_available</name>
+      <name>num_scooters_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
+      <source>num_scooters_available</source>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
@@ -169,7 +170,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</en-US>
       </description>
     </attribute>
     <attribute>
@@ -179,7 +180,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
@@ -189,7 +190,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Deeplink zur Buchung (Android)</de>
+        <en-US>Deeplink zur Buchung (Android)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -199,7 +200,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Deeplink zu Buchung (iOS)</de>
+        <en-US>Deeplink zu Buchung (iOS)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -209,7 +210,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Deeplink zur Buchung (Web)</de>
+        <en-US>Deeplink zur Buchung (Web)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -219,7 +220,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Aktualisierung</de>
+        <en-US>Zeitpunkt der letzten Aktualisierung</en-US>
       </description>
     </attribute>
     <attribute>
@@ -229,7 +230,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 30 Minuten?</de>
+        <en-US>Echtzeitdaten älter als 30 Minuten?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -239,7 +240,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <de>Koordinate der Station</de>
+        <en-US>Koordinate der Station</en-US>
       </description>
     </attribute>
   </attributes>
