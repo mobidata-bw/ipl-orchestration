@@ -225,6 +225,7 @@ WHERE&#xd;
       <name>has_realtime_data</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
         <de>Echtzeitinformationen?</de>
@@ -234,6 +235,7 @@ WHERE&#xd;
       <name>realtime_status</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
         <de>Echtzeit-Belegungsstatus</de>
