@@ -1,8 +1,8 @@
 <GeoServerTileLayer>
-  <id>LayerInfoImpl-2c1ad41d:1989d7bbf03:-7fce</id>
+  <id>LayerInfoImpl--5b823788:198cb41d09b:-7fce</id>
   <enabled>true</enabled>
   <inMemoryCached>true</inMemoryCached>
-  <name>MobiData-BW:park-api_car</name>
+  <name>MobiData-BW:park-api_car_lines</name>
   <mimeFormats>
     <string>application/vnd.mapbox-vector-tile</string>
   </mimeFormats>
@@ -11,10 +11,10 @@
       <gridSetName>WebMercatorQuadx2</gridSetName>
       <extent>
         <coords>
-          <double>667784.1740029723</double>
-          <double>5753788.542450331</double>
-          <double>1551609.1339424984</double>
-          <double>7320497.800474014</double>
+          <double>779236.435552915</double>
+          <double>5780349.220256351</double>
+          <double>1113194.9079327357</double>
+          <double>6446275.841017158</double>
         </coords>
       </extent>
       <minCachedLevel>6</minCachedLevel>
@@ -25,15 +25,15 @@
     <int>4</int>
     <int>4</int>
   </metaWidthHeight>
-  <expireCache>60</expireCache>
-  <expireClients>55</expireClients>
+  <expireCache>300</expireCache>
+  <expireClients>300</expireClients>
   <parameterFilters>
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <allowedStyles class="sorted-set"/>
+      <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
       <availableStyles class="sorted-set"/>
-      <defaultStyle>MobiData-BW:mdbw_park-api_parking-object</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_lines</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>

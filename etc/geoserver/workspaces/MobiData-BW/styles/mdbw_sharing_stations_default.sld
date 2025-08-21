@@ -108,7 +108,7 @@
                   <ogc:Literal>0</ogc:Literal>
                 </ogc:PropertyIsGreaterThan>
                 <ogc:PropertyIsGreaterThan>
-                  <ogc:PropertyName>num_scooters_standing_available</ogc:PropertyName>
+                  <ogc:PropertyName>num_scooters_available</ogc:PropertyName>
                   <ogc:Literal>0</ogc:Literal>
                 </ogc:PropertyIsGreaterThan>
                 <ogc:PropertyIsGreaterThan>
