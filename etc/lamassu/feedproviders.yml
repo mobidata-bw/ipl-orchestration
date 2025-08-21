@@ -789,7 +789,8 @@ lamassu:
       operatorId: SBA:Operator:share_birrer_ag
       operatorName: Share Birrer AG
       codespace: SBA
-      url: "https://www.share-birrer.ch/gbfs/gbfs.json"
+      # Note: accessed via proxy, using http instead of https
+      url: "http://www.share-birrer.ch/gbfs/gbfs.json"
       language: de
     ## VOI Scooter
     - systemId: voi_ch
