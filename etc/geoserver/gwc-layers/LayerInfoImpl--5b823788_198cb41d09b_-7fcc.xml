@@ -9,6 +9,14 @@
   <gridSubsets>
     <gridSubset>
       <gridSetName>WebMercatorQuadx2</gridSetName>
+      <extent>
+        <coords>
+          <double>779236.435552915</double>
+          <double>5780349.220256351</double>
+          <double>1113194.9079327357</double>
+          <double>6446275.841017158</double>
+        </coords>
+      </extent>
       <minCachedLevel>6</minCachedLevel>
       <maxCachedLevel>15</maxCachedLevel>
     </gridSubset>
@@ -23,9 +31,9 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <allowedStyles class="sorted-set"/>
+      <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
       <availableStyles class="sorted-set"/>
-      <defaultStyle>polygon</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_polygons</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>
