@@ -234,9 +234,9 @@ WHERE&#xd;
     </attribute>
     <attribute>
       <name>has_realtime_data</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
+      <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
         <de>Echtzeitinformationen?</de>
