@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## unreleased
+
+- [ipl-proxy 2025-08-21T05-12](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-08-20)
+
 ## 2025-08-19
 
 - GeoServer: create new layer `MobiData-BW:park-api_car` that contains combined data from `MobiData-BW:park-api_car_buildings` and `MobiData-BW:park-api_car_on-street`, add purpose == `ITEM` to `MobiData-BW:park-api_bicycle`
