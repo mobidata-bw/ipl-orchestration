@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## unreleased
+## 2025-08-22
 
 - [ipl-proxy 2025-08-21T05-12](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-08-20)
 - [x2gbfs 2025-08-22T05-03](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-21)
