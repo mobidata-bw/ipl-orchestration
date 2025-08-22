@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## unreleased
 
 - [ipl-proxy 2025-08-21T05-12](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-08-20)
-- [x2gbfs 2025-08-21T15-27](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-21)
+- [x2gbfs 2025-08-22T05-03](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-08-21)
 - GeoServer: new ParkAPI layers `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons` with respective styles, change name from `num_scooters_standing_available` to `num_scooters_available` in `MobiData-BW:sharing_stations`
 
 ## 2025-08-19
