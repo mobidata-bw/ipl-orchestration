@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+# Unreleased
+
+- [ParkAPI 0.30.0](https://github.com/ParkenDD/park-api-v3/blob/f21d36e1bbe579db2600a9af0c6ab926223cdb36/CHANGELOG.md#0300)
+  - with multiple new convertes: Kienzler: Ulm, Radolfzell, Ladenburg Parkraumcheck, Karlsruhe Disabled, Heidelberg Disabled
+  - with Bugfixes for BFRK and Konstanz
+
 ## 2025-08-22
 
 - [ipl-proxy 2025-08-21T05-12](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2025-08-20)
