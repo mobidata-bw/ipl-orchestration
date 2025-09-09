@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## unreleased
+
+- [x2gbfs 2025-09-09T13-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-09)
+
 ## 2025-09-09
 
 - Lamassu: add `dott_saarbrucken`, `dott_st_gallen`feeds, remove `dott_schwabisch_gmund` feed
