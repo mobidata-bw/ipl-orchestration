@@ -427,8 +427,10 @@ services:
       # RadVIS Download credentials
       - RADVIS_WFS_USER=${RADVIS_WFS_USER:?missing/empty}
       - RADVIS_WFS_PASSWORD=${RADVIS_WFS_PASSWORD:?missing/empty}
-      # Roadworks download url
+      # Roadworks download url, user, password
       - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL:?missing/empty}
+      - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_USER=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_USER:?missing/empty}
+      - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_PASSWORD=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_PASSWORD:?missing/empty}
       # Webcam settings
       - IPL_WEBCAM_SERVER=${WEBCAM_FTP_SERVER:?missing/empty}
       - IPL_WEBCAM_USER=${WEBCAM_FTP_USER:?missing/empty}

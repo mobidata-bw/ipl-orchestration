@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## unreleased
 
 - [x2gbfs 2025-09-09T13-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-09)
+- Roadworks: switch to new BEMaS download endpoint (should be transparent for roadwork consumers)
 
 ## 2025-09-09
 
