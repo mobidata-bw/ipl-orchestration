@@ -4,9 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-# Unreleased
+## 2025-09-09
 
 - Lamassu: add `dott_saarbrucken`, `dott_st_gallen`feeds, remove `dott_schwabisch_gmund` feed
+- [x2gbfs 2025-09-09T06-05](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-05)
+  - add MOQO provider `einfach_unterwegs`
+  - update Cantamen provider app links and deeplinks
 - [ParkAPI 0.30.0](https://github.com/ParkenDD/park-api-v3/blob/f21d36e1bbe579db2600a9af0c6ab926223cdb36/CHANGELOG.md#0300)
   - with multiple new convertes: Kienzler: Ulm, Radolfzell, Ladenburg Parkraumcheck, Karlsruhe Disabled, Heidelberg Disabled
   - with Bugfixes for BFRK and Konstanz
