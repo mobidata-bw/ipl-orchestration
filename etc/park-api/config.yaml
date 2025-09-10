@@ -4,10 +4,30 @@ OPENAPI_SERVERS:
   - url: https://api.mobidata-bw.de/park-api
     description: production
 
-LOKI_ENABLED: false
-LOKI_TAGS:
-  service: park-api
-
 STATIC_GEOJSON_BASE_URL: https://raw.githubusercontent.com/ParkenDD/parkapi-static-data/main/sources
 
 PARKING_SITE_PATCH_DIR: /app/files/static/patches/parking-sites
+PARKING_SPOT_PATCH_DIR: /app/files/static/patches/parking-spots
+
+LOGGING:
+  version: 1
+  formatters:
+    human_readable:
+      format: '%(asctime)s %(levelname)s: %(message)s'
+  handlers:
+    console_stderr:
+      class: logging.StreamHandler
+      level: WARN
+      formatter: human_readable
+      stream: ext://sys.stderr
+    split_log_file:
+      class: webapp.common.logging.split_log_file_handler.SplitLogFileHandler
+      level: INFO
+      log_path: /app/logs
+      formatter: human_readable
+  loggers:
+    webapp:
+      level: INFO
+      handlers:
+        - console_stderr
+        - split_log_file
