@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## unreleased
 
 - [x2gbfs 2025-09-09T13-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-09)
+- [ParkAPI 0.32.0 with config-based logging approach](https://github.com/ParkenDD/park-api-v3/blob/a787b31c264e89a5b185bab9a3876ab7bc711753/CHANGELOG.md#0320)
+
 
 ## 2025-09-09
 
