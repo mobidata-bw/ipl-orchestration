@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.32.1](https://github.com/ParkenDD/park-api-v3/blob/ca0a3c121fa2bae5f982f1063b3d84e417ac8c24/CHANGELOG.md#0321)
+  - allowing linestrings at rudolfzell
+
 ## 2025-09-11
 
 - [x2gbfs 2025-09-09T13-53](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-09)
