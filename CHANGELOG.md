@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.10.2-alpine`](https://hub.docker.com/layers/library/caddy/2.10.2-alpine/images/sha256-e9fd95fd7cea0c3403c622c5c2457cddcaf355a5eba11048b17cb3d99a828f33) ([v2.10.1 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.1), [v2.10.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.2))
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.21`](https://github.com/skriptfabrik/elements-cli/commits/0.5.21)
+- `pgbouncer`: switch to [`bitnamilegacy/pgbouncer` image](https://hub.docker.com/r/bitnamilegacy/pgbouncer)
+  - Follow [#422](https://github.com/mobidata-bw/ipl-orchestration/issues/422) for updates.
 
 ## 2025-09-16
 
