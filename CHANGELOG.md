@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.33.0](https://github.com/ParkenDD/park-api-v3/blob/23e39df1bb7495f0f8034712cd33987d4456178f/CHANGELOG.md#0330)
+  - with reset duplicate admin functionality and logging fixes
+
+
 ## 2025-09-19
 
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.10.2-alpine`](https://hub.docker.com/layers/library/caddy/2.10.2-alpine/images/sha256-e9fd95fd7cea0c3403c622c5c2457cddcaf355a5eba11048b17cb3d99a828f33) ([v2.10.1 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.1), [v2.10.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.2))
