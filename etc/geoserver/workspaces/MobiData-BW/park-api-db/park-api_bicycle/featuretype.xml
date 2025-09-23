@@ -79,7 +79,7 @@ realtime_data_updated_at,&#xd;
 (realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
 &apos;site&apos; as parking_object&#xd;
 FROM parking_site&#xd;
-WHERE purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos; AND duplicate_of_parking_site_id IS NULL
+WHERE (purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos;) AND duplicate_of_parking_site_id IS NULL
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
