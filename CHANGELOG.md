@@ -4,11 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `pgbouncer`: switch our own [`ghcr.io/mobidata-bw/pgbouncer` image](https://github.com/mobidata-bw/bitnami-pgbouncer-image/pkgs/container/pgbouncer) because bitnami's upstream image is not maintained anymore
+  - Refer to [#422](https://github.com/mobidata-bw/ipl-orchestration/issues/422) for more details.
+
 ## 2025-09-23
 
 - [ParkAPI 0.33.0](https://github.com/ParkenDD/park-api-v3/blob/23e39df1bb7495f0f8034712cd33987d4456178f/CHANGELOG.md#0330)
   - with reset duplicate admin functionality and logging fixes
-
 
 ## 2025-09-19
 
