@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-09-23
 
 - [ParkAPI 0.33.0](https://github.com/ParkenDD/park-api-v3/blob/23e39df1bb7495f0f8034712cd33987d4456178f/CHANGELOG.md#0330)
   - with reset duplicate admin functionality and logging fixes
