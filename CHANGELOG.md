@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: fix duplicate filter for park-api_bicycle, add new layer `MobiData-BW:bicycle_service_points` and data store `ansible-radservicepunkte`
+- [x2gbfs 2025-09-26T13-42](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-26)
 
 ## 2025-09-23
 
