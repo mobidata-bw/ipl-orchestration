@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-09-30
 
 - GeoServer: fix duplicate filter for park-api_bicycle, add new layer `MobiData-BW:bicycle_service_points` and data store `ansible-radservicepunkte`
 - [x2gbfs 2025-09-26T13-42](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-09-26)
@@ -13,7 +13,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - [ParkAPI 0.33.0](https://github.com/ParkenDD/park-api-v3/blob/23e39df1bb7495f0f8034712cd33987d4456178f/CHANGELOG.md#0330)
   - with reset duplicate admin functionality and logging fixes
-
 
 ## 2025-09-19
 
