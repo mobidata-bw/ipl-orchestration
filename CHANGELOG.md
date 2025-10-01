@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- GeoServer: fix `feature type` issue for `MobiData-BW:bicycle_service_points`
+
 ## 2025-09-30
 
 - GeoServer: fix duplicate filter for park-api_bicycle, add new layer `MobiData-BW:bicycle_service_points` and data store `ansible-radservicepunkte`
