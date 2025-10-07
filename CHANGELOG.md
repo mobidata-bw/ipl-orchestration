@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - fix: handle duplicate entities gracefully with warning logs (https://github.com/entur/lamassu/pull/730)
   - fix: handle duplicate entities in delta calculator (https://github.com/entur/lamassu/pull/731)
   - upgraded spring-boot dependencies, which fixes a broken graphiql client
+- Lamassu: add `stadtwerke_wertheim` feed
+- [x2gbfs 2025-10-07T14-24](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-06)
 
 ## 2025-10-07
 
