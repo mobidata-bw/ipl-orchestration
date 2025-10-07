@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## unreleased
+- Lamassu: Bump to [the 2025-10-06T15-58 release](https://github.com/entur/lamassu/releases/tag/2025-10-06T15-58), which (according to [changelog](https://github.com/entur/lamassu/blob/87727f50d4d3b4b39d3f234852b83133e5f14bc7/Changelog.md) includes:
+  - Enable system hours to opening hours mapping (https://github.com/entur/lamassu/pull/715)
+  - fix: handle duplicate entities gracefully with warning logs (https://github.com/entur/lamassu/pull/730)
+  - fix: handle duplicate entities in delta calculator (https://github.com/entur/lamassu/pull/731)
+  - upgraded spring-boot dependencies, which fixes a broken graphiql client
+
 ## 2025-10-07
 
 - Lamassu: remove `dott_ellwangen` feed
