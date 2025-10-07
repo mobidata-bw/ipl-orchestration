@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-10-07
+
+- Lamassu: remove `dott_ellwangen` feed
 - GeoServer: fix `feature type` issue for `MobiData-BW:bicycle_service_points`
 
 ## 2025-09-30
