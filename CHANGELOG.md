@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## unreleased
+## 2025-10-14
 
 - Lamassu: Bump to [the 2025-10-06T15-58 release](https://github.com/entur/lamassu/releases/tag/2025-10-06T15-58), which (according to [changelog](https://github.com/entur/lamassu/blob/87727f50d4d3b4b39d3f234852b83133e5f14bc7/Changelog.md) includes:
   - Enable system hours to opening hours mapping (https://github.com/entur/lamassu/pull/715)
@@ -15,7 +15,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [x2gbfs 2025-10-07T14-24](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-06)
 - [ParkAPI 0.34.0](https://github.com/ParkenDD/park-api-v3/blob/c2ed8339898eeba2e7c329ffd1949df288ad31af/CHANGELOG.md#0340)
   - with P+M or carpooling from Sensade API and several bugfixes
-
 
 ## 2025-10-07
 
