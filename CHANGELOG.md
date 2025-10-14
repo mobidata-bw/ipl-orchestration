@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.23`](https://github.com/skriptfabrik/elements-cli/commits/0.5.23)
+
 ## 2025-10-14
 
 - Lamassu: Bump to [the 2025-10-06T15-58 release](https://github.com/entur/lamassu/releases/tag/2025-10-06T15-58), which (according to [changelog](https://github.com/entur/lamassu/blob/87727f50d4d3b4b39d3f234852b83133e5f14bc7/Changelog.md) includes:
