@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.23`](https://github.com/skriptfabrik/elements-cli/commits/0.5.23)
+- [ParkAPI 0.34.1](https://github.com/ParkenDD/park-api-v3/blob/08d7ba21504af31dcf387c3d58633d5368820ba9/CHANGELOG.md#0341)
+  - with a fix for the Sensade API converter
 
 ## 2025-10-14
 
