@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `pgbouncer`: switch our own [`ghcr.io/mobidata-bw/pgbouncer` image](https://github.com/mobidata-bw/bitnami-pgbouncer-image/pkgs/container/pgbouncer) because bitnami's upstream image is not maintained anymore
   - Refer to [#422](https://github.com/mobidata-bw/ipl-orchestration/issues/422) for more details.
+- Lamassu: add `bird-schaffhausen`, `nextbike_ms`, `mybuxi_ch` feeds
 - [x2gbfs 2025-10-20T07-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-20)
 
 ## 2025-10-15
