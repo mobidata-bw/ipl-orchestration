@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2025-10-21
 
 - `pgbouncer`: switch our own [`ghcr.io/mobidata-bw/pgbouncer` image](https://github.com/mobidata-bw/bitnami-pgbouncer-image/pkgs/container/pgbouncer) because bitnami's upstream image is not maintained anymore
   - Refer to [#422](https://github.com/mobidata-bw/ipl-orchestration/issues/422) for more details.
