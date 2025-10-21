@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Refer to [#422](https://github.com/mobidata-bw/ipl-orchestration/issues/422) for more details.
 - Lamassu: add `bird-schaffhausen`, `nextbike_ms`, `mybuxi_ch` feeds
 - [x2gbfs 2025-10-20T07-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-20)
+- [ParkAPI 0.35.0](https://github.com/ParkenDD/park-api-v3/blob/1c9f68891526b5091c347d9789838f5f0cb748bb/CHANGELOG.md#0350)
+  - with new restriction system, deprecating `capacity_{audience}` and `restricted_to` fields
 
 ## 2025-10-15
 
