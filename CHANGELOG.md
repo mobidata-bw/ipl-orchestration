@@ -441,7 +441,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `ingress`: adapt `gtfs-api` docs redirect rules to Traefik v3 syntax
-- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/_/traefik) to [`v12.2.8`](https://hub.docker.com/layers/postgrest/postgrest/v12.2.8/images/sha256-914f1e934017ac8e27f66b4264d7ad2609aead8d84ae772832c7550477ac4d20)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v12.2.8`](https://hub.docker.com/layers/postgrest/postgrest/v12.2.8/images/sha256-914f1e934017ac8e27f66b4264d7ad2609aead8d84ae772832c7550477ac4d20)
 - `ingesss`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.3`](https://hub.docker.com/layers/library/traefik/v3.3/images/sha256-ddd31b82ff1d4678974ef6dbc19796dee0185ae79fcb751f9cd9df40287e847f)
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.9.1-alpine`](https://hub.docker.com/layers/library/caddy/2.9.1-alpine/images/sha256-c1b2ca303d5fe9c33f74c571066b35a087c3d2501463454cc02e252371222d8b)
 
