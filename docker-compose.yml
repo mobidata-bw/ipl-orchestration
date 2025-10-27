@@ -636,6 +636,10 @@ services:
       - "traefik.http.middlewares.gtfs-stripprefix.stripprefix.prefixes=/gtfs"
       - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
+    healthcheck:
+      test: 'env PGRST_ADMIN_SERVER_HOST=localhost postgrest --ready'
+      interval: 0m5s
+      timeout: 3s
 
   gtfs-importer:
     networks: [ipl]
