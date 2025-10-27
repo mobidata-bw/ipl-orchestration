@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [x2gbfs 2025-11-17T08-03](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-11-17)
 - GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
 - `gtfs-api`: Hard-code `platform` to `linux/amd64` to avoid problems on `arm64` platforms.
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.0`](https://github.com/PostgREST/postgrest/releases/tag/v14.0) ([`v13.0.0` release](https://github.com/PostgREST/postgrest/releases/tag/v13.0.0)).
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2025-10-22T09.46.22_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), upgrading pgbouncer to [`afa4959`](https://github.com/bitnami/containers/tree/afa4959/bitnami/pgbouncer).
 
 ## 2025-11-12

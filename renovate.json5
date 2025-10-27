@@ -51,5 +51,14 @@
 			],
 			"allowedVersions": "/^v\\d+-/",
 		},
+
+		// > From now on PostgREST will follow a MAJOR.PATCH two-part versioning. Only even-numbered MAJOR versions will be released, reserving odd-numbered MAJOR versions for development.
+		// https://github.com/PostgREST/postgrest/releases/tag/v14.0
+		{
+			"matchPackageNames": [
+				"postgrest/postgrest",
+			],
+			"allowedVersions": "/^v\\d*[02468]\\.\\d+$/",
+		},
 	],
 }
