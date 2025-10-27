@@ -34,6 +34,7 @@
 				"ghcr.io/mobidata-bw/dagster-dagit",
 				"ghcr.io/mobidata-bw/dagster-daemon",
 				"ghcr.io/mobidata-bw/ipl-proxy",
+				"ghcr.io/mobidata-bw/pgbouncer",
 				"ghcr.io/mobidata-bw/postgis-with-pg-plan-filter",
 				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
 				"ghcr.io/mobidata-bw/x2gbfs",
@@ -49,6 +50,15 @@
 				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
 			],
 			"allowedVersions": "/^v\\d+-/",
+		},
+
+		// > From now on PostgREST will follow a MAJOR.PATCH two-part versioning. Only even-numbered MAJOR versions will be released, reserving odd-numbered MAJOR versions for development.
+		// https://github.com/PostgREST/postgrest/releases/tag/v14.0
+		{
+			"matchPackageNames": [
+				"postgrest/postgrest",
+			],
+			"allowedVersions": "/^v\\d*[02468]\\.\\d+$/",
 		},
 	],
 }
