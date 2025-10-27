@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-10-22T10.41.11-588c98b`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/588c98b) – If you have not disabled the GTFS tidying (using `GTFSTIDY_BEFORE_IMPORT=false`), [`gtfsclean`](https://github.com/public-transport/gtfsclean) (a fork) will now be used instead of [`gtfstidy`](https://github.com/patrickbr/gtfstidy).
 - GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
 - `gtfs-api`: Hard-code `platform` to `linux/amd64` to avoid problems on `arm64` platforms.
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.24`](https://github.com/skriptfabrik/elements-cli/commits/0.5.24)
 
 ## 2025-10-21
 
