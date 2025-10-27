@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
+
 ## 2025-11-12
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.26`](https://github.com/skriptfabrik/elements-cli/commits/0.5.26)
