@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## unreleased
 
 - [x2gbfs 2025-11-17T08-03](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-11-17)
+- GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
 
 ## 2025-11-12
 
