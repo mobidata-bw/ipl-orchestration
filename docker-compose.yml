@@ -271,6 +271,7 @@ services:
   ipl-db:
     networks: [ipl]
     image: ${IPL_POSTGIS_IMAGE}
+    platform: linux/amd64
     volumes:
       - ./var/ipl-db/data:/var/lib/postgresql/data
     environment:
