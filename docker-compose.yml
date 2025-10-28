@@ -482,7 +482,7 @@ services:
       pgbouncer:
         condition: service_healthy
       dagster-pipeline:
-        condition: service_started
+        condition: service_healthy
     restart: unless-stopped
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
