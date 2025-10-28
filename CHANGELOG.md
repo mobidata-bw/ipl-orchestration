@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-10-22T10.41.11-588c98b`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/588c98b) – If you have not disabled the GTFS tidying (using `GTFSTIDY_BEFORE_IMPORT=false`), [`gtfsclean`](https://github.com/public-transport/gtfsclean) (a fork) will now be used instead of [`gtfstidy`](https://github.com/patrickbr/gtfstidy).
+- [ParkAPI 0.36.0](https://github.com/ParkenDD/park-api-v3/blob/512f6e91b79ef49989ac8f0bc8e38b08547a4b37/CHANGELOG.md#0360)
+  - with bounding box search
+- [OCPDB 2.3.1](https://github.com/binary-butterfly/ocpdb/blob/d657e5aa2af5a09d5b4153860f7498b9becb63f5/CHANGELOG.md#version-231)
+  - with better geo-validation
 
 ## 2025-10-21
 
