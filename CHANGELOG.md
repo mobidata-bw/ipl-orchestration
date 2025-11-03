@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- GeoServer layer `MobiData-BW:bicycle_service_points`: add style and change SRS to `EPSG:25832`
+
 ## 2025-10-28
 
 - ⚠️ `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-10-22T10.41.11-588c98b`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/588c98b) – If you have not disabled the GTFS tidying (using `GTFSTIDY_BEFORE_IMPORT=false`), [`gtfsclean`](https://github.com/public-transport/gtfsclean) (a fork) will now be used instead of [`gtfstidy`](https://github.com/patrickbr/gtfstidy).
