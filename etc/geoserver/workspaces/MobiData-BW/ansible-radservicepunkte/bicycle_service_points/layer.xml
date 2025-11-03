@@ -1,17 +1,17 @@
 <layer>
   <name>bicycle_service_points</name>
-  <id>LayerInfoImpl--2a4db5d8:1994d39f4b6:-7fb3</id>
+  <id>LayerInfoImpl-677667d0:19a2ad95c4f:-7f95</id>
   <type>VECTOR</type>
   <defaultStyle>
-    <id>StyleInfoImpl-43d18f1:1999989287e:-8000</id>
+    <id>StyleInfoImpl-677667d0:19a2ad95c4f:-7fb8</id>
   </defaultStyle>
   <resource class="featureType">
-    <id>FeatureTypeInfoImpl--2a4db5d8:1994d39f4b6:-7fb4</id>
+    <id>FeatureTypeInfoImpl-677667d0:19a2ad95c4f:-7f96</id>
   </resource>
   <attribution>
     <logoWidth>0</logoWidth>
     <logoHeight>0</logoHeight>
   </attribution>
-  <dateCreated>2025-09-23 11:53:16.307 UTC</dateCreated>
-  <dateModified>2025-09-30 12:06:12.42 UTC</dateModified>
+  <dateCreated>2025-11-03 09:05:28.828 UTC</dateCreated>
+  <dateModified>2025-11-03 09:19:48.178 UTC</dateModified>
 </layer>
