@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 - GeoServer layer `MobiData-BW:bicycle_service_points`: add style and change SRS to `EPSG:25832`
+- [ParkAPI 0.37.0](https://github.com/ParkenDD/park-api-v3/blob/33d4b0f3d1f81c89467017795a71492924a4e65e/CHANGELOG.md#0370)
+  - with Freiburg VAG bike boxes, legacy api support and documentation fixes
 
 ## 2025-10-28
 
