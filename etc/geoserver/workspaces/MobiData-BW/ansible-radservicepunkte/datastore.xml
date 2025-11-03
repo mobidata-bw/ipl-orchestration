@@ -1,6 +1,7 @@
 <dataStore>
   <id>DataStoreInfoImpl--2a4db5d8:1994d39f4b6:-7fb5</id>
   <name>ansible-radservicepunkte</name>
+  <description>Bicycle service points as GeoPackage</description>
   <type>GeoPackage</type>
   <enabled>true</enabled>
   <workspace>
@@ -10,13 +11,13 @@
     <entry key="Batch insert size">1</entry>
     <entry key="database">file:data/ansible-files/radservicepunkte.gpkg</entry>
     <entry key="fetch size">1000</entry>
-    <entry key="Expose primary keys">false</entry>
+    <entry key="Expose primary keys">true</entry>
     <entry key="read_only">true</entry>
     <entry key="dbtype">geopkg</entry>
     <entry key="namespace">mdbw</entry>
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2025-09-23 11:52:56.123 UTC</dateCreated>
-  <dateModified>2025-11-03 09:02:50.835 UTC</dateModified>
+  <dateModified>2025-11-03 10:28:21.590 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
