@@ -7,16 +7,16 @@
     <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
   </workspace>
   <connectionParameters>
-    <entry key="fetch size">1000</entry>
-    <entry key="Expose primary keys">false</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="database">file:data/ansible-files/radservicepunkte.gpkg</entry>
+    <entry key="fetch size">1000</entry>
+    <entry key="Expose primary keys">false</entry>
     <entry key="read_only">true</entry>
     <entry key="dbtype">geopkg</entry>
     <entry key="namespace">mdbw</entry>
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2025-09-23 11:52:56.123 UTC</dateCreated>
-  <dateModified>2025-09-23 12:05:13.935 UTC</dateModified>
+  <dateModified>2025-11-03 09:02:50.835 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
