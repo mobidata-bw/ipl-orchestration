@@ -184,7 +184,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Fahrradhalterung?</en-US>
+        <en-US>Fahrradhalterung für Reparaturen?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -205,7 +205,7 @@
       <binding>java.lang.String</binding>
       <source>&quot;Zuständig_in_RadVIS&quot;</source>
       <description>
-        <en-US>Wer ist in RadVIS für die Pflege zuständig?</en-US>
+        <en-US>Datengeber/Bearbeiter in RadVIS (aus RadVIS übernommen)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -236,7 +236,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Quellsystem der Radservicestation (von RadVIS gesetzt)</en-US>
+        <en-US>Quellsystem der Radservicestation in RadVIS (aus RadVIS übernommen)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -246,7 +246,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>In RadKULTUR enthalten?</en-US>
+        <en-US>Teil der RadKULTUR-Kampagne?</en-US>
       </description>
     </attribute>
     <attribute>

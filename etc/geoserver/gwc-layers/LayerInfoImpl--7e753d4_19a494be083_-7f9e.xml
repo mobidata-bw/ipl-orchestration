@@ -23,7 +23,7 @@
     <styleParameterFilter>
       <key>STYLES</key>
       <defaultValue></defaultValue>
-      <allowedStyles class="sorted-set"/>
+      <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
       <availableStyles class="sorted-set"/>
       <defaultStyle>MobiData-BW:mdbw_bicycle_service_points</defaultStyle>
     </styleParameterFilter>
