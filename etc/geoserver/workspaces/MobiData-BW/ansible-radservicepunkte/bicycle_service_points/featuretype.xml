@@ -73,7 +73,7 @@
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <en-US>ID der Radservicestation</en-US>
+        <de>ID der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -83,7 +83,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Datengeber der Radservicestation</en-US>
+        <de>Datengeber der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -94,7 +94,7 @@
       <binding>java.lang.String</binding>
       <source>Externe_ID</source>
       <description>
-        <en-US>Ursprüngliche ID der Radservicestation beim Datengeber</en-US>
+        <de>Ursprüngliche ID der Radservicestation beim Datengeber</de>
       </description>
     </attribute>
     <attribute>
@@ -104,7 +104,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Name der Radservicestation</en-US>
+        <de>Name der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -114,7 +114,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Gebührenpflichtige Nutzung?</en-US>
+        <de>Gebührenpflichtige Nutzung?</de>
       </description>
     </attribute>
     <attribute>
@@ -124,7 +124,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Öffnungszeiten der Radservicestation</en-US>
+        <de>Öffnungszeiten der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -134,7 +134,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Betreiber der Radservicestation</en-US>
+        <de>Betreiber der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -144,7 +144,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Marke bzw. Hersteller der Radservicestation</en-US>
+        <de>Marke bzw. Hersteller der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -154,7 +154,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Luftpumpe?</en-US>
+        <de>Luftpumpe?</de>
       </description>
     </attribute>
     <attribute>
@@ -164,7 +164,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Kettenwerkzeug?</en-US>
+        <de>Kettenwerkzeug?</de>
       </description>
     </attribute>
     <attribute>
@@ -174,7 +174,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Werkzeug?</en-US>
+        <de>Werkzeug?</de>
       </description>
     </attribute>
     <attribute>
@@ -184,7 +184,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Fahrradhalterung für Reparaturen?</en-US>
+        <de>Fahrradhalterung für Reparaturen?</de>
       </description>
     </attribute>
     <attribute>
@@ -194,7 +194,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Beschreibung</en-US>
+        <de>Beschreibung</de>
       </description>
     </attribute>
     <attribute>
@@ -205,7 +205,7 @@
       <binding>java.lang.String</binding>
       <source>&quot;Zuständig_in_RadVIS&quot;</source>
       <description>
-        <en-US>Datengeber/Bearbeiter in RadVIS (aus RadVIS übernommen)</en-US>
+        <de>Datengeber/Bearbeiter in RadVIS (aus RadVIS übernommen)</de>
       </description>
     </attribute>
     <attribute>
@@ -216,7 +216,7 @@
       <binding>java.lang.String</binding>
       <source>&quot;Servicestation-Typ&quot;</source>
       <description>
-        <en-US>Typ der Radservicestation</en-US>
+        <de>Typ der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -226,7 +226,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Status der Radservicestation</en-US>
+        <de>Status der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -236,7 +236,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Quellsystem der Radservicestation in RadVIS (aus RadVIS übernommen)</en-US>
+        <de>Quellsystem der Radservicestation in RadVIS (aus RadVIS übernommen)</de>
       </description>
     </attribute>
     <attribute>
@@ -246,7 +246,7 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Teil der RadKULTUR-Kampagne?</en-US>
+        <de>Teil der RadKULTUR-Kampagne?</de>
       </description>
     </attribute>
     <attribute>
@@ -256,7 +256,7 @@
       <nillable>true</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <en-US>Geometrie</en-US>
+        <de>Geometrie</de>
       </description>
     </attribute>
   </attributes>
