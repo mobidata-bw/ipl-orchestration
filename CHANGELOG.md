@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
-- GeoServer layer `MobiData-BW:bicycle_service_points`: add style and change SRS to `EPSG:25832`
+- GeoServer layer `MobiData-BW:bicycle_service_points`: add style, change SRS to `EPSG:25832`, add attribute descriptions
 - `gtfs-importer`: upgraded [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v5-2025-11-04t11.28.22-494c209`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/494c209) – This fixes the GTFS import on non-`linux/arm64` (e.g. `linux/amd64`) platforms.
 
 ## 2025-10-28
