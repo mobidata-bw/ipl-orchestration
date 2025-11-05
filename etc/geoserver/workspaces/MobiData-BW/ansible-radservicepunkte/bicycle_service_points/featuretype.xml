@@ -1,5 +1,5 @@
 <featureType>
-  <id>FeatureTypeInfoImpl-677667d0:19a2ad95c4f:-7f96</id>
+  <id>FeatureTypeInfoImpl--7e753d4:19a494be083:-7f9f</id>
   <name>bicycle_service_points</name>
   <nativeName>radservicepunkte</nativeName>
   <namespace>
@@ -8,10 +8,10 @@
   <title>Radservicepunkte</title>
   <abstract>Radservicepunkte in Baden-Württemberg</abstract>
   <keywords>
-    <string>Radservicepunkt\@language=de\;</string>
     <string>Fahrrad\@language=de\;</string>
-    <string>Radservicestation\@language=de\;</string>
     <string>Radreparaturstation\@language=de\;</string>
+    <string>Radservicestation\@language=de\;</string>
+    <string>Radservicepunkt\@language=de\;</string>
   </keywords>
   <nativeCRS class="projected">PROJCS[&quot;ETRS89 / UTM zone 32N&quot;, 
   GEOGCS[&quot;ETRS89&quot;, 
@@ -37,16 +37,16 @@
   <srs>EPSG:25832</srs>
   <nativeBoundingBox>
     <minx>374275.7193899754</minx>
-    <maxx>601028.3729430264</maxx>
-    <miny>5258219.657253311</miny>
-    <maxy>5503287.045142399</maxy>
+    <maxx>598089.3905386212</maxx>
+    <miny>5266759.811142291</miny>
+    <maxy>5488646.304229589</maxy>
     <crs class="projected">EPSG:25832</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
     <minx>7.2</minx>
-    <maxx>10.5</maxx>
-    <miny>47.4</miny>
-    <maxy>49.7</maxy>
+    <maxx>10.4</maxx>
+    <miny>47.5</miny>
+    <maxy>49.6</maxy>
     <crs>EPSG:4326</crs>
   </latLonBoundingBox>
   <projectionPolicy>FORCE_DECLARED</projectionPolicy>
@@ -65,6 +65,201 @@
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
   <forcedDecimal>false</forcedDecimal>
+  <attributes>
+    <attribute>
+      <name>ID</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Long</binding>
+      <description>
+        <de>ID der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Datengeber</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Datengeber der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Externe ID</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <source>Externe_ID</source>
+      <description>
+        <de>Ursprüngliche ID der Radservicestation beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Name</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Name der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Gebühren</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Gebührenpflichtige Nutzung?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Öffnungszeiten</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Öffnungszeiten der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Betreiber</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Betreiber der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Marke</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Marke bzw. Hersteller der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Luftpumpe</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Luftpumpe?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Kettenwerkzeug</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Kettenwerkzeug?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Werkzeug</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Werkzeug?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Fahrradhalterung</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Fahrradhalterung für Reparaturen?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Beschreibung</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Zuständig in RadVIS</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <source>&quot;Zuständig_in_RadVIS&quot;</source>
+      <description>
+        <de>Datengeber/Bearbeiter in RadVIS (aus RadVIS übernommen)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Servicestation-Typ</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <source>&quot;Servicestation-Typ&quot;</source>
+      <description>
+        <de>Typ der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Status</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Status der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Quellsystem</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Quellsystem der Radservicestation in RadVIS (aus RadVIS übernommen)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>RadKULTUR</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Teil der RadKULTUR-Kampagne?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>geometry</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>org.locationtech.jts.geom.Point</binding>
+      <description>
+        <de>Geometrie</de>
+      </description>
+    </attribute>
+  </attributes>
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
