@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.26`](https://github.com/skriptfabrik/elements-cli/commits/0.5.26)
+
 ## 2025-11-05
 
 - GeoServer layer `MobiData-BW:bicycle_service_points`: add style, change SRS to `EPSG:25832`, add attribute descriptions
