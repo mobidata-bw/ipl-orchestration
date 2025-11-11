@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2025-11-11
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.26`](https://github.com/skriptfabrik/elements-cli/commits/0.5.26)
 - [ParkAPI 0.38.0](https://github.com/ParkenDD/park-api-v3/blob/f2a1c0da9a9eb09537be7c256cec72bf6a88e009/CHANGELOG.md#0380)
