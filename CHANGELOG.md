@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-11-12
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.26`](https://github.com/skriptfabrik/elements-cli/commits/0.5.26)
-- [ParkAPI 0.38.0](https://github.com/ParkenDD/park-api-v3/blob/f2a1c0da9a9eb09537be7c256cec72bf6a88e009/CHANGELOG.md#0380)
+- [ParkAPI 0.38.1](https://github.com/ParkenDD/park-api-v3/blob/f2a1c0da9a9eb09537be7c256cec72bf6a88e009/CHANGELOG.md#0380)
   - with bfrk disabled spots, legacy restricted_to support and more tests
 
 ## 2025-11-05
