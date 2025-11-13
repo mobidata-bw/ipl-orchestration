@@ -58,7 +58,7 @@ services:
   # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
-    image: traefik:v3.5
+    image: traefik:v3.6.1
     ports:
       # todo: change to 80:80
       - "8080:80"
