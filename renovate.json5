@@ -10,7 +10,9 @@
 		// [2] https://docs.renovatebot.com/modules/manager/regex/
 		{
 			"customType": "regex",
-			"fileMatch": ["^\\.env$"],
+			"managerFilePatterns": [
+				"/^\\.env$/",
+			],
 			"matchStrings": [
 				// some examples from .env:
 				// - `TRANSFORMER_PROXY_IMAGE=ghcr.io/mobidata-bw/ipl-proxy:2024-04-23T16-02`
