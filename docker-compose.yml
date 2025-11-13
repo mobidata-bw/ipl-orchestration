@@ -271,6 +271,7 @@ services:
   ipl-db:
     networks: [ipl]
     image: ${IPL_POSTGIS_IMAGE}
+    platform: linux/amd64
     volumes:
       - ./var/ipl-db/data:/var/lib/postgresql/data
     environment:
@@ -635,6 +636,10 @@ services:
       - "traefik.http.middlewares.gtfs-stripprefix.stripprefix.prefixes=/gtfs"
       - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
+    healthcheck:
+      test: 'env PGRST_ADMIN_SERVER_HOST=localhost postgrest --ready'
+      interval: 0m5s
+      timeout: 3s
 
   gtfs-importer:
     networks: [ipl]

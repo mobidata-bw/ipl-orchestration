@@ -10,12 +10,16 @@
 		// [2] https://docs.renovatebot.com/modules/manager/regex/
 		{
 			"customType": "regex",
-			"fileMatch": ["^\\.env$"],
+			"managerFilePatterns": [
+				"/^\\.env$/",
+			],
 			"matchStrings": [
 				// some examples from .env:
 				// - `TRANSFORMER_PROXY_IMAGE=ghcr.io/mobidata-bw/ipl-proxy:2024-04-23T16-02`
 				// - `IPL_POSTGIS_IMAGE=postgis/postgis:15-3.3-alpine`
-				"\\w+_IMAGE=(?<packageName>[^:]+):(?<currentValue>.+)",
+				// - `SFTP_IMAGE=atmoz/sftp:alpine@sha256:61313b2ba0b9aa95a5bf5ff51386963219dd019ad9a7b5f4017bedf8d7309e11`
+				// this regex is adapted from https://github.com/renovatebot/.github/blob/ccec7065e1587f993a10cb5ae1bf31ff3bae7c4e/default.json#L165
+				"\\b\\w+_IMAGE=(?<packageName>[^:]+):(?<currentValue>[a-z0-9.-]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?\\b",
 			],
 			"datasourceTemplate": "docker",
 		},
@@ -29,11 +33,13 @@
 		{
 			"matchDatasources": ["docker"],
 			"matchPackageNames": [
+				"atmoz/sftp",
 				"entur/lamassu",
 				"ghcr.io/mobidata-bw/dagster-pipeline",
 				"ghcr.io/mobidata-bw/dagster-dagit",
 				"ghcr.io/mobidata-bw/dagster-daemon",
 				"ghcr.io/mobidata-bw/ipl-proxy",
+				"ghcr.io/mobidata-bw/pgbouncer",
 				"ghcr.io/mobidata-bw/postgis-with-pg-plan-filter",
 				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
 				"ghcr.io/mobidata-bw/x2gbfs",
@@ -49,6 +55,15 @@
 				"ghcr.io/mobidata-bw/postgis-gtfs-importer",
 			],
 			"allowedVersions": "/^v\\d+-/",
+		},
+
+		// > From now on PostgREST will follow a MAJOR.PATCH two-part versioning. Only even-numbered MAJOR versions will be released, reserving odd-numbered MAJOR versions for development.
+		// https://github.com/PostgREST/postgrest/releases/tag/v14.0
+		{
+			"matchPackageNames": [
+				"postgrest/postgrest",
+			],
+			"allowedVersions": "/^v\\d*[02468]\\.\\d+$/",
 		},
 	],
 }

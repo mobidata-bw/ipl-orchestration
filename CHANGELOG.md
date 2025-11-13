@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
+- `gtfs-api`: Hard-code `platform` to `linux/amd64` to avoid problems on `arm64` platforms.
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.0`](https://github.com/PostgREST/postgrest/releases/tag/v14.0) ([`v13.0.0` release](https://github.com/PostgREST/postgrest/releases/tag/v13.0.0)).
+- `gtfs-api`: add service health check.
+- `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2025-10-22T09.46.22_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), upgrading pgbouncer to [`afa4959`](https://github.com/bitnami/containers/tree/afa4959/bitnami/pgbouncer).
+- `ipl-db`: upgrade [`postgis/postgis`](https://hub.docker.com/r/postgis/postgis) to [`15-3.5-alpine`](https://hub.docker.com/layers/postgis/postgis/14-3.5-alpine/images/sha256-7692666cfbff5a0ea6f949b7a3a4e76f35a08cf6c3b68cb56dc20cf0d83c7aa0)
+- `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-61313b2ba0b9aa95a5bf5ff51386963219dd019ad9a7b5f4017bedf8d7309e11))
+
 ## 2025-11-12
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.26`](https://github.com/skriptfabrik/elements-cli/commits/0.5.26)
@@ -432,7 +442,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - `ingress`: adapt `gtfs-api` docs redirect rules to Traefik v3 syntax
-- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/_/traefik) to [`v12.2.8`](https://hub.docker.com/layers/postgrest/postgrest/v12.2.8/images/sha256-914f1e934017ac8e27f66b4264d7ad2609aead8d84ae772832c7550477ac4d20)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v12.2.8`](https://hub.docker.com/layers/postgrest/postgrest/v12.2.8/images/sha256-914f1e934017ac8e27f66b4264d7ad2609aead8d84ae772832c7550477ac4d20)
 - `ingesss`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.3`](https://hub.docker.com/layers/library/traefik/v3.3/images/sha256-ddd31b82ff1d4678974ef6dbc19796dee0185ae79fcb751f9cd9df40287e847f)
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.9.1-alpine`](https://hub.docker.com/layers/library/caddy/2.9.1-alpine/images/sha256-c1b2ca303d5fe9c33f74c571066b35a087c3d2501463454cc02e252371222d8b)
 
