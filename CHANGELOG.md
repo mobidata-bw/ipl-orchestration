@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `gtfs-api`: add service health check.
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2025-10-22T09.46.22_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), upgrading pgbouncer to [`afa4959`](https://github.com/bitnami/containers/tree/afa4959/bitnami/pgbouncer).
 - `ipl-db`: upgrade [`postgis/postgis`](https://hub.docker.com/r/postgis/postgis) to [`15-3.5-alpine`](https://hub.docker.com/layers/postgis/postgis/14-3.5-alpine/images/sha256-7692666cfbff5a0ea6f949b7a3a4e76f35a08cf6c3b68cb56dc20cf0d83c7aa0)
+- `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-61313b2ba0b9aa95a5bf5ff51386963219dd019ad9a7b5f4017bedf8d7309e11))
 
 ## 2025-11-12
 
