@@ -33,6 +33,7 @@
 		{
 			"matchDatasources": ["docker"],
 			"matchPackageNames": [
+				"atmoz/sftp",
 				"entur/lamassu",
 				"ghcr.io/mobidata-bw/dagster-pipeline",
 				"ghcr.io/mobidata-bw/dagster-dagit",
