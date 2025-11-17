@@ -15,6 +15,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2025-10-22T09.46.22_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), upgrading pgbouncer to [`afa4959`](https://github.com/bitnami/containers/tree/afa4959/bitnami/pgbouncer).
 - `ipl-db`: upgrade [`postgis/postgis`](https://hub.docker.com/r/postgis/postgis) to [`15-3.5-alpine`](https://hub.docker.com/layers/postgis/postgis/14-3.5-alpine/images/sha256-7692666cfbff5a0ea6f949b7a3a4e76f35a08cf6c3b68cb56dc20cf0d83c7aa0)
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-61313b2ba0b9aa95a5bf5ff51386963219dd019ad9a7b5f4017bedf8d7309e11))
+- [ParkAPI 0.39.0](https://github.com/ParkenDD/park-api-v3/blob/99f037f56dba5bfbe1a1b867e330c7c9c95ef0af/CHANGELOG.md#0390)
+  - with Ladenburg and Kehl ParkRaumCheck converter and several smaller improvements
+- [OCPDB 2.4.0](https://github.com/binary-butterfly/ocpdb/blob/12165e9eae5e8838b14203820e4fef43dd157c3c/CHANGELOG.md#version-240)
+  - with search for operator names, better string input handling at BNetzA and maintenance updates
+
 
 ## 2025-11-12
 
