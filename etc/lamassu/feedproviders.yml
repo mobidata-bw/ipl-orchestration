@@ -81,6 +81,12 @@ lamassu:
       codespace: SWU
       url: "file:///var/gbfs/feeds/swu2go/gbfs.json"
       language: de
+    - systemId: conficars_ulm
+      operatorId: CFU:Operator:conficars_ulm
+      operatorName: confitech Dienstleistungs GmbH
+      codespace: CFU
+      url: "file:///var/gbfs/feeds/conficars_ulm/gbfs.json"
+      language: de
     - systemId: stadtwerk_tauberfranken
       operatorId: SWT:Operator:stadtwerk_tauberfranken
       operatorName: Stadtwerk Tauberfranken
