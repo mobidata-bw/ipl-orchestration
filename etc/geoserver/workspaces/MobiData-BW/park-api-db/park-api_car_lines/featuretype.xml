@@ -307,7 +307,7 @@ WHERE&#xd;
     <attribute>
       <name>side</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
         <de>Straßenseite der Parkanlage</de>
@@ -316,7 +316,7 @@ WHERE&#xd;
     <attribute>
       <name>orientation</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
         <de>Ausrichtung der Parkanlage</de>
@@ -325,7 +325,7 @@ WHERE&#xd;
     <attribute>
       <name>parking_type</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
         <de>Verortung der Parkanlage</de>
