@@ -65,6 +65,9 @@
     NULL AS restriction_type,&#xd;
     NULL AS restriction_hours,&#xd;
     NULL AS restriction_max_stay,&#xd;
+    side,&#xd;
+    orientation,&#xd;
+    parking_type,&#xd;
     created_at,&#xd;
     modified_at,&#xd;
     static_data_updated_at,&#xd;
@@ -74,7 +77,10 @@ FROM&#xd;
 WHERE&#xd;
     purpose = &apos;CAR&apos;&#xd;
     AND duplicate_of_parking_site_id IS NULL&#xd;
-    AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+    AND (&#xd;
+        GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+        OR GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;MULTILINESTRING&apos;&#xd;
+    )&#xd;
 UNION&#xd;
 SELECT&#xd;
     ps.id,&#xd;
@@ -93,6 +99,9 @@ SELECT&#xd;
     pr.type AS restriction_type,&#xd;
     pr.hours AS restriction_hours,&#xd;
     pr.max_stay AS restriction_max_stay,&#xd;
+    NULL AS side,&#xd;
+    NULL AS orientation,&#xd;
+    NULL AS parking_type,&#xd;
     ps.created_at,&#xd;
     ps.modified_at,&#xd;
     ps.static_data_updated_at,&#xd;
@@ -102,7 +111,10 @@ FROM&#xd;
     LEFT JOIN parking_restriction pr ON ps.id = pr.parking_spot_id&#xd;
 WHERE&#xd;
     purpose = &apos;CAR&apos;&#xd;
-    AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;
+    AND (&#xd;
+        GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+        OR GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;MULTILINESTRING&apos;&#xd;
+    )
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -139,7 +151,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
+        <en-US>ID der Parkanlage (von ParkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -149,7 +161,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der übergeordneten Parkanlage</de>
+        <en-US>ID der übergeordneten Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -159,7 +171,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
+        <en-US>ID des Datengebers (von ParkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -169,7 +181,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+        <en-US>Ursprüngliche ID der Parkanlage beim Datengeber</en-US>
       </description>
     </attribute>
     <attribute>
@@ -179,7 +191,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Name der Parkanlage</de>
+        <en-US>Name der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -189,7 +201,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Betreiber der Parkanlage</de>
+        <en-US>Betreiber der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -199,7 +211,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Adresse der Parkanlage</de>
+        <en-US>Adresse der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -209,7 +221,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkobjekt</de>
+        <en-US>Parkobjekt</en-US>
       </description>
     </attribute>
     <attribute>
@@ -219,7 +231,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Zweck der Parkanlage</de>
+        <en-US>Zweck der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -229,7 +241,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der Parkanlage</de>
+        <en-US>Art der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -239,7 +251,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitinformationen?</de>
+        <en-US>Echtzeitinformationen?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -249,7 +261,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Echtzeit-Belegungsstatus</de>
+        <en-US>Echtzeit-Belegungsstatus</en-US>
       </description>
     </attribute>
     <attribute>
@@ -259,7 +271,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze</de>
+        <en-US>Anzahl Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -269,7 +281,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Personengruppen</de>
+        <en-US>Parkbeschränkung - Personengruppen</en-US>
       </description>
     </attribute>
     <attribute>
@@ -279,7 +291,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Uhrzeit</de>
+        <en-US>Parkbeschränkung - Uhrzeit</en-US>
       </description>
     </attribute>
     <attribute>
@@ -289,7 +301,34 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Aufenthaltsdauer</de>
+        <en-US>Parkbeschränkung - Aufenthaltsdauer</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>side</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Straßenseite der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>orientation</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Ausrichtung der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Verortung der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -299,7 +338,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Erstellungsdatum in der ParkAPI</de>
+        <en-US>Erstellungsdatum in der ParkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -309,7 +348,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
+        <en-US>Zeitpunkt der letzten Änderung in der ParkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -319,7 +358,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
+        <en-US>Letzter Aktualisierungszeitpunkt der statischen Daten</en-US>
       </description>
     </attribute>
     <attribute>
@@ -329,7 +368,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.LineString</binding>
       <description>
-        <de>Koordinate der Parkanlage</de>
+        <en-US>Koordinate der Parkanlage</en-US>
       </description>
     </attribute>
   </attributes>

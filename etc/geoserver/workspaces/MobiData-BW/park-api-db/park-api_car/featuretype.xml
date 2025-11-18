@@ -97,6 +97,9 @@
     NULL AS restriction_type,&#xd;
     NULL AS restriction_hours,&#xd;
     NULL AS restriction_max_stay,&#xd;
+    side,&#xd;
+    orientation,&#xd;
+    parking_type,&#xd;
     created_at,&#xd;
     modified_at,&#xd;
     static_data_updated_at,&#xd;
@@ -160,6 +163,9 @@ SELECT&#xd;
     pr.type AS restriction_type,&#xd;
     pr.hours AS restriction_hours,&#xd;
     pr.max_stay AS restriction_max_stay,&#xd;
+    NULL AS side,&#xd;
+    NULL AS orientation,&#xd;
+    NULL AS parking_type,&#xd;
     ps.created_at,&#xd;
     ps.modified_at,&#xd;
     ps.static_data_updated_at,&#xd;
@@ -202,7 +208,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
+        <en-US>ID der Parkanlage (von ParkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -212,7 +218,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID der übergeordneten Parkanlage</de>
+        <en-US>ID der übergeordneten Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -222,7 +228,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
+        <en-US>ID des Datengebers (von ParkAPI erzeugt)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -232,7 +238,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+        <en-US>Ursprüngliche ID der Parkanlage beim Datengeber</en-US>
       </description>
     </attribute>
     <attribute>
@@ -242,7 +248,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Name der Parkanlage</de>
+        <en-US>Name der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -252,7 +258,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Betreiber der Parkanlage</de>
+        <en-US>Betreiber der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -262,7 +268,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Adresse der Parkanlage</de>
+        <en-US>Adresse der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -272,7 +278,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkobjekt</de>
+        <en-US>Parkobjekt</en-US>
       </description>
     </attribute>
     <attribute>
@@ -282,7 +288,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Zweck der Parkanlage</de>
+        <en-US>Zweck der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -292,7 +298,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der Parkanlage</de>
+        <en-US>Art der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -302,7 +308,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Link zur Webseite</de>
+        <en-US>Link zur Webseite</en-US>
       </description>
     </attribute>
     <attribute>
@@ -312,7 +318,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Link zu einem Foto der Parkanlage</de>
+        <en-US>Link zu einem Foto der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -322,7 +328,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>description</de>
+        <en-US>description</en-US>
       </description>
     </attribute>
     <attribute>
@@ -332,7 +338,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Maximale Parkdauer</de>
+        <en-US>Maximale Parkdauer</en-US>
       </description>
     </attribute>
     <attribute>
@@ -342,7 +348,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Beleuchtung?</de>
+        <en-US>Beleuchtung?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -352,7 +358,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Gebührenpflichtig?</de>
+        <en-US>Gebührenpflichtig?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -362,7 +368,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Beschreibung der Gebühren</de>
+        <en-US>Beschreibung der Gebühren</en-US>
       </description>
     </attribute>
     <attribute>
@@ -372,7 +378,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der P+R-Anlage</de>
+        <en-US>Art der P+R-Anlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -382,7 +388,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitinformationen?</de>
+        <en-US>Echtzeitinformationen?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -392,7 +398,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Echtzeit-Status der Parkanlage</de>
+        <en-US>Echtzeit-Status der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -402,7 +408,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Echtzeit-Belegungsstatus</de>
+        <en-US>Echtzeit-Belegungsstatus</en-US>
       </description>
     </attribute>
     <attribute>
@@ -412,7 +418,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze</de>
+        <en-US>Anzahl Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -422,7 +428,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Behinderten-Stellplätze</de>
+        <en-US>Anzahl Behinderten-Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -432,7 +438,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Frauen-Stellplätze</de>
+        <en-US>Anzahl Frauen-Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -442,7 +448,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Familien-Stellplätze</de>
+        <en-US>Anzahl Familien-Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -452,7 +458,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze mit Lademöglichkeit</de>
+        <en-US>Anzahl Stellplätze mit Lademöglichkeit</en-US>
       </description>
     </attribute>
     <attribute>
@@ -462,7 +468,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Carsharing-Stellplätze</de>
+        <en-US>Anzahl Carsharing-Stellplätze</en-US>
       </description>
     </attribute>
     <attribute>
@@ -472,7 +478,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -482,7 +488,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Behinderten-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Behinderten-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -492,7 +498,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Frauen-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Frauen-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -502,7 +508,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Familien-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Familien-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -512,7 +518,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+        <en-US>Anzahl Stellplätze mit Lademöglichkeit (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -522,7 +528,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl Carsharing-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl Carsharing-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -532,7 +538,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -542,7 +548,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Behinderten-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Behinderten-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -552,7 +558,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Frauen-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Frauen-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -562,7 +568,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Familien-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Familien-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -572,7 +578,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</de>
+        <en-US>Anzahl freier Stellplätze mit Lademöglichkeit (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -582,7 +588,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl freier Carsharing-Stellplätze (Echtzeit)</de>
+        <en-US>Anzahl freier Carsharing-Stellplätze (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
@@ -592,7 +598,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Öffnungszeiten</de>
+        <en-US>Öffnungszeiten</en-US>
       </description>
     </attribute>
     <attribute>
@@ -602,7 +608,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Maximale Einfahrtshöhe</de>
+        <en-US>Maximale Einfahrtshöhe</en-US>
       </description>
     </attribute>
     <attribute>
@@ -612,7 +618,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Überdacht?</de>
+        <en-US>Überdacht?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -622,7 +628,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Art der Überwachung</de>
+        <en-US>Art der Überwachung</en-US>
       </description>
     </attribute>
     <attribute>
@@ -632,7 +638,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Ortsbezug der Parkanlage</de>
+        <en-US>Ortsbezug der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -642,7 +648,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</de>
+        <en-US>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</en-US>
       </description>
     </attribute>
     <attribute>
@@ -652,7 +658,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Personengruppen</de>
+        <en-US>Parkbeschränkung - Personengruppen</en-US>
       </description>
     </attribute>
     <attribute>
@@ -662,7 +668,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Uhrzeit</de>
+        <en-US>Parkbeschränkung - Uhrzeit</en-US>
       </description>
     </attribute>
     <attribute>
@@ -672,7 +678,34 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Aufenthaltsdauer</de>
+        <en-US>Parkbeschränkung - Aufenthaltsdauer</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>side</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Straßenseite der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>orientation</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Ausrichtung der Parkanlage</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Verortung der Parkanlage</en-US>
       </description>
     </attribute>
     <attribute>
@@ -682,7 +715,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Erstellungsdatum in der ParkAPI</de>
+        <en-US>Erstellungsdatum in der ParkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -692,7 +725,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
+        <en-US>Zeitpunkt der letzten Änderung in der ParkAPI</en-US>
       </description>
     </attribute>
     <attribute>
@@ -702,7 +735,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
+        <en-US>Letzter Aktualisierungszeitpunkt der statischen Daten</en-US>
       </description>
     </attribute>
     <attribute>
@@ -712,7 +745,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 30 Minuten?</de>
+        <en-US>Echtzeitdaten älter als 30 Minuten?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -722,7 +755,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Verfügt die Parkanlage über eine Linien- oder Polygon-Geometrie?</de>
+        <en-US>Verfügt die Parkanlage über eine Linien- oder Polygon-Geometrie?</en-US>
       </description>
     </attribute>
     <attribute>
@@ -732,7 +765,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <de>Koordinate der Parkanlage</de>
+        <en-US>Koordinate der Parkanlage</en-US>
       </description>
     </attribute>
   </attributes>
