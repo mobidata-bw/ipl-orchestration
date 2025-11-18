@@ -4,16 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
-
-- `gtfs-api`: fix service health check on `linux/amd64`
-
 ## 2025-11-18
 
 - Lamassu: add `conficars_ulm` feed
 - [x2gbfs 2025-11-17T08-03](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-11-17): add `conficars_ulm` converter
 - `ingesss`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6`](https://hub.docker.com/layers/library/traefik/v3.6.1/images/sha256-2ba9a6e99daf342de4268279e3f90cdfc1f9d33349b04384be145247a1ef3871)
 - GTFS import: use `\getenv` instead of `\set` & shell expansion. – This fixes the setting of the `gtfs-api` query cost limit in an edge case.
+- `gtfs-api`: fix service health check on `linux/amd64`
 - `gtfs-api`: Hard-code `platform` to `linux/amd64` to avoid problems on `arm64` platforms.
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.0`](https://github.com/PostgREST/postgrest/releases/tag/v14.0) ([`v13.0.0` release](https://github.com/PostgREST/postgrest/releases/tag/v13.0.0)).
 - `gtfs-api`: add service health check.
