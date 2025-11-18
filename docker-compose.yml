@@ -625,8 +625,10 @@ services:
       PGRST_DB_ANON_ROLE: web_anon
       PGRST_DB_MAX_ROWS: ${IPL_GTFS_API_MAX_ROWS:?missing/empty}
       PGRST_ADMIN_SERVER_PORT: 3001 # exposes health check & metrics
-      # Note: This is necessary for the health check command to work!
-      PGRST_ADMIN_SERVER_HOST: localhost
+      # Note: The admin server (serving the health & metrics endpoints) uses this to listen, and the health check command uses this to connect to the admin server! This is why it has to be a link-local address [1] (or a name that resolves to such), and not `localhost` or `0.0.0.0` [2].
+      # [1] https://en.wikipedia.org/wiki/Link-local_address
+      # [2] https://en.wikipedia.org/wiki/0.0.0.0#Uses
+      PGRST_ADMIN_SERVER_HOST: gtfs-api
 
       # > Also set db-channel-enabled to false since LISTEN is not compatible with transaction pooling. Although it should not give any errors if left enabled.
       # https://postgrest.org/en/stable/references/connection_pool.html#external-connection-poolers
