@@ -151,7 +151,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <en-US>ID der Parkanlage (von ParkAPI erzeugt)</en-US>
+        <de>ID der Parkanlage (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -161,7 +161,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <en-US>ID der übergeordneten Parkanlage</en-US>
+        <de>ID der übergeordneten Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -171,7 +171,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <en-US>ID des Datengebers (von ParkAPI erzeugt)</en-US>
+        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -181,7 +181,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Ursprüngliche ID der Parkanlage beim Datengeber</en-US>
+        <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
       </description>
     </attribute>
     <attribute>
@@ -191,7 +191,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Name der Parkanlage</en-US>
+        <de>Name der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -201,7 +201,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Betreiber der Parkanlage</en-US>
+        <de>Betreiber der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -211,7 +211,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Adresse der Parkanlage</en-US>
+        <de>Adresse der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -221,7 +221,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Parkobjekt</en-US>
+        <de>Parkobjekt</de>
       </description>
     </attribute>
     <attribute>
@@ -231,7 +231,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Zweck der Parkanlage</en-US>
+        <de>Zweck der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -241,7 +241,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Art der Parkanlage</en-US>
+        <de>Art der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -251,7 +251,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <en-US>Echtzeitinformationen?</en-US>
+        <de>Echtzeitinformationen?</de>
       </description>
     </attribute>
     <attribute>
@@ -261,7 +261,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Echtzeit-Belegungsstatus</en-US>
+        <de>Echtzeit-Belegungsstatus</de>
       </description>
     </attribute>
     <attribute>
@@ -271,7 +271,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl Stellplätze</en-US>
+        <de>Anzahl Stellplätze</de>
       </description>
     </attribute>
     <attribute>
@@ -281,7 +281,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Parkbeschränkung - Personengruppen</en-US>
+        <de>Parkbeschränkung - Personengruppen</de>
       </description>
     </attribute>
     <attribute>
@@ -291,7 +291,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Parkbeschränkung - Uhrzeit</en-US>
+        <de>Parkbeschränkung - Uhrzeit</de>
       </description>
     </attribute>
     <attribute>
@@ -301,7 +301,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Parkbeschränkung - Aufenthaltsdauer</en-US>
+        <de>Parkbeschränkung - Aufenthaltsdauer</de>
       </description>
     </attribute>
     <attribute>
@@ -310,7 +310,7 @@ WHERE&#xd;
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Straßenseite der Parkanlage</en-US>
+        <de>Straßenseite der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -319,7 +319,7 @@ WHERE&#xd;
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Ausrichtung der Parkanlage</en-US>
+        <de>Ausrichtung der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -328,7 +328,7 @@ WHERE&#xd;
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Verortung der Parkanlage</en-US>
+        <de>Verortung der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -338,7 +338,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <en-US>Erstellungsdatum in der ParkAPI</en-US>
+        <de>Erstellungsdatum in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -348,7 +348,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <en-US>Zeitpunkt der letzten Änderung in der ParkAPI</en-US>
+        <de>Zeitpunkt der letzten Änderung in der ParkAPI</de>
       </description>
     </attribute>
     <attribute>
@@ -358,7 +358,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.sql.Timestamp</binding>
       <description>
-        <en-US>Letzter Aktualisierungszeitpunkt der statischen Daten</en-US>
+        <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
       </description>
     </attribute>
     <attribute>
@@ -368,7 +368,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.LineString</binding>
       <description>
-        <en-US>Koordinate der Parkanlage</en-US>
+        <de>Koordinate der Parkanlage</de>
       </description>
     </attribute>
   </attributes>
