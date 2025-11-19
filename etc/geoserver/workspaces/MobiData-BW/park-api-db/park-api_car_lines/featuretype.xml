@@ -65,6 +65,9 @@
     NULL AS restriction_type,&#xd;
     NULL AS restriction_hours,&#xd;
     NULL AS restriction_max_stay,&#xd;
+    side,&#xd;
+    orientation,&#xd;
+    parking_type,&#xd;
     created_at,&#xd;
     modified_at,&#xd;
     static_data_updated_at,&#xd;
@@ -74,7 +77,10 @@ FROM&#xd;
 WHERE&#xd;
     purpose = &apos;CAR&apos;&#xd;
     AND duplicate_of_parking_site_id IS NULL&#xd;
-    AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+    AND (&#xd;
+        GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+        OR GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;MULTILINESTRING&apos;&#xd;
+    )&#xd;
 UNION&#xd;
 SELECT&#xd;
     ps.id,&#xd;
@@ -93,6 +99,9 @@ SELECT&#xd;
     pr.type AS restriction_type,&#xd;
     pr.hours AS restriction_hours,&#xd;
     pr.max_stay AS restriction_max_stay,&#xd;
+    NULL AS side,&#xd;
+    NULL AS orientation,&#xd;
+    NULL AS parking_type,&#xd;
     ps.created_at,&#xd;
     ps.modified_at,&#xd;
     ps.static_data_updated_at,&#xd;
@@ -102,7 +111,10 @@ FROM&#xd;
     LEFT JOIN parking_restriction pr ON ps.id = pr.parking_spot_id&#xd;
 WHERE&#xd;
     purpose = &apos;CAR&apos;&#xd;
-    AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;
+    AND (&#xd;
+        GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;LINESTRING&apos;&#xd;
+        OR GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;MULTILINESTRING&apos;&#xd;
+    )
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
@@ -290,6 +302,33 @@ WHERE&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Parkbeschränkung - Aufenthaltsdauer</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>side</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Straßenseite der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>orientation</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ausrichtung der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Verortung der Parkanlage</de>
       </description>
     </attribute>
     <attribute>

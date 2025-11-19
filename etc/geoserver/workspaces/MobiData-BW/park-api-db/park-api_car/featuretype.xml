@@ -97,6 +97,9 @@
     NULL AS restriction_type,&#xd;
     NULL AS restriction_hours,&#xd;
     NULL AS restriction_max_stay,&#xd;
+    side,&#xd;
+    orientation,&#xd;
+    parking_type,&#xd;
     created_at,&#xd;
     modified_at,&#xd;
     static_data_updated_at,&#xd;
@@ -160,6 +163,9 @@ SELECT&#xd;
     pr.type AS restriction_type,&#xd;
     pr.hours AS restriction_hours,&#xd;
     pr.max_stay AS restriction_max_stay,&#xd;
+    NULL AS side,&#xd;
+    NULL AS orientation,&#xd;
+    NULL AS parking_type,&#xd;
     ps.created_at,&#xd;
     ps.modified_at,&#xd;
     ps.static_data_updated_at,&#xd;
@@ -673,6 +679,33 @@ WHERE&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Parkbeschränkung - Aufenthaltsdauer</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>side</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Straßenseite der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>orientation</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ausrichtung der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>parking_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Verortung der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
