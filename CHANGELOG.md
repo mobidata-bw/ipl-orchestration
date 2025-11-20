@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: add `orientation`, `side` and `parking_type` to ParkAPI car layers and include `MULTILINESTRING` geometries in `MobiData-BW:park-api_car_polygons`
+- lamassu: remove `gmuend_bewegt` feed 
 
 ## 2025-11-18
 
