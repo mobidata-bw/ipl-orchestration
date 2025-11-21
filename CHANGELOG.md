@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add `orientation`, `side` and `parking_type` to ParkAPI car layers and include `MULTILINESTRING` geometries in `MobiData-BW:park-api_car_polygons`
 - lamassu: remove `gmuend_bewegt` feed 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.2`](https://hub.docker.com/layers/library/traefik/v3.6.2/images/sha256-ec4fce4588f239530c79af7e2dd873877e51a5548cc51cfbf318ae6e1727e138)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.1`](https://github.com/PostgREST/postgrest/releases/tag/v14.1).
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.27`](https://github.com/skriptfabrik/elements-cli/commits/0.5.27)
 
 ## 2025-11-18
