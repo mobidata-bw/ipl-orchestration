@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-e3bf974434a9356839b634adff8e889fd80f279e2621242b5fcec69110568b9f))
+
 ## 2025-11-26
 
 - GeoServer: add `orientation`, `side` and `parking_type` to ParkAPI car layers and include `MULTILINESTRING` geometries in `MobiData-BW:park-api_car_polygons`
