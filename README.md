@@ -195,8 +195,8 @@ The following table lists all IPL components and their respective Docker Compose
 
 | component & functionality                                                           | Compose service      | permanently running? | host port | public HTTP path  | notes |
 |-------------------------------------------------------------------------------------|----------------------|----------------------|----------:|--------------------|-------|
-| HTTP ingress/reverse proxy ([Traefik Proxy](https://doc.traefik.io/traefik/))       | `traefik`            | ✔︎                    | 8080      | *n/a*              | exposes all other services via HTTP |
-| HTTP ingress/reverse proxy: admin UI                                                | `traefik`            | ✔︎                    | 8081      | *-*                | allows inspecting Traefik's operating state |
+| HTTP ingress/reverse proxy ([Traefik Proxy](https://doc.traefik.io/traefik/))       | `ingress`            | ✔︎                    | 8080      | *n/a*              | exposes all other services via HTTP |
+| HTTP ingress/reverse proxy: admin UI                                                | `ingress`            | ✔︎                    | 8081      | *-*                | allows inspecting Traefik's operating state |
 | [GeoServer](https://geoserver.org)                                                  | `geoserver`          | ✔︎                    | 8600      | `/geoserver`       | serves geospatial data sources via WMS, WFS, WMTS, etc. |
 | [OCPDB](https://github.com/binary-butterfly/ocpdb): API                             | `ocpdb-flask`        | ✔︎                    | 7000      | `/ocpdb`           | aggregates charge point data sources |
 | OCPDB: background worker                                                            | `ocpdb-worker`       | ✔︎                    | *-*       | *-*                | fetches & imports 3rd-party data |
