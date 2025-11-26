@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-e3bf974434a9356839b634adff8e889fd80f279e2621242b5fcec69110568b9f))
+- [x2gbfs 2025-11-19t12-06](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-11-26): generate feeds in gbfs v3.
+- lamassu: Bump to [the 2025-11-25T12-56 release](https://github.com/entur/lamassu/blob/c6d77a4e8c875ca887a6ba76d520872c149a5a7d/Changelog.md) and ingest local feeds in v3.
 
 ## 2025-11-26
 
