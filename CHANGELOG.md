@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2025-11-26
 
 - GeoServer: add `orientation`, `side` and `parking_type` to ParkAPI car layers and include `MULTILINESTRING` geometries in `MobiData-BW:park-api_car_polygons`
 - lamassu: remove `gmuend_bewegt` feed
@@ -13,7 +13,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.27`](https://github.com/skriptfabrik/elements-cli/commits/0.5.27)
 - [OCPDB 2.5.0](https://github.com/binary-butterfly/ocpdb/blob/7f984f5f37b6a66806a5d3efc73412147b7e0adc/CHANGELOG.md#version-250)
   - with eaaze pbw source and several fixes bringing search functionality back and speeding it up using indices and better loading stategies
-
 
 ## 2025-11-18
 
