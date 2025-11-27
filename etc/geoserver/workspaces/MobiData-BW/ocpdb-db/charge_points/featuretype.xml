@@ -54,7 +54,10 @@ SELECT location.id, &#xd;
        location.lon, &#xd;
        location.source, &#xd;
        location.name, &#xd;
-       location.address, &#xd;
+       location.address,&#xd;
+       location.postal_code,&#xd;
+       location.city,&#xd;
+       location.state,&#xd;
        cp.chargepoint_available_count, &#xd;
        cp.chargepoint_unknown_count, &#xd;
        cp.chargepoint_static_count, &#xd;
@@ -160,6 +163,33 @@ LEFT JOIN business&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Adresse des Ladestandortes</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>postal_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Postleitzahl des Ladestandortes</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>city</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Ort des Ladestandortes</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>state</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Bundesland des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
