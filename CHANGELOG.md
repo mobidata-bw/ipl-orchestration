@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-e3bf974434a9356839b634adff8e889fd80f279e2621242b5fcec69110568b9f))
+- GeoServer: add `postal_code`, `city` and `state` to `MobiData-BW:charge_points`
 
 ## 2025-11-26
 
