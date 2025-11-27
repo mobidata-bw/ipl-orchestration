@@ -234,4 +234,19 @@ The following table lists all IPL components and their respective Docker Compose
 | SFTP server                                                                         | `sftp`               | ✔︎                    | 10022     | *-*                | lets the police upload traffic incidents |
 | computation of request statistics ([GoAccess](https://goaccess.io))                 | `goaccess`           |                      | *-*       | *-*                | generates reports from the Traefik (`ingress`) requests log; started manually/externally |
 
-todo: explain monitoring
+### monitoring
+
+To run IPL reliably, we recommend monitoring
+- the host machine (e.g. using the [node exporter](https://github.com/prometheus/node_exporter))
+- IPL's services in general (e.g. using the [blackbox exporter](https://github.com/prometheus/blackbox_exporter))
+- the Docker daemon
+
+In addition, some of IPL's services also expose domain-specific metrics:
+
+| Compose service  | host port | which metrics |
+|------------------|-----------|-------|
+| `ingress`        | 8081      | HTTP requests count/rate/duration/status codes, Go runtime |
+| `lamassu`        | 9002      | GBFS errors/sync status, HTTP requests, JVM runtime |
+| `ocpdb-flask`    | 7000      | sources status/errors |
+| `gtfs-api`       | 4002      | date/time of GTFS import, DB connection stats, PostgREST internals |
+| `park-api-flask` | 7500      | sources status/errors |
