@@ -100,6 +100,7 @@ Refer to the [*Controlling Docker Compose Services* section](#controlling-docker
 Because IPL is basically a set of [Docker Compose](https://docs.docker.com/compose/) services, it is also operated this way.
 
 > [!IMPORTANT]
+>
 > The following code snippets assume that you have either defined all config values necessary for your local installation in `.env.local` (recommended, check the installation instructions), or `export`ed them as environment variables.
 
 There is a [Makefile](https://en.wikipedia.org/wiki/Make_(software)#Makefiles) which defines shortcuts for useful Compose commands; It assumes that you're using `.env.local`. The equivalent shortcut is shown beneath each “manual” `docker compose` command.
@@ -123,6 +124,7 @@ make docker-up SERVICE="lamassu redis"
 ```
 
 > [!NOTE]
+>
 > It often makes sense to start all services of one "domain" together because often they rely on each other. For example, if you want to work with the ParkAPI API (`park-api-flask`), we recommend starting all ParkAPI services (`park-api-flask`, `park-api-worker`, etc.).
 
 If you want to run all services in a detached mode (a.k.a. as daemons), use the `--detatch`/`-d` option. This way, you can close you shell session, and they will keep running.
@@ -170,6 +172,7 @@ make docker-up-detached
 ```
 
 > [!WARNING]
+>
 > `docker compose restart` *does not* take changes to `.env` or `.env.local` into account! It merely restarts the services' containers with the environment variables as when they were originally started. To restart all services with modified/new environment variables, use `down` & `up`, as illustrated above. This should be your default workflow instead.
 
 
