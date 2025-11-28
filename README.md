@@ -12,17 +12,19 @@ Most of these components are third-party projects, re-used in order to provide i
 
 ## Installation
 
-> ![IMPORTANT]
+> [!IMPORTANT]
+>
 > `ipl-orchestration` is intended to be deployed via [Ansible](https://docs.ansible.com/ansible/latest/), using the playbooks defined in [`ipl-ansible`](https://github.com/mobidata-bw/ipl-ansible), but it should also be usable "standalone". The following steps explain how to set it up manually.
 
 ### Prerequisites
 
-First, we have to install [Docker Desktop](https://docs.docker.com/desktop/); Follow the [official installation instructions](https://docs.docker.com/get-docker/). You also need [Docker Compose](https://docs.docker.com/compose/), which is usually bundled with Docker Desktop.
+First, we have to install the [Docker Engine (Community Edition)](https://docs.docker.com/engine/), its command-line interface (CLI) and [Docker Compose](https://docs.docker.com/compose/); Developers usually install [Docker Desktop](https://docs.docker.com/desktop/) and get them out-of-the-box; Follow [Docker's official installation instructions](https://docs.docker.com/get-docker/).
 
 <details>
 <summary>Docker installation instructions for Debian/Ubuntu</summary>
 
-> ![WARNING]
+> [!WARNING]
+>
 > These instructions may become outdated, please check the official Docker documentation.
 
 Because we want to use the *latest* Docker packages, we set up the official package sources by Docker Inc. instead of using the built-in system sources.
@@ -58,6 +60,7 @@ git clone https://github.com/mobidata-bw/ipl-orchestration.git .
 ### `.env.local` file
 
 > [!NOTE]
+>
 > Most IPL services will run as-is with their default configuration specified in the `.env` file.
 > However, some services need customization to your local installation using an additional `.env.local` file that partially overrides `.env` and that is not checked into Git version control.
 
@@ -73,9 +76,11 @@ cp .env.local.example .env.local
 
 ### Pull Docker Images
 
-Make sure you have access to the [Docker images hosted in the `mobidata-bw` GitHub orginization]([GitHub Container Registry (GHCR a.k.a. `ghcr.io`)](https://github.com/orgs/mobidata-bw/packages)) by pulling them.
+Make sure you have access to the [Docker images hosted in the `mobidata-bw` orginization's GitHub Container Registry (a.k.a. `ghcr.io`)](https://github.com/orgs/mobidata-bw/packages) by pulling them.
 
-*Note:* Because running Docker Compose with *both* `.env` & `.env.local` is tedious, [the Makefile](Makefile) defines shortcuts for common `docker compose` commands, `make docker-pull` in this case.
+> [!NOTE]
+>
+> Because running Docker Compose with *both* `.env` & `.env.local` is tedious, [the Makefile](Makefile) defines shortcuts for common `docker compose` commands, `make docker-pull` in this case.
 
 ```bash
 docker compose --env-file .env --env-file .env.local pull
