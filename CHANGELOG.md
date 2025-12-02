@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5ad837cd01d03085c799249389cc17f7d72dd2ece2c4b525d545fb994e96fdca))
 - GeoServer: add `postal_code`, `city` and `state` to `MobiData-BW:charge_points`
+- [ParkAPI 0.40.0](https://github.com/ParkenDD/park-api-v3/blob/f83c5cd83a02295d7b73168c406597ffa1190162/CHANGELOG.md#0400)
+  - with relation between parking sites and spots, and several model assignement improvements, plus a fix for an unhandled exception at REST PATCH requests
 
 ## 2025-11-26
 
