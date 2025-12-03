@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-11-26
 
 - GeoServer: add `orientation`, `side` and `parking_type` to ParkAPI car layers and include `MULTILINESTRING` geometries in `MobiData-BW:park-api_car_polygons`
-- lamassu: remove `gmuend_bewegt` feed
+- ⚠️ lamassu: remove `gmuend_bewegt` feed
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.2`](https://hub.docker.com/layers/library/traefik/v3.6.2/images/sha256-ec4fce4588f239530c79af7e2dd873877e51a5548cc51cfbf318ae6e1727e138)
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.1`](https://github.com/PostgREST/postgrest/releases/tag/v14.1).
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.27`](https://github.com/skriptfabrik/elements-cli/commits/0.5.27)
@@ -65,7 +65,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `bird-schaffhausen`, `nextbike_ms`, `mybuxi_ch` feeds
 - [x2gbfs 2025-10-20T07-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-20)
 - [ParkAPI 0.35.0](https://github.com/ParkenDD/park-api-v3/blob/1c9f68891526b5091c347d9789838f5f0cb748bb/CHANGELOG.md#0350)
-  - with new restriction system, deprecating `capacity_{audience}` and `restricted_to` fields
+  - ⚠️ with new restriction system, deprecating `capacity_{audience}` and `restricted_to` fields
 
 ## 2025-10-15
 
