@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## unreleased
 
 - GeoServer: updated GeoServer from 2.25.3 to [2.28.1](https://github.com/geoserver/geoserver/releases/tag/2.28.1);
-
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.28`](https://github.com/skriptfabrik/elements-cli/commits/0.5.28)
 
 ## 2025-12-02
 
