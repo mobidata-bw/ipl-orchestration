@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-12-09
 
 - GeoServer: updated GeoServer from 2.25.3 to [2.28.1](https://github.com/geoserver/geoserver/releases/tag/2.28.1);
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.4`](https://hub.docker.com/layers/library/traefik/v3.6.4/images/sha256-10d11eab6d1254a3dc1a9015a33bd7deb3e779c852e89bbbf2cb69194f82ee90)
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.28`](https://github.com/skriptfabrik/elements-cli/commits/0.5.28)
 - Internal: Redis Upgrade to [8.4.0](https://github.com/redis/redis/releases/tag/8.4.0)
 - [ParkAPI 0.40.0](https://github.com/ParkenDD/park-api-v3/blob/f83c5cd83a02295d7b73168c406597ffa1190162/CHANGELOG.md#0400)
