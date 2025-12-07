@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## unreleased
+
+- GeoServer: updated GeoServer from 2.25.3 to [2.28.1](https://github.com/geoserver/geoserver/releases/tag/2.28.1);
+
+
 ## 2025-12-02
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5ad837cd01d03085c799249389cc17f7d72dd2ece2c4b525d545fb994e96fdca))
