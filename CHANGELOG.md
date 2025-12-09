@@ -4,12 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
-
-- [ipl-ansible](https://github.com/mobidata-bw/ipl-ansible/commit/d7b066d4bc2e87850c58f5c77cc22b2810890f4d): change URL for GeoServer layer `MobiData-BW:bicycle_service_points`
-
 ## 2025-12-09
 
+- [ipl-ansible](https://github.com/mobidata-bw/ipl-ansible/commit/d7b066d4bc2e87850c58f5c77cc22b2810890f4d): change URL for GeoServer layer `MobiData-BW:bicycle_service_points`
 - GeoServer: updated GeoServer from 2.25.3 to [2.28.1](https://github.com/geoserver/geoserver/releases/tag/2.28.1);
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.4`](https://hub.docker.com/layers/library/traefik/v3.6.4/images/sha256-10d11eab6d1254a3dc1a9015a33bd7deb3e779c852e89bbbf2cb69194f82ee90)
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.28`](https://github.com/skriptfabrik/elements-cli/commits/0.5.28)
