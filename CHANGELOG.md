@@ -7,6 +7,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2025-12-11
 
 - Lamassu: add `hopp_konstanz` feed
+- Geoserver
+	- join capacity attributes from park-api-db table `parking_restriction` in `MobiData-BW:park-api_car`, `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
+ 	- ⚠️ rename all fields including *woman* to *women*, for instance `capacity_woman` to `capacity_women`
 
 ## 2025-12-09
 

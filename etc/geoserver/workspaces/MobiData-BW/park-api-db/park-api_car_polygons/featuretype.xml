@@ -43,69 +43,197 @@
       <virtualTable>
         <name>park-api_car_polygons</name>
         <sql>SELECT&#xd;
-    id,&#xd;
+    -- Unique ID for GeoServer (avoids collisions between site and spot ids)&#xd;
+    CONCAT(&apos;site-&apos;, site.id) AS uid,&#xd;
+    site.id,&#xd;
     NULL AS parking_site_id,&#xd;
     source_id,&#xd;
     original_uid,&#xd;
     name,&#xd;
     operator_name,&#xd;
     purpose,&#xd;
-    type :: text,&#xd;
     &apos;site&apos; as parking_object,&#xd;
+    public_url,&#xd;
+    photo_url,&#xd;
     address,&#xd;
+    description,&#xd;
+    has_lighting,&#xd;
+    fee_description,&#xd;
+    has_fee,&#xd;
+    park_and_ride_type,&#xd;
     has_realtime_data,&#xd;
     NULL AS realtime_status,&#xd;
-    capacity,&#xd;
-    NULL AS restriction_type,&#xd;
+    site.type :: text,&#xd;
+    site.max_stay,&#xd;
+    site.capacity,&#xd;
+    CASE&#xd;
+        WHEN pr_disabled.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_disabled.capacity, site.capacity)&#xd;
+    END AS capacity_disabled,&#xd;
+    CASE&#xd;
+        WHEN pr_women.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_women.capacity, site.capacity)&#xd;
+    END AS capacity_women,&#xd;
+    CASE&#xd;
+        WHEN pr_family.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_family.capacity, site.capacity)&#xd;
+    END AS capacity_family,&#xd;
+    CASE&#xd;
+        WHEN pr_charging.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_charging.capacity, site.capacity)&#xd;
+    END AS capacity_charging,&#xd;
+    CASE&#xd;
+        WHEN pr_carsharing.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_carsharing.capacity, site.capacity)&#xd;
+    END AS capacity_carsharing,&#xd;
+    CASE&#xd;
+        WHEN pr_resident.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_resident.capacity, site.capacity)&#xd;
+    END AS capacity_resident,&#xd;
+    CASE&#xd;
+        WHEN pr_bus.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_bus.capacity, site.capacity)&#xd;
+    END AS capacity_bus,&#xd;
+    CASE&#xd;
+        WHEN pr_caravan.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_caravan.capacity, site.capacity)&#xd;
+    END AS capacity_caravan,&#xd;
+    opening_hours,&#xd;
+    max_height,&#xd;
+    is_covered,&#xd;
+    supervision_type,&#xd;
+    related_location,&#xd;
     NULL AS restriction_hours,&#xd;
     NULL AS restriction_max_stay,&#xd;
     side,&#xd;
     orientation,&#xd;
     parking_type,&#xd;
-    created_at,&#xd;
-    modified_at,&#xd;
+    site.created_at,&#xd;
+    site.modified_at,&#xd;
     static_data_updated_at,&#xd;
     ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326) AS geometry&#xd;
 FROM&#xd;
-    parking_site&#xd;
+    parking_site site&#xd;
+    LEFT JOIN parking_restriction pr_disabled ON pr_disabled.parking_site_id = site.id&#xd;
+    AND pr_disabled.type = &apos;DISABLED&apos;&#xd;
+    LEFT JOIN parking_restriction pr_women ON pr_women.parking_site_id = site.id&#xd;
+    AND pr_women.type = &apos;WOMEN&apos;&#xd;
+    LEFT JOIN parking_restriction pr_family ON pr_family.parking_site_id = site.id&#xd;
+    AND pr_family.type = &apos;FAMILY&apos;&#xd;
+    LEFT JOIN parking_restriction pr_charging ON pr_charging.parking_site_id = site.id&#xd;
+    AND pr_charging.type = &apos;CHARGING&apos;&#xd;
+    LEFT JOIN parking_restriction pr_carsharing ON pr_carsharing.parking_site_id = site.id&#xd;
+    AND pr_carsharing.type = &apos;CARSHARING&apos;&#xd;
+    LEFT JOIN parking_restriction pr_resident ON pr_resident.parking_site_id = site.id&#xd;
+    AND pr_resident.type = &apos;RESIDENT&apos;&#xd;
+    LEFT JOIN parking_restriction pr_bus ON pr_bus.parking_site_id = site.id&#xd;
+    AND pr_bus.type = &apos;BUS&apos;&#xd;
+    LEFT JOIN parking_restriction pr_caravan ON pr_caravan.parking_site_id = site.id&#xd;
+    AND pr_caravan.type = &apos;CARAVAN&apos;&#xd;
 WHERE&#xd;
-    purpose = &apos;CAR&apos;&#xd;
-    AND duplicate_of_parking_site_id IS NULL&#xd;
+    site.purpose = &apos;CAR&apos;&#xd;
+    AND site.duplicate_of_parking_site_id IS NULL&#xd;
     AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;POLYGON&apos;&#xd;
 UNION&#xd;
+-- the `id` column makes the two sets disjunct anyways, so we allow the optimization&#xd;
+ALL&#xd;
 SELECT&#xd;
-    ps.id,&#xd;
-    ps.parking_site_id,&#xd;
-    ps.source_id,&#xd;
-    ps.original_uid,&#xd;
-    ps.name,&#xd;
+    -- Unique ID for GeoServer (avoids collisions between site and spot ids)&#xd;
+    CONCAT(&apos;spot-&apos;, spot.id) AS uid,&#xd;
+    spot.id,&#xd;
+    spot.parking_site_id,&#xd;
+    spot.source_id,&#xd;
+    spot.original_uid,&#xd;
+    spot.name,&#xd;
     NULL AS operator_name,&#xd;
-    ps.purpose :: text :: purposetype,&#xd;
-    ps.type :: text AS type,&#xd;
+    spot.purpose :: text :: purposetype,&#xd;
     &apos;spot&apos; AS parking_object,&#xd;
+    NULL AS public_url,&#xd;
+    NULL AS photo_url,&#xd;
     NULL AS address,&#xd;
-    ps.has_realtime_data,&#xd;
-    ps.realtime_status,&#xd;
-    NULL AS capacity,&#xd;
-    pr.type AS restriction_type,&#xd;
+    NULL AS description,&#xd;
+    NULL AS has_lighting,&#xd;
+    NULL AS fee_description,&#xd;
+    NULL AS has_fee,&#xd;
+    NULL AS park_and_ride_type,&#xd;
+    spot.has_realtime_data,&#xd;
+    spot.realtime_status,&#xd;
+    spot.type :: text AS type,&#xd;
+    NULL AS max_stay,&#xd;
+    -- set capacity to 1 for all spots&#xd;
+    1 AS capacity,&#xd;
+    -- Note: We assume that, for a spot, there is always at most one restriction (of any type).&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;DISABLED&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_disabled,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;WOMEN&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_women,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;FAMILY&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_family,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;CHARGING&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_charging,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;CARSHARING&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_carsharing,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;RESIDENT&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_resident,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;BUS&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_bus,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;CARAVAN&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_caravan,&#xd;
+    NULL AS opening_hours,&#xd;
+    NULL AS max_height,&#xd;
+    NULL AS is_covered,&#xd;
+    NULL AS supervision_type,&#xd;
+    NULL AS related_location,&#xd;
     pr.hours AS restriction_hours,&#xd;
     pr.max_stay AS restriction_max_stay,&#xd;
     NULL AS side,&#xd;
     NULL AS orientation,&#xd;
     NULL AS parking_type,&#xd;
-    ps.created_at,&#xd;
-    ps.modified_at,&#xd;
-    ps.static_data_updated_at,&#xd;
+    spot.created_at,&#xd;
+    spot.modified_at,&#xd;
+    spot.static_data_updated_at,&#xd;
     ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326) AS geometry&#xd;
 FROM&#xd;
-    parking_spot ps&#xd;
-    LEFT JOIN parking_restriction pr ON ps.id = pr.parking_spot_id&#xd;
+    parking_spot spot&#xd;
+    LEFT JOIN parking_restriction pr ON spot.id = pr.parking_spot_id&#xd;
 WHERE&#xd;
-    purpose = &apos;CAR&apos;&#xd;
+    spot.purpose = &apos;CAR&apos;&#xd;
     AND GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) = &apos;POLYGON&apos;
 </sql>
         <escapeSql>false</escapeSql>
-        <keyColumn>id</keyColumn>
+        <keyColumn>uid</keyColumn>
         <geometry>
           <name>geometry</name>
           <type>Polygon</type>
@@ -258,13 +386,75 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
-      <name>restriction_type</name>
+      <name>capacity_disabled</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
+      <binding>java.lang.Integer</binding>
       <description>
-        <de>Parkbeschränkung - Personengruppen</de>
+        <de>Anzahl Stellplätze für Behinderte</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_women</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Frauen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_family</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Familien</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_charging</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze mit Lademöglichkeit</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_carsharing</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Carsharing-Fahrzeuge</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_resident</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Anwohner</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_bus</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Busse</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_caravan</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Anzahl Stellplätze für Wohnmobile</de>
       </description>
     </attribute>
     <attribute>
