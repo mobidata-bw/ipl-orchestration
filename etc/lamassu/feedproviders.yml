@@ -338,6 +338,13 @@ lamassu:
       codespace: HBG
       url: "file:///var/gbfs/feeds/herrenberg_stadtrad/gbfs.json"
       language: de
+    ## Hopp DE
+    - systemId: hopp_konstanz
+      operatorId: HOP:Operator:hopp_konstanz
+      operatorName: Hopp Konstanz
+      codespace: HOP
+      url: "https://api.hopp.bike/gbfs/de-konstanz/gbfs.json"
+      language: en    
     ## Lime DE
 #    - systemId: lime_hamburg
 #      operatorId: LME:Operator:lime
