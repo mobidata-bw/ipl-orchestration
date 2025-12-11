@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+# Unreleased
+
+- Geoserver:
+	- join capacity attributes from park-api-db table `parking_restriction` in `MobiData-BW:park-api_car`, `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
+ 	- ⚠️ rename all fields including *woman* to *women*, for instance `capacity_woman` to `capacity_women`
+
 ## 2025-12-09
 
 - [ipl-ansible](https://github.com/mobidata-bw/ipl-ansible/commit/d7b066d4bc2e87850c58f5c77cc22b2810890f4d): change URL for GeoServer layer `MobiData-BW:bicycle_service_points`
