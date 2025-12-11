@@ -138,7 +138,7 @@
     site.modified_at,&#xd;
     static_data_updated_at,&#xd;
     realtime_data_updated_at,&#xd;
-    geojson,&#xd;
+    GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) AS geojson,&#xd;
     geometry&#xd;
 FROM&#xd;
     parking_site site&#xd;
@@ -274,7 +274,7 @@ SELECT&#xd;
     spot.modified_at,&#xd;
     spot.static_data_updated_at,&#xd;
     spot.realtime_data_updated_at,&#xd;
-    spot.geojson,&#xd;
+    GeometryType(ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326)) AS geojson,&#xd;
     spot.geometry&#xd;
 FROM&#xd;
     parking_spot spot&#xd;
