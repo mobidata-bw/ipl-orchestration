@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2025-12-11
+
+- Lamassu: add `hopp_konstanz` feed
+
 ## 2025-12-09
 
 - [ipl-ansible](https://github.com/mobidata-bw/ipl-ansible/commit/d7b066d4bc2e87850c58f5c77cc22b2810890f4d): change URL for GeoServer layer `MobiData-BW:bicycle_service_points`
