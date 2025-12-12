@@ -135,52 +135,52 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <name>num_cars_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <source>num_cars_available</source>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
       <name>num_bicycles_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
       <name>num_scooters_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <source>num_scooters_available</source>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
       <name>num_cargo_bicycles_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</en-US>
       </description>
     </attribute>
     <attribute>
       <name>num_mopeds_available</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
+      <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <de>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</de>
+        <en-US>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</en-US>
       </description>
     </attribute>
     <attribute>
