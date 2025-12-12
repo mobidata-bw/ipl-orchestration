@@ -8,7 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - ⚠️ Lamassu: remove `coono` feed
 - [x2gbfs 2025-12-12t07-52](https://github.com/mobidata-bw/x2gbfs/blob/e70e5c8dee6e38ff8bcf79ea64f36efc4be9421b/CHANGELOG.md#2025-12-12): generate feeds in gbfs v3.
-- lamassu: Bump to [the 2025-12-08T06-47 release](https://github.com/entur/lamassu/blob/13c108d1aa836c5af787cafdf118a0fbd209ee9e/Changelog.md#130-under-development) and ingest local feeds in v3.
+- Lamassu: Bump to the [2025-12-08T06-47 release](https://github.com/entur/lamassu/blob/13c108d1aa836c5af787cafdf118a0fbd209ee9e/Changelog.md#130-under-development) and ingest local feeds in v3.
+- GeoServer: make `MobiData-BW:sharing_stations` integers nillable
 
 ## 2025-12-11
 
