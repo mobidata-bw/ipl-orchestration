@@ -77,16 +77,6 @@
       </description>
     </attribute>
     <attribute>
-      <name>Datengeber</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Datengeber der Radservicestation</de>
-      </description>
-    </attribute>
-    <attribute>
       <name>Externe ID</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -95,6 +85,16 @@
       <source>Externe_ID</source>
       <description>
         <de>Ursprüngliche ID der Radservicestation beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Quellsystem</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Quellsystem der Radservicestation</de>
       </description>
     </attribute>
     <attribute>
@@ -227,16 +227,6 @@
       <binding>java.lang.String</binding>
       <description>
         <de>Status der Radservicestation</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>Quellsystem</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Quellsystem der Radservicestation in RadVIS (aus RadVIS übernommen)</de>
       </description>
     </attribute>
     <attribute>
