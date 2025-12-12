@@ -139,7 +139,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <binding>java.lang.Integer</binding>
       <source>num_cars_available</source>
       <description>
-        <en-US>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</en-US>
+        <de>Anzahl verfügbarer Fahrzeuge an der Carsharing-Station</de>
       </description>
     </attribute>
     <attribute>
@@ -149,7 +149,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</en-US>
+        <de>Anzahl verfügbarer Fahrzeuge an der Bikesharing-Station</de>
       </description>
     </attribute>
     <attribute>
@@ -160,7 +160,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <binding>java.lang.Integer</binding>
       <source>num_scooters_available</source>
       <description>
-        <en-US>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</en-US>
+        <de>Anzahl verfügbarer Fahrzeuge an der Scootersharing-Station</de>
       </description>
     </attribute>
     <attribute>
@@ -170,7 +170,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</en-US>
+        <de>Anzahl verfügbarer Fahrzeuge an der Lastenrad-Leihstation</de>
       </description>
     </attribute>
     <attribute>
@@ -180,7 +180,7 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</en-US>
+        <de>Anzahl verfügbarer Fahrzeuge an der Mopedsharing-Station</de>
       </description>
     </attribute>
     <attribute>
