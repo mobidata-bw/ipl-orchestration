@@ -11,7 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - ⚠️ remove `coono` feed
   - add `hertlein_carsharing` feed
   - add `ford_carsharing_autohauskauderer` feed
-- GeoServer: make `MobiData-BW:sharing_stations` integers nillable
+- GeoServer
+	- make `MobiData-BW:sharing_stations` integers nillable
+	- remove `Datengeber` from `MobiData-BW:bicycle_service_points`
+   	- add `max_stay` to `MobiData-BW:park-api_car`, `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
 
 ## 2025-12-11
 
