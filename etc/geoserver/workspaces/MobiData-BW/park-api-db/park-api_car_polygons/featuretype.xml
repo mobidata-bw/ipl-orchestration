@@ -56,6 +56,7 @@
     public_url,&#xd;
     photo_url,&#xd;
     address,&#xd;
+    opening_hours,&#xd;
     description,&#xd;
     has_lighting,&#xd;
     fee_description,&#xd;
@@ -64,8 +65,8 @@
     has_realtime_data,&#xd;
     NULL AS realtime_status,&#xd;
     site.type :: text,&#xd;
-    site.max_stay,&#xd;
     site.capacity,&#xd;
+    pr_max_stay.max_stay AS max_stay,&#xd;
     CASE&#xd;
         WHEN pr_disabled.parking_site_id IS NULL THEN NULL&#xd;
         ELSE COALESCE(pr_disabled.capacity, site.capacity)&#xd;
@@ -98,13 +99,10 @@
         WHEN pr_caravan.parking_site_id IS NULL THEN NULL&#xd;
         ELSE COALESCE(pr_caravan.capacity, site.capacity)&#xd;
     END AS capacity_caravan,&#xd;
-    opening_hours,&#xd;
     max_height,&#xd;
     is_covered,&#xd;
     supervision_type,&#xd;
     related_location,&#xd;
-    NULL AS restriction_hours,&#xd;
-    NULL AS restriction_max_stay,&#xd;
     side,&#xd;
     orientation,&#xd;
     parking_type,&#xd;
@@ -114,6 +112,9 @@
     ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326) AS geometry&#xd;
 FROM&#xd;
     parking_site site&#xd;
+    LEFT JOIN parking_restriction pr_max_stay ON pr_max_stay.parking_site_id = site.id&#xd;
+    AND pr_max_stay.type IS NULL&#xd;
+    AND pr_max_stay.max_stay IS NOT NULL&#xd;
     LEFT JOIN parking_restriction pr_disabled ON pr_disabled.parking_site_id = site.id&#xd;
     AND pr_disabled.type = &apos;DISABLED&apos;&#xd;
     LEFT JOIN parking_restriction pr_women ON pr_women.parking_site_id = site.id&#xd;
@@ -151,6 +152,7 @@ SELECT&#xd;
     NULL AS public_url,&#xd;
     NULL AS photo_url,&#xd;
     NULL AS address,&#xd;
+    NULL AS opening_hours,&#xd;
     NULL AS description,&#xd;
     NULL AS has_lighting,&#xd;
     NULL AS fee_description,&#xd;
@@ -159,9 +161,9 @@ SELECT&#xd;
     spot.has_realtime_data,&#xd;
     spot.realtime_status,&#xd;
     spot.type :: text AS type,&#xd;
-    NULL AS max_stay,&#xd;
     -- set capacity to 1 for all spots&#xd;
     1 AS capacity,&#xd;
+    pr.max_stay AS max_stay,&#xd;
     -- Note: We assume that, for a spot, there is always at most one restriction (of any type).&#xd;
     (&#xd;
         CASE&#xd;
@@ -211,13 +213,10 @@ SELECT&#xd;
             ELSE NULL&#xd;
         END&#xd;
     ) AS capacity_caravan,&#xd;
-    NULL AS opening_hours,&#xd;
     NULL AS max_height,&#xd;
     NULL AS is_covered,&#xd;
     NULL AS supervision_type,&#xd;
     NULL AS related_location,&#xd;
-    pr.hours AS restriction_hours,&#xd;
-    pr.max_stay AS restriction_max_stay,&#xd;
     NULL AS side,&#xd;
     NULL AS orientation,&#xd;
     NULL AS parking_type,&#xd;
@@ -323,6 +322,15 @@ WHERE&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Adresse der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>opening_hours</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Öffnungszeiten der Parkanlage</de>
       </description>
     </attribute>
     <attribute>
@@ -458,23 +466,13 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
-      <name>restriction_hours</name>
+      <name>max_stay</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Parkbeschränkung - Uhrzeit</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>restriction_max_stay</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>Parkbeschränkung - Aufenthaltsdauer</de>
+        <de>Max. Parkdauer</de>
       </description>
     </attribute>
     <attribute>
