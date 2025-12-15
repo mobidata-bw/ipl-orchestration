@@ -33,7 +33,7 @@
       <defaultValue></defaultValue>
       <allowedStyles class="java.util.Collections$UnmodifiableSet"/>
       <availableStyles class="sorted-set"/>
-      <defaultStyle>point</defaultStyle>
+      <defaultStyle>MobiData-BW:mdbw_bicycle_service_points</defaultStyle>
     </styleParameterFilter>
   </parameterFilters>
   <gutter>0</gutter>
