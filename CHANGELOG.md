@@ -4,9 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2026-12-15
 
-- [x2gbfs 22025-12-15T07-59](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-12-15): generate feeds in gbfs v3.
+- [x2gbfs 2025-12-15T14-24](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-12-15): generate feeds in gbfs v3.
 - Lamassu: Bump to the [2025-12-08T06-47 release](https://github.com/entur/lamassu/blob/13c108d1aa836c5af787cafdf118a0fbd209ee9e/Changelog.md#130-under-development) and ingest local feeds in v3.
   - ⚠️ remove `coono` feed
   - add `hertlein_carsharing` feed
