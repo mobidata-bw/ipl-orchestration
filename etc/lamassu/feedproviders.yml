@@ -197,7 +197,7 @@ lamassu:
       operatorId: FRE:Operator:freibe
       operatorName: Süwag2GO
       codespace: FRE
-      url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/7/free_bike_status"
+      url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/7/gbfs.json"
       language: en
     - systemId: regiorad_stuttgart
       operatorId: CAB:Operator:callabike
