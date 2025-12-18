@@ -527,8 +527,9 @@ lamassu:
       operatorName: Yoio
       codespace: YOO
       # Note: yoio feed is accessed via proxy, using http instead of https
-      url: "http://yoio.rideatom.com/gbfs/v2_2/en/gbfs?id=71"
+      url: "http://yoio.rideatom.com/gbfs/71/v3.0/gbfs"
       language: en
+      version: 3.0
     - systemId: zeo_bruchsal
       operatorId: ZEO:Operator:zeo
       operatorName: Zeo
