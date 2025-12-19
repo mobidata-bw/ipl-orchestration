@@ -4,9 +4,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2026-12-19
 
-- Lamassu: add `freibe` feed
 - [ParkAPI 0.40.1](https://github.com/ParkenDD/park-api-v3/blob/045551ddf53289aaf88b15a526a453e30c158007/CHANGELOG.md#0401)
   - with various fixes in ParkAPI Sources
 
