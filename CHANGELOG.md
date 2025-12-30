@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.6`](https://github.com/traefik/traefik/blob/v3.6.6/CHANGELOG.md)
+
 ## 2026-12-19
 
 - ⚠️ Lamassu: remove `deer` feed
