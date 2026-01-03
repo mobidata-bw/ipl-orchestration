@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.6`](https://github.com/traefik/traefik/blob/v3.6.6/CHANGELOG.md)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.3`](https://github.com/PostgREST/postgrest/releases/tag/v14.3) ([`v14.2` changelog](https://github.com/PostgREST/postgrest/releases/tag/v14.2)).
 
 ## 2026-12-19
 
