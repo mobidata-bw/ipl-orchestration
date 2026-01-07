@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ⚠️ Lamassu: remove `dott_winterthur` feed
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.6`](https://github.com/traefik/traefik/blob/v3.6.6/CHANGELOG.md)
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.3`](https://github.com/PostgREST/postgrest/releases/tag/v14.3) ([`v14.2` changelog](https://github.com/PostgREST/postgrest/releases/tag/v14.2)).
+- [OCPDB v2.5.1](https://github.com/binary-butterfly/ocpdb/blob/520cba1514fb92b9975a4dd72bafe79b3699ae8f/CHANGELOG.md#version-251)
+  - with Ladenetz Charset fix
+- [ParkAPI 0.41.0](https://github.com/ParkenDD/park-api-v3/blob/b5aeccf38b58384b052e236c846f47ab2c30687f/CHANGELOG.md#0410)
+  - with Stadtwerke Heilbronn: GOLDBECK Parking Services and Karlsruhe Disabled: Realtime Extension
+  - with audience CARGOBIKE
+  - with more REST endpoints for parking sites and spots
+
 
 ## 2026-12-19
 
