@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2026-01-13
+
+- x2gbfs 2026-01-10T09-59: update free2move geofencing_zones
+
 ## 2026-01-07
 
 - ⚠️ Lamassu: remove `dott_winterthur` feed
