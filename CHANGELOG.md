@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.41.1](https://github.com/ParkenDD/park-api-v3/blob/a4f19e928c5aefc4a215e7ee7469e640f7bbab2b/CHANGELOG.md#0411)
+  - wnabling realtime sources at karlsruhe disabled
+
+
 ## 2026-01-13
 
 - x2gbfs 2026-01-10T09-59: update free2move geofencing_zones
