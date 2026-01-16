@@ -4,11 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-01-16
 
 * [ParkAPI 0.41.2](https://github.com/ParkenDD/park-api-v3/blob/fa2447582123ef01833699239d68abf7c2ac19c6/CHANGELOG.md#0412)
   * with a TLS fix for karlsruhe disabled
-
 
 ## 2026-01-13
 
