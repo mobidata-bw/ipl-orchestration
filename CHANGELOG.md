@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+* [ParkAPI 0.42.0 including ParkAPI 0.41.3](https://github.com/ParkenDD/park-api-v3/blob/1edea61b73dff96cb78c7bbbefacb8a49233096c/CHANGELOG.md#0420)
+  * with outputting existing duplicates and several smaller fixes at data converters
+
+
 ## 2026-01-16
 
 * [ParkAPI 0.41.2](https://github.com/ParkenDD/park-api-v3/blob/fa2447582123ef01833699239d68abf7c2ac19c6/CHANGELOG.md#0412)
