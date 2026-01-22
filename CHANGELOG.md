@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.29`](https://github.com/skriptfabrik/elements-cli/commits/0.5.29)
+- [ipl-proxy 2026-01-14T08-35](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#unrelease)
 
 ## 2026-01-20
 
