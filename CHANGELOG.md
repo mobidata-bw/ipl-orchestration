@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.29`](https://github.com/skriptfabrik/elements-cli/commits/0.5.29)
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.30`](https://github.com/skriptfabrik/elements-cli/commits/0.5.30) ([`0.5.29` changelog](https://github.com/skriptfabrik/elements-cli/commits/0.5.29))
 - ⚠️ Lamassu: rename `lime_stuttgart` to `lime_bw` (contains Stuttgart, Konstanz)
 - [ipl-proxy 2026-01-14T08-35](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#unrelease): GBFSv3 support, yoio fix
 - [x2gbfs 2026-01-26T12-52](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-01-26): free2move fix
