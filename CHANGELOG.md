@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-01-28
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.30`](https://github.com/skriptfabrik/elements-cli/commits/0.5.30) ([`0.5.29` changelog](https://github.com/skriptfabrik/elements-cli/commits/0.5.29))
 - ⚠️ Lamassu: rename `lime_stuttgart` to `lime_bw` (contains Stuttgart, Konstanz)
