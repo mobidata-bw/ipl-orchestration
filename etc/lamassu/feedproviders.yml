@@ -193,12 +193,12 @@ lamassu:
       codespace: STL
       url: "https://stella.backend.fleetbird.eu/rest/gbfs/v2.2/1/gbfs.json"
       language: en
-#    - systemId: freibe
-#      operatorId: FRE:Operator:freibe
-#      operatorName: Süwag2GO
-#      codespace: FRE
-#      url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/7/gbfs.json"
-#      language: en
+    - systemId: freibe
+      operatorId: FRE:Operator:freibe
+      operatorName: Süwag2GO
+      codespace: FRE
+      url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/7/gbfs.json"
+      language: en
     - systemId: regiorad_stuttgart
       operatorId: CAB:Operator:callabike
       operatorName: Call-A-Bike
