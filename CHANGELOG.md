@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-02-03
 
 - Lamassu: add `freibe` feed
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-9f1e4bcd2c5aa53675ce8c0743068d6c7c9ffeb25ed5a3b47ed81ae5e2301820))
@@ -16,7 +16,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - with chargecloud ludwigsburg data source
   - with more logging options
   - with several speed optimizations
-
 
 ## 2026-01-28
 
