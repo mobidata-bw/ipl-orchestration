@@ -9,6 +9,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `freibe` feed
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-9f1e4bcd2c5aa53675ce8c0743068d6c7c9ffeb25ed5a3b47ed81ae5e2301820))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.4`](https://github.com/PostgREST/postgrest/releases/tag/v14.4).
+- [OCPDB 2.6.0](https://github.com/binary-butterfly/ocpdb/blob/e34f04c902cab0070bed7f515f7808ab9c982ca0/CHANGELOG.md#version-260)
+  - with last_updated filter for incremental updates
+  - with bounding box search
+  - with an EVSE endpoint for fast status updates
+  - with chargecloud ludwigsburg data source
+  - with more logging options
+  - with several speed optimizations
+
 
 ## 2026-01-28
 
