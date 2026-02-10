@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-057b6868280fa4451ce14df9138ebbf9f90aaba385d6b4e7bd59e4a8d35475fe))
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.31`](https://github.com/skriptfabrik/elements-cli/commits/0.5.31)
+- [ParkAPI 0.43.0](https://github.com/ParkenDD/park-api-v3/blob/fe4b32c8241598c9df4b22b6f5aa2e3f5c104d70/CHANGELOG.md#0430)
+  - with new converters Bielefeld, Basel and Jena, and smaller bugfixes
 
 ## 2026-02-03
 
