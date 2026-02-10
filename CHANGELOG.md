@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-02-10
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-057b6868280fa4451ce14df9138ebbf9f90aaba385d6b4e7bd59e4a8d35475fe))
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.31`](https://github.com/skriptfabrik/elements-cli/commits/0.5.31)
