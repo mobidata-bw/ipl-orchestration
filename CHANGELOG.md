@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [unreleased]
 
 - Lamassu: add `lube` feed
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.32`](https://github.com/skriptfabrik/elements-cli/commits/0.5.32)
 
 ## 2026-02-10
 
