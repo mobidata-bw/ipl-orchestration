@@ -199,6 +199,12 @@ lamassu:
       codespace: FRE
       url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/7/gbfs.json"
       language: en
+    - systemId: lube
+      operatorId: LBE:Operator:lube
+      operatorName: Süwag2GO
+      codespace: LBE
+      url: "https://franke.backend.fleetbird.eu/rest/gbfs/v2.2/10/gbfs.json"
+      language: en
     - systemId: regiorad_stuttgart
       operatorId: CAB:Operator:callabike
       operatorName: Call-A-Bike
