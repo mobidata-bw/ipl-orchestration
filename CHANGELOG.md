@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [unreleased]
 
 - Lamassu: add `lube` feed
+- [x2gbfs 2026-02-13T17-45](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-02-13): mikar rental_apps fix
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.32`](https://github.com/skriptfabrik/elements-cli/commits/0.5.32)
 - [usage via `make`](Makefile): pass `--progress quiet` to Docker Compose commands
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.5`](https://github.com/PostgREST/postgrest/releases/tag/v14.5).
