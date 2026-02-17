@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2026-02-17
 
 - Lamassu: add `lube` feed
 - [x2gbfs 2026-02-13T17-45](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-02-13): mikar rental_apps fix
