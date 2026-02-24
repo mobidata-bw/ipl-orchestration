@@ -183,6 +183,9 @@ FROM&#xd;
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <description>
+        <de>Datengeber</de>
+      </description>
     </attribute>
     <attribute>
       <name>name</name>
