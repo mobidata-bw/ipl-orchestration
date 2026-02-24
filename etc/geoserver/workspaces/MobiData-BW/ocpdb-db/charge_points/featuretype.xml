@@ -226,7 +226,7 @@ FROM&#xd;
     </attribute>
     <attribute>
       <name>city</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
