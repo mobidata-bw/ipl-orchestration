@@ -174,7 +174,7 @@ FROM&#xd;
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
       <description>
-        <en-US>ID des Ladestandortes</en-US>
+        <de>ID des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -191,7 +191,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Name des Ladestandortes</en-US>
+        <de>Name des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -201,7 +201,7 @@ FROM&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Betreiber des Ladestandortes</en-US>
+        <de>Betreiber des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -211,7 +211,7 @@ FROM&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Adresse des Ladestandortes</en-US>
+        <de>Adresse des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -221,7 +221,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Postleitzahl des Ladestandortes</en-US>
+        <de>Postleitzahl des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -231,7 +231,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Ort des Ladestandortes</en-US>
+        <de>Ort des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -241,7 +241,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Bundesland des Ladestandortes</en-US>
+        <de>Bundesland des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -251,7 +251,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl verfügbarer Ladepunkte des Ladestandortes</en-US>
+        <de>Anzahl verfügbarer Ladepunkte des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -261,7 +261,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl der Ladepunkte des Ladestandortes mit Lademöglichkeit</en-US>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit Lademöglichkeit</de>
       </description>
     </attribute>
     <attribute>
@@ -271,7 +271,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl der Ladepunkte des Ladestandortes mit unbekanntem Status</en-US>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit unbekanntem Status</de>
       </description>
     </attribute>
     <attribute>
@@ -281,7 +281,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl der Ladepunkte des Ladestandortes, die außer Betrieb sind</en-US>
+        <de>Anzahl der Ladepunkte des Ladestandortes, die außer Betrieb sind</de>
       </description>
     </attribute>
     <attribute>
@@ -291,7 +291,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl der Ladepunkte des Ladestandortes mit einem Defekt</en-US>
+        <de>Anzahl der Ladepunkte des Ladestandortes mit einem Defekt</de>
       </description>
     </attribute>
     <attribute>
@@ -301,7 +301,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl der Ladepunkte des Ladestandortes ohne Echtzeitdaten</en-US>
+        <de>Anzahl der Ladepunkte des Ladestandortes ohne Echtzeitdaten</de>
       </description>
     </attribute>
     <attribute>
@@ -311,7 +311,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl belegter Ladepunkte des Ladestandortes</en-US>
+        <de>Anzahl belegter Ladepunkte des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -321,7 +321,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Anzahl reservierter Ladepunkte des Ladestandortes</en-US>
+        <de>Anzahl reservierter Ladepunkte des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -331,7 +331,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Integer</binding>
       <description>
-        <en-US>Maximale elektrische Leistung des Ladestandortes</en-US>
+        <de>Maximale elektrische Leistung des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
@@ -341,7 +341,7 @@ FROM&#xd;
       <nillable>false</nillable>
       <binding>org.locationtech.jts.geom.Point</binding>
       <description>
-        <en-US>Koordinaten des Ladestandortes</en-US>
+        <de>Koordinaten des Ladestandortes</de>
       </description>
     </attribute>
   </attributes>
