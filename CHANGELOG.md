@@ -169,7 +169,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `bird-schaffhausen`, `nextbike_ms`, `mybuxi_ch` feeds
 - [x2gbfs 2025-10-20T07-21](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2025-10-20)
 - [ParkAPI 0.35.0](https://github.com/ParkenDD/park-api-v3/blob/1c9f68891526b5091c347d9789838f5f0cb748bb/CHANGELOG.md#0350)
-  - ⚠️ with new restriction system, deprecating `capacity_{audience}` and `restricted_to` fields
+  - ⚠️ with new restriction system
+      - `restricted_to` array is renamed to `restrictions`
+      - ParkingSites: `capacity_{audience}`, `realtime_capacity_{audience}` and `realtime_free_capacity_{audience}` are deprecated. Instead, these fields can be set in combination with a specific audience in the `restrictions` array, e.g.: `"capacity": 2` and `"type": "DISABLED"`. `max_stay` is deprecated and must be set in `restrictions` array as well
 
 ## 2025-10-15
 
