@@ -1,7 +1,6 @@
-
 <logging>
-  <level>${GEOSERVER_LOGGING_PROFILE}</level>
-  <location>logs/geoserver.log</location>
+  <level>DEFAULT_LOGGING</level>
+  <location>/var/geoserver/logs/</location>
   <stdOutLogging>true</stdOutLogging>
 </logging>
 
