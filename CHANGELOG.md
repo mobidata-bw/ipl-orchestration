@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.33`](https://github.com/skriptfabrik/elements-cli/releases/tag/0.5.33)
+
 ## 2026-03-04
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.9`](https://github.com/traefik/traefik/blob/v3.6.9/CHANGELOG.md)
