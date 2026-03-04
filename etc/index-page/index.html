@@ -9,6 +9,7 @@
 	<meta name="description" content="Die Integrationsplattform (IPL) bündelt Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen, Verkehrsmeldungen und Baustellen, und stellt sie über offene APIs bereit.">
 	<!-- todo: `og:` tags for facebook? -->
 	<!-- todo: tags for twitter/x? -->
+	<base target="_blank">
 	<link rel="icon" href="/favicon.ico" />
 </head>
 <body>
@@ -171,10 +172,6 @@
 
 	<p>Der Endpunkt <a href="/ocpdb/metrics"><code>/ocpdb/metrics</code></a> liefert die OCPDB Metriken.</p>
 
-	<h2>Verkehrsmeldungen</h2>
-
-	<p>Verkehrsmeldungen werden über den Endpunkt <a href="/datasets/traffic/incidents-bw/TIC3-Meldungen.xml"><code>/datasets/traffic/incidents-bw/TIC3-Meldungen.xml</code></a> im TIC 3 Format publiziert. Die Verkehrsmeldungen werden alle 10 Minuten aktualisiert.</p>
-
 	<details>
 		<summary>Ladesäulen</summary>
 		<ul>
@@ -189,6 +186,10 @@
 			<li><a href="/ocpdb/api/public/v1/locations?source_uid=opendata_swiss&limit=1000">opendata_swiss</a></li>
 		</ul>
     </details>
+
+	<h2>Verkehrsmeldungen</h2>
+
+	<p>Verkehrsmeldungen werden über den Endpunkt <a href="/datasets/traffic/incidents-bw/TIC3-Meldungen.xml"><code>/datasets/traffic/incidents-bw/TIC3-Meldungen.xml</code></a> im TIC 3 Format publiziert. Die Verkehrsmeldungen werden alle 10 Minuten aktualisiert.</p>
 
 	<h2>Baustellen und Ereignisse</h2>
 
