@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [Unreleased]
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.33`](https://github.com/skriptfabrik/elements-cli/releases/tag/0.5.33)
-- Lamassu: remove `dott_mainz` feed
+- Lamassu: remove `dott_mainz` feed, add `dott_frankfurt`, `dott_darmstadt` feeds
 
 ## 2026-03-04
 
