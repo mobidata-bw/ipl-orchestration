@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: remove `dott_mainz` feed, add `dott_frankfurt`, `dott_darmstadt` feeds
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-64e27a8b047b8a515aa7eaaef3b7362a336d91446ce148fba913af959bb224cb))
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.2-alpine` ([v2.11.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.2))
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.6`](https://github.com/PostgREST/postgrest/releases/tag/v14.6).
 
 ## 2026-03-04
 
