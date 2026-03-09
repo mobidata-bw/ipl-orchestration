@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## 2026-03-04
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.9`](https://github.com/traefik/traefik/blob/v3.6.9/CHANGELOG.md)
-- `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.11.1-alpine`](todo) ([v2.10.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.2), [v2.11.0 release](todo), [v2.11.1 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.1))
+- `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.11.1-alpine`](https://hub.docker.com/layers/library/caddy/2.11.1-alpine/images/sha256-a4983e09003e598c28ef85197c16bb2fdd34da8b2526487c0d144f38fd3b2970) ([v2.10.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.10.2), [v2.11.0 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.0), [v2.11.1 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.1))
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-db440eed81491c2a8085b2426418c0a070fd3dc5a402b4db48daf5d96c83bd13))
 
 ## 2026-02-17
