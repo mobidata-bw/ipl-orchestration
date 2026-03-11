@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.6`](https://github.com/PostgREST/postgrest/releases/tag/v14.6).
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.10`](https://github.com/traefik/traefik/blob/v3.6.10/CHANGELOG.md)
 - [OCPDB 2.7 with OCPI 3.0 data model change](https://github.com/binary-butterfly/ocpdb/blob/fabc1bca831ceff1b77b4a01914a06126c7e2652/CHANGELOG.md)
+- GeoServer: update `MobiData-BW:charge_points` sql query according to OCPI 3.0 changes
 
 ## 2026-03-04
 
