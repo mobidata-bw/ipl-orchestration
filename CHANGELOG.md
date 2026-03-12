@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- GeoServer: add attributes to `MobiData-BW:charge_points`, optimize query and meta data
+
 ## 2026-03-11
 
 - `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.33`](https://github.com/skriptfabrik/elements-cli/releases/tag/0.5.33)

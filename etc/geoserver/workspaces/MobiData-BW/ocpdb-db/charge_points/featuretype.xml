@@ -6,10 +6,14 @@
     <id>NamespaceInfoImpl--48f676ef:18997a59df5:-7ff5</id>
   </namespace>
   <title>E-Ladesäulen</title>
+  <abstract>Ladestandorte zum Laden von Elektrofahrzeugen</abstract>
   <keywords>
-    <string>charge_points</string>
-    <string>features</string>
-    <string>Ladesäulen\@language=de\;</string>
+    <string>E-Ladesäulen\@language=de\;</string>
+    <string>E-Mobilität\@language=de\;</string>
+    <string>Elektromobilität\@language=de\;</string>
+    <string>E-Auto\@language=de\;</string>
+    <string>Elektroauto\@language=de\;</string>
+    <string>Elektrofahrzeug\@language=de\;</string>
   </keywords>
   <nativeCRS>GEOGCS[&quot;WGS 84&quot;, 
   DATUM[&quot;World Geodetic System 1984&quot;, 
@@ -41,17 +45,28 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>charge_points</name>
-        <sql>-- Sub query &apos;station_power&apos;, which is a list of charging stations&#xd;
--- with their corresponding maximum charging power&#xd;
-WITH station_power AS (&#xd;
+        <sql>-- aggregate max_electric_power per location&#xd;
+WITH location_connector_aggregates AS (&#xd;
     SELECT&#xd;
-        charging_station_id,&#xd;
-        MAX(max_electric_power) AS max_electric_power&#xd;
+        charging_station.location_id,&#xd;
+        MAX(connector.max_electric_power) AS max_electric_power -- max of max_electric_power per location&#xd;
     FROM&#xd;
-        evse&#xd;
+        charging_station&#xd;
+        JOIN evse ON charging_station.id = evse.charging_station_id&#xd;
         JOIN connector ON evse.id = connector.evse_id&#xd;
     GROUP BY&#xd;
-        charging_station_id&#xd;
+        charging_station.location_id&#xd;
+),&#xd;
+-- aggregate station power and go-live date per location&#xd;
+location_station_aggregates AS (&#xd;
+    SELECT&#xd;
+        location_id,&#xd;
+        SUM(max_power_value) AS max_power_value, -- total station power per location&#xd;
+        MIN(go_live_date) AS go_live_date -- earliest go-live date per location&#xd;
+    FROM&#xd;
+        charging_station&#xd;
+    GROUP BY&#xd;
+        location_id&#xd;
 )&#xd;
 SELECT&#xd;
     location.id,&#xd;
@@ -63,6 +78,10 @@ SELECT&#xd;
     location.postal_code,&#xd;
     location.city,&#xd;
     location.state,&#xd;
+    location.geometry,&#xd;
+    lca.max_electric_power,&#xd;
+    lsa.max_power_value,&#xd;
+    lsa.go_live_date,&#xd;
     cp.chargepoint_available_count,&#xd;
     cp.chargepoint_unknown_count,&#xd;
     cp.chargepoint_static_count,&#xd;
@@ -71,14 +90,13 @@ SELECT&#xd;
     cp.chargepoint_outoforder_count,&#xd;
     cp.chargepoint_reserved_count,&#xd;
     cp.chargepoint_bike_count,&#xd;
-    sp.max_electric_power,&#xd;
-    location.geometry,&#xd;
     business.name AS operator_name&#xd;
 FROM&#xd;
-    charging_station&#xd;
+    location &#xd;
+    -- count charge points per status and aggregate for each location&#xd;
     LEFT JOIN (&#xd;
         SELECT&#xd;
-            charging_station_id,&#xd;
+            cs.location_id,&#xd;
             SUM(&#xd;
                 CASE&#xd;
                     WHEN es.status = &apos;AVAILABLE&apos; THEN 1&#xd;
@@ -131,13 +149,13 @@ FROM&#xd;
             charging_station cs&#xd;
             JOIN evse es ON cs.id = es.charging_station_id&#xd;
         GROUP BY&#xd;
-            charging_station_id&#xd;
-    ) AS cp ON cp.charging_station_id = charging_station.id&#xd;
-    -- Join results of sub query &apos;station_power&apos; with table &apos;charging_station&apos;&#xd;
-    JOIN station_power sp ON sp.charging_station_id = charging_station.id&#xd;
-    -- Join &apos;charging_station&apos; with table &apos;location&apos;&#xd;
-    JOIN location ON charging_station.location_id = location.id&#xd;
-     -- Join &apos;location&apos; with table &apos;business&apos;&#xd;
+            cs.location_id&#xd;
+    ) AS cp ON cp.location_id = location.id &#xd;
+    -- join location_connector_aggregates and location_station_aggregates &#xd;
+    --to get max_electric_power, max_power_value and go_live_date per location&#xd;
+    JOIN location_connector_aggregates lca ON lca.location_id = location.id&#xd;
+    JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
+    -- join business to get operator name&#xd;
     JOIN business ON location.operator_id = business.id
 </sql>
         <escapeSql>false</escapeSql>
@@ -241,6 +259,34 @@ FROM&#xd;
       </description>
     </attribute>
     <attribute>
+      <name>max_electric_power</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>true</nillable>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <de>Höchste maximale Ladeleistung eines einzelnen Ladepunktes am Ladestandort</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>max_power_value</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Double</binding>
+      <description>
+        <de>Gesamte maximale Ladeleistung am Ladestandort</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>go_live_date</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.sql.Date</binding>
+      <description>
+        <de>Frühestes Inbetriebnahmedatum am Ladestandort</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>chargepoint_available_count</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -318,16 +364,6 @@ FROM&#xd;
       <binding>java.lang.Long</binding>
       <description>
         <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>max_electric_power</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Integer</binding>
-      <description>
-        <de>Maximale elektrische Leistung des Ladestandortes</de>
       </description>
     </attribute>
     <attribute>
