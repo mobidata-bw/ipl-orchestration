@@ -4,13 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-03-13
 
 - GeoServer: add attributes to `MobiData-BW:charge_points`, optimize query and meta data
 - [OCPDB 2.7.2](https://github.com/binary-butterfly/ocpdb/blob/e470b997279640d54b209cea90b8a5d500c99dc3/CHANGELOG.md#version-272)
   - with several smaller output and documentation fixes
   - with BNetzA station grouping based on lat/lon
-
 
 ## 2026-03-11
 
