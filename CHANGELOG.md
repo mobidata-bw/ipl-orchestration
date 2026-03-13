@@ -7,6 +7,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: add attributes to `MobiData-BW:charge_points`, optimize query and meta data
+- [OCPDB 2.7.2](https://github.com/binary-butterfly/ocpdb/blob/e470b997279640d54b209cea90b8a5d500c99dc3/CHANGELOG.md#version-272)
+  - with several smaller output and documentation fixes
+  - with BNetzA station grouping based on lat/lon
+
 
 ## 2026-03-11
 
@@ -16,7 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.2-alpine` ([v2.11.2 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.2))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.6`](https://github.com/PostgREST/postgrest/releases/tag/v14.6).
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.10`](https://github.com/traefik/traefik/blob/v3.6.10/CHANGELOG.md)
-- [OCPDB 2.7 with OCPI 3.0 data model change](https://github.com/binary-butterfly/ocpdb/blob/fabc1bca831ceff1b77b4a01914a06126c7e2652/CHANGELOG.md)
+- [OCPDB 2.7.1 with OCPI 3.0 data model change](https://github.com/binary-butterfly/ocpdb/blob/fabc1bca831ceff1b77b4a01914a06126c7e2652/CHANGELOG.md)
 - GeoServer: update `MobiData-BW:charge_points` sql query according to OCPI 3.0 changes
 
 ## 2026-03-04
