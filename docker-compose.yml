@@ -780,6 +780,7 @@ services:
     restart: unless-stopped
 
   ocpdb-regionalschluessel-importer:
+    networks: [ipl]
     image: ${GDAL_IMAGE}
     user: *local-user
     volumes:
@@ -788,7 +789,7 @@ services:
     environment:
       - VG25_GEOPACKAGE_URL=${VG25_GEOPACKAGE_URL:-https://mobidata-bw.de/daten/ipl/verwaltungsgrenzen/251231_DE_VG25.gpkg}
       - VG25_GEOPACKAGE_WGET_USER_AGENT='OCPDB'
-      - PGHOST=ocpdb-db
+      - PGHOST=${OCPDB_POSTGRES_HOST}
       - PGUSER=${OCPDB_POSTGRES_USER}
       - PGPASSWORD=${OCPDB_POSTGRES_PASSWORD}
       - PGDATABASE=${OCPDB_POSTGRES_DB}
