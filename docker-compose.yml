@@ -783,7 +783,7 @@ services:
     image: ${GDAL_IMAGE}
     user: *local-user
     volumes:
-      - ./bin-regionalschluessel:/scripts
+      - ./bin/regionalschluessel:/scripts
       - ./var/ocpdb/regionalschluessel:/data
     environment:
       - VG25_GEOPACKAGE_URL=${VG25_GEOPACKAGE_URL:-https://mobidata-bw.de/daten/ipl/verwaltungsgrenzen/DE_VG25.gpkg}
