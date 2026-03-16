@@ -779,6 +779,24 @@ services:
       retries: 3
     restart: unless-stopped
 
+  ocpdb-regionalschluessel-importer:
+    image: ${GDAL_IMAGE}
+    user: *local-user
+    volumes:
+      - ./bin-regionalschluessel:/scripts
+      - ./var/ocpdb/regionalschluessel:/data
+    environment:
+      - VG25_GEOPACKAGE_URL=${VG25_GEOPACKAGE_URL:-https://mobidata-bw.de/daten/ipl/verwaltungsgrenzen/DE_VG25.gpkg}
+      - VG25_GEOPACKAGE_WGET_USER_AGENT='OCPDB'
+      - PGHOST=ocpdb-db
+      - PGUSER=${OCPDB_POSTGRES_USER}
+      - PGPASSWORD=${OCPDB_POSTGRES_PASSWORD}
+      - PGDATABASE=${OCPDB_POSTGRES_DB}
+    depends_on:
+      ocpdb-db:
+        condition: service_healthy
+    command: ["/scripts/import-regionalschluessel.sh"]
+
   park-api-flask:
     <<: *park-api-defaults
     restart: unless-stopped
