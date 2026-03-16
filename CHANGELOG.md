@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: introduce more robust attribute names for `MobiData-BW:bicycle_service_points` to fix WFS GetCapabilities incompability. ⚠️ `Externe ID`, `Gebühren`, `Öffnungszeiten`, `Zuständig in RadVIS` and `Servicestation-Typ` will be removed soon
 - [OCPDB 2.8.0](https://github.com/binary-butterfly/ocpdb/blob/71ee2295a1cfeb983125d9a23c6ebfbca2f35290/CHANGELOG.md#version-280)
   - with Regionalschlüssel support. To assign regionalschluessel to existing data, run `make ocpdb-re-assign-regionalschluessel`.
+- [ParkAPI 0.43.2](https://github.com/ParkenDD/park-api-v3/blob/e352cf581c2f8af0291491af9f90ac941af34831/CHANGELOG.md#fixes)
+  - with more patch abilities, updated BFRK car and heerenberg bike
 
 ## 2026-03-13
 
