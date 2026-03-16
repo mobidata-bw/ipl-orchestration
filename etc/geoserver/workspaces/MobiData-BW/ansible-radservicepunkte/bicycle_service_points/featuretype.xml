@@ -68,7 +68,7 @@
   <attributes>
     <attribute>
       <name>ID</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
@@ -83,6 +83,15 @@
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <source>Externe_ID</source>
+      <description>
+        <de>Ursprüngliche ID der Radservicestation beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Externe_ID</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
       <description>
         <de>Ursprüngliche ID der Radservicestation beim Datengeber</de>
       </description>
@@ -113,6 +122,17 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <source>&quot;Gebühren&quot;</source>
+      <description>
+        <de>Gebührenpflichtige Nutzung?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Gebuehren</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>&quot;Gebühren&quot;</source>
       <description>
         <de>Gebührenpflichtige Nutzung?</de>
       </description>
@@ -123,6 +143,17 @@
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
+      <source>&quot;Öffnungszeiten&quot;</source>
+      <description>
+        <de>Öffnungszeiten der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Oeffnungszeiten</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>&quot;Öffnungszeiten&quot;</source>
       <description>
         <de>Öffnungszeiten der Radservicestation</de>
       </description>
@@ -209,10 +240,30 @@
       </description>
     </attribute>
     <attribute>
+      <name>Zustaendig_in_RadVIS</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>&quot;Zuständig_in_RadVIS&quot;</source>
+      <description>
+        <de>Datengeber/Bearbeiter in RadVIS (aus RadVIS übernommen)</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>Servicestation-Typ</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
+      <binding>java.lang.String</binding>
+      <source>&quot;Servicestation-Typ&quot;</source>
+      <description>
+        <de>Typ der Radservicestation</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>Servicestation_Typ</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <source>&quot;Servicestation-Typ&quot;</source>
       <description>
