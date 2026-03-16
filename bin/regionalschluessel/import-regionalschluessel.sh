@@ -3,6 +3,8 @@
 set -eo pipefail
 
 if [ -f /data/.vg25-imported ]; then
+    # prevent docker compose up --wait to crash
+    sleep 150
     exit 0
 fi
 
@@ -13,3 +15,6 @@ fi
 ogr2ogr -f PostgreSQL "PG:dbname='${PGDATABASE:-ocpdb}'" -nln regionalschluessel --config OGR_TRUNCATE YES -s_srs EPSG:25832 -t_srs EPSG:4326 /data/vg25.gpkg v_vg25_gem
 
 touch /data/.vg25-imported
+
+# prevent docker compose up --wait to crash
+sleep 150
