@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- GeoServer: add `official_region_code` (German: "Amtlicher Gemeindeschlüssel") to `MobiData-BW:charge_points`
+
 ## 2026-03-17
 
 - GeoServer: introduce more robust attribute names for `MobiData-BW:bicycle_service_points` to fix WFS GetCapabilities incompability. ⚠️ `Externe ID`, `Gebühren`, `Öffnungszeiten`, `Zuständig in RadVIS` and `Servicestation-Typ` will be removed soon

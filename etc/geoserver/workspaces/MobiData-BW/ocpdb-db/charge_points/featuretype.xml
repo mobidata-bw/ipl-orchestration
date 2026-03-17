@@ -78,6 +78,7 @@ SELECT&#xd;
     location.postal_code,&#xd;
     location.city,&#xd;
     location.state,&#xd;
+    location.official_region_code,&#xd;
     location.geometry,&#xd;
     lca.max_electric_power,&#xd;
     lsa.max_power_value,&#xd;
@@ -256,6 +257,16 @@ FROM&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Bundesland des Ladestandortes</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>official_region_code</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Amtlicher Gemeindeschlüssel</de>
       </description>
     </attribute>
     <attribute>
