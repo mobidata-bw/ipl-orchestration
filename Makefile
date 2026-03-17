@@ -146,6 +146,9 @@ ocpdb-upgrade:
 ocpdb-shell:
 	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh
 
+.PHONY: ocpdb-re-assign-regionalschluessel
+ocpdb-re-assign-regionalschluessel:
+	$(DOCKER_COMPOSE) exec ocpdb-flask /bin/sh -c 'flask location assign-regionalschluessel --re-assign'
 
 # ParkAPI management
 # ------------------

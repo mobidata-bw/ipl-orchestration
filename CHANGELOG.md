@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: introduce more robust attribute names for `MobiData-BW:bicycle_service_points` to fix WFS GetCapabilities incompability. ⚠️ `Externe ID`, `Gebühren`, `Öffnungszeiten`, `Zuständig in RadVIS` and `Servicestation-Typ` will be removed soon
+- [OCPDB 2.8.0](https://github.com/binary-butterfly/ocpdb/blob/71ee2295a1cfeb983125d9a23c6ebfbca2f35290/CHANGELOG.md#version-280)
+  - with Regionalschlüssel support. To assign regionalschluessel to existing data, run `make ocpdb-re-assign-regionalschluessel`.
 
 ## 2026-03-13
 
