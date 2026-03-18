@@ -565,6 +565,20 @@ lamassu:
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/heidelberg/gbfs.json"
       language: en
+    - systemId: zeus_heilbronn
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/heilbronn/gbfs.json"
+      language: en
+    - systemId: zeus_kempten
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/kempten/gbfs.json"
+      language: en
     - systemId: zeus_konstanz
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -572,12 +586,26 @@ lamassu:
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/konstanz/gbfs.json"
       language: en
+    - systemId: zeus_limburgerhof
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/limburgerhof/gbfs.json"
+      language: en
     - systemId: zeus_ludwigsburg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
+      language: en
+    - systemId: zeus_neustadt
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/neustadt/gbfs.json"
       language: en
     - systemId: zeus_pforzheim
       operatorId: ZEU:Operator:zeus
@@ -599,6 +627,13 @@ lamassu:
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/tubingen/gbfs.json"
+      language: en
+    - systemId: zeus_tuttlingen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/tuttlingen/gbfs.json"
       language: en
     - systemId: zeus_villingen_schwenningen
       operatorId: ZEU:Operator:zeus
@@ -626,6 +661,13 @@ lamassu:
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/goppingen/gbfs.json"
+      language: en
+    - systemId: zeus_wurzburg
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      # Note: zeus feeds are accessed via proxy, using http instead of https
+      url: "http://zeus.city/api/v1/mds/gbfs/wurzburg/gbfs.json"
       language: en
     # Feeds CH
     ## Bird CH
