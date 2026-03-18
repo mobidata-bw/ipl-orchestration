@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## Unreleased
 
 - GeoServer: add `official_region_code` (German: "Amtlicher Gemeindeschlüssel") to `MobiData-BW:charge_points`
+- Lamassu: add `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof`, `zeus_neustadt`, `zeus_tuttlingen`, `zeus_wurzburg` feeds
 
 ## 2026-03-17
 
