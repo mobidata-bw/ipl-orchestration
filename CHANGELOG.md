@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add `official_region_code` (German: "Amtlicher Gemeindeschlüssel") to `MobiData-BW:charge_points`
 - Lamassu: add `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof`, `zeus_neustadt`, `zeus_tuttlingen`, `zeus_wurzburg` feeds
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.11`](https://github.com/traefik/traefik/blob/v3.6.11/CHANGELOG.md)
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.7`](https://github.com/PostgREST/postgrest/releases/tag/v14.7).
 
 ## 2026-03-17
 
