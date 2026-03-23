@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof`, `zeus_neustadt`, `zeus_tuttlingen`, `zeus_wurzburg` feeds
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.11`](https://github.com/traefik/traefik/blob/v3.6.11/CHANGELOG.md)
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.7`](https://github.com/PostgREST/postgrest/releases/tag/v14.7).
+- [OCPDB 2.9.0](https://github.com/binary-butterfly/ocpdb/blob/ccde338cd6a8808b246799b283a8ac7411475fb1/CHANGELOG.md#version-290)
+  - with DATEX2 support: EnBW DATEX2 import, DATEX2 3.5 static and realtime APIs, DATEX2 3.7 static API
 
 ## 2026-03-17
 
