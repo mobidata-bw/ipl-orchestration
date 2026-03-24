@@ -23,6 +23,7 @@ x-ocpdb-defaults: &ocpdb-defaults
   volumes:
     - ./etc/ocpdb/config.yaml:/app/config.yaml
     - ./etc/ocpdb/config.secrets.yaml:/app/config.secrets.yaml
+    - ./etc/ocpdb/files:/app/files
     - ./var/ocpdb/logs:/app/logs
     - ./var/ocpdb/temp:/app/temp
     - ./var/ocpdb/data:/app/data
