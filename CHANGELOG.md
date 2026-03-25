@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-56483e4d6678cbca5afccb1a6c525d95ba8f65dfb69063954a73317eda911579))
+
 ## 2026-03-24
 
 - GeoServer: add `official_region_code` (German: "Amtlicher Gemeindeschlüssel") to `MobiData-BW:charge_points`
