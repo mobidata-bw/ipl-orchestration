@@ -275,7 +275,7 @@ services:
     image: ${IPL_POSTGIS_IMAGE}
     platform: linux/amd64
     volumes:
-      - ./var/ipl-db/data:/var/lib/postgresql/18/docker
+      - ./var/ipl-db/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${IPL_POSTGRES_DB}
       - POSTGRES_USER=${IPL_POSTGRES_USER}
