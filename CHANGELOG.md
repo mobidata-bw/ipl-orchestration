@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-56483e4d6678cbca5afccb1a6c525d95ba8f65dfb69063954a73317eda911579))
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-01-03T04.37.53_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), which is just a rebuild based on a new [`docker.io/bitnami/minideb:bookworm` base image](https://github.com/bitnami/containers/blob/afa495962f3fd58d0bbe4b02c9a70cb5dc66d0a2/bitnami/pgbouncer/1/debian-12/Dockerfile#L4C6-L4C40).
 - `goaccess`: upgrade GoAccess to [v1.10.2](https://goaccess.io/release-notes#release-1.10.2).
+- Lamassu: remove `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof` feeds
 
 ## 2026-03-24
 
