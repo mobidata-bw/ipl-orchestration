@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   1. stop `gtfs-db` (`make docker-down SERVICE=gtfs-db`),
   2. delete the DB directory (`rm -r var/gtfs/gtfs-db`),
   3. apply the upgrade (`git pull`/`git checkout`),
-  4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
+  4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`) - it's expected that you will find log entries like `Role "postgrest" does not exist` as it's created in next step,
   5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-56483e4d6678cbca5afccb1a6c525d95ba8f65dfb69063954a73317eda911579))
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-01-03T04.37.53_afa4959`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/edae5705da14f318b39ee2c0517a951b18bd77a7), which is just a rebuild based on a new [`docker.io/bitnami/minideb:bookworm` base image](https://github.com/bitnami/containers/blob/afa495962f3fd58d0bbe4b02c9a70cb5dc66d0a2/bitnami/pgbouncer/1/debian-12/Dockerfile#L4C6-L4C40).
