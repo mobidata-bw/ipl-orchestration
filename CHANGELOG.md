@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [OCPDB 2.10.1](https://github.com/binary-butterfly/ocpdb/blob/9d17698f3f9b955cef29ff785f0087727f8fafb4/CHANGELOG.md#2101)
+
+
 ## 2026-04-14
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.13`](https://github.com/traefik/traefik/blob/v3.6.13/CHANGELOG.md) ([`v3.6.12` release](https://github.com/traefik/traefik/blob/v3.6.12/CHANGELOG.md))
