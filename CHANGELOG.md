@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-04-14
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.6.13`](https://github.com/traefik/traefik/blob/v3.6.13/CHANGELOG.md) ([`v3.6.12` release](https://github.com/traefik/traefik/blob/v3.6.12/CHANGELOG.md))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.8`](https://github.com/PostgREST/postgrest/releases/tag/v14.8)
@@ -15,7 +15,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: remove `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof` feeds
 - [OCPDB 2.10.0](https://github.com/binary-butterfly/ocpdb/blob/3ae9cc26dd33d54419052ae2faed65225fbb448d/CHANGELOG.md#2100)
   - with Datex2 tariffs, Datex2 3.7 realtime output, and Datex2 client for Mobilithek
-
 
 ## 2026-03-24
 
