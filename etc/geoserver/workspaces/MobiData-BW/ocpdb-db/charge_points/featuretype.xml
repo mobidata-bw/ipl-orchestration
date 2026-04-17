@@ -60,8 +60,7 @@ WITH location_connector_aggregates AS (&#xd;
 -- aggregate station power and go-live date per location&#xd;
 location_station_aggregates AS (&#xd;
     SELECT&#xd;
-        location_id,&#xd;
-        SUM(max_power_value) AS max_power_value, -- total station power per location&#xd;
+        location_id,       &#xd;
         MIN(go_live_date) AS go_live_date -- earliest go-live date per location&#xd;
     FROM&#xd;
         charging_station&#xd;
@@ -80,8 +79,7 @@ SELECT&#xd;
     location.state,&#xd;
     location.official_region_code,&#xd;
     location.geometry,&#xd;
-    lca.max_electric_power,&#xd;
-    lsa.max_power_value,&#xd;
+    lca.max_electric_power,   &#xd;
     lsa.go_live_date,&#xd;
     cp.chargepoint_available_count,&#xd;
     cp.chargepoint_unknown_count,&#xd;
@@ -153,7 +151,7 @@ FROM&#xd;
             cs.location_id&#xd;
     ) AS cp ON cp.location_id = location.id &#xd;
     -- join location_connector_aggregates and location_station_aggregates &#xd;
-    --to get max_electric_power, max_power_value and go_live_date per location&#xd;
+    --to get max_electric_power and go_live_date per location&#xd;
     JOIN location_connector_aggregates lca ON lca.location_id = location.id&#xd;
     JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
     -- join business to get operator name&#xd;
@@ -277,15 +275,6 @@ FROM&#xd;
       <binding>java.lang.Integer</binding>
       <description>
         <de>Höchste maximale Ladeleistung eines einzelnen Ladepunktes am Ladestandort</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>max_power_value</name>
-      <minOccurs>1</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <binding>java.lang.Double</binding>
-      <description>
-        <de>Gesamte maximale Ladeleistung am Ladestandort</de>
       </description>
     </attribute>
     <attribute>
