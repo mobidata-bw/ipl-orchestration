@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- GeoServer
+  - ⚠️ ParkAPI: remove deprecated layers `MobiData-BW:park-api_car_buildings`, `MobiData-BW:park-api_car_on-street` and `MobiData-BW:park-api_item`
+  - ⚠️ `MobiData-BW:bicycle_service_points`: remove deprecated attributes `Externe ID`, `Gebühren`, `Öffnungszeiten`, `Zuständig in RadVIS` and `Servicestation-Typ`. Add `Foto_URL`
+  - ⚠️ `MobiData-BW:charge_points`: remove `max_power_value`
+
 ## 2026-04-14b
 
 - [OCPDB 2.10.1](https://github.com/binary-butterfly/ocpdb/blob/9d17698f3f9b955cef29ff785f0087727f8fafb4/CHANGELOG.md#2101)
