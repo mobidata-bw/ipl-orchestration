@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - ⚠️ ParkAPI: remove deprecated layers `MobiData-BW:park-api_car_buildings`, `MobiData-BW:park-api_car_on-street` and `MobiData-BW:park-api_item`
   - ⚠️ `MobiData-BW:bicycle_service_points`: remove deprecated attributes `Externe ID`, `Gebühren`, `Öffnungszeiten`, `Zuständig in RadVIS` and `Servicestation-Typ`. Add `Foto_URL`
   - ⚠️ `MobiData-BW:charge_points`: remove `max_power_value`
+- [OCPDB 2.10.2](https://github.com/binary-butterfly/ocpdb/blob/fe74cdf1bdabb9ceadd3fd9232441560538274df/CHANGELOG.md#2102)
+  - Fix endpoint for Mobilithek by adding gzip support
+  - Fix access management by adding key support
+  - Fix Datex2 client by adding iteration mechanism for delta push updates
+  - Fix MessageContainer output
+
 
 ## 2026-04-14b
 
