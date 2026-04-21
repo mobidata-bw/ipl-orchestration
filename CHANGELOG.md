@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-04-21
 
 - GeoServer
   - ⚠️ ParkAPI: remove deprecated layers `MobiData-BW:park-api_car_buildings`, `MobiData-BW:park-api_car_on-street` and `MobiData-BW:park-api_item`
@@ -15,7 +15,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - Fix access management by adding key support
   - Fix Datex2 client by adding iteration mechanism for delta push updates
   - Fix MessageContainer output
-
 
 ## 2026-04-14b
 
