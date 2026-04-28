@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-04-28
 
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.10`](https://github.com/PostgREST/postgrest/releases/tag/v14.10) ([`v14.9` changelog](https://github.com/PostgREST/postgrest/releases/tag/v14.9)).
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-db00e1e6065936ee33d8806b6962b71b715eea7feb758b8d6de927b1607fba55))
