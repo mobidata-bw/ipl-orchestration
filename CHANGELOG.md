@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- GeoServer: use `LEFT JOIN` instead of `JOIN` to get information on the business for `MobiData-BW:charge_points` 
+
 ## 2026-04-28
 
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.10`](https://github.com/PostgREST/postgrest/releases/tag/v14.10) ([`v14.9` changelog](https://github.com/PostgREST/postgrest/releases/tag/v14.9)).

@@ -154,8 +154,8 @@ FROM&#xd;
     --to get max_electric_power and go_live_date per location&#xd;
     JOIN location_connector_aggregates lca ON lca.location_id = location.id&#xd;
     JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
-    -- join business to get operator name&#xd;
-    JOIN business ON location.operator_id = business.id
+    -- left join business to get operator name if available&#xd;
+    LEFT JOIN business ON location.operator_id = business.id
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>id</keyColumn>
