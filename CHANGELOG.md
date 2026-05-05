@@ -16,6 +16,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - with DATEX II HEAD response fixing Mobilithek push update
   - with a mapper of DATEX II owner field
   - with better business input and output handling
+- ⚠️ `gtfs-db`: upgrade [`postgis-with-pg-plan-filter`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter) to [`2026-05-05T13.30.25-22eac09`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter/tree/22eac09) – Because this upgrades PostgreSQL to v18, to upgrade, you will have to
+  1. stop `gtfs-db` (`make docker-down SERVICE=gtfs-db`),
+  2. delete the DB directory (`rm -r var/gtfs/gtfs-db`),
+  3. apply the upgrade (`git pull`/`git checkout`),
+  4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
+  5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
 
 ## 2026-04-28
 
