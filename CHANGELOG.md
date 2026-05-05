@@ -10,11 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - [ParkAPI 0.44.0](https://github.com/ParkenDD/park-api-v3/blob/b35426bec5b526f615f685d4947cd35ff5ba0c91/CHANGELOG.md#0440)
   - with recreated konstanz bike converter
   - with an extended bfrk bike parking
-- [OCPDB 2.12.0](https://github.com/binary-butterfly/ocpdb/blob/f7abe91bee265111d3f30d2382bdc73f4ed5230a/CHANGELOG.md#2120)
+- [OCPDB 2.12.2](https://github.com/binary-butterfly/ocpdb/blob/f7abe91bee265111d3f30d2382bdc73f4ed5230a/CHANGELOG.md#2120)
   - with DATEX II v3.7 Import
   - with more DATEX II 3.5 Soures
   - with DATEX II HEAD response fixing Mobilithek push update
   - with a mapper of DATEX II owner field
+  - with better business input and output handling
 
 ## 2026-04-28
 
