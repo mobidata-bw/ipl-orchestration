@@ -10,6 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - with tariff and tariff association cleanup logic
 - [ipl dagster pipeline 2026-08-10](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-08-10)
 
+- ⚠️ `gtfs-db`: upgrade [`postgis-with-pg-plan-filter`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter) to [`2026-07-15T12.22.32-e46af8c`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter/tree/e46af8c) – Because this upgrades PostgreSQL to v18, to upgrade, you will have to
+  1. stop `gtfs-db` (`make docker-down SERVICE=gtfs-db`),
+  2. delete (or better: back up) the DB directory (`rm -r var/gtfs/gtfs-db`),
+  3. apply the upgrade (`git pull`/`git checkout`),
+  4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
+  5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
+
 ## 2026-08-04
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.10`](https://github.com/traefik/traefik/blob/v3.7.10/CHANGELOG.md)
