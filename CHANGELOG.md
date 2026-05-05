@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   3. apply the upgrade (`git pull`/`git checkout`),
   4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
   5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
+- ⚠️ `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v7-2026-07-15t12.21.50`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/6c38fe5) – Its base image has changed from Debian Trixie to Alpine Linux 3.23, so if you mount any custom scripts into it, you must make sure they keep working.
 
 ## 2026-08-04
 
