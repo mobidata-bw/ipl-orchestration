@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.44.1](https://github.com/ParkenDD/park-api-v3/blob/ebad94465f798eef20185583e10c28b1470cce5e/CHANGELOG.md#0441)
+   - with a fix for a forein key exception when deleting duplicates
+
 ## 2026-05-06
 
 - GeoServer: use `LEFT JOIN` instead of `JOIN` to get information on the business for `MobiData-BW:charge_points`
