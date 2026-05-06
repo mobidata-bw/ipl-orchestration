@@ -176,12 +176,12 @@
 		<li><a href="/ocpdb/api/ocpi/3.0/tariffs?limit=1000">/ocpdb/api/ocpi/3.0/tariffs</a> liefert die Tarifdaten.</li>
 		<li><a href="/ocpdb/api/ocpi/3.0/tariff-associations?limit=1000">/ocpdb/api/ocpi/3.0/tariff-associations</a> liefert die Tarife der Ladepunkte.</li>		
 		<li><a href="/ocpdb/api/ocpi/3.0/businesses?limit=1000">/ocpdb/api/ocpi/3.0/businesses</a> listet die Ladesäulenbetreiber.</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/static?limit=5000">/ocpdb/api/public/datex/v3.5/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.5).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime?limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5 AFIR).</li>		
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/static?limit=5000">/ocpdb/api/public/datex/v3.7/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.7).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime?limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7 AFIR).</li>
+		<li><a href="/ocpdb/api/public/datex/v3.5/json/static?limit=1000">/ocpdb/api/public/datex/v3.5/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.5).</li>
+		<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5).</li>
+		<li><a href="/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5 AFIR).</li>		
+		<li><a href="/ocpdb/api/public/datex/v3.7/json/static?limit=1000">/ocpdb/api/public/datex/v3.7/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.7).</li>
+		<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7).</li>
+		<li><a href="/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7 AFIR).</li>
 		<li><a href="/ocpdb/api/public/v1/sources"><code>/ocpdb/api/public/v1/sources</code></a> listet die OCPDB Datenquellen.</li>
 		<li><a href="/ocpdb/metrics"><code>/ocpdb/metrics</code></a> listet die OCPDB Metriken.</li>
 	</ul>
@@ -193,6 +193,7 @@
 			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_enbw&limit=1000">datex2_enbw</a></li>
 			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_midorion">datex2_midorion</a></li>
 			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_tesla&limit=1000">datex2_tesla</a></li>
+			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_ecomovement&limit=1000">datex2_ecomovement</a></li>
 			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=chargecloud_stuttgart&limit=1000">chargecloud_stuttgart</a></li>
 	    	<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=chargecloud_ludwigsburg&limit=1000">chargecloud_ludwigsburg</a></li>
 			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=chargecloud_pforzheim&limit=1000">chargecloud_pforzheim</a></li>
@@ -215,6 +216,8 @@
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion (realtime)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla (static)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla (realtime)</a></li>
+			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement (static)</a></li>
+			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement (realtime)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=chargecloud_stuttgart&limit=1000">chargecloud_stuttgart (static)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=chargecloud_stuttgart&limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">chargecloud_stuttgart (realtime)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=chargecloud_ludwigsburg&limit=1000">chargecloud_ludwigsburg (static)</a></li>
@@ -245,6 +248,8 @@
 			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion (realtime)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla (static)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla (realtime)</a></li>
+			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement (static)</a></li>
+			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement (realtime)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=chargecloud_stuttgart&limit=1000">chargecloud_stuttgart (static)</a></li>
 			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=chargecloud_stuttgart&limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">chargecloud_stuttgart (realtime)</a></li>
 	    	<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=chargecloud_ludwigsburg&limit=1000">chargecloud_ludwigsburg (static)</a></li>
