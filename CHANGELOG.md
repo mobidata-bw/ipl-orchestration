@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.1`](https://github.com/traefik/traefik/blob/v3.7.1/CHANGELOG.md) (skipping releases [`v3.6.14`](https://github.com/traefik/traefik/blob/v3.6.14/CHANGELOG.md), [`v3.6.15`](https://github.com/traefik/traefik/blob/v3.6.15/CHANGELOG.md), [`v3.6.16`](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md), [`v3.6.17`](https://github.com/traefik/traefik/blob/v3.6.17/CHANGELOG.md), [`v3.7.0`](https://github.com/traefik/traefik/blob/v3.7.0/CHANGELOG.md))
+  - ⚠️ The [`v3.6.14` release](https://github.com/traefik/traefik/blob/v3.6.14/CHANGELOG.md) contains a change in the `ForwardAuth` middleware that *might* break your setup.
+  - ⚠️ The [`v3.6.16` release](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md) [changed the minimum Docker API version to v1.40](https://doc.traefik.io/traefik/v3.7/migrate/v3/#v3616).
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
 
 ## 2026-05-19
