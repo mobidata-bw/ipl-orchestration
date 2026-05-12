@@ -4,14 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-05-12
 
 - [ipl dagster pipeline 2026-05-08](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/83fc1fe8f31449460b32a959226dbb91450de67b/CHANGELOG.md?plain=1#L7)
 - GeoServer: bump to 2.28.3
 - Lamassu:
   - Bump to [2026-04-16T18-28 release](https://github.com/entur/lamassu/blob/8707b2566cf0cddfb0855e595b72fdbaebfa6ad5/Changelog.md#130-under-development)
   - Bump redis to [8.6.2-alpine3.23](https://github.com/redis/redis/releases/tag/8.6.2)
-
 
 ## 2026-05-06
 
