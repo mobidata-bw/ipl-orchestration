@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
+
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
 - OCPDB: add `datex2_chargecloud`, remove `chargecloud_ludwigsburg`, `chargecloud_pforzheim`, `chargecloud_tuebingen`
