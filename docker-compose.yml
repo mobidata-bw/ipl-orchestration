@@ -432,8 +432,8 @@ services:
       - RADVIS_WFS_PASSWORD=${RADVIS_WFS_PASSWORD:?missing/empty}
       # Roadworks download url
       - ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL=${ROADWORKS_SVZBW_DATEX2_DOWNLOAD_URL:?missing/empty}
-      - IPL_MOBILITHEK_CERT=files/mobilithek-mobidata.crt.pem
-      - IPL_MOBILITHEK_KEY=files/mobilithek-mobidata.key.pem
+      - IPL_MOBILITHEK_CERT_PATH=files/mobilithek-mobidata.crt.pem
+      - IPL_MOBILITHEK_KEY_PATH=files/mobilithek-mobidata.key.pem
       - IPL_INCIDENTS_LMSBW_DATEX2_DOWNLOAD_URL=${IPL_INCIDENTS_LMSBW_DATEX2_DOWNLOAD_URL:?missing/empty}
       - IPL_ROADWORKS_ADB_SHORT_TERM_DATEX2_DOWNLOAD_URL=${IPL_ROADWORKS_ADB_SHORT_TERM_DATEX2_DOWNLOAD_URL:?missing/empty}
       - IPL_ROADWORKS_ADB_LONG_TERM_DATEX2_DOWNLOAD_URL=${IPL_ROADWORKS_ADB_LONG_TERM_DATEX2_DOWNLOAD_URL:?missing/empty}
