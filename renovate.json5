@@ -26,6 +26,22 @@
 		},
 	],
 	"packageRules": [
+		// As of 2026-05-19, Renovate currently doesn't support tracking >1 versioning schemes at once.
+		// For example, `docker.io/postgis/postgis:15-3.5-alpine` uses PostgreSQL v15 with PostGIS v3.5 with Alpine Linux.
+		// This is why, as a workaround, we define
+		// - the PostgreSQL version as major,
+		// - the PostGIS version as minor/patch, and
+		// - the `alpine` suffix as "compatibility", to be kept in place by Renovate.
+		// https://github.com/renovatebot/renovate/discussions/15652
+		// https://github.com/renovatebot/renovate/discussions/41845
+		{
+			"matchDatasources": ["docker"],
+			"matchPackageNames": [
+				"docker.io/postgis/postgis",
+			],
+	        versioning: 'regex:^(?<major>\\d+)-(?<minor>\\d+)(\\.(?<patch>\\d+))?(-(?<compatibility>.*))?$',
+		},
+
 		// With a purely date-time-based tagging scheme (e.g. `2024-05-29T01.02`), the `docker` versioning scheme [1] doesn't seem to recognize newer tags as updates. For those images, we configure the `loose` versioning scheme [2], which recognizes newer tags as non-major updates.
 		// Note: `loose` detects the tag's date as the major version, so it will start *wrongly* detecting *major* updates whenever the year has changed.
 		// todo: configure this individually per image?
