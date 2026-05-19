@@ -42,6 +42,15 @@
 	        versioning: 'regex:^(?<major>\\d+)-(?<minor>\\d+)(\\.(?<patch>\\d+))?(-(?<compatibility>.*))?$',
 		},
 
+		// `ghcr.io/osgeo/gdal` has the "compatibility" part in the front and the version in the back, e.g. `alpine-small-3.12.1`
+		{
+			"matchDatasources": ["docker"],
+			"matchPackageNames": [
+				"ghcr.io/osgeo/gdal",
+			],
+	        versioning: 'regex:^(?<compatibility>[^\d]+)-(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?$',
+		},
+
 		// With a purely date-time-based tagging scheme (e.g. `2024-05-29T01.02`), the `docker` versioning scheme [1] doesn't seem to recognize newer tags as updates. For those images, we configure the `loose` versioning scheme [2], which recognizes newer tags as non-major updates.
 		// Note: `loose` detects the tag's date as the major version, so it will start *wrongly* detecting *major* updates whenever the year has changed.
 		// todo: configure this individually per image?
