@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - ⚠️ The [`v3.6.16` release](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md) [changed the minimum Docker API version to v1.40](https://doc.traefik.io/traefik/v3.7/migrate/v3/#v3616).
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.11`](https://github.com/PostgREST/postgrest/releases/tag/v14.11).
+- `redis`: switch `redis` image from [`8.6.2-alpine3.23`](https://hub.docker.com/layers/library/redis/8.6.2-alpine3.23/images/sha256-8873bc9359449f72ddf0763df1deeb94d1baf3693ea7bfea7425761474c6635f) to [`8.6.3-alpine`](https://hub.docker.com/layers/library/redis/8.6.3-alpine/images/sha256-59102ee1cdb56536acf17611b73cffe00cee1bfd039bfbe1812aac3fe063b563)
+  - ⚠️ Because we now *do not* pin the Alpine Linux version anymore, we're subject to whatever version Redis Labs uses as their base image; For example, they could upgrade to Alpine Linux v4 at any point in the future. – If you rely on tools in `redis`'s OS/userland, make sure to check if your setup still works!
 
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
