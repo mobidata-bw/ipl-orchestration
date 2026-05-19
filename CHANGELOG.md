@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - ⚠️ The [`v3.6.16` release](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md) [changed the minimum Docker API version to v1.40](https://doc.traefik.io/traefik/v3.7/migrate/v3/#v3616).
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.11`](https://github.com/PostgREST/postgrest/releases/tag/v14.11).
+- ⚠️ `dagster-postgresql`: switch `postgres` image from [`15.12-bullseye`](https://hub.docker.com/layers/library/postgres/15.12-bullseye/images/sha256-6fee94413d9e465f67b748cdfa0af5ac261a501416620b5a5ec9609b4851157b) to [`15.18-alpine`](https://hub.docker.com/layers/library/postgres/15.18-alpine/images/sha256-84c1bdf2bade26b28449a56771870c7cb8f4f1a6185f127df3701f527d16fd18)
+  - Effectively, this switches the base image from [Debian Bullseye](https://en.wikipedia.org/wiki/Debian_release_version_history#Debian_11_(Bullseye)) to [Alpine Linux](https://en.wikipedia.org/wiki/Alpine_Linux), v3.23 at the time of writing this. Because we *do not* pin the Alpine Linux version, we're subject to whatever the PostgreSQL project uses as their base image; For example, they could upgrade to Alpine Linux v4 at any point in the future. – If you rely on tools in `dagster-postgresql`'s OS/userland, make sure to check if your setup still works!
 
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
