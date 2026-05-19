@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## 2026-05-19
+- [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
+
+
 ## 2026-05-12
 
 - [ipl dagster pipeline 2026-05-08](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/83fc1fe8f31449460b32a959226dbb91450de67b/CHANGELOG.md?plain=1#L7)
