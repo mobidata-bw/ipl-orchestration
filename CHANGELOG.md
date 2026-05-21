@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
-- OCPDB: add `datex2_chargecloud`, remove `chargecloud_ludwigsburg`, `chargecloud_pforzheim`, `chargecloud_tuebingen`
+- OCPDB: ⚠️ add `datex2_chargecloud`, remove `chargecloud_ludwigsburg`, `chargecloud_pforzheim`, `chargecloud_tuebingen`
 
 ## 2026-05-12
 
