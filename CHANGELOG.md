@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - ⚠️ The [`v3.6.16` release](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md) [changed the minimum Docker API version to v1.40](https://doc.traefik.io/traefik/v3.7/migrate/v3/#v3616).
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.11`](https://github.com/PostgREST/postgrest/releases/tag/v14.11).
+- Lamassu: ⚠️ remove `lube` feed
 
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
