@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-06-03T11.32.21_717f689`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/f5398478b60b9f952a9866086161e6e69d80f38c), which
+  - upgrades pgbouncer to [v1.25.2](https://www.pgbouncer.org/2026/05/pgbouncer-1-25-2)
+  - is built on a newer version of the `docker.io/bitnami/minideb:bookworm` base image
+  - contains some changes to bitnami's container helper scripts that should not affect users
+
 ## 2026-06-03
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.1`](https://github.com/traefik/traefik/blob/v3.7.1/CHANGELOG.md) (skipping releases [`v3.6.14`](https://github.com/traefik/traefik/blob/v3.6.14/CHANGELOG.md), [`v3.6.15`](https://github.com/traefik/traefik/blob/v3.6.15/CHANGELOG.md), [`v3.6.16`](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md), [`v3.6.17`](https://github.com/traefik/traefik/blob/v3.6.17/CHANGELOG.md), [`v3.7.0`](https://github.com/traefik/traefik/blob/v3.7.0/CHANGELOG.md))
