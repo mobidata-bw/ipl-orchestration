@@ -12,6 +12,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.3-alpine` ([v2.11.3 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.3))
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.12`](https://github.com/PostgREST/postgrest/releases/tag/v14.12) ([`v14.11` release](https://github.com/PostgREST/postgrest/releases/tag/v14.11)).
 - Lamassu: ⚠️ remove `lube` feed
+- [OCPDB 2.13.0](https://github.com/binary-butterfly/ocpdb/blob/2afd805da7e3be62170e47affde7fdbfbd3a96cb/CHANGELOG.md#2130)
+  - with async status handling for DATEX II realtime input
+  - with fixes in lat/lon and OpenAPI outputs
 
 ## 2026-05-19
 - [ipl dagster pipeline 2026-05-18](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-05-18): republishes three Mobilithek roadworks/incidents publications.
