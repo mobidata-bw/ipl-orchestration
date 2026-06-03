@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - upgrades pgbouncer to [v1.25.2](https://www.pgbouncer.org/2026/05/pgbouncer-1-25-2)
   - is built on a newer version of the `docker.io/bitnami/minideb:bookworm` base image
   - contains some changes to bitnami's container helper scripts that should not affect users
+- GeoServer: increase bounding box for `MobiData-BW:charge_points` to include whole of Switzerland
 
 ## 2026-06-03
 
