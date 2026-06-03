@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-06-03
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.1`](https://github.com/traefik/traefik/blob/v3.7.1/CHANGELOG.md) (skipping releases [`v3.6.14`](https://github.com/traefik/traefik/blob/v3.6.14/CHANGELOG.md), [`v3.6.15`](https://github.com/traefik/traefik/blob/v3.6.15/CHANGELOG.md), [`v3.6.16`](https://github.com/traefik/traefik/blob/v3.6.16/CHANGELOG.md), [`v3.6.17`](https://github.com/traefik/traefik/blob/v3.6.17/CHANGELOG.md), [`v3.7.0`](https://github.com/traefik/traefik/blob/v3.7.0/CHANGELOG.md))
   - ⚠️ The [`v3.6.14` release](https://github.com/traefik/traefik/blob/v3.6.14/CHANGELOG.md) contains a change in the `ForwardAuth` middleware that *might* break your setup.
