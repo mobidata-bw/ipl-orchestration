@@ -4,13 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-06-09
 
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-06-03T11.32.21_717f689`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/f5398478b60b9f952a9866086161e6e69d80f38c), which
   - upgrades pgbouncer to [v1.25.2](https://www.pgbouncer.org/2026/05/pgbouncer-1-25-2)
   - is built on a newer version of the `docker.io/bitnami/minideb:bookworm` base image
   - contains some changes to bitnami's container helper scripts that should not affect users
 - GeoServer: increase bounding box for `MobiData-BW:charge_points` to include whole of Switzerland
+- OCPDB: ⚠️ remove `chargecloud_stuttgart`
 
 ## 2026-06-03
 
