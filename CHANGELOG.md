@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [unreleased]
+
+- Lamassu: add `velo-fluo` feed
+
 ## 2026-06-09
 
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-06-03T11.32.21_717f689`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/f5398478b60b9f952a9866086161e6e69d80f38c), which
