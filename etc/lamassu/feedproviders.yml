@@ -1063,3 +1063,9 @@ lamassu:
       codespace: VLS
       url: "https://api.cyclocity.fr/contracts/nancy/gbfs/gbfs.json"
       language: fr
+    - systemId: velo-fluo
+      operatorId: VLF:Operator:fluo
+      operatorName: fluo
+      codespace: VLF
+      url: "https://gbfs.partners.fifteen.eu/gbfs/velo-fluo/gbfs.json"
+      language: en
