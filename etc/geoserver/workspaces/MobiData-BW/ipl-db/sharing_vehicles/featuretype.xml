@@ -48,7 +48,6 @@
         <sql>SELECT &#xd;
 feed_id, &#xd;
 vehicle_id, &#xd;
-station_id, &#xd;
 form_factor, &#xd;
 name, &#xd;
 propulsion_type, &#xd;
@@ -61,7 +60,8 @@ rental_uris_web, &#xd;
 last_reported, &#xd;
 (last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
 geometry&#xd;
-FROM vehicles
+FROM vehicles&#xd;
+WHERE station_id is null
 </sql>
         <escapeSql>false</escapeSql>
         <keyColumn>vehicle_id</keyColumn>
@@ -81,7 +81,6 @@ FROM vehicles
   <simpleConversionEnabled>false</simpleConversionEnabled>
   <internationalTitle/>
   <internationalAbstract/>
-  <cqlFilter>station_id is null</cqlFilter>
   <maxFeatures>0</maxFeatures>
   <numDecimals>0</numDecimals>
   <padWithZeros>false</padWithZeros>
@@ -95,16 +94,6 @@ FROM vehicles
       <binding>java.lang.String</binding>
       <description>
         <de>ID des Fahrzeugs</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>station_id</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.String</binding>
-      <description>
-        <de>ID der zum Fahrzeug dazugehörigen Station</de>
       </description>
     </attribute>
     <attribute>

@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [unreleased]
 
 - Lamassu: add `velo-fluo` feed
+- GeoServer: remove `station_id` from `MobiData-BW:sharing_vehicles`
 
 ## 2026-06-09
 
