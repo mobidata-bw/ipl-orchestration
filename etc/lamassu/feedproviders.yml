@@ -24,6 +24,17 @@ lamassu:
       url: "file:///var/gbfs/feeds/lastenvelo_fr/gbfs.json"
       language: de
       version: 3.0
+    - systemId: lastenkarle
+      operatorId: LKL:Operator:lastenkarle
+      operatorName: Lastenrad-Initiative für die Region Karlsruhe
+      codespace: LKL
+      url: "https://lastenkarle.de/wp-json/commonsbooking/v1/gbfs.json"
+      language: de
+      version: 3.0
+      authentication:
+        scheme: HTTP_HEADERS
+        properties:
+          apikey: ${LAMASSU_LASTENKARLE_API_KEY}
     - systemId: stadtmobil_stuttgart
       operatorId: SMT:Operator:stadtmobil_stuttgart
       operatorName: Stadtmobil Stuttgart
