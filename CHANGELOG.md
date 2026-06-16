@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Lamassu: add `velo-fluo` feed
 - GeoServer: remove `station_id` from `MobiData-BW:sharing_vehicles`
+- [ParkAPI 0.45.0](https://github.com/ParkenDD/park-api-v3/blob/ca25d7df9f1ef9805013c041d4b02e4d7e97d7c6/CHANGELOG.md#0450)
+  - with linear_parking_position support
+  - with improved has_realtime_data and realtime data output, disabling for data older then 30 min
+  - with new source Freiburg Easypark
+  - with Regionalschluessel support
+  - with numeric lat/lon output
 
 ## 2026-06-09
 
