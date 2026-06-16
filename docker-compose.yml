@@ -775,6 +775,7 @@ services:
   ocpdb-db:
     networks: [ipl]
     image: ${OCPDB_DB_IMAGE}
+    shm_size: "${OCPDB_SHM_SIZE}"
     volumes:
       - ./var/ocpdb/ocpdb-db:/var/lib/postgresql/data
     environment:
