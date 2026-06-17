@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - with improved has_realtime_data and realtime data output, disabling for data older then 30 min
   - with new source Freiburg Easypark
   - with Regionalschluessel support
-  - with numeric lat/lon output
+  - ⚠️ with numeric lat/lon output
 - Add more shm storage to ocpdb db
 
 ## 2026-06-09
