@@ -401,7 +401,7 @@ WHERE&#xd;
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Amtlicher Gemeindeschlüssel</en-US>
+        <de>Amtlicher Gemeindeschlüssel</de>
       </description>
     </attribute>
     <attribute>
