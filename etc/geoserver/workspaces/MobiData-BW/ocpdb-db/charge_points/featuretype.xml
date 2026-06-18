@@ -264,7 +264,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Amtlicher Gemeindeschlüssel</en-US>
+        <de>Amtlicher Gemeindeschlüssel</de>
       </description>
     </attribute>
     <attribute>
