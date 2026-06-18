@@ -55,6 +55,7 @@ photo_url, &#xd;
 address, &#xd;
 description, &#xd;
 type, &#xd;
+official_region_code,&#xd;
 max_stay, &#xd;
 has_lighting, &#xd;
 fee_description, &#xd;
@@ -212,6 +213,15 @@ WHERE (purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos;) AND duplicate_of_pa
       <binding>java.lang.String</binding>
       <description>
         <de>Art der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>official_region_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Amtlicher Gemeindeschlüssel</de>
       </description>
     </attribute>
     <attribute>

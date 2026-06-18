@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- GeoServer: add `official_region_code` (Gemeindeschlüssel) to `MobiData-BW:park-api_car` and `MobiData-BW:park-api_bicycle`
+
 ## 2026-06-16
 
 - Lamassu: add `velo-fluo` feed
