@@ -218,7 +218,7 @@ WHERE (purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos;) AND duplicate_of_pa
     <attribute>
       <name>official_region_code</name>
       <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
         <de>Amtlicher Gemeindeschlüssel</de>
