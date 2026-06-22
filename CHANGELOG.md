@@ -9,7 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer
   - add `official_region_code` (Gemeindeschlüssel) to `MobiData-BW:park-api_car` and `MobiData-BW:park-api_bicycle`
   - `MobiData-BW:charge_points`: set existing `official_region_code` to nillable
-    
+- [ParkAPI 0.46.0](https://github.com/ParkenDD/park-api-v3/blob/11ecc2409df77d4a5be16e3234553ade7564c3b5/CHANGELOG.md#0460)
+  - with Ellwangen parking via Sensit API
+  - with several smaller improvements and maintenance tasks
+- [OCPDB 2.14.0](https://github.com/binary-butterfly/ocpdb/blob/d20ccc37148fc03701e4e0b4036b840b9588f04e/CHANGELOG.md#2140)
+  - with taubert consultin
+  - with eaaze changes adaption
+  - with finalization of mobilithek push feature
+  - with several smaller improvements and maintenance tasks
+
 ## 2026-06-16
 
 - Lamassu: add `velo-fluo` feed
