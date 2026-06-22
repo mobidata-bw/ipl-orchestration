@@ -10,12 +10,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 	- write logs to host directory `var/log/geoserver`
 	- reduce log verbosity switching to `PRODUCTION_LOGGING` profile
 	- disable stdout logging
-- Lamassu: 
+- Lamassu:
   - Bump to [2026-06-22T09-16 release](https://github.com/entur/lamassu/blob/d6d6695f6edfd4ed679343b98bd5f1311e3714ab/Changelog.md?#130-under-development). This i.e. includes the following changes:
     - Fix: handle mapping geofencing zones without rules gracefully [#867](https://github.com/entur/lamassu/pull/867)
     - fix: station missing from entity caches when station_information lags station_status [#870](https://github.com/entur/lamassu/pull/870)
     - fix(deps): update gbfs libs and switch validator to org.mobilitydata 3.1.0 [#875](https://github.com/entur/lamassu/pull/875)
     - Include scooter_standing when filtering vehicles by the deprecated SCOOTER form factor [#879](https://github.com/entur/lamassu/pull/879)
+   - Bump redis to [8.8.0-alpine3.23](https://github.com/redis/redis/releases/tag/8.8.0)
     
 ## 2026-06-18
 
