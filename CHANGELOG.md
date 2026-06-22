@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- GeoServer: add `has_fee`, `fee_description` and `description` to `MobiData-BW:park-api_car_lines`
+
 ## 2026-06-18
 
 - GeoServer
