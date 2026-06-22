@@ -25,14 +25,14 @@
   <srs>EPSG:4326</srs>
   <nativeBoundingBox>
     <minx>7.0</minx>
-    <maxx>10.0/maxx>
+    <maxx>10.0</maxx>
     <miny>46.0</miny>
     <maxy>50.0</maxy>
     <crs>EPSG:4326</crs>
   </nativeBoundingBox>
   <latLonBoundingBox>
     <minx>7.0</minx>
-    <maxx>10.0/maxx>
+    <maxx>10.0</maxx>
     <miny>46.0</miny>
     <maxy>50.0</maxy>
     <crs>EPSG:4326</crs>
