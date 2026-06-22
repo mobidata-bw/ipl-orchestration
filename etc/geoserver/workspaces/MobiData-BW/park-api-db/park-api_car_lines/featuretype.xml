@@ -590,5 +590,4 @@ WHERE&#xd;
   <overridingServiceSRS>false</overridingServiceSRS>
   <skipNumberMatched>false</skipNumberMatched>
   <circularArcPresent>false</circularArcPresent>
-  <linearizationTolerance>20</linearizationTolerance>
 </featureType>
