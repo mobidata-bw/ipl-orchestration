@@ -502,6 +502,15 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
+      <name>parking_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Verortung der Parkanlage</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>orientation</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -511,12 +520,30 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
-      <name>parking_type</name>
+      <name>has_fee</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Gebührenpflichtig?</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>fee_description</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <de>Verortung der Parkanlage</de>
+        <de>Gebühren-Informationen</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>description</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Beschreibung</de>
       </description>
     </attribute>
     <attribute>
