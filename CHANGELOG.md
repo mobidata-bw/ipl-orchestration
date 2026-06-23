@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## [Unreleased]
+
+- `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-a6cb3eb29202ca7f57e73bb7e527286e66e0e822fff65609207c7e0ef2d135a3))
+
 ## 2026-06-30
 
 - GeoServer: add `park_and_ride_type` to `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
@@ -28,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - fix(deps): update gbfs libs and switch validator to org.mobilitydata 3.1.0 [#875](https://github.com/entur/lamassu/pull/875)
     - Include scooter_standing when filtering vehicles by the deprecated SCOOTER form factor [#879](https://github.com/entur/lamassu/pull/879)
    - Bump redis to [8.8.0-alpine3.23](https://github.com/redis/redis/releases/tag/8.8.0)
-
+    
 ## 2026-06-18
 
 - GeoServer
