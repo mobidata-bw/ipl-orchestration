@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-06-23
 - GeoServer: add `has_fee`, `fee_description` and `description` to `MobiData-BW:park-api_car_lines`
 - ⚠️ GeoServer: tweak logging
 	- write logs to host directory `var/log/geoserver`
