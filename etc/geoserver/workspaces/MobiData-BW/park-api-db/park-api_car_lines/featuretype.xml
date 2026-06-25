@@ -386,7 +386,7 @@ WHERE&#xd;
       <maxOccurs>0</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Art der P+R-Anlage</en-US>
+        <de>Art der P+R-Anlage</de>
       </description>
     </attribute>
     <attribute>
