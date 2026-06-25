@@ -381,6 +381,15 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
+      <name>park_and_ride_type</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Art der P+R-Anlage</de>
+      </description>
+    </attribute>
+    <attribute>
       <name>has_realtime_data</name>
       <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>

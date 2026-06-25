@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- GeoServer: add `park_and_ride_type` to `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
+
 ## 2026-06-23
 - GeoServer: add `has_fee`, `fee_description` and `description` to `MobiData-BW:park-api_car_lines`
 - ⚠️ GeoServer: tweak logging
