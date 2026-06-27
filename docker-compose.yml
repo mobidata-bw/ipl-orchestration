@@ -527,7 +527,7 @@ services:
     # see https://github.com/mobidata-bw/postgis-with-pg-plan-filter/issues/1
     platform: linux/amd64
     volumes:
-      - ./var/gtfs/gtfs-db:/var/lib/postgresql/data
+      - ./var/gtfs/gtfs-db:/var/lib/postgresql
     environment:
       POSTGRES_USER: ${IPL_GTFS_DB_POSTGRES_USER}
       POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
