@@ -3,8 +3,6 @@
 set -eo pipefail
 
 if [ -f /data/.vg25-imported ]; then
-    # prevent docker compose up --wait to crash
-    sleep 150
     exit 0
 fi
 
