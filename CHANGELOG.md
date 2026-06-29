@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - GeoServer: add `park_and_ride_type` to `MobiData-BW:park-api_car_lines` and `MobiData-BW:park-api_car_polygons`
 - Lamassu: add `ford_carsharing_autohausalbert`, `ford_carsharing_autohausboelz` feeds
 - [x2gbfs 2026-06-26T13-38](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-06-24): add MOQO providers `ford_carsharing_autohausalbert`, `ford_carsharing_autohausboelz`
+- [ipl dagster pipeline 2026-06-29](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/9925c13c7c45b7ecffb94e18aa7752506d940594/CHANGELOG.md?plain=1#L8)
 
 ## 2026-06-23
 - GeoServer: add `has_fee`, `fee_description` and `description` to `MobiData-BW:park-api_car_lines`
