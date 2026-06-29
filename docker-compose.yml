@@ -772,7 +772,16 @@ services:
     restart: unless-stopped
     command: ["celery", "-A", "webapp.entry_point_celery", "beat", "-s", "/tmp/celerybeat-schedule"]
 
-  ocpdb-init:
+  ocpdb-init-db:
+    <<: *ocpdb-defaults
+    depends_on:
+      ocpdb-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    command: ["flask", "db", "upgrade"]
+
+  ocpdb-init-importer:
     <<: *ocpdb-defaults
     depends_on:
       ocpdb-db:
@@ -781,7 +790,7 @@ services:
         condition: service_healthy
       ocpdb-regionalschluessel-importer:
         condition: service_completed_successfully
-    command: ["sh", "-c", "flask db upgrade && flask import all"]
+    command: ["flask", "import", "all"]
 
   ocpdb-db:
     networks: [ipl]
@@ -817,6 +826,8 @@ services:
     depends_on:
       ocpdb-db:
         condition: service_healthy
+      ocpdb-init-db:
+        condition: service_completed_successfully
     command: ["/scripts/import-regionalschluessel.sh"]
 
   park-api-flask:
@@ -832,7 +843,16 @@ services:
       - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
       - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
 
-  park-api-init:
+  park-api-init-db:
+    <<: *park-api-defaults
+    depends_on:
+      park-api-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    command: ["flask", "db", "upgrade"]
+
+  park-api-init-converter:
     <<: *park-api-defaults
     depends_on:
       park-api-db:
@@ -841,7 +861,7 @@ services:
         condition: service_healthy
       park-api-regionalschluessel-importer:
         condition: service_completed_successfully
-    command: ["sh", "-c", "flask db upgrade && flask source init-converters"]
+    command: ["flask", "source", "init-converters"]
 
   park-api-worker:
     <<: *park-api-defaults
@@ -887,6 +907,8 @@ services:
     depends_on:
       park-api-db:
         condition: service_healthy
+      park-api-init-db:
+        condition: service_completed_successfully
     command: ["/scripts/import-regionalschluessel.sh"]
 
   sftp:
