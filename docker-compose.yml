@@ -769,6 +769,13 @@ services:
 
   ocpdb-init:
     <<: *ocpdb-defaults
+    depends_on:
+      ocpdb-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      ocpdb-regionalschluessel-importer:
+        condition: service_completed_successfully
     command: ["sh", "-c", "flask db upgrade && flask import all"]
 
   ocpdb-db:
@@ -822,6 +829,13 @@ services:
 
   park-api-init:
     <<: *park-api-defaults
+    depends_on:
+      park-api-db:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      park-api-regionalschluessel-importer:
+        condition: service_completed_successfully
     command: ["sh", "-c", "flask db upgrade && flask source init-converters"]
 
   park-api-worker:
@@ -866,7 +880,7 @@ services:
       - PGPASSWORD=${PARK_API_POSTGRES_PASSWORD}
       - PGDATABASE=${PARK_API_POSTGRES_DB}
     depends_on:
-      ocpdb-db:
+      park-api-db:
         condition: service_healthy
     command: ["/scripts/import-regionalschluessel.sh"]
 
