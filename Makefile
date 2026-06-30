@@ -52,13 +52,13 @@ docker-login:
 # Builds and starts all docker containers. Supports starting by SERVICE (e.g. `make docker-up SERVICE=redis`)
 .PHONY: docker-up
 docker-up: init
-	$(DOCKER_COMPOSE) up --wait-timeout 300 $(SERVICE)
+	$(DOCKER_COMPOSE) up --wait-timeout 900 $(SERVICE)
 
 # Start containers in background (or recreate containers while they are running attached to another terminal). Supports starting or
 # restarting by SERVICE (e.g. `make docker-up-detached SERVICE=redis`)
 .PHONY: docker-up-detached
 docker-up-detached: init
-	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 300 $(SERVICE)
+	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 900 $(SERVICE)
 	# Reload geoserver config. Might fail with service "geoserver"
 	# is not running if geoserver has not yet been started. This can be ignored
 	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh || true
