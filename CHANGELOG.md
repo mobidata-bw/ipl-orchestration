@@ -9,6 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Lamassu: add `ford_carsharing_autohausalbert`, `ford_carsharing_autohausboelz` feeds
 - [x2gbfs 2026-06-26T13-38](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-06-24): add MOQO providers `ford_carsharing_autohausalbert`, `ford_carsharing_autohausboelz`
 - [ipl dagster pipeline 2026-06-29](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/9925c13c7c45b7ecffb94e18aa7752506d940594/CHANGELOG.md?plain=1#L8)
+- [OCPDB 2.14.1](https://github.com/binary-butterfly/ocpdb/blob/eaec8eca34dc9bc132b2167cb057986d79ccd058/CHANGELOG.md#2141)
+  - With fixes for Taubert operator mapping, improved realtime handling and opendata swiss enum fix
+- [Higher ulimits for rabbitmq and init improvements](https://github.com/mobidata-bw/ipl-orchestration/pull/626)
 
 ## 2026-06-23
 - GeoServer: add `has_fee`, `fee_description` and `description` to `MobiData-BW:park-api_car_lines`
@@ -23,7 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - fix(deps): update gbfs libs and switch validator to org.mobilitydata 3.1.0 [#875](https://github.com/entur/lamassu/pull/875)
     - Include scooter_standing when filtering vehicles by the deprecated SCOOTER form factor [#879](https://github.com/entur/lamassu/pull/879)
    - Bump redis to [8.8.0-alpine3.23](https://github.com/redis/redis/releases/tag/8.8.0)
-    
+
 ## 2026-06-18
 
 - GeoServer
