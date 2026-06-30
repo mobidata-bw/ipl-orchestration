@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-a6cb3eb29202ca7f57e73bb7e527286e66e0e822fff65609207c7e0ef2d135a3))
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to `2.11.4-alpine` ([v2.11.4 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.4)) – Note that this release contains security-relevant fixes.
+- `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v14.14`](https://github.com/PostgREST/postgrest/releases/tag/v14.14) ([`v14.13` release](https://github.com/PostgREST/postgrest/releases/tag/v14.13)).
 
 ## 2026-06-30
 
