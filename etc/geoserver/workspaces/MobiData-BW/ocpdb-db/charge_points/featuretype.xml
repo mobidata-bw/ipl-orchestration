@@ -60,7 +60,7 @@ WITH location_connector_aggregates AS (&#xd;
 -- aggregate station power and go-live date per location&#xd;
 location_station_aggregates AS (&#xd;
     SELECT&#xd;
-        location_id,       &#xd;
+        location_id,&#xd;
         MIN(go_live_date) AS go_live_date -- earliest go-live date per location&#xd;
     FROM&#xd;
         charging_station&#xd;
@@ -79,7 +79,7 @@ SELECT&#xd;
     location.state,&#xd;
     location.official_region_code,&#xd;
     location.geometry,&#xd;
-    lca.max_electric_power,   &#xd;
+    lca.max_electric_power,&#xd;
     lsa.go_live_date,&#xd;
     cp.chargepoint_available_count,&#xd;
     cp.chargepoint_unknown_count,&#xd;
@@ -89,6 +89,10 @@ SELECT&#xd;
     cp.chargepoint_outoforder_count,&#xd;
     cp.chargepoint_reserved_count,&#xd;
     cp.chargepoint_bike_count,&#xd;
+    cp.status_last_updated,&#xd;
+    (&#xd;
+        status_last_updated &lt; now() - interval &apos;3 days&apos;&#xd;
+    ) AS realtime_data_outdated,&#xd;
     business.name AS operator_name&#xd;
 FROM&#xd;
     location &#xd;
@@ -96,6 +100,7 @@ FROM&#xd;
     LEFT JOIN (&#xd;
         SELECT&#xd;
             cs.location_id,&#xd;
+            MAX(es.status_last_updated) AS status_last_updated,&#xd;
             SUM(&#xd;
                 CASE&#xd;
                     WHEN es.status = &apos;AVAILABLE&apos; THEN 1&#xd;
@@ -153,7 +158,7 @@ FROM&#xd;
     -- join location_connector_aggregates and location_station_aggregates &#xd;
     --to get max_electric_power and go_live_date per location&#xd;
     JOIN location_connector_aggregates lca ON lca.location_id = location.id&#xd;
-    JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
+    JOIN location_station_aggregates lsa ON lsa.location_id = location.id&#xd;
     -- left join business to get operator name if available&#xd;
     LEFT JOIN business ON location.operator_id = business.id
 </sql>
@@ -364,6 +369,24 @@ FROM&#xd;
       <binding>java.lang.Long</binding>
       <description>
         <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>status_last_updated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitdaten älter als 3 Tage?</de>
       </description>
     </attribute>
     <attribute>
