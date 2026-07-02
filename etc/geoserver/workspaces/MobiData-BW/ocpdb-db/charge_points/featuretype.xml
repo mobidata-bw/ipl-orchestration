@@ -60,7 +60,7 @@ WITH location_connector_aggregates AS (&#xd;
 -- aggregate station power and go-live date per location&#xd;
 location_station_aggregates AS (&#xd;
     SELECT&#xd;
-        location_id,       &#xd;
+        location_id,&#xd;
         MIN(go_live_date) AS go_live_date -- earliest go-live date per location&#xd;
     FROM&#xd;
         charging_station&#xd;
@@ -79,7 +79,7 @@ SELECT&#xd;
     location.state,&#xd;
     location.official_region_code,&#xd;
     location.geometry,&#xd;
-    lca.max_electric_power,   &#xd;
+    lca.max_electric_power,&#xd;
     lsa.go_live_date,&#xd;
     cp.chargepoint_available_count,&#xd;
     cp.chargepoint_unknown_count,&#xd;
@@ -88,7 +88,10 @@ SELECT&#xd;
     cp.chargepoint_inoperative_count,&#xd;
     cp.chargepoint_outoforder_count,&#xd;
     cp.chargepoint_reserved_count,&#xd;
-    cp.chargepoint_bike_count,&#xd;
+    cp.status_last_updated,&#xd;
+    (&#xd;
+        status_last_updated &lt; now() - interval &apos;3 days&apos;&#xd;
+    ) AS realtime_data_outdated,&#xd;
     business.name AS operator_name&#xd;
 FROM&#xd;
     location &#xd;
@@ -96,64 +99,60 @@ FROM&#xd;
     LEFT JOIN (&#xd;
         SELECT&#xd;
             cs.location_id,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;AVAILABLE&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            MAX(es.status_last_updated) AS status_last_updated,&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;AVAILABLE&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_available_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;UNKNOWN&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;UNKNOWN&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_unknown_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;STATIC&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;STATIC&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_static_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;CHARGING&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;CHARGING&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_charging_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;INOPERATIVE&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;INOPERATIVE&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_inoperative_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;OUTOFORDER&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;OUTOFORDER&apos;&#xd;
+                )&#xd;
             ) AS chargepoint_outoforder_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.status = &apos;RESERVED&apos; THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
-            ) AS chargepoint_reserved_count,&#xd;
-            SUM(&#xd;
-                CASE&#xd;
-                    WHEN es.parking_restrictions &amp; 64 = 64 THEN 1&#xd;
-                    ELSE 0&#xd;
-                END&#xd;
-            ) AS chargepoint_bike_count&#xd;
+            (&#xd;
+                COUNT(connector.id) FILTER(&#xd;
+                    WHERE&#xd;
+                        status = &apos;RESERVED&apos;&#xd;
+                )&#xd;
+            ) AS chargepoint_reserved_count&#xd;
         FROM&#xd;
             charging_station cs&#xd;
             JOIN evse es ON cs.id = es.charging_station_id&#xd;
+            JOIN connector ON es.id = connector.evse_id&#xd;
         GROUP BY&#xd;
             cs.location_id&#xd;
-    ) AS cp ON cp.location_id = location.id &#xd;
+    ) AS cp ON cp.location_id = location.id&#xd;
     -- join location_connector_aggregates and location_station_aggregates &#xd;
     --to get max_electric_power and go_live_date per location&#xd;
     JOIN location_connector_aggregates lca ON lca.location_id = location.id&#xd;
-    JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
+    JOIN location_station_aggregates lsa ON lsa.location_id = location.id&#xd;
     -- left join business to get operator name if available&#xd;
     LEFT JOIN business ON location.operator_id = business.id
 </sql>
@@ -357,13 +356,22 @@ FROM&#xd;
       </description>
     </attribute>
     <attribute>
-      <name>chargepoint_bike_count</name>
+      <name>status_last_updated</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>true</nillable>
-      <binding>java.lang.Long</binding>
+      <binding>java.lang.String</binding>
       <description>
-        <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
+        <de>Letzter Aktualisierungszeitpunkt der Echtzeitdaten</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_data_outdated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.Boolean</binding>
+      <description>
+        <de>Echtzeitdaten älter als 3 Tage?</de>
       </description>
     </attribute>
     <attribute>
