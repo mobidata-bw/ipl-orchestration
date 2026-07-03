@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [Unreleased]
+## 2026-07-03
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.6`](https://github.com/traefik/traefik/blob/v3.7.6/CHANGELOG.md) (skipping releases [`v3.7.2`](https://github.com/traefik/traefik/blob/v3.7.2/CHANGELOG.md), [`v3.7.3`](https://github.com/traefik/traefik/blob/v3.7.3/CHANGELOG.md), [`v3.7.4`](https://github.com/traefik/traefik/blob/v3.7.4/CHANGELOG.md), [`v3.7.5`](https://github.com/traefik/traefik/blob/v3.7.5/CHANGELOG.md))
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-a6cb3eb29202ca7f57e73bb7e527286e66e0e822fff65609207c7e0ef2d135a3))
