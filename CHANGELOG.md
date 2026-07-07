@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ## [unreleased]
 
 - Lamassu: ⚠️ remove `dott_frankfurt` feed
+- [ParkAPI 0.47.0](https://github.com/ParkenDD/park-api-v3/blob/d44240afb09b97217397d0f0619c052271176420/CHANGELOG.md#0470)
+  - with toll collect truck parking and several minor fixes
 
 ## 2026-07-03
 
@@ -43,7 +45,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
     - fix(deps): update gbfs libs and switch validator to org.mobilitydata 3.1.0 [#875](https://github.com/entur/lamassu/pull/875)
     - Include scooter_standing when filtering vehicles by the deprecated SCOOTER form factor [#879](https://github.com/entur/lamassu/pull/879)
    - Bump redis to [8.8.0-alpine3.23](https://github.com/redis/redis/releases/tag/8.8.0)
-    
+
 ## 2026-06-18
 
 - GeoServer
