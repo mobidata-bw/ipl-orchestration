@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## [unreleased]
+## 2026-07-07
 
 - Lamassu: ⚠️ remove `dott_frankfurt` feed
 - [ParkAPI 0.47.0](https://github.com/ParkenDD/park-api-v3/blob/d44240afb09b97217397d0f0619c052271176420/CHANGELOG.md#0470)
