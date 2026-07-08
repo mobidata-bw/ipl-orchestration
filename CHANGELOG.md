@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+- [OCPDB 2.14.2](https://github.com/binary-butterfly/ocpdb/blob/5f4038ce3bd3abcdf0de71b26b9872d7689001ef/CHANGELOG.md#2142)
+  - with improvements for Mobilithek and realtime status handling
+
 ## 2026-07-07
 
 - Lamassu: ⚠️ remove `dott_frankfurt` feed
