@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- [ParkAPI 0.47.1](https://github.com/ParkenDD/park-api-v3/blob/588a9f27afb0323b4d1b47660f6988eefda10460/CHANGELOG.md#0471)
+  - with additional attributes for toll collect parking
+
 ## 2026-07-08
 
 - [OCPDB 2.14.2](https://github.com/binary-butterfly/ocpdb/blob/5f4038ce3bd3abcdf0de71b26b9872d7689001ef/CHANGELOG.md#2142)
