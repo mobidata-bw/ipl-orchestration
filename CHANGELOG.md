@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
+## Unreleased
+
+- GeoServer `MobiData-BW:charge_points`: optimize query, remove redundancies
+
 ## 2026-07-08b
 
 - [ParkAPI 0.47.1](https://github.com/ParkenDD/park-api-v3/blob/588a9f27afb0323b4d1b47660f6988eefda10460/CHANGELOG.md#0471)
