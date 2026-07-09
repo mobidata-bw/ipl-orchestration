@@ -45,7 +45,7 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>charge_points</name>
-        <sql>-- aggregate max_electric_power, max_electric_power and chargepoints per location&#xd;
+        <sql>-- aggregate max_electric_power and chargepoints per location&#xd;
 WITH location_chargepoint_aggregates AS (&#xd;
     SELECT&#xd;
         cs.location_id,&#xd;
