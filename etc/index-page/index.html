@@ -1,310 +1,583 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>MobiData BW® Integrationsplattform (IPL)</title>
 	<link rel="author" href="https://mobidata-bw.de" />
 	<meta name="author" content="MobiData BW">
-	<meta name="description" content="Die Integrationsplattform (IPL) bündelt Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen, Verkehrsmeldungen und Baustellen, und stellt sie über offene APIs bereit.">
+	<meta name="description"
+		content="Die Integrationsplattform (IPL) bündelt Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen, Verkehrsmeldungen und Baustellen, und stellt sie über offene APIs bereit.">
 	<!-- todo: `og:` tags for facebook? -->
 	<!-- todo: tags for twitter/x? -->
 	<base target="_blank">
 	<link rel="icon" href="/favicon.ico" />
 </head>
+
 <body>
-<div itemscope itemtype="https://schema.org/WebAPI">
-	<h1>
-		<span itemprop="provider" itemscope itemtype="https://schema.org/Organization">
-			<a itemprop="name" href="https://mobidata-bw.de/">MobiData BW</a>
-		</span> Integrationsplattform (IPL)
-	</h1>
+	<style>
+		html {
+			font-size: 10px;
+			line-height: 1.4em;
+		}
 
-	Hier werden Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen, Verkehrsmeldungen und Baustellen gebündelt und über offene APIs bereitstellt.</p>
+		body {
+			font-family: 'Typewalk 1965', Arial, sans-serif;
+			color: #3A4044;
+		}
 
-	<p><strong>Die Endpunkte der Integrationsplattform benötigen keine Zugangsdaten und sind für alle offen verfügbar. Anwendungen sollten sich durch einen <a href="https://everything.curl.dev/http/modify/user-agent.html"><code>User-Agent</code></a> identifizieren.</strong></p>
+		p {
+			line-height: 1.333em;
+			margin-bottom: 1.333em;
+			font-size: 1.5rem;
+		}
 
-	<p>Die Integrationsplattform ist <a href="https://github.com/mobidata-bw">auf GitHub</a> archiviert und dokumentiert.</p>
+		h2,
+		h3,
+		h2 a,
+		h3 a {
+			margin-bottom: 1.6rem;
+			text-transform: none;
+			text-decoration: none;
+		}
 
-	<p>Das <a href="https://github.com/mobidata-bw/ipl-orchestration/blob/main/CHANGELOG.md">Changelog</a> protokolliert wichtige Änderungen. <a href="https://mobidata-bw.de/pages/breaking-changes">Breaking Changes</a> dokumentiert inkompatible Änderungen.</p>
+		h2 {
+			font-weight: 700;
+			font-size: 2.5rem;
+			line-height: 1.2em;
+		}
 
-	<p>Unsere Kontakt E-Mail-Adresse: <a href="mailto:mobidatabw-ipl@nvbw.de">mobidatabw-ipl@nvbw.de</a></p>
+		h3 {
+			font-size: 1.8rem;
+			line-height: 1.388em;
+			font-weight: 400;
+			color: #006EAF;
+		}
 
-	<h2>Soll-Fahrplandaten des öffentlichen Personennahverkehrs</h2>
+		a,
+		a:is(:hover, :focus, :active, :visited) {
+			color: #006EAF;
+			text-decoration: underline;
+			font-weight: 700;
+		}
 
-	<p>Die Soll-Fahrplandaten des öffentlichen Personennahverkehrs (ÖPNV inkl. SPNV) in Baden-Württemberg werden über die <a href="/docs/gtfs/">GTFS-API</a> publiziert.</p>
+		li::before {
+			content: "◼";
+			color: #006EAF;
+			font-size: 9px;
+			font-weight: 400;
+			position: relative;
+			top: -2px;
+			padding-right: .5rem;
+		}
 
-	<p>So liefert etwa der Endpunkt <a href="/gtfs/stops"><code>/gtfs/stops</code></a> alle ÖPNV inkl. SPNV Haltestellen, die von Bussen/Zügen in Baden-Württemberg aus erreichbar sind.</p>
+		ul li {
+			font-size: 1.5rem;
+			list-style-type: none;
+			list-style-position: outside;
+		}
 
-	<p>Der Endpunkt <a href="/gtfs/feed_info"><code>/gtfs/feed_info</code></a> zeigt u.a. die Gültigkeitsdauer der Fahrplandaten, und <a href="/gtfs/rpc/gtfs_data_imported_at"><code>/gtfs/rpc/gtfs_data_imported_at</code></a> zeigt das Datum des letzten GTFS Imports.</p>
+		ul,
+		summary {
+			padding-left: 1rem;
+		}
 
-	<p>Die GTFS-API nutzt <a href="https://postgrest.org/en/v12/references/api/tables_views.html#operators">PostgREST Filter Operatoren</a> um z.B. namensbasiert nach Haltestellen wie <a href="/gtfs/stops?stop_name=like.Stuttgart*"><code>/gtfs/stops?stop_name=like.Stuttgart*</code></a> oder <a href="/gtfs/stops?stop_name=eq.Stuttgart Hauptbahnhof (oben) Gleis 1"><code>/gtfs/stops?stop_name=eq.Stuttgart Hauptbahnhof (oben) Gleis 1</code></a> zu suchen.</p>
+		summary {
+			font-size: 1.5rem;
+			padding: .3rem;
+		}
 
-	<h2>Sharing-Daten</h2>
+		summary::marker {
+			color: #006EAF;
+		}
+	</style>
 
-	<p>Daten von Autos, Leihfahrrädern, Lastenrädern und E-Scootern werden über den gebündelten GBFS-Feed <a href="/sharing/gbfs"><code>/sharing/gbfs</code></a> (<a href="https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md"><code>v2.3</code></a>) bzw. <a href="/sharing/gbfs/v3/manifest.json"><code>/sharing/gbfs/v3/manifest.json</code> (<a href="https://github.com/MobilityData/gbfs/blob/v3.0/gbfs.md"><code>v3.0</code></a>) publiziert, der seinerseits GBFS-Feeds für die einzelnen Provider aggregiert.</p>
+	<div itemscope itemtype="https://schema.org/WebAPI">
+		<h2>
+			<span itemprop="provider" itemscope itemtype="https://schema.org/Organization">
+				<a itemprop="name" href="https://mobidata-bw.de/">MobiData BW</a>
+			</span> Integrationsplattform (IPL)
+		</h2>
 
-	<p>Der Endpunkt <a href="/sharing/validation/systems"><code>/sharing/validation/systems</code></a> liefert das Validierungsergebnis dieser GBFS-Feeds, <a href="/sharing/graphiql?path=/sharing/graphql"><code>/sharing/graphiql?path=/sharing/graphql</code></a> bietet eine GraphQL Schnittstelle an.</p>
+		<p>Hier werden Mobilitätsdaten aus den Bereichen Fahrpläne, Sharing, Parken, Ladesäulen, Verkehrsmeldungen und
+			Baustellen gebündelt und über offene APIs bereitstellt.</p>
 
-	<h2>Parkdaten</h2>
+		<p><strong>Die Endpunkte der Integrationsplattform benötigen keine Zugangsdaten und sind für alle offen
+				verfügbar. Anwendungen sollten sich durch einen <a
+					href="https://everything.curl.dev/http/modify/user-agent.html"><code>User-Agent</code></a>
+				identifizieren.</strong></p>
 
-	<p>Parkdaten verschiedener Städte und Parkhausbetreiber werden über die <a href="/park-api/documentation/public.html">ParkAPI</a> publiziert.</p>
+		<p>Die Integrationsplattform ist <a href="https://github.com/mobidata-bw">auf GitHub</a> archiviert und
+			dokumentiert.</p>
 
-	<p>Die Endpunkte <a href="/park-api/api/public/v3/parking-sites"><code>/park-api/api/public/v3/parking-sites</code></a> und <a href="/park-api/api/public/datex2/json"><code>/park-api/api/public/datex2/json</code></a> liefern die Daten von Parkplätzen und Parkbauten im ParkAPI Format und im Datex II Lite Format.</p>
+		<p>Das <a href="https://github.com/mobidata-bw/ipl-orchestration/blob/main/CHANGELOG.md">Changelog</a>
+			protokolliert wichtige Änderungen. <a href="https://mobidata-bw.de/pages/breaking-changes">Breaking
+				Changes</a> dokumentiert inkompatible Änderungen.</p>
 
-	<p>Der Endpunkt <a href="/park-api/api/public/v3/parking-spots"><code>/park-api/api/public/v3/parking-spots</code></a> liefert die Daten von Einzelparkplätzen im ParkAPI Format.</p>
+		<p>Unsere Kontakt E-Mail-Adresse: <a href="mailto:mobidatabw-ipl@nvbw.de">mobidatabw-ipl@nvbw.de</a></p>
 
-	<p>Der Endpunkt <a href="/park-api/api/public/v3/sources"><code>/park-api/api/public/v3/sources</code></a> liefert die ParkAPI Datenquellen.</p>
+		<h3>Soll-Fahrplandaten des öffentlichen Personennahverkehrs</h3>
 
-	<p>Der Endpunkt <a href="/park-api/metrics"><code>/park-api/metrics</code></a> liefert die ParkAPI Metriken.</p>
+		<p>Die Soll-Fahrplandaten des öffentlichen Personennahverkehrs (ÖPNV inkl. SPNV) in Baden-Württemberg werden
+			über die <a href="/docs/gtfs/">GTFS-API</a> publiziert.</p>
 
-	<p>Neben diesen Pull Endpunkten stehen auch abgesicherte <a href="/park-api/documentation/admin.html">ParkAPI Push Endpunkte</a> für unterschiedliche Formate zur Verfügung.</p>
+		<p>So liefert etwa der Endpunkt <a href="/gtfs/stops"><code>/gtfs/stops</code></a> alle ÖPNV inkl. SPNV
+			Haltestellen, die von Bussen/Zügen in Baden-Württemberg aus erreichbar sind.</p>
 
-    <details>
-		<summary>Parkhäuser/Parkplätze</summary>
+		<p>Der Endpunkt <a href="/gtfs/feed_info"><code>/gtfs/feed_info</code></a> zeigt u.a. die Gültigkeitsdauer der
+			Fahrplandaten, und <a
+				href="/gtfs/rpc/gtfs_data_imported_at"><code>/gtfs/rpc/gtfs_data_imported_at</code></a> zeigt das Datum
+			des letzten GTFS Imports.</p>
+
+		<p>Die GTFS-API nutzt <a
+				href="https://postgrest.org/en/v12/references/api/tables_views.html#operators">PostgREST Filter
+				Operatoren</a> um z.B. namensbasiert nach Haltestellen wie <a
+				href="/gtfs/stops?stop_name=like.Stuttgart*"><code>/gtfs/stops?stop_name=like.Stuttgart*</code></a> oder
+			<a
+				href="/gtfs/stops?stop_name=eq.Stuttgart Hauptbahnhof (oben) Gleis 1"><code>/gtfs/stops?stop_name=eq.Stuttgart Hauptbahnhof (oben) Gleis 1</code></a>
+			zu suchen.
+		</p>
+
+		<h3>Sharing-Daten</h3>
+
+		<p>Daten von Autos, Leihfahrrädern, Lastenrädern und E-Scootern werden über den gebündelten GBFS-Feed <a
+				href="/sharing/gbfs"><code>/sharing/gbfs</code></a> (<a
+				href="https://github.com/MobilityData/gbfs/blob/v2.3/gbfs.md"><code>v2.3</code></a>) bzw. <a
+				href="/sharing/gbfs/v3/manifest.json"><code>/sharing/gbfs/v3/manifest.json</code> (<a
+					href="https://github.com/MobilityData/gbfs/blob/v3.0/gbfs.md"><code>v3.0</code></a>) publiziert, der
+				seinerseits GBFS-Feeds für die einzelnen Provider aggregiert.</p>
+
+		<p>Der Endpunkt <a href="/sharing/validation/systems"><code>/sharing/validation/systems</code></a> liefert das
+			Validierungsergebnis dieser GBFS-Feeds, <a
+				href="/sharing/graphiql?path=/sharing/graphql"><code>/sharing/graphiql?path=/sharing/graphql</code></a>
+			bietet eine GraphQL Schnittstelle an.</p>
+
+		<h3>Parkdaten</h3>
+
+		<p>Parkdaten verschiedener Städte und Parkhausbetreiber werden über die <a
+				href="/park-api/documentation/public.html">ParkAPI</a> publiziert.</p>
+
+		<p>Die Endpunkte <a
+				href="/park-api/api/public/v3/parking-sites"><code>/park-api/api/public/v3/parking-sites</code></a> und
+			<a href="/park-api/api/public/datex2/json"><code>/park-api/api/public/datex2/json</code></a> liefern die
+			Daten von Parkplätzen und Parkbauten im ParkAPI Format und im Datex II Lite Format.
+		</p>
+
+		<p>Der Endpunkt <a
+				href="/park-api/api/public/v3/parking-spots"><code>/park-api/api/public/v3/parking-spots</code></a>
+			liefert die Daten von Einzelparkplätzen im ParkAPI Format.</p>
+
+		<p>Der Endpunkt <a href="/park-api/metrics"><code>/park-api/metrics</code></a> liefert die ParkAPI Metriken.</p>
+
+		<p>Neben diesen Pull Endpunkten stehen auch abgesicherte <a href="/park-api/documentation/admin.html">ParkAPI
+				Push Endpunkte</a> für unterschiedliche Formate zur Verfügung.</p>
+
+		<details>
+			<summary>Parkhäuser</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=apcoa">apcoa</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bahn_v2">bahn_v2</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bb_parkhaus">bb_parkhaus</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=goldbeck">goldbeck</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=huefner">huefner</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pbw">pbw</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=stuttgart_carparks">stuttgart_carparks</a>
+				</li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>P+M</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pum_bw">pum_bw</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=p_m_bw">p_m_bw</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=p_m_sensade">p_m_sensade</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>P+R</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrn_p_r">vrn_p_r</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrn_p_r_mannheim">vrn_p_r_mannheim</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs-p-r">vrs-p-r</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_bondorf">vrs_bondorf</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_kirchheim">vrs_kirchheim</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_neustadt">vrs_neustadt</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_vaihingen">vrs_vaihingen</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_p_r_static">freiburg_p_r_static</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_p_r_sensors">freiburg_p_r_sensors</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bfrk_bw_car">bfrk_bw_car</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bfrk_bw_bike">bfrk_bw_bike</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=opendata_swiss">opendata_swiss</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>Städte</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=aalen">aalen</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=bietigheim_bissingen">bietigheim_bissingen</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=buchen">buchen</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ellwangen">ellwangen</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ellwangen_sensit">ellwangen_sensit</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=esslingen">esslingen</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg">freiburg</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_scanner">freiburg_scanner</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=friedrichshafen_easypark">friedrichshafen_easypark</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=heidelberg">heidelberg</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=heidelberg_easypark">heidelberg_easypark</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=heilbronn_goldbeck">heilbronn_goldbeck</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=herrenberg">herrenberg</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=karlsruhe">karlsruhe</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=keltern">keltern</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=konstanz">konstanz</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=ladenburg_parkraumcheck">ladenburg_parkraumcheck</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=park_raum_check_sachsenheim">park_raum_check_sachsenheim</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=park_raum_check_kehl">park_raum_check_kehl</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=mannheim">mannheim</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=neckarsulm">neckarsulm</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pforzheim">pforzheim</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=radolfzell">radolfzell</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=reutlingen">reutlingen</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=singen">singen</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ulm_sensors">ulm_sensors</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>Einzelparkplätze</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=bfrk_bw_car">bfrk_bw_car</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-spots?source_uid=freiburg_disabled_static">freiburg_disabled_static</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-spots?source_uid=friedrichshafen_sensors">friedrichshafen_sensors</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-spots?source_uid=heidelberg_disabled">heidelberg_disabled</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=karlsruhe_disabled">karlsruhe_disabled</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=konstanz_disabled">konstanz_disabled</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=mannheim_disabled">mannheim_disabled</a>
+				</li>
+				<li><a
+						href="/park-api/api/public/v3/parking-spots?source_uid=reutlingen_disabled">reutlingen_disabled</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=ulm_sensors">ulm_sensors</a></li>
+				<li><a href="/park-api/api/public/v3/parking-spots?source_uid=p_m_sensade">p_m_sensade</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>Radparken</summary>
+			<ul>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_stuttgart">kienzler_stuttgart</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_offenburg">kienzler_offenburg</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_ulm">kienzler_ulm</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_vrn">kienzler_vrn</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_vvs">kienzler_vvs</a></li>
+				<li><a
+						href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_bike_and_ride">kienzler_bike_and_ride</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_rad_safe">kienzler_rad_safe</a>
+				</li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=velobrix">velobrix</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=radvis_bw">radvis_bw</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=herrenberg_bike">herrenberg_bike</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=karlsruhe_bike">karlsruhe_bike</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=konstanz_bike">konstanz_bike</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=reutlingen_bike">reutlingen_bike</a></li>
+				<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_vag_bike">freiburg_vag_bike</a>
+				</li>
+			</ul>
+		</details>
+
+		<h3>Ladesäulendaten</h3>
+
+		<p>Ladesäulendaten werden über die <a href="/ocpdb/documentation/public.html">Open ChargePoint DataBase
+				(OCPDB)</a> publiziert.</p>
+
 		<ul>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=apcoa">apcoa</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bahn_v2">bahn_v2</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bb_parkhaus">bb_parkhaus</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=goldbeck">goldbeck</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=huefner">huefner</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pbw">pbw</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=stuttgart_carparks">stuttgart_carparks</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=toll_collect">toll_collect</a></li>
+			<li><a href="/ocpdb/api/ocpi/3.0/locations?limit=1000">/ocpdb/api/ocpi/3.0/locations</a> liefert die Daten
+				der Ladestandorte.</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/charge-stations?limit=1000">/ocpdb/api/ocpi/3.0/charge-stations</a> liefert
+				die Daten der Ladesäulen.</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/evses?limit=1000">/ocpdb/api/ocpi/3.0/evses</a> liefert die Daten der
+				Ladepunkte.</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/connectors?limit=1000">/ocpdb/api/ocpi/3.0/connectors</a> liefert die Daten
+				der Ladeanschlüsse.</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/tariffs?limit=1000">/ocpdb/api/ocpi/3.0/tariffs</a> liefert die Tarifdaten.
+			</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/tariff-associations?limit=1000">/ocpdb/api/ocpi/3.0/tariff-associations</a>
+				liefert die Tarife der Ladepunkte.</li>
+			<li><a href="/ocpdb/api/ocpi/3.0/businesses?limit=1000">/ocpdb/api/ocpi/3.0/businesses</a> listet die
+				Ladesäulenbetreiber.</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.5/json/static?limit=1000">/ocpdb/api/public/datex/v3.5/json/static</a>
+				liefert die statischen Ladesäulendaten (Datex II v3.5).</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.5/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/realtime</a>
+				liefert die dynamischen Ladesäulendaten (Datex II v3.5).</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime</a>
+				liefert die dynamischen Ladesäulendaten (Datex II v3.5 AFIR).</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.7/json/static?limit=1000">/ocpdb/api/public/datex/v3.7/json/static</a>
+				liefert die statischen Ladesäulendaten (Datex II v3.7).</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.7/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/realtime</a>
+				liefert die dynamischen Ladesäulendaten (Datex II v3.7).</li>
+			<li><a
+					href="/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime</a>
+				liefert die dynamischen Ladesäulendaten (Datex II v3.7 AFIR).</li>
+			<li><a href="/ocpdb/api/public/v1/sources">/ocpdb/api/public/v1/sources</a> listet die OCPDB
+				Datenquellen.</li>
+			<li><a href="/ocpdb/metrics">/ocpdb/metrics</a> listet die OCPDB Metriken.</li>
 		</ul>
-    </details>
 
-	<details>
-		<summary>P+M</summary>
+		<details>
+			<summary>Ladesäulen</summary>
+			<ul>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=bnetza_api&limit=1000">bnetza_api</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_enbw&limit=1000">datex2_enbw</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_midorion">datex2_midorion</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_tesla&limit=1000">datex2_tesla</a></li>
+				<li><a
+						href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_ecomovement&limit=1000">datex2_ecomovement</a>
+				</li>
+				<li><a
+						href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_chargecloud&limit=1000">datex2_chargecloud</a>
+				</li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_taubert&limit=1000">datex2_taubert</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=eaaze_pbw">eaaze_pbw</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=ochp_albwerk">ochp_albwerk</a></li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen</a>
+				</li>
+				<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=opendata_swiss&limit=1000">opendata_swiss</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>Ladesäulen (Datex II v3.5)</summary>
+			<ul>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=bnetza_api&limit=5000">bnetza_api
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=bnetza_api&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">bnetza_api
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_enbw&limit=5000">datex2_enbw
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_enbw&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_enbw
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_midorion&limit=5000">datex2_midorion
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_chargecloud&limit=5000">datex2_chargecloud
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_chargecloud&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_chargecloud
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_taubert&limit=5000">datex2_taubert
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_taubert&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_taubert
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=eaaze_pbw">eaaze_pbw (static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=eaaze_pbw&evse_status_last_updated_since=2025-01-01T00:00:00">eaaze_pbw
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=ochp_albwerk">ochp_albwerk (static)</a>
+				</li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=ochp_albwerk&evse_status_last_updated_since=2025-01-01T00:00:00">ochp_albwerk
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=heilbronn_neckarbogen&evse_status_last_updated_since=2025-01-01T00:00:00">heilbronn_neckarbogen
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=opendata_swiss&limit=5000">opendata_swiss
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=opendata_swiss&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">opendata_swiss
+						(realtime)</a></li>
+			</ul>
+		</details>
+
+		<details>
+			<summary>Ladesäulen (Datex II v3.7)</summary>
+			<ul>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=bnetza_api&limit=5000">bnetza_api
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=bnetza_api&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">bnetza_api
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_enbw&limit=5000">datex2_enbw
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_enbw&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_enbw
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_midorion&limit=5000">datex2_midorion
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_chargecloud&limit=5000">datex2_chargecloud
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_chargecloud&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_chargecloud
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_taubert&limit=5000">datex2_taubert
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_taubert&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_taubert
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=eaaze_pbw">eaaze_pbw (static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=eaaze_pbw&evse_status_last_updated_since=2025-01-01T00:00:00">eaaze_pbw
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=ochp_albwerk">ochp_albwerk (static)</a>
+				</li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=ochp_albwerk&evse_status_last_updated_since=2025-01-01T00:00:00">ochp_albwerk
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=heilbronn_neckarbogen&evse_status_last_updated_since=2025-01-01T00:00:00">heilbronn_neckarbogen
+						(realtime)</a></li>
+				<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=opendata_swiss&limit=5000">opendata_swiss
+						(static)</a></li>
+				<li><a
+						href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=opendata_swiss&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">opendata_swiss
+						(realtime)</a></li>
+			</ul>
+		</details>
+
+		<h3>Verkehrsmeldungen</h3>
+
+		<p>Verkehrsmeldungen werden über die Endpunkte <a
+				href="/datasets/traffic/incidents-bw/TIC3-Meldungen.xml"><code>/datasets/traffic/incidents-bw/TIC3-Meldungen.xml</code></a>
+			und <a
+				href="/datasets/traffic/incidents/incidents_lmsbw.datex2.xml"><code>/datasets/traffic/incidents/incidents_lmsbw.datex2.xml</code></a>
+			in den Formaten TIC3 und Datex II publiziert.</p>
+
+		<h3>Baustellen und Ereignisse</h3>
+
+		<p>Daten des Baustellen- und Ereignismanagementsystems BEMaS werden über die Endpunkte <a
+				href="/datasets/traffic/roadworks/roadworks_cifs.json"><code>/datasets/traffic/roadworks/roadworks_cifs.json</code></a>,
+			<a
+				href="/datasets/traffic/roadworks/roadworks_geojson.json"><code>/datasets/traffic/roadworks/roadworks_geojson.json</code></a>
+			und <a
+				href="/datasets/traffic/roadworks/roadworks_svzbw.datex2.xml"><code>/datasets/traffic/roadworks/roadworks_svzbw.datex2.xml</code></a>
+			in den Formaten CIFS, GeoJSON und Datex II publiziert.
+		</p>
+
+		<h3>Radverkehrs-Infrastruktur</h3>
+
+		<p>Das RadNETZ Baden-Württemberg wird vom Radverkehrs-Infrastruktur-System RadVIS über den Endpunkt <a
+				href="/datasets/radvis/radnetz_bw.gpkg"><code>/datasets/radvis/radnetz_bw.gpkg</code></a> im GeoPackage
+			Format publiziert.</p>
+
+		<h3>Kartendienste</h3>
+
+		<p>Visualisierungen im WMS/WFS-Format bietet unser Geoserver unter <a
+				href="/geoserver"><code>/geoserver</code></a> an, der für die vielfältigen Mobilitätsdaten
+			unterschiedliche Layer enthält.</p>
+
+		<p>Aktuelle Karten basierend auf den folgenden Geoserver Layern vermitteln ein anschauliches Bild von unseren
+			Mobilitätsdaten.</p>
+
 		<ul>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pum_bw">pum_bw</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=p_m_bw">p_m_bw</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=p_m_sensade">p_m_sensade</a></li>
+			<li><a href="https://mobidata-bw.de/karten/gebuendelte_daten/">MobiData BW® - Gebündelte Daten
+					(Soll-Fahrplandaten, Sharing-Daten, Parkdaten, E-Ladesäulen, Baustellen, Radnetze)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/gtfs/">MobiData BW® - Gebündelte Soll-Fahrplandaten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=car">MobiData BW® - Gebündelte
+					Carsharing-Daten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=bicycle">MobiData BW® - Gebündelte
+					Bikesharing-Daten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=cargo_bicycle">MobiData BW® - Gebündelte
+					Lastenrad-Sharingdaten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=scooter">MobiData BW® - Gebündelte
+					E-Scooter-Sharingdaten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=moped">MobiData BW® - Gebündelte
+					E-Kleinkraftrad-Sharingdaten</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car">MobiData BW® - Gebündelte Parkdaten
+					(Parkbauten, Parkplätze, Straßen-Parkplätze)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&type=buildings">MobiData BW® -
+					Gebündelte Parkdaten (Parkbauten, Parkplätze)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&type=on_street">MobiData BW® -
+					Gebündelte Parkdaten (Straßen-Parkplätze)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&geometry=line">MobiData BW® -
+					Gebündelte Parkdaten (Linien)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&geometry=polygon">MobiData BW® -
+					Gebündelte Parkdaten (Polygone)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&object=site">MobiData BW® - Gebündelte
+					Parkdaten (Parkbauten, Parkplätze, Straßen-Parkplätze: mit Kapazität)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&object=spot">MobiData BW® - Gebündelte
+					Einzelparkplätze (Parkplätze, Straßen-Parkplätze: keine Kapazität)</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=bicycle">MobiData BW® - Gebündelte
+					Fahrradabstellanlagen</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/charge_points/">MobiData BW® - Gebündelte E-Ladesäulen</a>
+			</li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/roadworks/">MobiData BW® - Baustellen</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/radvis_cycle_network/">MobiData BW® - RadNETZ
+					Baden-Württemberg</a></li>
+			<li><a href="https://mobidata-bw.de/karten/ipl/webcam/">MobiData BW® - Webcam-Bilder</a></li>
+			<li><a href="https://mobidata-bw.de/karten/inrix/">MobiData BW® - INRIX</a></li>
 		</ul>
-    </details>
 
-	<details>
-		<summary>P+R</summary>
-		<ul>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrn_p_r">vrn_p_r</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrn_p_r_mannheim">vrn_p_r_mannheim</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs-p-r">vrs-p-r</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_bondorf">vrs_bondorf</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_kirchheim">vrs_kirchheim</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_neustadt">vrs_neustadt</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=vrs_vaihingen">vrs_vaihingen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_p_r_static">freiburg_p_r_static</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_p_r_sensors">freiburg_p_r_sensors</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bfrk_bw_car">bfrk_bw_car</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bfrk_bw_bike">bfrk_bw_bike</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=opendata_swiss">opendata_swiss</a></li>
-		</ul>
-    </details>
-
-	<details>
-		<summary>Städte</summary>
-		<ul>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=aalen">aalen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=bietigheim_bissingen">bietigheim_bissingen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=buchen">buchen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ellwangen">ellwangen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ellwangen_sensit">ellwangen_sensit</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=esslingen">esslingen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg">freiburg</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_scanner">freiburg_scanner</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=friedrichshafen_easypark">friedrichshafen_easypark</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=heidelberg">heidelberg</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=heidelberg_easypark">heidelberg_easypark</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=heilbronn_goldbeck">heilbronn_goldbeck</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=herrenberg">herrenberg</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=karlsruhe">karlsruhe</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=keltern">keltern</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=konstanz">konstanz</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ladenburg_parkraumcheck">ladenburg_parkraumcheck</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=park_raum_check_sachsenheim">park_raum_check_sachsenheim</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=park_raum_check_kehl">park_raum_check_kehl</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=mannheim">mannheim</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=neckarsulm">neckarsulm</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=pforzheim">pforzheim</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=radolfzell">radolfzell</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=reutlingen">reutlingen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=singen">singen</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=ulm_sensors">ulm_sensors</a></li>
-		</ul>
-    </details>
-
-	<details>
-		<summary>Einzelparkplätze</summary>
-		<ul>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=bfrk_bw_car">bfrk_bw_car</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=freiburg_disabled_static">freiburg_disabled_static</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=friedrichshafen_sensors">friedrichshafen_sensors</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=heidelberg_disabled">heidelberg_disabled</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=karlsruhe_disabled">karlsruhe_disabled</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=konstanz_disabled">konstanz_disabled</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=mannheim_disabled">mannheim_disabled</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=reutlingen_disabled">reutlingen_disabled</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=ulm_sensors">ulm_sensors</a></li>
-			<li><a href="/park-api/api/public/v3/parking-spots?source_uid=p_m_sensade">p_m_sensade</a></li>
-		</ul>
-    </details>
-
-	<details>
-		<summary>Radparken</summary>
-		<ul>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_stuttgart">kienzler_stuttgart</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_offenburg">kienzler_offenburg</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_ulm">kienzler_ulm</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_vrn">kienzler_vrn</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_vvs">kienzler_vvs</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_bike_and_ride">kienzler_bike_and_ride</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=kienzler_rad_safe">kienzler_rad_safe</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=velobrix">velobrix</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=radvis_bw">radvis_bw</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=herrenberg_bike">herrenberg_bike</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=karlsruhe_bike">karlsruhe_bike</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=konstanz_bike">konstanz_bike</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=reutlingen_bike">reutlingen_bike</a></li>
-			<li><a href="/park-api/api/public/v3/parking-sites?source_uid=freiburg_vag_bike">freiburg_vag_bike</a></li>
-		</ul>
-    </details>
-
-	<h2>Ladesäulendaten</h2>
-
-	<p>Ladesäulendaten werden über die <a href="/ocpdb/documentation/public.html">Open ChargePoint DataBase (OCPDB)</a> publiziert.</p>
-
-	<ul>
-		<li><a href="/ocpdb/api/ocpi/3.0/locations?limit=1000">/ocpdb/api/ocpi/3.0/locations</a> liefert die Daten der Ladestandorte.</li>
-		<li><a href="/ocpdb/api/ocpi/3.0/charge-stations?limit=1000">/ocpdb/api/ocpi/3.0/charge-stations</a> liefert die Daten der Ladesäulen.</li>
-		<li><a href="/ocpdb/api/ocpi/3.0/evses?limit=1000">/ocpdb/api/ocpi/3.0/evses</a> liefert die Daten der Ladepunkte.</li>
-		<li><a href="/ocpdb/api/ocpi/3.0/connectors?limit=1000">/ocpdb/api/ocpi/3.0/connectors</a> liefert die Daten der Ladeanschlüsse.</li>
-		<li><a href="/ocpdb/api/ocpi/3.0/tariffs?limit=1000">/ocpdb/api/ocpi/3.0/tariffs</a> liefert die Tarifdaten.</li>
-		<li><a href="/ocpdb/api/ocpi/3.0/tariff-associations?limit=1000">/ocpdb/api/ocpi/3.0/tariff-associations</a> liefert die Tarife der Ladepunkte.</li>		
-		<li><a href="/ocpdb/api/ocpi/3.0/businesses?limit=1000">/ocpdb/api/ocpi/3.0/businesses</a> listet die Ladesäulenbetreiber.</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/static?limit=1000">/ocpdb/api/public/datex/v3.5/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.5).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.5/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.5 AFIR).</li>		
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/static?limit=1000">/ocpdb/api/public/datex/v3.7/json/static</a> liefert die statischen Ladesäulendaten (Datex II v3.7).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7).</li>
-		<li><a href="/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime?limit=1000&evse_status_last_updated_since=2025-01-01T00:00:00">/ocpdb/api/public/datex/v3.7/json/mobilithek/realtime</a> liefert die dynamischen Ladesäulendaten (Datex II v3.7 AFIR).</li>
-		<li><a href="/ocpdb/api/public/v1/sources"><code>/ocpdb/api/public/v1/sources</code></a> listet die OCPDB Datenquellen.</li>
-		<li><a href="/ocpdb/metrics"><code>/ocpdb/metrics</code></a> listet die OCPDB Metriken.</li>
-	</ul>
-
-	<details>
-		<summary>Ladesäulen</summary>
-		<ul>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=bnetza_api&limit=1000">bnetza_api</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_enbw&limit=1000">datex2_enbw</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_midorion">datex2_midorion</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_tesla&limit=1000">datex2_tesla</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_ecomovement&limit=1000">datex2_ecomovement</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_chargecloud&limit=1000">datex2_chargecloud</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=datex2_taubert&limit=1000">datex2_taubert</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=eaaze_pbw">eaaze_pbw</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=ochp_albwerk">ochp_albwerk</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen</a></li>
-			<li><a href="/ocpdb/api/ocpi/3.0/locations?source_uid=opendata_swiss&limit=1000">opendata_swiss</a></li>
-		</ul>
-    </details>
-
-	<details>
-		<summary>Ladesäulen (Datex II v3.5)</summary>
-		<ul>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=bnetza_api&limit=5000">bnetza_api (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=bnetza_api&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">bnetza_api (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_enbw&limit=5000">datex2_enbw (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_enbw&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_enbw (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_midorion&limit=5000">datex2_midorion (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_chargecloud&limit=5000">datex2_chargecloud (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_chargecloud&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_chargecloud (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=datex2_taubert&limit=5000">datex2_taubert (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=datex2_taubert&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_taubert (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=eaaze_pbw">eaaze_pbw (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=eaaze_pbw&evse_status_last_updated_since=2025-01-01T00:00:00">eaaze_pbw (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=ochp_albwerk">ochp_albwerk (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=ochp_albwerk&evse_status_last_updated_since=2025-01-01T00:00:00">ochp_albwerk (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=heilbronn_neckarbogen&evse_status_last_updated_since=2025-01-01T00:00:00">heilbronn_neckarbogen (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/static?source_uid=opendata_swiss&limit=5000">opendata_swiss (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.5/json/realtime?source_uid=opendata_swiss&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">opendata_swiss (realtime)</a></li>
-		</ul>
-    </details>
-
-	<details>
-		<summary>Ladesäulen (Datex II v3.7)</summary>
-		<ul>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=bnetza_api&limit=5000">bnetza_api (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=bnetza_api&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">bnetza_api (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_enbw&limit=5000">datex2_enbw (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_enbw&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_enbw (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_midorion&limit=5000">datex2_midorion (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_midorion&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_midorion (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_tesla&limit=5000">datex2_tesla (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_tesla&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_tesla (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_ecomovement&limit=5000">datex2_ecomovement (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_ecomovement&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_ecomovement (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_chargecloud&limit=5000">datex2_chargecloud (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_chargecloud&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_chargecloud (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=datex2_taubert&limit=5000">datex2_taubert (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=datex2_taubert&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">datex2_taubert (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=eaaze_pbw">eaaze_pbw (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=eaaze_pbw&evse_status_last_updated_since=2025-01-01T00:00:00">eaaze_pbw (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=ochp_albwerk">ochp_albwerk (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=ochp_albwerk&evse_status_last_updated_since=2025-01-01T00:00:00">ochp_albwerk (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=heilbronn_neckarbogen">heilbronn_neckarbogen (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=heilbronn_neckarbogen&evse_status_last_updated_since=2025-01-01T00:00:00">heilbronn_neckarbogen (realtime)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/static?source_uid=opendata_swiss&limit=5000">opendata_swiss (static)</a></li>
-			<li><a href="/ocpdb/api/public/datex/v3.7/json/realtime?source_uid=opendata_swiss&limit=5000&evse_status_last_updated_since=2025-01-01T00:00:00">opendata_swiss (realtime)</a></li>
-		</ul>
-    </details>
-
-	<h2>Verkehrsmeldungen</h2>
-
-	<p>Verkehrsmeldungen werden über die Endpunkte <a href="/datasets/traffic/incidents-bw/TIC3-Meldungen.xml"><code>/datasets/traffic/incidents-bw/TIC3-Meldungen.xml</code></a> und <a href="/datasets/traffic/incidents/incidents_lmsbw.datex2.xml"><code>/datasets/traffic/incidents/incidents_lmsbw.datex2.xml</code></a> in den Formaten TIC3 und Datex II publiziert.</p>
-
-	<h2>Baustellen und Ereignisse</h2>
-
-	<p>Daten des Baustellen- und Ereignismanagementsystems BEMaS werden über die Endpunkte <a href="/datasets/traffic/roadworks/roadworks_cifs.json"><code>/datasets/traffic/roadworks/roadworks_cifs.json</code></a>, <a href="/datasets/traffic/roadworks/roadworks_geojson.json"><code>/datasets/traffic/roadworks/roadworks_geojson.json</code></a> und <a href="/datasets/traffic/roadworks/roadworks_svzbw.datex2.xml"><code>/datasets/traffic/roadworks/roadworks_svzbw.datex2.xml</code></a> in den Formaten CIFS, GeoJSON und Datex II publiziert.</p>
-
-	<h2>Radverkehrs-Infrastruktur</h2>
-
-	<p>Das RadNETZ Baden-Württemberg wird vom Radverkehrs-Infrastruktur-System RadVIS über den Endpunkt <a href="/datasets/radvis/radnetz_bw.gpkg"><code>/datasets/radvis/radnetz_bw.gpkg</code></a> im GeoPackage Format publiziert.</p>
-
-	<h2>Kartendienste</h2>
-
-	<p>Visualisierungen im WMS/WFS-Format bietet unser Geoserver unter <a href="/geoserver"><code>/geoserver</code></a> an, der für die vielfältigen Mobilitätsdaten unterschiedliche Layer enthält.</p>
-
-	<p>Aktuelle Karten basierend auf den folgenden Geoserver Layern vermitteln ein anschauliches Bild von unseren Mobilitätsdaten.</p>
-
-	<ul>
-		<li><a href="https://mobidata-bw.de/karten/gebuendelte_daten/">MobiData BW® - Gebündelte Daten (Soll-Fahrplandaten, Sharing-Daten, Parkdaten, E-Ladesäulen, Baustellen, Radnetze)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/gtfs/">MobiData BW® - Gebündelte Soll-Fahrplandaten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=car">MobiData BW® - Gebündelte Carsharing-Daten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=bicycle">MobiData BW® - Gebündelte Bikesharing-Daten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=cargo_bicycle">MobiData BW® - Gebündelte Lastenrad-Sharingdaten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=scooter">MobiData BW® - Gebündelte E-Scooter-Sharingdaten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/sharing/?form_factor=moped">MobiData BW® - Gebündelte E-Kleinkraftrad-Sharingdaten</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car">MobiData BW® - Gebündelte Parkdaten (Parkbauten, Parkplätze, Straßen-Parkplätze)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&type=buildings">MobiData BW® - Gebündelte Parkdaten (Parkbauten, Parkplätze)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&type=on_street">MobiData BW® - Gebündelte Parkdaten (Straßen-Parkplätze)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&geometry=line">MobiData BW® - Gebündelte Parkdaten (Linien)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&geometry=polygon">MobiData BW® - Gebündelte Parkdaten (Polygone)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&object=site">MobiData BW® - Gebündelte Parkdaten (Parkbauten, Parkplätze, Straßen-Parkplätze: mit Kapazität)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=car&object=spot">MobiData BW® - Gebündelte Einzelparkplätze (Parkplätze, Straßen-Parkplätze: keine Kapazität)</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/park-api/?purpose=bicycle">MobiData BW® - Gebündelte Fahrradabstellanlagen</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/charge_points/">MobiData BW® - Gebündelte E-Ladesäulen</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/roadworks/">MobiData BW® - Baustellen</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/radvis_cycle_network/">MobiData BW® - RadNETZ Baden-Württemberg</a></li>
-		<li><a href="https://mobidata-bw.de/karten/ipl/webcam/">MobiData BW® - Webcam-Bilder</a></li>
-		<li><a href="https://mobidata-bw.de/karten/inrix/">MobiData BW® - INRIX</a></li>
-	</ul>
-	
-</div>
+	</div>
 </body>
+
 </html>
