@@ -45,11 +45,13 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>charge_points</name>
-        <sql>-- aggregate max_electric_power, status_last_updated and chargepoints per location&#xd;
+        <sql>-- aggregate max_electric_power, go_live_date, status_last_updated,&#xd;
+-- and connector counts per EVSE status for each location&#xd;
 WITH location_chargepoint_aggregates AS (&#xd;
     SELECT&#xd;
         cs.location_id,&#xd;
         MAX(connector.max_electric_power) AS max_electric_power,&#xd;
+        MIN(cs.go_live_date) AS go_live_date,&#xd;
         MAX(es.status_last_updated) AS status_last_updated,&#xd;
         COUNT(*) FILTER (&#xd;
             WHERE&#xd;
@@ -85,16 +87,6 @@ WITH location_chargepoint_aggregates AS (&#xd;
         JOIN connector ON es.id = connector.evse_id&#xd;
     GROUP BY&#xd;
         cs.location_id&#xd;
-),&#xd;
--- aggregate station power and go-live date per location&#xd;
-location_station_aggregates AS (&#xd;
-    SELECT&#xd;
-        location_id,&#xd;
-        MIN(go_live_date) AS go_live_date -- earliest go-live date per location&#xd;
-    FROM&#xd;
-        charging_station&#xd;
-    GROUP BY&#xd;
-        location_id&#xd;
 )&#xd;
 SELECT&#xd;
     location.id,&#xd;
@@ -109,7 +101,8 @@ SELECT&#xd;
     location.official_region_code,&#xd;
     location.geometry,&#xd;
     lca.max_electric_power,&#xd;
-    lsa.go_live_date,&#xd;
+    lca.go_live_date,&#xd;
+    lca.status_last_updated,&#xd;
     lca.chargepoint_available_count,&#xd;
     lca.chargepoint_unknown_count,&#xd;
     lca.chargepoint_static_count,&#xd;
@@ -117,7 +110,6 @@ SELECT&#xd;
     lca.chargepoint_inoperative_count,&#xd;
     lca.chargepoint_outoforder_count,&#xd;
     lca.chargepoint_reserved_count,&#xd;
-    lca.status_last_updated,&#xd;
     (&#xd;
         lca.status_last_updated &lt; now() - interval &apos;3 days&apos;&#xd;
     ) AS realtime_data_outdated,&#xd;
@@ -125,8 +117,7 @@ SELECT&#xd;
 FROM&#xd;
     location &#xd;
     -- JOIN lca and lsa on location_id to get aggregated data per location&#xd;
-    JOIN location_chargepoint_aggregates lca ON lca.location_id = location.id&#xd;
-    JOIN location_station_aggregates lsa ON lsa.location_id = location.id &#xd;
+    JOIN location_chargepoint_aggregates lca ON lca.location_id = location.id &#xd;
     -- LEFT JOIN business to get operator name if available&#xd;
     LEFT JOIN business ON location.operator_id = business.id
 </sql>
