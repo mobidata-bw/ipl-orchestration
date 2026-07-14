@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
-## Unreleased
+## 2026-07-14
 
 - GeoServer `MobiData-BW:charge_points`: optimize query, remove redundancies
 - Add CSS to [index-page.html](/etc/index-page/index.html)
