@@ -118,6 +118,12 @@
     pr_bus.realtime_capacity AS realtime_capacity_bus,&#xd;
     pr_bus.realtime_free_capacity AS realtime_free_capacity_bus,&#xd;
     CASE&#xd;
+        WHEN pr_truck.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_truck.capacity, site.capacity)&#xd;
+    END AS capacity_truck,&#xd;
+    pr_bus.realtime_capacity AS realtime_capacity_truck,&#xd;
+    pr_bus.realtime_free_capacity AS realtime_free_capacity_truck,&#xd;
+    CASE&#xd;
         WHEN pr_caravan.parking_site_id IS NULL THEN NULL&#xd;
         ELSE COALESCE(pr_caravan.capacity, site.capacity)&#xd;
     END AS capacity_caravan,&#xd;
@@ -158,6 +164,8 @@ FROM&#xd;
     AND pr_resident.type = &apos;RESIDENT&apos;&#xd;
     LEFT JOIN parking_restriction pr_bus ON pr_bus.parking_site_id = site.id&#xd;
     AND pr_bus.type = &apos;BUS&apos;&#xd;
+    LEFT JOIN parking_restriction pr_truck ON pr_truck.parking_site_id = site.id&#xd;
+    AND pr_truck.type = &apos;TRUCK&apos;&#xd;
     LEFT JOIN parking_restriction pr_caravan ON pr_caravan.parking_site_id = site.id&#xd;
     AND pr_caravan.type = &apos;CARAVAN&apos;&#xd;
 WHERE&#xd;
@@ -253,6 +261,14 @@ SELECT&#xd;
     ) AS capacity_bus,&#xd;
     NULL AS realtime_capacity_bus,&#xd;
     NULL AS realtime_free_capacity_bus,&#xd;
+    (&#xd;
+        CASE&#xd;
+            WHEN pr.type = &apos;TRUCK&apos; THEN 1&#xd;
+            ELSE NULL&#xd;
+        END&#xd;
+    ) AS capacity_truck,&#xd;
+    NULL AS realtime_capacity_truck,&#xd;
+    NULL AS realtime_free_capacity_truck,&#xd;
     (&#xd;
         CASE&#xd;
             WHEN pr.type = &apos;CARAVAN&apos; THEN 1&#xd;
@@ -756,6 +772,33 @@ WHERE&#xd;
       <binding>java.lang.Integer</binding>
       <description>
         <de>Anzahl freier Stellplätze für Busse (Echtzeit)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>capacity_truck</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <en-US>Anzahl Stellplätze für LKW</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_capacity_truck</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <en-US>Anzahl Stellplätze für LKW (Echtzeit)</en-US>
+      </description>
+    </attribute>
+    <attribute>
+      <name>realtime_free_capacity_truck</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <binding>java.lang.Integer</binding>
+      <description>
+        <en-US>Anzahl freier Stellplätze für LKW (Echtzeit)</en-US>
       </description>
     </attribute>
     <attribute>
