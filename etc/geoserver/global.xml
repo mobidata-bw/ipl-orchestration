@@ -33,7 +33,7 @@
       <internationalWelcome class="org.geotools.util.GrowableInternationalString"/>
     </contact>
     <charset>UTF-8</charset>
-    <numDecimals>4</numDecimals>
+    <numDecimals>6</numDecimals>
     <verbose>true</verbose>
     <verboseExceptions>false</verboseExceptions>
     <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
