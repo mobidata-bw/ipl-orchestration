@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## Unreleased
 
-- GeoServer `MobiData-BW:park-api_car`: add `capacity_truck`, `realtime_capacity_truck` and `realtime_free_capacity_truck`
+- GeoServer:
+  - `MobiData-BW:park-api_car`: add `capacity_truck`, `realtime_capacity_truck` and `realtime_free_capacity_truck`
+  - WFS: allow overwrite of GML attributes for GML 3 and GML 3.2. This solves the problem that, for example, the `name` attribute cannot be queried via the WFS service, since the service does not interpret it as a normal attribute
 
 ## 2026-07-14
 
