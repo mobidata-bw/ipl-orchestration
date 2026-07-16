@@ -5,6 +5,8 @@
   </workspace>
   <enabled>true</enabled>
   <name>WFS</name>
+  <internationalTitle/>
+  <internationalAbstract/>
   <versions>
     <org.geotools.util.Version>
       <version>1.0.0</version>
@@ -19,25 +21,31 @@
   <citeCompliant>false</citeCompliant>
   <schemaBaseURL>http://schemas.opengis.net</schemaBaseURL>
   <verbose>false</verbose>
+  <metadata>
+    <entry key="inspire.language">eng</entry>
+    <entry key="SHAPE-ZIP_DEFAULT_PRJ_IS_ESRI">false</entry>
+    <entry key="inspire.spatialDatasetIdentifier"></entry>
+    <entry key="inspire.createExtendedCapabilities">false</entry>
+  </metadata>
   <gml>
     <entry>
-      <version>V_20</version>
+      <version>V_10</version>
       <gml>
-        <srsNameStyle>URN2</srsNameStyle>
-        <overrideGMLAttributes>false</overrideGMLAttributes>
+        <srsNameStyle>XML</srsNameStyle>
+        <overrideGMLAttributes>true</overrideGMLAttributes>
       </gml>
     </entry>
     <entry>
       <version>V_11</version>
       <gml>
         <srsNameStyle>URN</srsNameStyle>
-        <overrideGMLAttributes>false</overrideGMLAttributes>
+        <overrideGMLAttributes>true</overrideGMLAttributes>
       </gml>
     </entry>
     <entry>
-      <version>V_10</version>
+      <version>V_20</version>
       <gml>
-        <srsNameStyle>XML</srsNameStyle>
+        <srsNameStyle>URN2</srsNameStyle>
         <overrideGMLAttributes>true</overrideGMLAttributes>
       </gml>
     </entry>
@@ -49,6 +57,7 @@
   <encodeFeatureMember>false</encodeFeatureMember>
   <hitsIgnoreMaxFeatures>false</hitsIgnoreMaxFeatures>
   <includeWFSRequestDumpFile>true</includeWFSRequestDumpFile>
+  <disableStoredQueriesManagement>false</disableStoredQueriesManagement>
   <allowGlobalQueries>true</allowGlobalQueries>
   <simpleConversionEnabled>false</simpleConversionEnabled>
   <getFeatureOutputTypeCheckingEnabled>false</getFeatureOutputTypeCheckingEnabled>
