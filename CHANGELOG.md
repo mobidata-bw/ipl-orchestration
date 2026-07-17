@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   - `MobiData-BW:park-api_car`: add `capacity_truck`, `realtime_capacity_truck` and `realtime_free_capacity_truck`
   - WFS: allow overwrite of GML attributes for GML 3 and GML 3.2. This solves the problem that, for example, the `name` attribute cannot be queried via the WFS service, since the service does not interpret it as a normal attribute
   - increase number of decimals (GML and GeoJSON output) from 4 to 6 for more coordinate precision
+- [OCPDB 2.14.4](https://github.com/binary-butterfly/ocpdb/blob/3f04359e4c378cd861ebb64526faefc5b9f7487b/CHANGELOG.md#2144)
+  - with a major handling-improvement of pushed DATEX II data
 
 ## 2026-07-14
 
