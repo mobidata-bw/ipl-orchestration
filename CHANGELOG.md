@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - increase number of decimals (GML and GeoJSON output) from 4 to 6 for more coordinate precision
 - [OCPDB 2.14.4](https://github.com/binary-butterfly/ocpdb/blob/3f04359e4c378cd861ebb64526faefc5b9f7487b/CHANGELOG.md#2144)
   - with a major handling-improvement of pushed DATEX II data
+- [ParkAPI 0.47.4](https://github.com/ParkenDD/park-api-v3/blob/bb8736c7a4d14cd518ab261e54347a0c732d9906/CHANGELOG.md#0474)
+  - with several smaller fixes, including a fix for blocking requests during TLS handshake
 
 ## 2026-07-14
 
