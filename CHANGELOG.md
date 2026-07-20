@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## Unreleased
+## 2026-07-20
 
 - GeoServer:
   - `MobiData-BW:park-api_car`: add `capacity_truck`, `realtime_capacity_truck` and `realtime_free_capacity_truck`
