@@ -36,8 +36,8 @@ SELECT pg_temp._alter_db(current_database(), 'session_preload_libraries', 'plan_
 -- [1] https://postgrest.org/en/stable/references/auth.html#overview-of-role-system
 -- [2] https://postgrest.org/en/stable/references/auth.html#impersonated-role-settings
 
--- This currently doesn't work as expected though, PostgREST doesn't seem to re-apply `plan_filter.statement_cost_limit` to `web_anon`. [3]
--- [3] https://github.com/PostgREST/postgrest/issues/3045
+-- As of v12, PostgREST now *seems to* re-apply `plan_filter.statement_cost_limit` to `web_anon`. [3]
+-- [3] https://github.com/PostgREST/postgrest/pull/3058
 
 -- Limit postgrest's & web_anon's queries by the query planner's estimated cost.
 -- Use $POSTGREST_STATEMENT_COST_LIMIT, fall back to 1000000.
