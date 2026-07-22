@@ -529,10 +529,13 @@ services:
     platform: linux/amd64
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
+      # picked up via $POSTGRES_INITDB_ARGS
+      - ./etc/gtfs/gtfs-db/postgresql.conf.d:/etc/postgresql/postgresql.conf.d
     environment:
       POSTGRES_USER: ${IPL_GTFS_DB_POSTGRES_USER}
       POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
       POSTGRES_DB: ${IPL_GTFS_DB_POSTGRES_DB}
+      POSTGRES_INITDB_ARGS: '-c include_dir=/etc/postgresql/postgresql.conf.d'
     healthcheck:
       test: "PGPASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_GTFS_DB_POSTGRES_USER} -d ${IPL_GTFS_DB_POSTGRES_DB}"
       timeout: 3s
