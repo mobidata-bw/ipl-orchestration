@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   4. restart `gtfs-db` (`make docker-up-detached SERVICE=gtfs-db`),
   5. run a GTFS import (either using the Dagster UI or via `make import-new-gtfs`).
 - ⚠️ `gtfs-db`: When queries need more memory than allowed via PostgreSQL's parameters (e.g. `work_mem`), their data is written to disk temporarily. This is now capped to 1GB to increase the IPL's operational reliability, while it was *unlimited* before. – This is a breaking change if you have (legitimate) queries that need >1GB of temporary data written to disk.
+- ⚠️ `gtfs-api`: Cap queries to `gtfs-db` to 10 seconds, using PostgreSQL's `statement_timeout`. Just capping their cost proved to be not enough, e.g. for `/arrivals_departures?stop_id=eq.…`, the query vastly underestimates the query's runtime. – This is a breaking change if you have (legitimate) queries that take longer than 10s.
 - ⚠️ `gtfs-importer`: upgrade [`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [`v7-2026-07-15t12.21.50`](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/6c38fe5) – Its base image has changed from Debian Trixie to Alpine Linux 3.23, so if you mount any custom scripts into it, you must make sure they keep working.
 
 ## 2026-08-04

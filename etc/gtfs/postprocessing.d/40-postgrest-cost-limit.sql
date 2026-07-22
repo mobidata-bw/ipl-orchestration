@@ -45,3 +45,10 @@ SELECT pg_temp._alter_db(current_database(), 'session_preload_libraries', 'plan_
 \set cost_limit 1000000
 \getenv cost_limit POSTGREST_STATEMENT_COST_LIMIT
 ALTER ROLE postgrest SET plan_filter.statement_cost_limit = :'cost_limit';
+
+-- The query planner's estimation might be off in some cases [1], so we cap statement execution time, too.
+-- Use $POSTGREST_STATEMENT_TIMEOUT, fall back to 15000 (15s).
+-- https://stackoverflow.com/a/18730455/1072129
+\set timeout 15000
+\getenv timeout POSTGREST_STATEMENT_TIMEOUT
+ALTER ROLE postgrest SET statement_timeout = :'timeout';
