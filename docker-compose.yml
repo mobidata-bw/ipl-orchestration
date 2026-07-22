@@ -542,6 +542,10 @@ services:
       interval: 5s
       start_period: 10s
       retries: 10
+    # This is based on the PostgreSQL config parameters set in etc/gtfs/gtfs-db/postgresql.conf.d/10_io_memory_tuning.conf:
+    # - `shared_buffers = 2560MB`
+    # - `maintenance_work_mem = 640MB`
+    shm_size: 3.5g
     restart: unless-stopped
 
   # pgbouncer acts like a facade in front of PostgreSQL instances (ipl-db, gtfs-db, dagster-postgresql), providing
