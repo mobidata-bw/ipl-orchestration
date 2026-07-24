@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [unreleased]
+
+- [ipl-proxy 2026-07-24T05-00](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-07-24): set nextbike_kk station's `vehicle_types_availability`
+
 ## 2026-07-20
 
 - GeoServer:
