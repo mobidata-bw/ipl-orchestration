@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
 
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.9`](https://github.com/traefik/traefik/blob/v3.7.9/CHANGELOG.md) (skipping releases [`v3.7.7`](https://github.com/traefik/traefik/blob/v3.7.7/CHANGELOG.md), [`v3.7.8`](https://github.com/traefik/traefik/blob/v3.7.8/CHANGELOG.md))
 - [ipl-proxy 2026-07-24T05-00](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-07-24): set nextbike_kk station's `vehicle_types_availability`
 
 ## 2026-07-20
