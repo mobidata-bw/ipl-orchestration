@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+- GeoServer: [Add OGC API Features plugin](https://github.com/mobidata-bw/ipl-geoserver/commit/58b13f327f218c355e288337db58438a4575b9bd)
+
 ## 2026-07-28
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.9`](https://github.com/traefik/traefik/blob/v3.7.9/CHANGELOG.md) (skipping releases [`v3.7.7`](https://github.com/traefik/traefik/blob/v3.7.7/CHANGELOG.md), [`v3.7.8`](https://github.com/traefik/traefik/blob/v3.7.8/CHANGELOG.md))
