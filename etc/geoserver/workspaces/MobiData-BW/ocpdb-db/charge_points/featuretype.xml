@@ -323,12 +323,12 @@ FROM&#xd;
     </attribute>
     <attribute>
       <name>last_updated</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>0</maxOccurs>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Letzter Aktualisierungszeitpunkt</en-US>
+        <de>Letzter Aktualisierungszeitpunkt</de>
       </description>
     </attribute>
     <attribute>
