@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.10`](https://github.com/traefik/traefik/blob/v3.7.10/CHANGELOG.md)
 - GeoServer: add `last_updated` to `MobiData-BW:charge_points`
 
 ## 2026-07-29
