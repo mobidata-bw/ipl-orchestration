@@ -99,6 +99,7 @@ SELECT&#xd;
     location.city,&#xd;
     location.state,&#xd;
     location.official_region_code,&#xd;
+    location.last_updated,&#xd;
     location.geometry,&#xd;
     lca.max_electric_power,&#xd;
     lca.go_live_date,&#xd;
@@ -318,6 +319,16 @@ FROM&#xd;
       <binding>java.lang.Long</binding>
       <description>
         <de>Anzahl der Ladepunkte des Ladestandortes mit Reservierung</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>last_updated</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>0</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <en-US>Letzter Aktualisierungszeitpunkt</en-US>
       </description>
     </attribute>
     <attribute>
