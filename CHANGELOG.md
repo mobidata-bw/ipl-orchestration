@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.10`](https://github.com/traefik/traefik/blob/v3.7.10/CHANGELOG.md)
 - GeoServer: add `last_updated` to `MobiData-BW:charge_points`
+- [OCPDB 2.15.0](https://github.com/binary-butterfly/ocpdb/blob/main/CHANGELOG.md#2150)
+  - Automatically updates location `last_updated` to make filters work
+  - group tariffs
+  - prometheus: modified
 
 ## 2026-07-29
 
