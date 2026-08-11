@@ -6,8 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-- [OCPDB 2.5.1](https://github.com/binary-butterfly/ocpdb/blob/6d9f2df01e61b59038752bfc280a48be575617c6/CHANGELOG.md#2151)
-  - with tariff cleanup logic
+- [OCPDB 2.5.2](https://github.com/binary-butterfly/ocpdb/blob/6d9f2df01e61b59038752bfc280a48be575617c6/CHANGELOG.md#2151)
+  - with tariff and tariff association cleanup logic
 
 ## 2026-08-04
 
