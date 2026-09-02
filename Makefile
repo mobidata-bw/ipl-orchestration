@@ -28,7 +28,6 @@ init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_ke
 	mkdir -p var/gtfs
 	touch -a var/gtfs/pgbouncer-dsn.txt
 	mkdir -p var/geoserver/datadir
-	touch -a var/geoserver/datadir/global.xml
 	mkdir -p var/geoserver/gwc_cache_dir
 	mkdir -p var/log/geoserver/tomcat
 	mkdir -p var/log/geoserver/geoserver
@@ -60,9 +59,6 @@ docker-up: init
 .PHONY: docker-up-detached
 docker-up-detached: init
 	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 900 $(SERVICE)
-	# Reload geoserver config. Might fail with service "geoserver"
-	# is not running if geoserver has not yet been started. This can be ignored
-	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh || true
 
 .PHONY: docker-down
 docker-down:
@@ -105,9 +101,11 @@ docker-container-ip:
 # Geoserver management
 # --------------------
 
-.PHONY: reload-geoserver
-reload-geoserver:
-	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh
+.PHONY: restart-geoserver-and-reset-config
+restart-geoserver-and-reset-config:
+	$(DOCKER_COMPOSE) down --timeout 60 geoserver
+	# Note: During container startup, `var/geoserver/datadir` will be emptied and re-populated from the template directory `etc/geoserver/datadir`.
+	$(DOCKER_COMPOSE) up --detach --wait --wait-timeout 900 geoserver
 
 # Syncs Geoserver's var workspace dir to etc, excluding the overwritten datastore.xml
 .PHONY: prepare-geoserver-workspace-for-commit
