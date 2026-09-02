@@ -291,21 +291,9 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
-    # Currently, there's no linux/arm64 image.
-    platform: linux/amd64
-    user: *local-user
     volumes:
-      # var/geoserver defaults to geoserver/data_dir, custom config shall explicitly be defined in etc/geoserver
-      - ./var/geoserver/datadir/:/var/geoserver/datadir/
-      - ./var/log/geoserver/tomcat/:/usr/local/tomcat/logs/
-      - ./var/log/geoserver/geoserver/:/var/geoserver/logs/
-      - ./var/geoserver/gwc_cache_dir/:/var/geoserver/gwc_cache_dir/
-      - ./etc/geoserver/:/var/geoserver/datadir_template/
-      # global.xml is written by geoserver before config reload, so we need to have it mounted already at start
-      - ./etc/geoserver/global.xml:/var/geoserver/datadir/global.xml
-      - ./etc/geoserver/logging.xml:/var/geoserver/datadir/logging.xml
-      - ./bin/geoserver/geoserver-rest-config.sh:/usr/local/bin/geoserver-rest-config.sh
-      - ./bin/geoserver/geoserver-rest-reload.sh:/usr/local/bin/geoserver-rest-reload.sh
+      - ./etc/geoserver/:/opt/geoserver_data/
+      - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
@@ -313,41 +301,30 @@ services:
     ports:
       - ${GEOSERVER_PORT}:8080
     environment:
-      # Special env vars picked up by the kartoza/geoserver Docker image, getting passed in as Java system properties (`-D`).
-      - ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
-      - INITIAL_MEMORY=${GEOSERVER_INITIAL_MEMORY}
-      - MAXIMUM_MEMORY=${GEOSERVER_MAXIMUM_MEMORY}
-      - GEOSERVER_DATA_DIR_CUSTOM=/var/geoserver/datadir_template/
-      - GEOSERVER_CSRF_WHITELIST=${GEOSERVER_CSRF_WHITELIST:?missing/empty}
+      - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
+      - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty}
-      # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
-      # we currently need to pass in all default properties already defined in the dockerfile
-      - JAVA_OPTS= >-
+
+      # Our Geoserver image is based on the upstream Geoserver image `docker.osgeo.org/geoserver` which pre-defines a $CATALINA_OPTS with a literal `$EXTRA_JAVA_OPTS`.
+      # The upsteam Geoserver image is based on the Tomcat image `tomcat` which will, during container startup, run `eval exec "$JAVA_OPTS" "$CATALINA_OPTS" start`.
+      # TLDR: $JAVA_OPTS and $EXTRA_JAVA_OPTS are added to the `java` process' args.
+      - >-
+          EXTRA_JAVA_OPTS=
           -Duser.timezone=${TZ:?'missing/empty $TZ'}
           -DALLOW_ENV_PARAMETRIZATION=true
-          -Xms$${INITIAL_MEMORY}
-          -Xmx$${MAXIMUM_MEMORY}
-          -Djava.awt.headless=true
-          -server
-          -Dfile.encoding=UTF8
-          -Djavax.servlet.request.encoding=UTF-8
-          -Djavax.servlet.response.encoding=UTF-8
-          -XX:SoftRefLRUPolicyMSPerMB=36000
+          -Xms${GEOSERVER_INITIAL_MEMORY}
+          -Xmx${GEOSERVER_MAXIMUM_MEMORY}
           -XX:+UseG1GC
           -XX:MaxGCPauseMillis=200
           -XX:ParallelGCThreads=20
           -XX:ConcGCThreads=5
-          -Dorg.geotools.coverage.jaiext.enabled=$${JAIEXT_ENABLED}
           -Dorg.geotools.shapefile.datetime=true
-          -DGEOWEBCACHE_CONFIG_DIR=$${GEOWEBCACHE_CONFIG_DIR}
-          -DGEOWEBCACHE_CACHE_DIR=$${GEOWEBCACHE_CACHE_DIR}
-          -DNETCDF_DATA_DIR=$${NETCDF_DATA_DIR}
-          -DGRIB_CACHE_DIR=$${GRIB_CACHE_DIR}
-      # The following parameters are *not* picked up by geosoultionsit/geoserver, but instead passed through as "regular" env vars, and then read by Geoserver whenever one of the config files references them.
-      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
-      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
-      - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
-      - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
+          -DGEOSERVER_CSRF_WHITELIST=${GEOSERVER_CSRF_WHITELIST:?missing/empty}
+        # todo: are these necessary?
+        # -DGEOWEBCACHE_CONFIG_DIR=$${GEOWEBCACHE_CONFIG_DIR}
+        # -DGEOWEBCACHE_CACHE_DIR=$${GEOWEBCACHE_CACHE_DIR}
+        # -DNETCDF_DATA_DIR=${NETCDF_DATA_DIR}
+        # -DGRIB_CACHE_DIR=${GRIB_CACHE_DIR}
     depends_on:
       pgbouncer:
         # For sharing & transit layers
@@ -358,11 +335,11 @@ services:
       ocpdb-db:
         # For ocpdb layer
         condition: service_healthy
-    healthcheck:
-      test: "curl -fsS -o /dev/null -u 'admin:${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
-      interval: 0m10s
-      timeout: 10s
-      retries: 22
+    # healthcheck:
+    #   test: "curl -fsS -o /dev/null -u 'admin:${GEOSERVER_ADMIN_PASSWORD}' http://localhost:8080/geoserver/rest/about/version.xml"
+    #   interval: 0m10s
+    #   timeout: 10s
+    #   retries: 22
     restart: unless-stopped
 
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
