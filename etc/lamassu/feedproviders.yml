@@ -9,7 +9,7 @@ lamassu:
       authentication:
         scheme: HTTP_HEADERS
         properties:
-          Authorization-GBFS: ${LAMASSU_DEER_GBFS_AUTHORIZATION}  
+          Authorization-GBFS: ${LAMASSU_DEER_BEARER_TOKEN}  
     - systemId: mikar
       operatorId: MIK:Operator:mikar
       operatorName: Mikar
