@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+- Lamassu: add `lastenkarle` feed. Deer is now integrated directly from the [Lastenkarle -Commonsbooking API](https://lastenkarle.de) GBFS API using the `apikey` header.
+
 ## 2026-08-12
 
 - [OCPDB 2.5.2](https://github.com/binary-butterfly/ocpdb/blob/6d9f2df01e61b59038752bfc280a48be575617c6/CHANGELOG.md#2151)
