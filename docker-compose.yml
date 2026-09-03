@@ -349,6 +349,8 @@ services:
       - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
       - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
       - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
+
+      # todo: how to let geoserver reload the gtfs schema from env or file?
     depends_on:
       pgbouncer:
         # For sharing & transit layers
@@ -408,6 +410,7 @@ services:
       - IPL_POSTGRES_DB
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
+
       # Variables required for GTFS-Import
       - IPL_GTFS_IMPORTER_IMAGE
       - IPL_GTFS_IMPORTER_NETWORK
@@ -417,8 +420,7 @@ services:
       - IPL_GTFS_DB_POSTGRES_USER
       - IPL_GTFS_DB_POSTGRES_PASSWORD
       - IPL_GTFS_DB_POSTGRES_DB
-      - IPL_GTFS_DB_POSTGRES_DB_PREFIX
-      - IPL_GTFS_IMPORTER_SCHEMA=${IPL_GTFS_IMPORTER_SCHEMA:?missing/empty}
+      - IPL_GTFS_DB_POSTGRES_SCHEMA=${IPL_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
       - IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME
       - IPL_GTFS_IMPORTER_EXTRA_HOST_IP
       - IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT=${IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}
@@ -429,6 +431,7 @@ services:
       # Required to mount volumes for docker-in-docker executions
       - IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
       - IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
+
       # directory where datasets should stored for publishing (Note: should be mounted as volume)
       - WWW_ROOT_DIR=/var/www/
       # RadVIS Download credentials
@@ -533,6 +536,11 @@ services:
     platform: linux/amd64
     volumes:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
+      # picked up by default
+      # Note: We must not mount the entire directory at `/docker-entrypoint-initdb.d` because it would "shadow" the init script `/docker-entrypoint-initdb.d/10_postgis.sh` contained in the image.
+      # todo: move into postgis-with-pg-plan-filter image?
+      - ./etc/gtfs/gtfs-db/initdb.d/20_postgis_geography_to_json.sql:/docker-entrypoint-initdb.d/20_postgis_geography_to_json.sql
+      - ./etc/gtfs/gtfs-db/initdb.d/30_postgrest_read_dynamic_config.sql:/docker-entrypoint-initdb.d/30_postgrest_read_dynamic_config.sql
       # picked up via $POSTGRES_INITDB_ARGS
       - ./etc/gtfs/gtfs-db/postgresql.conf.d:/etc/postgresql/postgresql.conf.d
     environment:
@@ -540,6 +548,7 @@ services:
       POSTGRES_PASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD}
       POSTGRES_DB: ${IPL_GTFS_DB_POSTGRES_DB}
       POSTGRES_INITDB_ARGS: '-c include_dir=/etc/postgresql/postgresql.conf.d'
+      # todo: pass `TZ`?
     healthcheck:
       test: "PGPASSWORD=${IPL_GTFS_DB_POSTGRES_PASSWORD} pg_isready -h 127.0.0.1 -U ${IPL_GTFS_DB_POSTGRES_USER} -d ${IPL_GTFS_DB_POSTGRES_DB}"
       timeout: 3s
@@ -569,10 +578,6 @@ services:
       - gtfs-db
       - dagster-postgresql
     image: ${PGBOUNCER_IMAGE}
-    volumes:
-      # contains the latest import's DB name
-      - ./var/gtfs/pgbouncer-dsn.txt:/var/gtfs-pgbouncer-dsn.txt
-      - ./etc/reload-pgbouncer-databases.sh:/reload-pgbouncer-databases.sh
     environment:
       # Even if we define all upstream database connections "manually" using $PGBOUNCER_DSN_* (see below), the bitnami/pgbouncer Docker image expects 1 connection to be specified via $POSTGRESQL_*, which it implicitly adds to the `[database]` section of pgbouncer.ini. Note that the specified database credentials must be valid.
       # However, the $POSTGRESQL_* env vars are *also* used to configure client access to pgbouncer: They get implicitly added to the generated userlist.txt, meaning that clients *must* use them (if there are no other user/password pairs defined, which we don't do) to connect to *any* exposed connection.
@@ -607,11 +612,8 @@ services:
       PGBOUNCER_DSN_0: "ipl=host=ipl-db dbname=${IPL_POSTGRES_DB:?missing/empty} user=${IPL_POSTGRES_USER:?missing/empty} password=${IPL_POSTGRES_PASSWORD:?missing/empty}"
       # expose dagster-postgresql as `dagster`
       PGBOUNCER_DSN_1: "dagster=host=dagster-postgresql dbname=${DAGSTER_POSTGRES_DB:?missing/empty} user=${DAGSTER_POSTGRES_USER:?missing/empty} password=${DAGSTER_POSTGRES_PASSWORD:?missing/empty}"
-      # expose the latest GTFS import within gtfs-db as `gtfs`
-      # $PGBOUNCER_DSN_2 gets generated from /var/gtfs-pgbouncer-dsn.txt (which is written by gtfs-importer) by the Docker image's entrypoint script.
-      # see https://github.com/bitnami/containers/issues/46152#issuecomment-1695320501
-      # todo: not yet, push & PR our changes, see `image` field above!
-      PGBOUNCER_DSN_2_FILE: /var/gtfs-pgbouncer-dsn.txt
+      # expose the gtfs-db as `gtfs`
+      PGBOUNCER_DSN_2: "gtfs=host=gtfs-db port=5432 dbname=${IPL_GTFS_DB_POSTGRES_DB:?missing/empty} user=${IPL_GTFS_DB_POSTGRES_USER:?missing/empty} password=${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty}"
     restart: unless-stopped
     healthcheck:
       # pgbouncer exposes a `pgbouncer` "meta database", providing an interface for statistics and to administer the instance. We use it here to check if pgbouncer is working properly.
@@ -654,6 +656,11 @@ services:
       # > Also set db-channel-enabled to false since LISTEN is not compatible with transaction pooling. Although it should not give any errors if left enabled.
       # https://postgrest.org/en/stable/references/connection_pool.html#external-connection-poolers
       PGRST_DB_CHANNEL_ENABLED: 'False'
+
+      # > You can also configure the server with database settings by using a pre-config function.
+      # https://docs.postgrest.org/en/v16/references/configuration.html#in-db-config
+      # We use this function to dynamically (re-)read the DB schema PostgREST should serve from a table `postgrest.config`. We set this value during the GTFS import.
+      PGRST_DB_PRE_CONFIG: 'postgrest.read_dynamic_config'
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
@@ -669,11 +676,7 @@ services:
 
   gtfs-importer:
     networks: [ipl]
-    # gtfstidy currently only provides a linux/amd64 binary
-    # see also https://github.com/patrickbr/gtfstidy/pull/21
-    platform: linux/amd64
-    # gtfs-imports will be performed via dagster nevertheless, we keep it here for now
-    # i.e. to have it downloaded
+    # Although, in production, the periodic GTFS import is launched as non-Compose Docker container via Dagster (dagster-* services), we also define a Compose service for imports triggered by other sources e.g. Ansible.
     image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty}
     profiles:
       - import-new-gtfs
@@ -694,17 +697,10 @@ services:
       PGPORT: 5432
       PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty}
       PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty}
-      # the default DB, used by gtfs-importer to keep track of imports
       PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB:?missing/empty}
+      GTFS_IMPORTER_SCHEMA: ${IPL_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
       GTFS_DOWNLOAD_URL: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty}
       GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
-      # the prefix of all DBs created for imports by gtfs-importer
-      GTFS_IMPORTER_DB_PREFIX: ${IPL_GTFS_DB_POSTGRES_DB_PREFIX:?missing/empty}
-      GTFS_IMPORTER_SCHEMA: ${IPL_GTFS_IMPORTER_SCHEMA:?missing/empty}
-      # gtfstidy: Don't remove stops duplicates (--remove-red-stops).
-      GTFSTIDY_REMOVE_REDUNDANT_STOPS: 'false'
-      # path to the file containing the latest import's DB name
-      GTFS_IMPORTER_DSN_FILE: /var/gtfs/pgbouncer-dsn.txt
       GTFS_TMP_DIR: /var/gtfs
       POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty}
       POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
