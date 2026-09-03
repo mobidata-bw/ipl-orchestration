@@ -301,6 +301,8 @@ services:
     ports:
       - ${GEOSERVER_PORT}:8080
     environment:
+      # Only with `POSTGRES_JNDI_ENABLED=true` will the image copy our override `context.xml` into the right place.
+      - POSTGRES_JNDI_ENABLED=true
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
       - PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty}

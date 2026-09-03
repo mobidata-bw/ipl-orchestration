@@ -7,15 +7,26 @@
   <workspace>
     <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
   </workspace>
+  <!-- todo: use jndi resource `todo` -->
+  <!-- <parameters>
+      <Parameter>
+          <name>dbtype</name>
+          <value>Oracle</value>
+      </Parameter>
+      <Parameter>
+          <name>jndiReferenceName</name>
+          <value>jdbc/ipl-db</value>
+      </Parameter>
+  </parameters> -->
   <connectionParameters>
-    <entry key="schema">public</entry>
+    <!-- <entry key="schema">public</entry>
     <entry key="Evictor run periodicity">300</entry>
     <entry key="Max open prepared statements">50</entry>
     <entry key="encode functions">true</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
-    <!-- connect via pgbouncer to improve performance -->
-    <entry key="database">ipl</entry> <!-- determined by pgbouncer! -->
+    <! -- connect via pgbouncer to improve performance -- >
+    <entry key="database">ipl</entry> <! -- determined by pgbouncer! -- >
     <entry key="host">pgbouncer</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
@@ -36,7 +47,9 @@
     <entry key="Evictor tests per run">3</entry>
     <entry key="Test while idle">true</entry>
     <entry key="user">${PGBOUNCER_POSTGRES_USER}</entry>
-    <entry key="Max connection idle time">300</entry>
+    <entry key="Max connection idle time">300</entry> -->
+    <!-- as defined via context.xml -->
+    <entry key="jndiReferenceName">jdbc/ipl-db</entry>
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2023-07-27 14:09:42.208 UTC</dateCreated>
