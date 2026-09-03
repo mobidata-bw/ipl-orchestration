@@ -1,4 +1,6 @@
-SET search_path TO "api",public;
+\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\set gtfs_schema '"' :gtfs_schema_raw '"'
+SET search_path TO :gtfs_schema,public;
 
 -- Tell PostgreSQL that it can explicitly convert a route_type_val (e.g. `3`) to an integer just like it would convert a string `'3'`.
 -- see also https://www.postgresql.org/docs/current/sql-createcast.html
