@@ -291,7 +291,17 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
+    # todo: use $RUN_UNPRIVILEGED
+    # user: *local-user
+    # https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
+    # user: '999:999'
+
     volumes:
+      # todo: do these still work?
+      # - ./var/log/geoserver/tomcat/:/usr/local/tomcat/logs/
+      # - ./var/log/geoserver/geoserver/:/var/geoserver/logs/
+      # - ./var/geoserver/gwc_cache_dir/:/var/geoserver/gwc_cache_dir/
+
       - ./etc/geoserver/:/opt/geoserver_data/
       - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
     labels:
@@ -305,6 +315,8 @@ services:
       - POSTGRES_JNDI_ENABLED=true
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
+      
+      # todo: is this picked up? or do we have to use a java system property?
       - PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty}
 
       # Our Geoserver image is based on the upstream Geoserver image `docker.osgeo.org/geoserver` which pre-defines a $CATALINA_OPTS with a literal `$EXTRA_JAVA_OPTS`.
@@ -342,7 +354,7 @@ services:
     #   interval: 0m10s
     #   timeout: 10s
     #   retries: 22
-    restart: unless-stopped
+    # restart: unless-stopped
 
   # This service runs the postgres DB used by dagster for run storage, schedule storage,
   # and event log storage.
