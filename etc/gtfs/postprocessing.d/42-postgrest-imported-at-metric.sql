@@ -1,4 +1,6 @@
-SET search_path TO "api",public;
+\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\set gtfs_schema '"' :gtfs_schema_raw '"'
+SET search_path TO :gtfs_schema,public;
 
 CREATE OR REPLACE FUNCTION gtfs_data_imported_at_metric ()
 RETURNS "text/plain"
