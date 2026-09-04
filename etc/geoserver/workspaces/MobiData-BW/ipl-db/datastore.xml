@@ -10,30 +10,29 @@
   <connectionParameters>
     <entry key="schema">public</entry>
     <entry key="Evictor run periodicity">300</entry>
-    <entry key="Max open prepared statements">50</entry>
-    <entry key="encode functions">true</entry>
-    <entry key="Batch insert size">1</entry>
-    <entry key="preparedStatements">false</entry>
-    <entry key="Loose bbox">true</entry>
-    <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>
+    <entry key="Max open prepared statements">50</entry>
     <entry key="fetch size">1000</entry>
+    <entry key="encode functions">true</entry>
     <entry key="Expose primary keys">true</entry>
     <entry key="validate connections">true</entry>
     <entry key="Support on the fly geometry simplification">true</entry>
     <entry key="Connection timeout">20</entry>
     <entry key="create database">false</entry>
+    <entry key="Batch insert size">1</entry>
+    <entry key="preparedStatements">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
+    <entry key="jndiReferenceName">jdbc/ipl-db</entry>
+    <entry key="Loose bbox">true</entry>
     <entry key="namespace">mdbw</entry>
+    <entry key="dbtype">postgis</entry>
     <entry key="Evictor tests per run">3</entry>
+    <entry key="SSL mode">DISABLE</entry>
     <entry key="Test while idle">true</entry>
     <entry key="Max connection idle time">300</entry>
-    <!-- as defined via etc/geoserver/config_overrides/context.xml -->
-    <entry key="dbtype">postgis</entry>
-    <entry key="jndiReferenceName">jdbc/ipl-db</entry>
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2023-07-27 14:09:42.208 UTC</dateCreated>
-  <dateModified>2023-08-16 11:49:48.580 UTC</dateModified>
+  <dateModified>2026-09-04 10:49:06.190 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
