@@ -1,40 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiResourceLocking="false" override="true" docBase="geoserver" privileged="true" path="/${WEBAPP_CONTEXT}">
-	<!-- connect via pgbouncer to improve performance -->
-	<Resource name="jdbc/ipl-db"
-		auth="Container"
-		type="javax.sql.DataSource"
-		driverClassName="org.postgresql.Driver"
-		url="jdbc:postgresql://pgbouncer:6432/ipl"
-		username="${PGBOUNCER_POSTGRES_USER}"
-		password="${PGBOUNCER_POSTGRES_PASSWORD}"
-		maxTotal="10"
-		initialSize="1"
-		minIdle="0"
-		maxIdle="8"
-		maxWaitMillis="-1"
-		timeBetweenEvictionRunsMillis="30000"
-		minEvictableIdleTimeMillis="60000"
-		testWhileIdle="true"
-		validationQuery="SELECT 1"
-		rollbackOnReturn="true"
-	/>
-	<Resource name="jdbc/park-api-db"
-		auth="Container"
-		type="javax.sql.DataSource"
-		driverClassName="org.postgresql.Driver"
-		url="jdbc:postgresql://park-api-db:5432/park-api"
-		username="${PARK_API_POSTGRES_USER}"
-		password="${PARK_API_POSTGRES_PASSWORD}"
-		maxTotal="10"
-		initialSize="1"
-		minIdle="0"
-		maxIdle="8"
-		maxWaitMillis="-1"
-		timeBetweenEvictionRunsMillis="30000"
-		minEvictableIdleTimeMillis="60000"
-		testWhileIdle="true"
-		validationQuery="SELECT 1"
-		rollbackOnReturn="true"
-	/>
+	<!-- todo: resources defined here are not picked up by Geoserver yet -->
 </Context>

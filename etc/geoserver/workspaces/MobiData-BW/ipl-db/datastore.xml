@@ -2,7 +2,7 @@
   <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
   <name>ipl-db</name>
   <description>MobiData IPL DB</description>
-  <type>PostGIS</type>
+  <type>PostGIS (JNDI)</type>
   <enabled>true</enabled>
   <workspace>
     <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
@@ -22,7 +22,7 @@
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
-    <entry key="jndiReferenceName">jdbc/ipl-db</entry>
+    <entry key="jndiReferenceName">java:comp/env/jdbc/ipl-db</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="namespace">mdbw</entry>
     <entry key="dbtype">postgis</entry>

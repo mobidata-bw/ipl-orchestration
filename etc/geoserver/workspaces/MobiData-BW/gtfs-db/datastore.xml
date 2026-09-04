@@ -2,7 +2,7 @@
   <id>DataStoreInfoImpl--3b38816a:18a8b06ea7a:-7ff5</id>
   <name>gtfs-db</name>
   <description>imported GTFS data</description>
-  <type>PostGIS</type>
+  <type>PostGIS (JNDI)</type>
   <enabled>true</enabled>
   <workspace>
     <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
@@ -14,9 +14,6 @@
     <entry key="encode functions">true</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
-    <!-- connect via pgbouncer to regardless of the GTFS DBs' suffixes & improve performance -->
-    <entry key="database">gtfs</entry> <!-- determined by pgbouncer! -->
-    <entry key="host">pgbouncer</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>
@@ -27,19 +24,15 @@
     <entry key="Connection timeout">20</entry>
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
-    <entry key="port">6432</entry>
-    <entry key="passwd">${PGBOUNCER_POSTGRES_PASSWORD}</entry>
-    <entry key="min connections">1</entry>
+    <entry key="jndiReferenceName">java:comp/env/jdbc/gtfs-db</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">mdbw</entry>
-    <entry key="max connections">10</entry>
     <entry key="Evictor tests per run">3</entry>
     <entry key="Test while idle">true</entry>
-    <entry key="user">${PGBOUNCER_POSTGRES_USER}</entry>
     <entry key="Max connection idle time">300</entry>
   </connectionParameters>
   <__default>false</__default>
   <dateCreated>2023-09-12 20:19:22.888 UTC</dateCreated>
-  <dateModified>2023-09-26 12:45:14.312 UTC</dateModified>
+  <dateModified>2026-09-04 11:43:42.127 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
