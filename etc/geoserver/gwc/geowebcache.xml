@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<gwcConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://geowebcache.org/schema/1.8.0"
-  xsi:schemaLocation="http://geowebcache.org/schema/1.8.0 http://geowebcache.org/schema/1.8.0/geowebcache.xsd">
-  <version>1.8.0</version>
+<gwcConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://geowebcache.org/schema/1.28.0 http://geowebcache.org/schema/1.28.0/geowebcache.xsd" xmlns="http://geowebcache.org/schema/1.28.0">
+  <version>1.28.0</version>
   <backendTimeout>120</backendTimeout>
   <serviceInformation>
     <title>MobiData BW GeoWebCache</title>
@@ -16,25 +14,73 @@
     <serviceProvider>
       <providerName>NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH</providerName>
       <providerSite>http://mobidata-bw.de/</providerSite>
-      <individualName>Dr. Thorsten Fröhlinghaus</individualName>
-      <positionName>Technische Leitung Dateninfrastruktur</positionName>
-      <addressType>Work</addressType>
-      <addressStreet>Rosensteinstraße 37B</addressStreet>
-      <addressCity>Stuttgart</addressCity>
-      <addressAdministrativeArea>Baden-Württemberg</addressAdministrativeArea>
-      <addressPostalCode>70191</addressPostalCode>
-      <addressCountry>Deutschland</addressCountry>
-      <phoneNumber>+49 711 23991-138</phoneNumber>
-      <faxNumber>+49 711 23991-23</faxNumber>
-      <addressEmail>Thorsten.Froehlinghaus@nvbw.de</addressEmail>
     </serviceProvider>
     <fees>NONE</fees>
     <accessConstraints>NONE</accessConstraints>
   </serviceInformation>
+  <blobStores/>
   <gridSets>
+    <gridSet>
+      <name>InspireCRS84Quad</name>
+      <description>Every layer offered by a INSPIRE WMTS should use the InspireCRS84Quad Matrix Set</description>
+      <srs>
+        <number>4326</number>
+      </srs>
+      <extent>
+        <coords>
+          <double>-180.0</double>
+          <double>-90.0</double>
+          <double>180.0</double>
+          <double>90.0</double>
+        </coords>
+      </extent>
+      <alignTopLeft>false</alignTopLeft>
+      <resolutions>
+        <double>0.703125</double>
+        <double>0.3515625</double>
+        <double>0.17578125</double>
+        <double>0.087890625</double>
+        <double>0.0439453125</double>
+        <double>0.02197265625</double>
+        <double>0.010986328125</double>
+        <double>0.0054931640625</double>
+        <double>0.00274658203125</double>
+        <double>0.001373291015625</double>
+        <double>6.866455078125E-4</double>
+        <double>3.433227539062E-4</double>
+        <double>1.716613769531E-4</double>
+        <double>8.58306884766E-5</double>
+        <double>4.29153442383E-5</double>
+        <double>2.14576721191E-5</double>
+        <double>1.07288360596E-5</double>
+        <double>5.3644180298E-6</double>
+      </resolutions>
+      <metersPerUnit>111319.49079327358</metersPerUnit>
+      <pixelSize>2.8E-4</pixelSize>
+      <scaleNames>
+        <string>InspireCRS84Quad:0</string>
+        <string>InspireCRS84Quad:1</string>
+        <string>InspireCRS84Quad:2</string>
+        <string>InspireCRS84Quad:3</string>
+        <string>InspireCRS84Quad:4</string>
+        <string>InspireCRS84Quad:5</string>
+        <string>InspireCRS84Quad:6</string>
+        <string>InspireCRS84Quad:7</string>
+        <string>InspireCRS84Quad:8</string>
+        <string>InspireCRS84Quad:9</string>
+        <string>InspireCRS84Quad:10</string>
+        <string>InspireCRS84Quad:11</string>
+        <string>InspireCRS84Quad:12</string>
+        <string>InspireCRS84Quad:13</string>
+        <string>InspireCRS84Quad:14</string>
+        <string>InspireCRS84Quad:15</string>
+        <string>InspireCRS84Quad:16</string>
+        <string>InspireCRS84Quad:17</string>
+      </scaleNames>
+      <tileHeight>256</tileHeight>
+      <tileWidth>256</tileWidth>
+      <yCoordinateFirst>false</yCoordinateFirst>
+    </gridSet>
   </gridSets>
-
-  <layers>
-  </layers>
-  
+  <layers/>
 </gwcConfiguration>
