@@ -339,6 +339,13 @@ services:
         # -DGEOWEBCACHE_CACHE_DIR=$${GEOWEBCACHE_CACHE_DIR}
         # -DNETCDF_DATA_DIR=${NETCDF_DATA_DIR}
         # -DGRIB_CACHE_DIR=${GRIB_CACHE_DIR}
+
+      - PGBOUNCER_POSTGRES_USER=${PGBOUNCER_POSTGRES_USER:?missing/empty}
+      - PGBOUNCER_POSTGRES_PASSWORD=${PGBOUNCER_POSTGRES_PASSWORD:?missing/empty}
+      - PARK_API_POSTGRES_USER=${PARK_API_POSTGRES_USER?missing/empty}
+      - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
+      - OCPDB_POSTGRES_USER=${OCPDB_POSTGRES_USER:?missing/empty}
+      - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
     depends_on:
       pgbouncer:
         # For sharing & transit layers
