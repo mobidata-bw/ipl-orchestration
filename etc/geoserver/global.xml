@@ -1,5 +1,6 @@
 <global>
   <settings>
+    <id>SettingsInfoImpl--1a12e306:1a081104ede:-7ffa</id>
     <contact>
       <id>contact</id>
       <address>Rosensteinstraße 37B</address>
@@ -10,38 +11,24 @@
       <addressPostalCode>70191</addressPostalCode>
       <addressState>Baden-Württemberg</addressState>
       <contactEmail>mobidatabw-technik@nvbw.de</contactEmail>
+      <contactFacsimile>+49 711 23991-23</contactFacsimile>
       <contactOrganization>MobiData BW</contactOrganization>
       <contactPerson>Dr. Thorsten Fröhlinghaus</contactPerson>
       <contactPosition>Technische Leitung Dateninfrastruktur</contactPosition>
       <contactVoice>+49 711 23991-138</contactVoice>
-      <contactFacsimile>+49 711 23991-23</contactFacsimile>
       <onlineResource>https://www.mobidata-bw.de/</onlineResource>
-      <internationalAddress class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressCity class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressCountry class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressDeliveryPoint class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressPostalCode class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressState class="org.geotools.util.GrowableInternationalString"/>
-      <internationalAddressType class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactEmail class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactFacsimile class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactOrganization class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactPerson class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactPosition class="org.geotools.util.GrowableInternationalString"/>
-      <internationalContactVoice class="org.geotools.util.GrowableInternationalString"/>
-      <internationalOnlineResource class="org.geotools.util.GrowableInternationalString"/>
-      <internationalWelcome class="org.geotools.util.GrowableInternationalString"/>
     </contact>
     <charset>UTF-8</charset>
     <numDecimals>6</numDecimals>
+    <proxyBaseUrl></proxyBaseUrl>
     <verbose>true</verbose>
     <verboseExceptions>false</verboseExceptions>
     <localWorkspaceIncludesPrefix>false</localWorkspaceIncludesPrefix>
     <showCreatedTimeColumnsInAdminList>false</showCreatedTimeColumnsInAdminList>
     <showModifiedTimeColumnsInAdminList>false</showModifiedTimeColumnsInAdminList>
-    <useHeadersProxyURL>false</useHeadersProxyURL>
-    <proxyBaseUrl></proxyBaseUrl>
+    <showModifiedUserAdminList>false</showModifiedUserAdminList>
     <defaultLocale>de</defaultLocale>
+    <useHeadersProxyURL>false</useHeadersProxyURL>
   </settings>
   <jai>
     <allowInterpolation>false</allowInterpolation>
@@ -51,37 +38,7 @@
     <memoryCapacity>0.5</memoryCapacity>
     <memoryThreshold>0.75</memoryThreshold>
     <imageIOCache>false</imageIOCache>
-    <pngAcceleration>false</pngAcceleration>
-    <jpegAcceleration>false</jpegAcceleration>
-    <allowNativeMosaic>false</allowNativeMosaic>
-    <allowNativeWarp>false</allowNativeWarp>
     <pngEncoderType>PNGJ</pngEncoderType>
-    <jaiext>
-      <jaiExtOperations class="sorted-set">
-        <string>Affine</string>
-        <string>BandCombine</string>
-        <string>BandMerge</string>
-        <string>BandSelect</string>
-        <string>Binarize</string>
-        <string>Border</string>
-        <string>ColorConvert</string>
-        <string>Crop</string>
-        <string>ErrorDiffusion</string>
-        <string>Format</string>
-        <string>ImageFunction</string>
-        <string>Lookup</string>
-        <string>Mosaic</string>
-        <string>Null</string>
-        <string>OrderedDither</string>
-        <string>Rescale</string>
-        <string>Scale</string>
-        <string>Stats</string>
-        <string>Translate</string>
-        <string>Warp</string>
-        <string>algebric</string>
-        <string>operationConst</string>
-      </jaiExtOperations>
-    </jaiext>
   </jai>
   <coverageAccess>
     <maxPoolSize>5</maxPoolSize>
@@ -90,11 +47,16 @@
     <queueType>UNBOUNDED</queueType>
     <imageIOCacheThreshold>10240</imageIOCacheThreshold>
   </coverageAccess>
-  <updateSequence>3</updateSequence>
+  <updateSequence>4</updateSequence>
   <featureTypeCacheSize>0</featureTypeCacheSize>
   <globalServices>true</globalServices>
   <xmlPostRequestLogBufferSize>1024</xmlPostRequestLogBufferSize>
-  <xmlExternalEntitiesEnabled>false</xmlExternalEntitiesEnabled>
   <webUIMode>DEFAULT</webUIMode>
+  <userDetailsDisplaySettingsInfo>
+    <loggedInUserDisplayMode>USERNAME</loggedInUserDisplayMode>
+    <showProfileColumnsInUserList>false</showProfileColumnsInUserList>
+    <emailDisplayMode>DOMAIN_ONLY</emailDisplayMode>
+    <revealEmailAtClick>false</revealEmailAtClick>
+  </userDetailsDisplaySettingsInfo>
   <allowStoredQueriesPerWorkspace>true</allowStoredQueriesPerWorkspace>
 </global>
