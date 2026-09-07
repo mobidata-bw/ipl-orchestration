@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+- [OCPDB 2.16.0](https://github.com/binary-butterfly/ocpdb/blob/d43b79370af469d4eb025168f9a96e41eb9d18e2/CHANGELOG.md#2160)
+  - with Datex2 clearing, a new last modified filter. and dependency updates
+- [ParkAPI 0.48.0](https://github.com/ParkenDD/park-api-v3/blob/9edbf38ddcc56e10b473fbff0c03294da83c3b4a/CHANGELOG.md#0480)
+  - With modified since filter, new Nagold converter, and several other converters mapping updates
+
 ## 2026-08-12
 
 - [OCPDB 2.5.2](https://github.com/binary-butterfly/ocpdb/blob/6d9f2df01e61b59038752bfc280a48be575617c6/CHANGELOG.md#2151)
