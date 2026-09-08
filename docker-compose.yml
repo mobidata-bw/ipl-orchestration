@@ -292,10 +292,6 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
-    # todo: use $RUN_UNPRIVILEGED
-    # user: *local-user
-    # https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
-    # user: '999:999'
 
     volumes:
       - ./var/log/geoserver/tomcat/:/usr/local/tomcat/logs/
@@ -312,6 +308,9 @@ services:
     ports:
       - ${GEOSERVER_PORT}:8080
     environment:
+      # see https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
+      - RUN_UNPRIVILEGED=true
+
       # Only with `POSTGRES_JNDI_ENABLED=true` will the image copy our override `context.xml` into the right place.
       - POSTGRES_JNDI_ENABLED=true
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
@@ -341,6 +340,8 @@ services:
       - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
       - OCPDB_POSTGRES_USER=${OCPDB_POSTGRES_USER:?missing/empty}
       - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
+
+      # todo: make `/var/cache` or `/var/cache/fontconfig` writable to the `tomcat` user
     depends_on:
       pgbouncer:
         # For sharing & transit layers
