@@ -298,11 +298,6 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
-    # todo: use $RUN_UNPRIVILEGED
-    # user: *local-user
-    # https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
-    # user: '999:999'
-
     volumes:
       - ./var/log/geoserver/tomcat/:/usr/local/tomcat/logs/
       - ./var/log/geoserver/geoserver/:/opt/geoserver_data/datadir/logs/
@@ -322,6 +317,14 @@ services:
     ports:
       - ${GEOSERVER_PORT}:8080
     environment:
+      # see https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
+      - RUN_UNPRIVILEGED=true
+      - RUN_WITH_USER_UID=${DOCKER_LOCAL_USER_UID:?DOCKER_LOCAL_USER_UID must be set in .env}
+      - RUN_WITH_USER_GID=${DOCKER_LOCAL_USER_GID:?DOCKER_LOCAL_USER_GID must be set in .env}
+      - CHANGE_OWNERSHIP_ON_FOLDERS=/opt/geoserver_data/ /usr/local/tomcat/conf /usr/local/tomcat/logs
+
+      - GEOSERVER_DATA_TEMPLATE_DIR=/opt/geoserver_data_template
+
       # Only with `POSTGRES_JNDI_ENABLED=true` will the image copy our override `context.xml` into the right place.
       # todo: see https://github.com/geoserver/docker/pull/308
       - POSTGRES_JNDI_ENABLED=true
@@ -354,6 +357,7 @@ services:
       - PARK_API_POSTGRES_PASSWORD=${PARK_API_POSTGRES_PASSWORD?missing/empty}
       - OCPDB_POSTGRES_USER=${OCPDB_POSTGRES_USER:?missing/empty}
       - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
+      # todo: make `/var/cache` or `/var/cache/fontconfig` writable to the `tomcat` user
       # todo: SKIP_DEMO_DATA=true, see https://github.com/geoserver/docker/blob/a82a7782c670e0bb969c197aceea3549a726e0a3/startup.sh#L52-L63
     depends_on:
       pgbouncer:
