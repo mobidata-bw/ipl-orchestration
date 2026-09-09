@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+- [ipl dagster pipeline 2026-09-08](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-09-08)
 - [OCPDB 2.16.0](https://github.com/binary-butterfly/ocpdb/blob/d43b79370af469d4eb025168f9a96e41eb9d18e2/CHANGELOG.md#2160)
   - with Datex2 clearing, a new last modified filter. and dependency updates
 - [ParkAPI 0.48.0](https://github.com/ParkenDD/park-api-v3/blob/9edbf38ddcc56e10b473fbff0c03294da83c3b4a/CHANGELOG.md#0480)
