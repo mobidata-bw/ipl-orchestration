@@ -299,8 +299,10 @@ services:
       # todo: do these still work?
       - ./var/geoserver/gwc_cache_dir/:/opt/geoserver_data/gwc_cache_dir/
 
-      - ./etc/geoserver/:/opt/geoserver_data/
       - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
+
+      # Note: This is an overlay-type mount defined in the `volumes` top-level section.
+      - geoserver_datadir:/opt/geoserver_data/
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
@@ -938,3 +940,11 @@ networks:
         ip_range: 172.28.5.0/24
         # Traefikforwards X-Forwarded-* headers only from trusted IPs, so we need a specific IP here.
         gateway: 172.28.5.254
+
+volumes:
+  geoserver_datadir:
+    driver: local
+    driver_opts:
+      type: overlay
+      o: lowerdir=${PWD}/etc/geoserver,upperdir=${PWD}/var/geoserver/datadir,workdir=${PWD}/var/geoserver/datadir-workdir
+      device: overlay

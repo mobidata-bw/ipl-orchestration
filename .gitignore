@@ -21,3 +21,5 @@ Thumbs.db
 /.env.local
 
 !/**/.gitkeep
+
+/docker-compose.override.yml
