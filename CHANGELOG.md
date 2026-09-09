@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## Unreleased
+## 2026-09-09
 
 - [ipl dagster pipeline 2026-09-08](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-09-08)
 - [OCPDB 2.16.0](https://github.com/binary-butterfly/ocpdb/blob/d43b79370af469d4eb025168f9a96e41eb9d18e2/CHANGELOG.md#2160)
