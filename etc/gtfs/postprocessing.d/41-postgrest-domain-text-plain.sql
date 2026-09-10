@@ -1,4 +1,6 @@
--- see https://postgrest.org/en/stable/references/api/media_type_handlers.html
-CREATE DOMAIN api."text/plain" AS text;
+SET search_path TO "api",public;
 
-GRANT USAGE ON DOMAIN api."text/plain" TO postgrest;
+-- see https://postgrest.org/en/stable/references/api/media_type_handlers.html
+CREATE DOMAIN "text/plain" AS text;
+
+GRANT USAGE ON DOMAIN "text/plain" TO postgrest;
