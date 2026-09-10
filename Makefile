@@ -112,9 +112,9 @@ reload-geoserver:
 # Syncs Geoserver's var workspace dir to etc, excluding the overwritten datastore.xml
 .PHONY: prepare-geoserver-workspace-for-commit
 prepare-geoserver-workspace-for-commit:
-	rsync -av --exclude='*/datastore.xml' var/geoserver/datadir/workspaces etc/geoserver
-	rsync -av var/geoserver/datadir/gwc etc/geoserver
-	rsync -av var/geoserver/datadir/gwc-layers etc/geoserver
+	rsync -av --exclude='*/datastore.xml' var/geoserver/datadir/workspaces etc/geoserver/datadir
+	rsync -av var/geoserver/datadir/gwc etc/geoserver/datadir
+	rsync -av var/geoserver/datadir/gwc-layers etc/geoserver/datadir
 
 # GTFS data management
 # --------------------
