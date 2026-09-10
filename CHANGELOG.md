@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+- GeoServer: add `official_region_code` to sharing layers, update description for ParkAPI and OCPDB layers
+
 ## 2026-09-09
 
 - [ipl dagster pipeline 2026-09-08](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-09-08)
