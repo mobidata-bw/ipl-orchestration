@@ -307,7 +307,9 @@ services:
       # - We also want to allow (temporary) changes via the GeoServer admin UI to be possible. – todo: do we?
       # - We don't want a GeoServer start to dirty the Git working directory (i.e. checked-in config files).
       # todo: explain solution
-      - ./etc/geoserver:/opt/geoserver_data_template/:ro
+      - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
+      # see also $GEOSERVER_DATA_TEMPLATE_DIR below
+      - ./etc/geoserver/datadir:/opt/geoserver_data_template/:ro
       - ./var/geoserver/datadir:/opt/geoserver_data/
     labels:
       - "traefik.enable=true"
