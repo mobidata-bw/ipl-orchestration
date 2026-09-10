@@ -4,7 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [unreleased]
+
+
+## 2026-09-10
 
 - GeoServer: add `official_region_code` to sharing layers, update description for ParkAPI and OCPDB layers
 - [OCPDB 2.16.1](https://github.com/binary-butterfly/ocpdb/blob/d8a0e3f3c5adbaf2abc75c26d0a73c2dee6ada7b/CHANGELOG.md#2161)
