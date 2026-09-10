@@ -59,13 +59,13 @@ git clone https://github.com/mobidata-bw/ipl-orchestration.git .
 
 > [!WARNING]
 >
-> The `geoserver` Compose service uses an `overlay`-type volume, which is fails on Docker for Mac as of 2026-09-09. If you're using Docker for Mac, you must define a `docker-compose.override.yml` file which modifies `geoserver` to "plain-mount" `etc/geoserver` to `opt/geoserver_data`.
+> The `geoserver` Compose service uses an `overlay`-type volume, which is fails on Docker for Mac as of 2026-09-09. If you're using Docker for Mac, you must define a `docker-compose.override.yml` file which modifies `geoserver` to "plain-mount" `etc/geoserver/datadir` to `opt/geoserver_data`.
 >
 > ```yaml
 > services:
 >   geoserver:
 >     volumes:
->       - ./etc/geoserver/:/opt/geoserver_data/
+>       - ./etc/geoserver/datadir/:/opt/geoserver_data/
 > ```
 
 ### `.env.local` file

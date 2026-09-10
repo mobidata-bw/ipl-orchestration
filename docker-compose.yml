@@ -946,5 +946,5 @@ volumes:
     driver: local
     driver_opts:
       type: overlay
-      o: lowerdir=${PWD}/etc/geoserver,upperdir=${PWD}/var/geoserver/datadir,workdir=${PWD}/var/geoserver/datadir-workdir
+      o: lowerdir=${PWD}/etc/geoserver/datadir,upperdir=${PWD}/var/geoserver/datadir,workdir=${PWD}/var/geoserver/datadir-workdir
       device: overlay
