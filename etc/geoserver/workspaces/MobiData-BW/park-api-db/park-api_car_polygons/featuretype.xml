@@ -53,6 +53,7 @@
     operator_name,&#xd;
     purpose,&#xd;
     &apos;site&apos; as parking_object,&#xd;
+    official_region_code,&#xd;
     public_url,&#xd;
     photo_url,&#xd;
     address,&#xd;
@@ -149,6 +150,7 @@ SELECT&#xd;
     NULL AS operator_name,&#xd;
     spot.purpose :: text :: purposetype,&#xd;
     &apos;spot&apos; AS parking_object,&#xd;
+    spot.official_region_code,&#xd;
     NULL AS public_url,&#xd;
     NULL AS photo_url,&#xd;
     NULL AS address,&#xd;
@@ -341,6 +343,16 @@ WHERE&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Parkobjekt</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>official_region_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>official_region_code</source>
+      <description>
+        <de>Amtlicher Regionalschlüssel</de>
       </description>
     </attribute>
     <attribute>
