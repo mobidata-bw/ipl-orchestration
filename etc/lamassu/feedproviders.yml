@@ -1073,12 +1073,12 @@ lamassu:
       url: "http://gbfs.nextbike.net/maps/gbfs/v2/nextbike_ae/gbfs.json"
       language: en
     ## Others FR
-    - systemId: mulhouse
-      operatorId: VLC:Operator:velocite
-      operatorName: velocite
-      codespace: VLC
-      url: "https://api.cyclocity.fr/contracts/mulhouse/gbfs/gbfs.json"
-      language: fr
+#    - systemId: mulhouse
+#      operatorId: VLC:Operator:velocite
+#      operatorName: velocite
+#      codespace: VLC
+#      url: "https://api.cyclocity.fr/contracts/mulhouse/gbfs/gbfs.json"
+#      language: fr
     - systemId: nancy
       operatorId: VLS:Operator:velostanlib
       operatorName: velostanlib
