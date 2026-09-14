@@ -1091,3 +1091,10 @@ lamassu:
       codespace: VLF
       url: "https://gbfs.partners.fifteen.eu/gbfs/velo-fluo/gbfs.json"
       language: en
+    - systemId: citiz
+      operatorId: CTZ:Operator:citiz
+      operatorName: citiz
+      codespace: CTZ
+      url: "https://backend.citiz.fr/public/provider/1/gbfs/v3.0/gbfs.json"
+      language: fr
+      version: 3.0
