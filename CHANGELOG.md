@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
 
+- Lamassu:
+  - add `citiz` feed
+  - ⚠️ remove `mulhouse` feed
 - OCPDB: add datex2_e_clearing_net
 
 ## 2026-09-10
