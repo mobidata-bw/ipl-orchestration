@@ -57,6 +57,7 @@ services:
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
   # Trafik can't run as $DOCKER_LOCAL_USER_UID/$DOCKER_LOCAL_USER_GID (see &local-user), because service discovery just works with root.
+  # see https://github.com/traefik/traefik/issues/11679
   ingress:
     networks: [ipl]
     image: traefik:v3.7.13
@@ -292,15 +293,24 @@ services:
   geoserver:
     networks: [ipl]
     image: ${GEOSERVER_IMAGE}
+    # # - With Docker for Mac, `chown` *does not* work on mounted directories.
+    # # - On Linux, with Docker's default configuration, file system UIDs/GIDs are directly passed through, i.e. if a container user `1234:1234` creates a file it will belong to `1234:1234` on the host.
+    # # Instead of using the GeoServer image's native mechanism to run Geoserver unprivileged (create new user, then use `setpriv`), in order to ensure that files written by GeoServer in var/geoserver (mounted into the container at /opt/geoserver_data) belong to the `*local-user` UID/GID on the host, we run as `*local-user` right away and don't drop privileges (again).
+    # user: *local-user
 
     volumes:
       - ./var/log/geoserver/tomcat/:/usr/local/tomcat/logs/
-      - ./var/log/geoserver/geoserver/:/opt/geoserver_data/logs/
-      # todo: do these still work?
-      - ./var/geoserver/gwc_cache_dir/:/opt/geoserver_data/gwc_cache_dir/
+      - ./var/log/geoserver/geoserver/:/opt/geoserver_data/datadir/logs/
+      - ./var/geoserver/gwc_cache_dir/:/opt/geoserver_data/datadir/gwc_cache_dir/
 
-      - ./etc/geoserver/:/opt/geoserver_data/
+      # - We want to have the (relevant parts of the) GeoServer configuration checked into Git.
+      # - We also want to allow (temporary) changes via the GeoServer admin UI to be possible. – todo: do we?
+      # - We don't want a GeoServer start to dirty the Git working directory (i.e. checked-in config files).
+      # todo: explain solution
       - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
+      # see also $GEOSERVER_DATA_TEMPLATE_DIR below
+      - ./etc/geoserver/datadir:/opt/geoserver_data_template/:ro
+      - ./var/geoserver/datadir:/opt/geoserver_data/
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
@@ -308,10 +318,19 @@ services:
     ports:
       - ${GEOSERVER_PORT}:8080
     environment:
+      # # see `user` directive above
+      # - RUN_UNPRIVILEGED=false
+
       # see https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
       - RUN_UNPRIVILEGED=true
+      - RUN_WITH_USER_UID=${DOCKER_LOCAL_USER_UID:?DOCKER_LOCAL_USER_UID must be set in .env}
+      - RUN_WITH_USER_GID=${DOCKER_LOCAL_USER_GID:?DOCKER_LOCAL_USER_GID must be set in .env}
+      - CHANGE_OWNERSHIP_ON_FOLDERS=/opt/geoserver_data/ /usr/local/tomcat/conf /usr/local/tomcat/logs
+
+      - GEOSERVER_DATA_TEMPLATE_DIR=/opt/geoserver_data_template
 
       # Only with `POSTGRES_JNDI_ENABLED=true` will the image copy our override `context.xml` into the right place.
+      # todo: see https://github.com/geoserver/docker/pull/308
       - POSTGRES_JNDI_ENABLED=true
       - GEOSERVER_ADMIN_USER=${GEOSERVER_ADMIN_USER}
       - GEOSERVER_ADMIN_PASSWORD=${GEOSERVER_ADMIN_PASSWORD}
