@@ -299,6 +299,11 @@ services:
       # todo: do these still work?
       - ./var/geoserver/gwc_cache_dir/:/opt/geoserver_data/gwc_cache_dir/
 
+      # - We want to have the (relevant parts of the) GeoServer configuration checked into Git.
+      # - We also want to allow (temporary) changes via the GeoServer admin UI to be possible. – todo: do we?
+      # - We don't want a GeoServer start to dirty the Git working directory (i.e. checked-in config files).
+
+      # todo
       - ./etc/geoserver/:/opt/geoserver_data/
       - ./etc/geoserver/config_overrides/:/opt/config_overrides/:ro
     labels:
@@ -310,6 +315,9 @@ services:
     environment:
       # see https://github.com/geoserver/docker/blob/68a2144f863cba741de05fb6ed58738a7ddc0e77/README.md#how-to-run-it-as-a-non-privileged-user-
       - RUN_UNPRIVILEGED=true
+      # todo
+      # UID: DOCKER_LOCAL_USER
+      # GID: DOCKER_LOCAL_GROUP
 
       # Only with `POSTGRES_JNDI_ENABLED=true` will the image copy our override `context.xml` into the right place.
       - POSTGRES_JNDI_ENABLED=true
