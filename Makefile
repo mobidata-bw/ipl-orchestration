@@ -28,7 +28,6 @@ init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_ke
 	mkdir -p var/gtfs
 	touch -a var/gtfs/pgbouncer-dsn.txt
 	mkdir -p var/geoserver/datadir
-	touch -a var/geoserver/datadir/global.xml
 	mkdir -p var/geoserver/gwc_cache_dir
 	mkdir -p var/log/geoserver/tomcat
 	mkdir -p var/log/geoserver/geoserver
@@ -106,6 +105,7 @@ docker-container-ip:
 
 .PHONY: reload-geoserver
 reload-geoserver:
+	# todo?
 	$(DOCKER_COMPOSE) exec geoserver /usr/local/bin/geoserver-rest-reload.sh
 
 # Syncs Geoserver's var workspace dir to etc, excluding the overwritten datastore.xml
