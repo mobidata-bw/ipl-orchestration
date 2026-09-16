@@ -186,6 +186,11 @@
                        pattern="%h %l %u %t &quot;%r&quot; %s %b" />
 
                 <Context antiResourceLocking="false" override="true" docBase="geoserver" privileged="true" path="/${WEBAPP_CONTEXT}">
+                    <!-- from https://stackoverflow.com/a/57765900/1072129 -->
+                    <JarScanner>
+                        <JarScanFilter defaultPluggabilityScan="false" defaultTldScan="false"/>
+                    </JarScanner>
+
                     <!-- connect via pgbouncer to improve performance -->
                     <Resource name="jdbc/ipl-db"
                         auth="Container"
