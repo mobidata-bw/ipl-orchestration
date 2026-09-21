@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.13`](https://github.com/traefik/traefik/blob/v3.7.13/CHANGELOG.md)
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-dfa61ea26a339a46bda98accfa31f24d912b19812517ecaf3be49e6a15422b24))
+- Lamassu: ⚠️ remove `dott_boblingen`, `dott_darmstadt`, `citiz` feeds
 
 ## 2026-09-15
 
