@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-- Lamassu: add `lastenkarle` feed. Deer is now integrated directly from the [Lastenkarle -Commonsbooking API](https://lastenkarle.de) GBFS API using the `apikey` header.
+- Lamassu: add `lastenkarle` feed. Lastenkarle is integrated from the [Lastenkarle -Commonsbooking API](https://lastenkarle.de) GBFS API using a private `apikey` header.
 
 ## 2026-08-12
 
