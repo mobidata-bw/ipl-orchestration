@@ -221,7 +221,7 @@ WHERE (purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos;) AND duplicate_of_pa
       <maxOccurs>1</maxOccurs>
       <binding>java.lang.String</binding>
       <description>
-        <de>Amtlicher Gemeindeschlüssel</de>
+        <de>Amtlicher Regionalschlüssel</de>
       </description>
     </attribute>
     <attribute>

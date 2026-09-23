@@ -54,9 +54,10 @@ s.rental_uris_android, &#xd;
 s.rental_uris_ios, &#xd;
 s.rental_uris_web, &#xd;
 s.is_virtual_station,&#xd;
+s.ars,&#xd;
 st.last_reported, &#xd;
 (st.last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated, s.geometry&#xd;
-FROM sharing_stations s&#xd;
+FROM sharing_stations_with_ars s&#xd;
 JOIN sharing_station_status st ON s.station_id=st.station_id
 </sql>
         <escapeSql>false</escapeSql>
@@ -110,6 +111,16 @@ JOIN sharing_station_status st ON s.station_id=st.station_id
       <binding>java.lang.String</binding>
       <description>
         <de>Name des Fahrzeugs</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>official_region_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>ars</source>
+      <description>
+        <de>Amtlicher Regionalschlüssel</de>
       </description>
     </attribute>
     <attribute>

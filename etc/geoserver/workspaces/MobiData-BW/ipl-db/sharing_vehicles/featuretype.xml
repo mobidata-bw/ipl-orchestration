@@ -56,11 +56,12 @@ current_range_meters,&#xd;
 max_range_meters,&#xd;
 rental_uris_android, &#xd;
 rental_uris_ios, &#xd;
-rental_uris_web, &#xd;
+rental_uris_web,&#xd;
+ars, &#xd;
 last_reported, &#xd;
 (last_reported &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
 geometry&#xd;
-FROM vehicles&#xd;
+FROM vehicles_with_ars&#xd;
 WHERE station_id is null
 </sql>
         <escapeSql>false</escapeSql>
@@ -124,6 +125,16 @@ WHERE station_id is null
       <binding>java.lang.String</binding>
       <description>
         <de>Name</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>official_region_code</name>
+      <minOccurs>0</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <binding>java.lang.String</binding>
+      <source>ars</source>
+      <description>
+        <de>Amtlicher Regionalschlüssel</de>
       </description>
     </attribute>
     <attribute>

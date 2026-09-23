@@ -59,7 +59,7 @@ services:
   # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
-    image: traefik:v3.7.10
+    image: traefik:v3.7.13
     ports:
       # todo: change to 80:80
       - "8080:80"
@@ -213,6 +213,7 @@ services:
       LAMASSU_BOLT_AUTH_URL: ${LAMASSU_BOLT_AUTH_URL:?missing/empty}
       LAMASSU_BOLT_CLIENT_ID: ${LAMASSU_BOLT_CLIENT_ID:?missing/empty}
       LAMASSU_BOLT_CLIENT_PASSWORD: ${LAMASSU_BOLT_CLIENT_PASSWORD:?missing/empty}
+      LAMASSU_DEER_BEARER_TOKEN: ${LAMASSU_DEER_BEARER_TOKEN:?missing/empty}
       LAMASSU_LIME_BEARER_TOKEN: ${LAMASSU_LIME_BEARER_TOKEN:?missing/empty}
       LAMASSU_VOI_AUTH_URL: ${LAMASSU_VOI_AUTH_URL:?missing/empty}
       LAMASSU_VOI_CLIENT_ID: ${LAMASSU_VOI_CLIENT_ID:?missing/empty}

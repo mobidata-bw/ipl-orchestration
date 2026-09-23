@@ -229,7 +229,7 @@ FROM&#xd;
       <nillable>true</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <de>Amtlicher Gemeindeschlüssel</de>
+        <de>Amtlicher Regionalschlüssel</de>
       </description>
     </attribute>
     <attribute>
