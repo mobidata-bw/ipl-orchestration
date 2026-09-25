@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## 2026-09-25
 
+- Lamassu: add `lastenkarle` feed. Lastenkarle is integrated from the [Lastenkarle -Commonsbooking API](https://lastenkarle.de) GBFS API using a private `apikey` header.
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.13`](https://github.com/traefik/traefik/blob/v3.7.13/CHANGELOG.md)
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v16.4`](https://github.com/PostgREST/postgrest/releases/tag/v16.4) ([`v14.15` release](https://github.com/PostgREST/postgrest/releases/tag/v14.15), [`v14.16` release](https://github.com/PostgREST/postgrest/releases/tag/v14.16), [`v16.0` release](https://github.com/PostgREST/postgrest/releases/tag/v16.0), [`v16.1` release](https://github.com/PostgREST/postgrest/releases/tag/v16.1), [`v16.2` release](https://github.com/PostgREST/postgrest/releases/tag/v16.2), [`v16.3` release](https://github.com/PostgREST/postgrest/releases/tag/v16.3)).
 - `gtfs-db`: upgrade [`postgis-with-pg-plan-filter`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter) to [`2026-09-09T10.05.47-b4fdee6`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter/tree/b4fdee6)
