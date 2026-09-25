@@ -10,9 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v16.4`](https://github.com/PostgREST/postgrest/releases/tag/v16.4) ([`v14.15` release](https://github.com/PostgREST/postgrest/releases/tag/v14.15), [`v14.16` release](https://github.com/PostgREST/postgrest/releases/tag/v14.16), [`v16.0` release](https://github.com/PostgREST/postgrest/releases/tag/v16.0), [`v16.1` release](https://github.com/PostgREST/postgrest/releases/tag/v16.1), [`v16.2` release](https://github.com/PostgREST/postgrest/releases/tag/v16.2), [`v16.3` release](https://github.com/PostgREST/postgrest/releases/tag/v16.3)).
 - `gtfs-db`: upgrade [`postgis-with-pg-plan-filter`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter) to [`2026-09-09T10.05.47-b4fdee6`](https://github.com/mobidata-bw/postgis-with-pg-plan-filter/tree/b4fdee6)
 - `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-dfa61ea26a339a46bda98accfa31f24d912b19812517ecaf3be49e6a15422b24))
-- Lamassu:
-  - add `lastenkarle` feed
-  - ⚠️ remove `dott_boblingen`, `dott_karlsruhe`, `dott_mannheim`, `dott_darmstadt`, `citiz` feeds
+- Lamassu: ⚠️ remove `dott_boblingen`, `dott_karlsruhe`, `dott_mannheim`, `dott_darmstadt`, `citiz` feeds
 
 ## 2026-09-15
 
