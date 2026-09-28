@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - GeoServer `MobiData-BW:park-api_bicycle`:
   -  query `capacity_charging`, `realtime_capacity_charging` and `realtime_free_capacity_charging` from `parking_restriction` instead of `parking_site` due to removal of deprecated ParkAPI `capacity_{audience}` fields
   -  format query
+-  Lamassu: add `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof`, `zeus_reutlingen`
 
 ## 2026-09-25
 
