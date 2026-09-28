@@ -14,6 +14,10 @@ Thumbs.db
 /etc/park-api/files/static/patches
 
 /etc/ocpdb/config.secrets.yaml
+/etc/ocpdb/files/mobilithek-mobidata-development.crt.pem
+/etc/ocpdb/files/mobilithek-mobidata-development.key.pem
+/etc/ocpdb/files/mobilithek-mobidata.crt.pem
+/etc/ocpdb/files/mobilithek-mobidata.key.pem
 /etc/sftp
 
 /var
