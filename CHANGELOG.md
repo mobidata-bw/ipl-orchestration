@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+- GeoServer `MobiData-BW:park-api_bicycle`:
+  -  query `capacity_charging`, `realtime_capacity_charging` and `realtime_free_capacity_charging` from `parking_restriction` instead of `parking_site` due to removal of deprecated ParkAPI `capacity_{audience}` fields
+  -  format query
+
 ## 2026-09-25
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.13`](https://github.com/traefik/traefik/blob/v3.7.13/CHANGELOG.md)
