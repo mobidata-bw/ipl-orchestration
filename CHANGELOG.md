@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- ⚠️ Split environment/Docker Compose variable `$DOCKER_LOCAL_USER` into two variables `$DOCKER_LOCAL_USER_UID` and `$DOCKER_LOCAL_USER_GID`. If you are using `$DOCKER_LOCAL_USER` (e.g. in `.env.local`) you must adapt your config, otherwise you can ignore this change.
+
 ## 2026-10-20
 
 - Lamassu: add `szabo_mobility`, `epfl_lausanne` feeds
