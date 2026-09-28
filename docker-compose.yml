@@ -1,8 +1,8 @@
 # compose "namespace", prepended to all network names, container names, etc.
 name: ipl
 
-# Define placeholder for running a container with the same UID/GID as your local user
-x-local-user: &local-user ${DOCKER_LOCAL_USER:?Variable needs to be set in .env (e.g. "DOCKER_LOCAL_USER=1000:1000")}
+# Define placeholder for running a container with the same UID/GID as your host user
+x-local-user: &local-user "${DOCKER_LOCAL_USER_UID:?DOCKER_LOCAL_USER_UID must be set in .env}:${DOCKER_LOCAL_USER_GID:?DOCKER_LOCAL_USER_GID must be set in .env}"
 
 x-ocpdb-defaults: &ocpdb-defaults
   image: ${OCPDB_IMAGE}
@@ -31,7 +31,7 @@ x-ocpdb-defaults: &ocpdb-defaults
 x-park-api-defaults: &park-api-defaults
   image: ${PARK_API_IMAGE}
   networks: [ipl]
-  user: ${DOCKER_LOCAL_USER}
+  user: *local-user
   environment:
     PARK_API_POSTGRES_DB: ${PARK_API_POSTGRES_DB:?'missing/empty'}
     PARK_API_POSTGRES_USER: ${PARK_API_POSTGRES_USER:?'missing/empty'}
@@ -56,7 +56,7 @@ services:
   # Traefik is our ingress: requests enter our infrastructure through it.
   # It is an HTTP reverse proxy, discovering available services (and their containers)
   # automatically by using the Docker API.
-  # Trafik can't run as $DOCKER_LOCAL_USER (see &local-user), because service discovery just works with root.
+  # Trafik can't run as $DOCKER_LOCAL_USER_UID/$DOCKER_LOCAL_USER_GID (see &local-user), because service discovery just works with root.
   ingress:
     networks: [ipl]
     image: traefik:v3.7.13
