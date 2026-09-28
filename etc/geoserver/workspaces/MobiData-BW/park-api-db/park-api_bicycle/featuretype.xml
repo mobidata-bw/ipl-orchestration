@@ -44,50 +44,66 @@
     <entry key="JDBC_VIRTUAL_TABLE">
       <virtualTable>
         <name>park-api_bicycle</name>
-        <sql>SELECT site.id, &#xd;
-source_id, &#xd;
-original_uid, &#xd;
-purpose, &#xd;
-name, &#xd;
-operator_name, &#xd;
-public_url, &#xd;
-photo_url, &#xd;
-address, &#xd;
-description, &#xd;
-site.type, &#xd;
-official_region_code,&#xd;
-site.max_stay, &#xd;
-has_lighting, &#xd;
-fee_description, &#xd;
-has_fee, &#xd;
-park_and_ride_type, &#xd;
-has_realtime_data,  &#xd;
-realtime_opening_status, &#xd;
-site.capacity, &#xd;
-site.realtime_capacity, &#xd;
-site.realtime_free_capacity,&#xd;
-CASE&#xd;
-    WHEN pr_charging.parking_site_id IS NULL THEN NULL&#xd;
-    ELSE COALESCE(pr_charging.capacity, site.capacity)&#xd;
-END AS capacity_charging,&#xd;
-pr_charging.realtime_capacity AS realtime_capacity_charging,&#xd;
-pr_charging.realtime_free_capacity AS realtime_free_capacity_charging, &#xd;
-opening_hours, &#xd;
-is_covered, &#xd;
-supervision_type, &#xd;
-related_location, &#xd;
-geometry, site.created_at, &#xd;
-site.modified_at, &#xd;
-static_data_updated_at, &#xd;
-realtime_data_updated_at,&#xd;
-(realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;) AS realtime_data_outdated,&#xd;
-&apos;site&apos; as parking_object&#xd;
-FROM parking_site site&#xd;
-LEFT JOIN parking_restriction pr_charging ON pr_charging.parking_site_id = site.id&#xd;
-AND pr_charging.type = &apos;CHARGING&apos;&#xd;
-WHERE (purpose=&apos;BIKE&apos; OR purpose=&apos;ITEM&apos;) AND duplicate_of_parking_site_id IS NULL
+        <sql>SELECT&#xd;
+    site.id,&#xd;
+    source_id,&#xd;
+    original_uid,&#xd;
+    purpose,&#xd;
+    name,&#xd;
+    operator_name,&#xd;
+    public_url,&#xd;
+    photo_url,&#xd;
+    address,&#xd;
+    description,&#xd;
+    site.type,&#xd;
+    official_region_code,&#xd;
+    site.max_stay,&#xd;
+    has_lighting,&#xd;
+    fee_description,&#xd;
+    has_fee,&#xd;
+    park_and_ride_type,&#xd;
+    has_realtime_data,&#xd;
+    realtime_opening_status,&#xd;
+    site.capacity,&#xd;
+    site.realtime_capacity,&#xd;
+    site.realtime_free_capacity,&#xd;
+    CASE&#xd;
+        WHEN pr_charging.parking_site_id IS NULL THEN NULL&#xd;
+        ELSE COALESCE(pr_charging.capacity, site.capacity)&#xd;
+    END AS capacity_charging,&#xd;
+    pr_charging.realtime_capacity AS realtime_capacity_charging,&#xd;
+    pr_charging.realtime_free_capacity AS realtime_free_capacity_charging,&#xd;
+    opening_hours,&#xd;
+    is_covered,&#xd;
+    supervision_type,&#xd;
+    related_location,&#xd;
+    geometry,&#xd;
+    site.created_at,&#xd;
+    site.modified_at,&#xd;
+    static_data_updated_at,&#xd;
+    realtime_data_updated_at,&#xd;
+    (&#xd;
+        realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+    ) AS realtime_data_outdated,&#xd;
+    &apos;site&apos; as parking_object&#xd;
+FROM&#xd;
+    parking_site site&#xd;
+    LEFT JOIN parking_restriction pr_charging ON pr_charging.parking_site_id = site.id&#xd;
+    AND pr_charging.type = &apos;CHARGING&apos;&#xd;
+WHERE&#xd;
+    (&#xd;
+        purpose = &apos;BIKE&apos;&#xd;
+        OR purpose = &apos;ITEM&apos;&#xd;
+    )&#xd;
+    AND duplicate_of_parking_site_id IS NULL
 </sql>
         <escapeSql>false</escapeSql>
+        <keyColumn>id</keyColumn>
+        <geometry>
+          <name>geometry</name>
+          <type>Point</type>
+          <srid>4326</srid>
+        </geometry>
       </virtualTable>
     </entry>
     <entry key="cachingEnabled">false</entry>
