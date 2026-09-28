@@ -6,8 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
-- [ParkAPI 0.49.0](https://github.com/ParkenDD/park-api-v3/blob/23e5dcb51d54f78c89bb3f2a1062f6f039906f0d/CHANGELOG.md#0490)
-  - ⚠️ with a breaking change removing deprecated capacity_* attributes
+- [ParkAPI 0.49.1](https://github.com/ParkenDD/park-api-v3/blob/23e5dcb51d54f78c89bb3f2a1062f6f039906f0d/CHANGELOG.md#0490)
+  - ⚠️ with a breaking change removing deprecated capacity_*, restricted_to and is_supervised attributes.
 
 
 ## 2026-09-25
