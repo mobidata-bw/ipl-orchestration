@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Lamassu: add `zeus_heilbronn`, `zeus_kempten`, `zeus_limburgerhof`, `zeus_reutlingen`
 - [OCPDB 2.16.2](https://github.com/binary-butterfly/ocpdb/blob/de43f19df0639d24a2fb04342a976307a6868928/CHANGELOG.md#2162)
   - with several performance iprovements
+- [ParkAPI 0.49.1](https://github.com/ParkenDD/park-api-v3/blob/23e5dcb51d54f78c89bb3f2a1062f6f039906f0d/CHANGELOG.md#0490)
+  - ⚠️ with a breaking change removing deprecated capacity_*, restricted_to and is_supervised attributes.
 
 ## 2026-09-25
 
