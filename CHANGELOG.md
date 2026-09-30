@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- Lamassu: ⚠️ remove `zeus_kempten`, `zeus_reutlingen`
+
 ## 2026-09-29
 
 - GeoServer `MobiData-BW:park-api_bicycle`:
