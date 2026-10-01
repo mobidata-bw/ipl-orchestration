@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-- Lamassu: ⚠️ remove `zeus_kempten`, `zeus_reutlingen`
+- Lamassu:
+  - add `lastenkarle`
+  - ⚠️ remove `zeus_kempten`, `zeus_reutlingen`, `zem_ch`
 
 ## 2026-09-29
 
