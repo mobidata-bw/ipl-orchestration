@@ -113,6 +113,7 @@ WHERE station_id is null
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
+      <source>if_then_else(equalTo(form_factor, &apos;scooter_standing&apos;), &apos;scooter&apos;, form_factor)</source>
       <description>
         <de>Art des Fahrzeugs</de>
       </description>
