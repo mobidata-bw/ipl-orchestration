@@ -567,13 +567,22 @@ lamassu:
       url: "https://mds.evemo.io/1a606e0d-fbd7-470f-bf0c-79b946c7c16a/gbfs/2.3/gbfs.json"
       language: en
     ## Zeus DE
+    - systemId: zeus_donaueschingen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1412
+      language: en
+      version: 3.0
     - systemId: zeus_freiburg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
-      url: "http://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/freiburg%20im%20breisgau/gbfs.json"
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1417
       language: en
+      version: 3.0
     - systemId: zeus_heidelberg
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -604,6 +613,13 @@ lamassu:
       url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=188
       language: en
       version: 3.0
+    - systemId: zeus_leimen_walldorf_wiesloch
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=185
+      language: en
+      version: 3.0
     - systemId: zeus_limburgerhof
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -616,8 +632,10 @@ lamassu:
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
-      url: "http://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/ludwigsburg/gbfs.json"
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=82
       language: en
+      version: 3.0
     - systemId: zeus_neustadt
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -639,6 +657,13 @@ lamassu:
       # Note: zeus feeds are accessed via proxy, using http instead of https
       url: "http://zeus.city/api/v1/mds/gbfs/schwabisch%20gmund/gbfs.json"
       language: en
+    - systemId: zeus_singen
+      operatorId: ZEU:Operator:zeus
+      operatorName: Zeus
+      codespace: ZEU
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1339
+      language: en
+      version: 3.0
     - systemId: zeus_tubingen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
@@ -651,15 +676,19 @@ lamassu:
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
-      url: "http://zeus.city/api/v1/mds/gbfs/tuttlingen/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/tuttlingen/gbfs.json"
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1416
       language: en
+      version: 3.0
     - systemId: zeus_villingen_schwenningen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
-      url: "http://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/villingen-schwenningen/gbfs.json"
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1421
       language: en
+      version: 3.0
 #    - systemId: zeus_hemmingen
 #      operatorId: ZEU:Operator:zeus
 #      operatorName: Zeus
@@ -671,8 +700,10 @@ lamassu:
       operatorName: Zeus
       codespace: ZEU
       # Note: zeus feeds are accessed via proxy, using http instead of https
-      url: "http://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
+#      url: "http://zeus.city/api/v1/mds/gbfs/renningen-malmsheim/gbfs.json"
+      url: https://zeus.rideatom.com/gbfs/v3_0/en/gbfs?id=1396
       language: en
+      version: 3.0
     - systemId: zeus_goppingen
       operatorId: ZEU:Operator:zeus
       operatorName: Zeus
