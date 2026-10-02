@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Lamassu:
   - add `lastenkarle`, `zeus_donaueschingen`, `zeus_leimen_walldorf_wiesloch`, `zeus_singen`
   - ⚠️ remove `zeus_heidelberg`, `zeus_heilbronn`, `zeus_limburgerhof`, `zeus_pforzheim`, `zeus_schwabisch_gmund`, `zeus_tubingen`, `zeus_goppingen`, `zeus_kempten`, `zeus_reutlingen`, `zem_ch`
+- ⚠️ GeoServer `MobiData-BW:sharing_vehicles`: change the value of `scooter_standing` in the `form_factor` attribute to `scooter`
 
 ## 2026-09-29
 
