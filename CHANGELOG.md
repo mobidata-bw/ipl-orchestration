@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 - Lamassu:
-  - add `lastenkarle`
+  - add `lastenkarle`, `zeus_donaueschingen`, `zeus_leimen_walldorf_wiesloch`, `zeus_singen`
   - ⚠️ remove `zeus_kempten`, `zeus_reutlingen`, `zem_ch`
 
 ## 2026-09-29
