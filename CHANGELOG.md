@@ -6,17 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-- [OCPDB 2.16.4](https://github.com/binary-butterfly/ocpdb/blob/58654c289b1c7a1316127e8b1a42c9cbb8baf24e/CHANGELOG.md#2164)
-  - with optimized import removing invalid characters
-
-
 ## 2026-10-06
 
 - Lamassu:
   - add `lastenkarle`, `zeus_donaueschingen`, `zeus_leimen_walldorf_wiesloch`, `zeus_singen`
   - ⚠️ remove `zeus_heidelberg`, `zeus_heilbronn`, `zeus_limburgerhof`, `zeus_pforzheim`, `zeus_schwabisch_gmund`, `zeus_tubingen`, `zeus_goppingen`, `zeus_kempten`, `zeus_reutlingen`, `zem_ch`
-- ⚠️ GeoServer `MobiData-BW:sharing_vehicles`: change the value of `scooter_standing` in the `form_factor` attribute to `scooter`
-- [OCPDB 2.16.3](https://github.com/binary-butterfly/ocpdb/blob/9bcbc8d0f89f46c30ef9b9dc88f490d42a713fe3/CHANGELOG.md#2163)
+- [OCPDB 2.16.4](https://github.com/binary-butterfly/ocpdb/blob/58654c289b1c7a1316127e8b1a42c9cbb8baf24e/CHANGELOG.md#2164)
+  - with optimized import removing invalid characters
   - with optimized realtime outputs, a tax included fix and dependency updates
 - [ParkAPI 0.49.2](https://github.com/ParkenDD/park-api-v3/blob/50219e7e5335ab39a18fe1226ca36935a6dafe46/CHANGELOG.md#0492)
   - outdated realtime data no longer removes the `realtime_*` fields, it just sets `has_realtime_data` to `false`
