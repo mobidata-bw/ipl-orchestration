@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- [OCPDB 2.16.4](https://github.com/binary-butterfly/ocpdb/blob/58654c289b1c7a1316127e8b1a42c9cbb8baf24e/CHANGELOG.md#2164)
+  - with optimized import removing invalid characters
+
+
 ## 2026-10-06
 
 - Lamassu:
