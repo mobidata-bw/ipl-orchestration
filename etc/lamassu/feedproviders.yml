@@ -901,12 +901,12 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## PubliBike CH
-    - systemId: publibike_ch
-      operatorId: PIB:Operator:publibike
-      operatorName: PubliBike
-      codespace: PIB
-      url: "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
-      language: en
+#    - systemId: publibike_ch
+#      operatorId: PIB:Operator:publibike
+#      operatorName: PubliBike
+#      codespace: PIB
+#      url: "https://api.publibike.ch/v1/gbfs/v2/gbfs.json"
+#      language: en
     - systemId: velospot_ch
       operatorId: PIB:Operator:velospot
       operatorName: Velospot
