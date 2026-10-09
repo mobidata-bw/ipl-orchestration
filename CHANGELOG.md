@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 - [ipl-proxy 2026-10-08T06-09](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-10-07): adapt set_return_constraint converter to zeus 3.0 feeds
+- Lamassu: ⚠️ remove `publibike_ch`
 
 ## 2026-10-06
 
