@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- Lamassu: add `szabo_mobility` feed
+- [x2gbfs 2026-10-14T15-13](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-10-09): add MOQO provider `szabo_mobility`
+
 ## 2026-10-13
 
 - [ipl-proxy 2026-10-13T05-13](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-10-12)
