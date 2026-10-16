@@ -1,0 +1,125 @@
+# Baden-Württemberg cities / tokens used to detect Baden-Württemberg entries in systems.csv
+# Add more city names or tokens (one per line). Matching is case-insensitive substring match
+
+# Nationwide feeds
+Germany
+
+#Subregions
+South Baden
+Rhein-Neckar
+Neckar-Alb
+
+# Städte
+Baden-Baden
+Freiburg im Breisgau
+Freiburg
+Heidelberg
+Heilbronn
+Karlsruhe
+Mannheim
+Pforzheim
+Stuttgart
+Ulm
+
+Aalen
+Achern
+Albstadt
+Backnang
+Bad Krozingen
+Bad Mergentheim
+Bad Rappenau
+Bad Waldsee
+Balingen
+Biberach an der Riß
+Biberach
+Bietigheim-Bissingen
+Böblingen
+Bretten
+Bruchsal
+Bühl
+Calw
+Crailsheim
+Ditzingen
+Donaueschingen
+Ehingen (Donau)
+Eislingen/Fils
+Eislingen
+Ellwangen (Jagst)
+Emmendingen
+Eppingen
+Esslingen am Neckar
+Ettlingen
+Fellbach
+Filderstadt
+Freudenstadt
+Friedrichshafen
+Gaggenau
+Geislingen an der Steige
+Giengen an der Brenz
+Göppingen
+Heidenheim an der Brenz
+Herrenberg
+Hockenheim
+Horb am Neckar
+Kehl
+Kirchheim unter Teck
+Konstanz
+Kornwestheim
+Lahr/Schwarzwald
+Laupheim
+Leimen
+Leinfelden-Echterdingen
+Leonberg
+Leutkirch im Allgäu
+Lörrach
+Ludwigsburg
+Metzingen
+Mosbach
+Mössingen
+Mühlacker
+Nagold
+Neckarsulm
+Nürtingen
+Oberkirch
+Offenburg
+Öhringen
+Ostfildern
+Radolfzell am Bodensee
+Radolfzell
+Rastatt
+Ravensburg
+Remseck am Neckar
+Renningen
+Reutlingen
+Rheinfelden (Baden)
+Rheinstetten
+Rottenburg am Neckar
+Rottweil
+Schorndorf
+Schramberg
+Schwäbisch Gmünd
+Schwäbisch Hall
+Schwetzingen
+Sindelfingen
+Singen (Hohentwiel)
+Sinsheim
+Stutensee
+Tübingen
+Tuttlingen
+Überlingen
+Vaihingen an der Enz
+Villingen-Schwenningen
+Waghäusel
+Waiblingen
+Waldkirch
+Waldshut-Tiengen
+Wangen im Allgäu
+Weikersheim
+Weil am Rhein
+Weingarten
+Weinheim
+Weinstadt
+Wertheim
+Wiesloch
+Winnenden
+
