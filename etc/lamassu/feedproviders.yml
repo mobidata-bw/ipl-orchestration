@@ -539,6 +539,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_bamberg/gbfs.json"
       language: en
+      version: 3.0
     - systemId: donkey_kiel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -546,6 +547,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_kiel/gbfs.json"
       language: en
+      version: 3.0
     - systemId: voi_de
       operatorId: VOI:Operator:voi
       operatorName: VOI
@@ -764,6 +766,14 @@ lamassu:
         properties:
           Authorization: ${LAMASSU_SHAREDMOBILITY_CH_AUTHORIZATION}
     ## Donkey CH
+    - systemId: epfl_lausanne
+      operatorId: DKY:Operator:donkey
+      operatorName: Donkey Republic
+      codespace: DKP
+      # Note: donkey feeds are accessed via proxy, using http instead of https
+      url: "http://stables.donkey.bike/api/public/gbfs/3.0/epfl_lausanne/gbfs.json"
+      language: de
+      version: 3.0
     - systemId: donkey_ge
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -771,6 +781,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_ge/gbfs.json"
       language: de
+      version: 3.0
     - systemId: donkey_kreuzlingen
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -778,12 +789,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_kreuzlingen/gbfs.json"
       language: en
-#    - systemId: donkey_le_locle
-#      operatorId: DKY:Operator:donkey
-#      operatorName: Donkey Republic
-#      codespace: DKP
-#      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_le_locle/gbfs.json"
-#      language: en
+      version: 3.0
     - systemId: donkey_neuchatel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -791,12 +797,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_neuchatel/gbfs.json"
       language: en
-#    - systemId: donkey_sion
-#      operatorId: DKY:Operator:donkey
-#      operatorName: Donkey Republic
-#      codespace: DKR
-#      url: "http://stables.donkey.bike/api/public/gbfs/2/donkey_sion/gbfs.json"
-#      language: en
+      version: 3.0
     - systemId: donkey_thun
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -804,6 +805,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_thun/gbfs.json"
       language: en
+      version: 3.0
     - systemId: donkey_yverdon-les-bains
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
@@ -811,6 +813,7 @@ lamassu:
       # Note: donkey feeds are accessed via proxy, using http instead of https
       url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_yverdon-les-bains/gbfs.json"
       language: en
+      version: 3.0
     ## Dott CH
     - systemId: dott_basel
       operatorId: DOT:Operator:dott
