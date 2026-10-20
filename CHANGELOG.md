@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## 2026-10-20
+
 - Lamassu: add `szabo_mobility`, `epfl_lausanne` feeds
 - [x2gbfs 2026-10-14T15-13](https://github.com/mobidata-bw/x2gbfs/blob/main/CHANGELOG.md#2026-10-09): add MOQO provider `szabo_mobility`
 - [ipl-proxy 2026-10-19T05-32](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-10-19): deactivate donkey converters
