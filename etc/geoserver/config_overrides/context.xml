@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiResourceLocking="false" override="true" docBase="geoserver" privileged="true" path="/${WEBAPP_CONTEXT}">
+	<!-- todo: resources defined here are not picked up by Geoserver yet -->
+</Context>
