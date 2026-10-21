@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- [ParkAPI 0.50.0](https://github.com/ParkenDD/park-api-v3/releases/tag/0.50.0)
+  - add parking spot orientation
+  - with BFRK bike parking type fixes for `SAFE_WALL_LOOPS` and `WALL_LOOPS`
+
 ## 2026-10-20
 
 - Lamassu: add `szabo_mobility`, `epfl_lausanne` feeds
