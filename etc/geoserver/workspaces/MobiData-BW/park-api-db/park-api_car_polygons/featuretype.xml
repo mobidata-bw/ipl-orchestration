@@ -47,14 +47,16 @@
     CONCAT(&apos;site-&apos;, site.id) AS uid,&#xd;
     site.id,&#xd;
     NULL AS parking_site_id,&#xd;
-    source_id,&#xd;
     original_uid,&#xd;
-    name,&#xd;
+    source.converter_type,&#xd;
+    source.uid AS source_uid,&#xd;
+    source_id,    &#xd;
+    site.name,&#xd;
     operator_name,&#xd;
     purpose,&#xd;
     &apos;site&apos; as parking_object,&#xd;
     official_region_code,&#xd;
-    public_url,&#xd;
+    site.public_url,&#xd;
     photo_url,&#xd;
     address,&#xd;
     opening_hours,&#xd;
@@ -109,10 +111,11 @@
     parking_type,&#xd;
     site.created_at,&#xd;
     site.modified_at,&#xd;
-    static_data_updated_at,&#xd;
+    site.static_data_updated_at,&#xd;
     ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326) AS geometry&#xd;
 FROM&#xd;
     parking_site site&#xd;
+    JOIN source ON source.id = site.source_id&#xd;
     LEFT JOIN parking_restriction pr_max_stay ON pr_max_stay.parking_site_id = site.id&#xd;
     AND pr_max_stay.type IS NULL&#xd;
     AND pr_max_stay.max_stay IS NOT NULL&#xd;
@@ -144,8 +147,10 @@ SELECT&#xd;
     CONCAT(&apos;spot-&apos;, spot.id) AS uid,&#xd;
     spot.id,&#xd;
     spot.parking_site_id,&#xd;
-    spot.source_id,&#xd;
     spot.original_uid,&#xd;
+    source.converter_type,&#xd;
+    source.uid AS source_uid,&#xd;
+    spot.source_id,    &#xd;
     spot.name,&#xd;
     NULL AS operator_name,&#xd;
     spot.purpose :: text :: purposetype,&#xd;
@@ -228,6 +233,7 @@ SELECT&#xd;
     ST_SetSRID(ST_GeomFromGeoJSON(geojson), 4326) AS geometry&#xd;
 FROM&#xd;
     parking_spot spot&#xd;
+    JOIN source ON source.id = spot.source_id&#xd;
     LEFT JOIN parking_restriction pr ON spot.id = pr.parking_spot_id&#xd;
 WHERE&#xd;
     spot.purpose = &apos;CAR&apos;&#xd;
@@ -277,16 +283,6 @@ WHERE&#xd;
       </description>
     </attribute>
     <attribute>
-      <name>source_id</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>false</nillable>
-      <binding>java.lang.Long</binding>
-      <description>
-        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
-      </description>
-    </attribute>
-    <attribute>
       <name>original_uid</name>
       <minOccurs>0</minOccurs>
       <maxOccurs>1</maxOccurs>
@@ -294,6 +290,36 @@ WHERE&#xd;
       <binding>java.lang.String</binding>
       <description>
         <de>Ursprüngliche ID der Parkanlage beim Datengeber</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>converter_type</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>Konverter-Typ der Datenquelle (von ParkAPI erzeugt)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>source_uid</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.String</binding>
+      <description>
+        <de>UID des Datengebers (erzeugt von ParkAPI)</de>
+      </description>
+    </attribute>
+    <attribute>
+      <name>source_id</name>
+      <minOccurs>1</minOccurs>
+      <maxOccurs>1</maxOccurs>
+      <nillable>false</nillable>
+      <binding>java.lang.Long</binding>
+      <description>
+        <de>ID des Datengebers (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
