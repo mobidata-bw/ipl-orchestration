@@ -984,7 +984,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <en-US>Echtzeitdaten veraltet?</en-US>
+        <de>Echtzeitdaten veraltet?</de>
       </description>
     </attribute>
     <attribute>
