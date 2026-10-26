@@ -299,7 +299,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>Konverter-Typ der Datenquelle</en-US>
+        <de>Konverter-Typ der Datenquelle (von ParkAPI erzeugt)</de>
       </description>
     </attribute>
     <attribute>
@@ -309,7 +309,7 @@ WHERE&#xd;
       <nillable>false</nillable>
       <binding>java.lang.String</binding>
       <description>
-        <en-US>UID des Datengebers (erzeugt von ParkAPI)</en-US>
+        <de>UID des Datengebers (erzeugt von ParkAPI)</de>
       </description>
     </attribute>
     <attribute>
