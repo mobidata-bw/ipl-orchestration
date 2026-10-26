@@ -380,7 +380,7 @@ WHERE&#xd;
     </attribute>
     <attribute>
       <name>source_id</name>
-      <minOccurs>0</minOccurs>
+      <minOccurs>1</minOccurs>
       <maxOccurs>1</maxOccurs>
       <nillable>false</nillable>
       <binding>java.lang.Long</binding>
