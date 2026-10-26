@@ -136,7 +136,10 @@
     supervision_type,&#xd;
     related_location,&#xd;
     (&#xd;
-        site.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        source.converter_type = &apos;PULL&apos;&#xd;
+        AND site.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        OR source.converter_type = &apos;PUSH&apos;&#xd;
+        AND site.realtime_data_updated_at &lt; now() - interval &apos;1 day&apos;&#xd;
     ) AS realtime_data_outdated,&#xd;
     side,&#xd;
     orientation,&#xd;
@@ -170,7 +173,7 @@ FROM&#xd;
     LEFT JOIN parking_restriction pr_truck ON pr_truck.parking_site_id = site.id&#xd;
     AND pr_truck.type = &apos;TRUCK&apos;&#xd;
     LEFT JOIN parking_restriction pr_caravan ON pr_caravan.parking_site_id = site.id&#xd;
-    AND pr_caravan.type = &apos;CARAVAN&apos;    &#xd;
+    AND pr_caravan.type = &apos;CARAVAN&apos;&#xd;
 WHERE&#xd;
     site.purpose = &apos;CAR&apos;&#xd;
     AND site.duplicate_of_parking_site_id IS NULL&#xd;
@@ -287,7 +290,10 @@ SELECT&#xd;
     NULL AS supervision_type,&#xd;
     NULL AS related_location,&#xd;
     (&#xd;
-        spot.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        source.converter_type = &apos;PULL&apos;&#xd;
+        AND spot.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        OR source.converter_type = &apos;PUSH&apos;&#xd;
+        AND spot.realtime_data_updated_at &lt; now() - interval &apos;1 day&apos;&#xd;
     ) AS realtime_data_outdated,&#xd;
     NULL AS side,&#xd;
     NULL AS orientation,&#xd;
@@ -301,7 +307,7 @@ SELECT&#xd;
 FROM&#xd;
     parking_spot spot&#xd;
     JOIN source ON source.id = spot.source_id&#xd;
-    LEFT JOIN parking_restriction pr ON spot.id = pr.parking_spot_id    &#xd;
+    LEFT JOIN parking_restriction pr ON spot.id = pr.parking_spot_id&#xd;
 WHERE&#xd;
     spot.purpose = &apos;CAR&apos;
 </sql>
@@ -978,7 +984,7 @@ WHERE&#xd;
       <nillable>true</nillable>
       <binding>java.lang.Boolean</binding>
       <description>
-        <de>Echtzeitdaten älter als 30 Minuten?</de>
+        <de>Echtzeitdaten veraltet?</de>
       </description>
     </attribute>
     <attribute>
