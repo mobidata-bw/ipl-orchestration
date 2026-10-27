@@ -11,9 +11,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - [ParkAPI 0.54.0](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0540)
   - add incremental updates, an improved tile server and a type for sources
   - with Mirror Mode support, CORS support for all public endpoints, a negative `realtime_free_capacity` fix, new DATEX II, Karlsruhe and Dortmund converters, migrated ParkAPI v2 converters, several BFRK filters and further converter fixes
-- GeoServer
-  - add `converter_type` and `source_uid` to all ParkAPI layers
-  - distinguish between pull and push sources for `realtime_data_outdated` in `MobiData-BW:park-api_car`
+- GeoServer ParkAPI layers
+  - add `converter_type` and `source_uid`
+  - ⚠️ remove `realtime_data_outdated`
+  - ⚠️ distinguish between pull and push sources for `has_realtime_data`
 
 ## 2026-10-22
 

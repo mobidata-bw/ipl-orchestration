@@ -69,7 +69,6 @@
     fee_description,&#xd;
     has_fee,&#xd;
     park_and_ride_type,&#xd;
-    has_realtime_data,&#xd;
     realtime_opening_status,&#xd;
     NULL AS realtime_status,&#xd;
     site.type :: text,&#xd;
@@ -137,10 +136,11 @@
     related_location,&#xd;
     (&#xd;
         source.converter_type = &apos;PULL&apos;&#xd;
-        AND site.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        AND site.realtime_data_updated_at &lt;= now() - interval &apos;30 minutes&apos;&#xd;
         OR source.converter_type = &apos;PUSH&apos;&#xd;
-        AND site.realtime_data_updated_at &lt; now() - interval &apos;1 day&apos;&#xd;
-    ) AS realtime_data_outdated,&#xd;
+        AND site.realtime_data_updated_at &lt;= now() - interval &apos;1 day&apos;&#xd;
+        OR site.realtime_data_updated_at IS NULL&#xd;
+    ) AS has_realtime_data,&#xd;
     side,&#xd;
     orientation,&#xd;
     parking_type,&#xd;
@@ -203,7 +203,6 @@ SELECT&#xd;
     NULL AS fee_description,&#xd;
     NULL AS has_fee,&#xd;
     NULL AS park_and_ride_type,&#xd;
-    spot.has_realtime_data,&#xd;
     NULL AS realtime_opening_status,&#xd;
     spot.realtime_status,&#xd;
     spot.type :: text AS type,&#xd;
@@ -291,10 +290,11 @@ SELECT&#xd;
     NULL AS related_location,&#xd;
     (&#xd;
         source.converter_type = &apos;PULL&apos;&#xd;
-        AND spot.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
+        AND spot.realtime_data_updated_at &lt;= now() - interval &apos;30 minutes&apos;&#xd;
         OR source.converter_type = &apos;PUSH&apos;&#xd;
-        AND spot.realtime_data_updated_at &lt; now() - interval &apos;1 day&apos;&#xd;
-    ) AS realtime_data_outdated,&#xd;
+        AND spot.realtime_data_updated_at &lt;= now() - interval &apos;1 day&apos;&#xd;
+        OR spot.realtime_data_updated_at IS NULL&#xd;
+    ) AS has_realtime_data,&#xd;
     NULL AS side,&#xd;
     NULL AS orientation,&#xd;
     NULL AS parking_type,&#xd;
@@ -975,16 +975,6 @@ WHERE&#xd;
       <binding>java.sql.Timestamp</binding>
       <description>
         <de>Letzter Aktualisierungszeitpunkt der statischen Daten</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>realtime_data_outdated</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Boolean</binding>
-      <description>
-        <de>Echtzeitdaten veraltet?</de>
       </description>
     </attribute>
     <attribute>
