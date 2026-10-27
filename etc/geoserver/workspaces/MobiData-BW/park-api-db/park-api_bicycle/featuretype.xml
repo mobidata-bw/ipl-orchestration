@@ -64,7 +64,13 @@
     fee_description,&#xd;
     has_fee,&#xd;
     park_and_ride_type,&#xd;
-    has_realtime_data,&#xd;
+    (&#xd;
+        source.converter_type = &apos;PULL&apos;&#xd;
+        AND site.realtime_data_updated_at &lt;= now() - interval &apos;30 minutes&apos;&#xd;
+        OR source.converter_type = &apos;PUSH&apos;&#xd;
+        AND site.realtime_data_updated_at &lt;= now() - interval &apos;1 day&apos;&#xd;
+        OR site.realtime_data_updated_at IS NULL&#xd;
+    ) AS has_realtime_data,&#xd;
     realtime_opening_status,&#xd;
     site.capacity,&#xd;
     site.realtime_capacity,&#xd;
@@ -84,9 +90,6 @@
     site.modified_at,&#xd;
     site.static_data_updated_at,&#xd;
     site.realtime_data_updated_at,&#xd;
-    (&#xd;
-        site.realtime_data_updated_at &lt; now() - interval &apos;30 minutes&apos;&#xd;
-    ) AS realtime_data_outdated,&#xd;
     &apos;site&apos; as parking_object&#xd;
 FROM&#xd;
     parking_site site&#xd;
@@ -480,16 +483,6 @@ WHERE&#xd;
       <binding>java.sql.Timestamp</binding>
       <description>
         <de>Letzter Aktualisierungszeitpunkt der Echtzeitinformationen</de>
-      </description>
-    </attribute>
-    <attribute>
-      <name>realtime_data_outdated</name>
-      <minOccurs>0</minOccurs>
-      <maxOccurs>1</maxOccurs>
-      <nillable>true</nillable>
-      <binding>java.lang.Boolean</binding>
-      <description>
-        <de>Echtzeitdaten älter als 30 Minuten?</de>
       </description>
     </attribute>
     <attribute>
