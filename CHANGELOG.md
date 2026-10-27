@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## 2026-10-27
+
 - [ParkAPI 0.54.0](https://github.com/ParkenDD/park-api-v3/blob/main/CHANGELOG.md#0540)
   - add incremental updates, an improved tile server and a type for sources
   - with Mirror Mode support, CORS support for all public endpoints, a negative `realtime_free_capacity` fix, new DATEX II, Karlsruhe and Dortmund converters, migrated ParkAPI v2 converters, several BFRK filters and further converter fixes
