@@ -64,12 +64,12 @@
     fee_description,&#xd;
     has_fee,&#xd;
     park_and_ride_type,&#xd;
-    (&#xd;
+    COALESCE(&#xd;
         source.converter_type = &apos;PULL&apos;&#xd;
-        AND site.realtime_data_updated_at &lt;= now() - interval &apos;30 minutes&apos;&#xd;
+        AND site.realtime_data_updated_at &gt;= now() - interval &apos;30 minutes&apos;&#xd;
         OR source.converter_type = &apos;PUSH&apos;&#xd;
-        AND site.realtime_data_updated_at &lt;= now() - interval &apos;1 day&apos;&#xd;
-        OR site.realtime_data_updated_at IS NULL&#xd;
+        AND site.realtime_data_updated_at &gt;= now() - interval &apos;1 day&apos;,&#xd;
+        false&#xd;
     ) AS has_realtime_data,&#xd;
     realtime_opening_status,&#xd;
     site.capacity,&#xd;
