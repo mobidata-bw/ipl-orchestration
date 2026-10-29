@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- Lamassu:
+  - Bump to [2026-10-29T10-56](https://github.com/entur/lamassu/blob/55385f383f674fefbc0d8996e108d79e988f7dfd/Changelog.md?#130-under-development). This includes e.g.:
+    - fix: replace removed Janino "if condition" in logback.xml - [#921](https://github.com/entur/lamassu/pull/921)
+
 ## 2026-10-29
 
 - Lamassu:
