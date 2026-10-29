@@ -6,7 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-- Lamassu: ⚠️ remove `ford_carsharing_autohauskauderer`
+- Lamassu:
+  - ⚠️ remove `ford_carsharing_autohauskauderer`
+  - Bump to [2026-10-29T09-22 release](https://github.com/entur/lamassu/blob/55385f383f674fefbc0d8996e108d79e988f7dfd/Changelog.md?#130-under-development). This includes e.g.:
+    - Add top-level systems query to GraphQL API [#902](https://github.com/entur/lamassu/pull/902)
+    - ⚠️ fix: use patched Liberica JRE base image to distrust compromised eMudhra roots [#920](https://github.com/entur/lamassu/pull/920)
 
 ## 2026-10-27
 
