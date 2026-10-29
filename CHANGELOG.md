@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## 2026-10-29
+
 - Lamassu:
   - ⚠️ remove `ford_carsharing_autohauskauderer`
   - Bump to [2026-10-29T09-22 release](https://github.com/entur/lamassu/blob/55385f383f674fefbc0d8996e108d79e988f7dfd/Changelog.md?#130-under-development). This includes e.g.:
