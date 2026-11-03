@@ -413,9 +413,11 @@ services:
 
       # Variables required for GTFS-Import
       - IPL_GTFS_IMPORTER_IMAGE
-      - IPL_GTFS_IMPORTER_NETWORK
+      # This assumes that our Docker network is called `ipl`, as defined in this file.
+      - IPL_GTFS_IMPORTER_NETWORK=${COMPOSE_PROJECT_NAME:?missing/empty}_ipl
       - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
       - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
+      - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_CURL_MIRROR_ADDITIONAL_ARGS
       - IPL_GTFS_DB_POSTGRES_HOST
       - IPL_GTFS_DB_POSTGRES_USER
       - IPL_GTFS_DB_POSTGRES_PASSWORD
@@ -424,6 +426,7 @@ services:
       - IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME
       - IPL_GTFS_IMPORTER_EXTRA_HOST_IP
       - IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT=${IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}
+      - IPL_GTFS_IMPORTER_GTFS_TO_SQL_ADDITIONAL_ARGS
       - IPL_GTFS_DB_POSTGREST_USER
       - IPL_GTFS_DB_POSTGREST_PASSWORD
       # Note: This assumes there is exactly one `gtfs-api` container.
@@ -464,6 +467,8 @@ services:
       - ./var/webcam:/var/webcam
       # Mount files folder, which contains e.g. download certificates
       - ./etc/dagster/files/:/opt/dagster/app/files/:ro
+      # todo: just for debugging, remove
+      - ./gtfs.py:/opt/dagster/app/pipeline/assets/gtfs.py
     depends_on:
         pgbouncer:
           condition: service_healthy
@@ -701,12 +706,13 @@ services:
       GTFS_IMPORTER_SCHEMA: ${IPL_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
       GTFS_DOWNLOAD_URL: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty}
       GTFS_DOWNLOAD_USER_AGENT: ${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
+      CURL_MIRROR_ADDITIONAL_ARGS: '${IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_CURL_MIRROR_ADDITIONAL_ARGS:-}'
       GTFS_TMP_DIR: /var/gtfs
+      GTFS_TO_SQL_ADDITIONAL_ARGS: '${IPL_GTFS_IMPORTER_GTFS_TO_SQL_ADDITIONAL_ARGS:-}'
       POSTGREST_USER: ${IPL_GTFS_DB_POSTGREST_USER:?missing/empty}
       POSTGREST_PASSWORD: ${IPL_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
       POSTGREST_STATEMENT_COST_LIMIT: ${IPL_GTFS_API_COST_LIMIT:?missing/empty}
       GTFSTIDY_BEFORE_IMPORT: '${IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}'
-
   gtfs-api-docs:
     networks: [ipl]
     depends_on:
