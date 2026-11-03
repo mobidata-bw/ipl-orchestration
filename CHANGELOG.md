@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- [OCPDB 2.17.0](https://github.com/binary-butterfly/ocpdb/blob/f83c1a903c5005a50ca71cc7ff62f4f540fbf29e/CHANGELOG.md#2170)
+  - add Datex2 Inergia and further new Datex2 data sources, and a Mobilithek helper
+  - ⚠️ remove Datex2 Erft
+  - with strict additional field validation, more character filtering, organization loop support, licence clarifications and dependency updates
+
 ## 2026-10-29
 
 - Lamassu:
