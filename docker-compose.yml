@@ -411,7 +411,7 @@ services:
       - IPL_POSTGRES_USER
       - IPL_POSTGRES_PASSWORD
       # Variables required for GTFS-Import
-      # todo: adapt these
+      # todo: adapt these – do this!
       - IPL_GTFS_IMPORTER_IMAGE
       - IPL_GTFS_IMPORTER_NETWORK
       - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
