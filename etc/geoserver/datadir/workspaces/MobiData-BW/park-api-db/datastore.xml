@@ -1,8 +1,7 @@
 <dataStore>
-  <id>DataStoreInfoImpl--48f676ef:18997a59df5:-7ff0</id>
-  <name>ipl-db</name>
-  <description>MobiData IPL DB</description>
-  <type>PostGIS</type>
+  <id>DataStoreInfoImpl--5bcdf8b:18bc88075ee:-7ffb</id>
+  <name>park-api-db</name>
+  <type>PostGIS (JNDI)</type>
   <enabled>true</enabled>
   <workspace>
     <id>WorkspaceInfoImpl--48f676ef:18997a59df5:-7ff6</id>
@@ -14,9 +13,6 @@
     <entry key="encode functions">true</entry>
     <entry key="Batch insert size">1</entry>
     <entry key="preparedStatements">false</entry>
-    <!-- connect via pgbouncer to improve performance -->
-    <entry key="database">ipl</entry> <!-- determined by pgbouncer! -->
-    <entry key="host">pgbouncer</entry>
     <entry key="Loose bbox">true</entry>
     <entry key="SSL mode">DISABLE</entry>
     <entry key="Estimated extends">true</entry>
@@ -27,19 +23,15 @@
     <entry key="Connection timeout">20</entry>
     <entry key="create database">false</entry>
     <entry key="Method used to simplify geometries">FAST</entry>
-    <entry key="port">6432</entry>
-    <entry key="passwd">${PGBOUNCER_POSTGRES_PASSWORD}</entry>
-    <entry key="min connections">1</entry>
+    <entry key="jndiReferenceName">java:comp/env/jdbc/park-api-db</entry>
     <entry key="dbtype">postgis</entry>
     <entry key="namespace">mdbw</entry>
-    <entry key="max connections">10</entry>
     <entry key="Evictor tests per run">3</entry>
     <entry key="Test while idle">true</entry>
-    <entry key="user">${PGBOUNCER_POSTGRES_USER}</entry>
     <entry key="Max connection idle time">300</entry>
   </connectionParameters>
   <__default>false</__default>
-  <dateCreated>2023-07-27 14:09:42.208 UTC</dateCreated>
-  <dateModified>2023-08-16 11:49:48.580 UTC</dateModified>
+  <dateCreated>2023-11-13 11:48:31.64 UTC</dateCreated>
+  <dateModified>2026-09-04 11:43:42.868 UTC</dateModified>
   <disableOnConnFailure>false</disableOnConnFailure>
 </dataStore>
