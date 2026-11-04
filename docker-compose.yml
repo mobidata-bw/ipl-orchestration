@@ -361,6 +361,7 @@ services:
       - OCPDB_POSTGRES_PASSWORD=${OCPDB_POSTGRES_PASSWORD:?missing/empty}
 
       # todo: make `/var/cache` or `/var/cache/fontconfig` writable to the `tomcat` user
+      # todo: SKIP_DEMO_DATA=true, see https://github.com/geoserver/docker/blob/a82a7782c670e0bb969c197aceea3549a726e0a3/startup.sh#L52-L63
     depends_on:
       pgbouncer:
         # For sharing & transit layers

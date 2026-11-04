@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 - ⚠️ Split environment/Docker Compose variable `$DOCKER_LOCAL_USER` into two variables `$DOCKER_LOCAL_USER_UID` and `$DOCKER_LOCAL_USER_GID`. If you are using `$DOCKER_LOCAL_USER` (e.g. in `.env.local`) you must adapt your config, otherwise you can ignore this change.
+- ⚠️ GeoServer
+  - switch to the official Docker image by the GeoServer project
+  - switch from v2 to v3 – This change requires the following migration steps:
+    1. shut down the `geoserver` Compose Service via `make docker-down SERVICE=geoserver`
+    2. delete `var/geoserver` via `rm -rf var/geoserver` – Note that this assumes that all configuration has been checked into Git (using `make prepare-geoserver-workspace-for-commit`)!
+    3. deploy the new `ipl-orchestration` release using `ipl-ansible`, or
+      a. check out the release in Git
+      b. run `make docker-up-detached SERVICE=geoserver`
 
 ## 2026-11-03
 
