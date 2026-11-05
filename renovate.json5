@@ -3,6 +3,14 @@
 	"extends": [
 		"config:recommended",
 	],
+	// > Limit to a maximum of x concurrent branches/PRs. 0 means no limit.
+	// > Default: 10
+	// https://docs.renovatebot.com/configuration-options/#prconcurrentlimit
+	"prConcurrentLimit": 30,
+	// > Rate limit PRs to maximum x created per hour. 0 means no limit.
+	// > Default: 2
+	// https://docs.renovatebot.com/configuration-options/#prhourlylimit
+	"prHourlyLimit": 10,
 	"labels": [
 		"dependencies"
 	],
