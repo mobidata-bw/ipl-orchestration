@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- ⚠️ `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5eb757b2fac4d15e458ecec96f7edd9101b5efeefb16138b93e9f975075d8825))
+  - Although `atmoz/sftp`'s default configuration, which this project relias on, *does not* allow `root` login, this update patches the ["\*sshole" vulnerability](https://sshole.com) ([1](https://pkgs.alpinelinux.org/package/v3.24/main/x86_64/openssh), [2](https://gitlab.alpinelinux.org/alpine/aports/-/commit/384e25e6bd1f2e7b30095900e48b570d46953510)).
+
 ## 2026-11-03
 
 - [OCPDB 2.17.0](https://github.com/binary-butterfly/ocpdb/blob/f83c1a903c5005a50ca71cc7ff62f4f540fbf29e/CHANGELOG.md#2170)
