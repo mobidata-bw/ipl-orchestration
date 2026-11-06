@@ -1,4 +1,8 @@
-CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
+\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\set gtfs_schema '"' :gtfs_schema_raw '"'
+\set geoserver_schema '"' :gtfs_schema_raw '_geoserver"'
+
+CREATE MATERIALIZED VIEW :geoserver_schema.stations_with_served_routes AS
 	SELECT 
 		station_id,
 		station_name,
@@ -58,11 +62,11 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 						r.route_id,
 						route_type,
 						coalesce(route_short_name, route_long_name) AS route_name
-					FROM api.stop_times st
-					JOIN api.trips t ON st.trip_id = t.trip_id
-					JOIN api.routes r ON r.route_id = t.route_id
-					JOIN api.stops stops ON stops.stop_id = st.stop_id
-					LEFT JOIN api.stops stations ON stations.stop_id = stops.parent_station
+					FROM :gtfs_schema.stop_times st
+					JOIN :gtfs_schema.trips t ON st.trip_id = t.trip_id
+					JOIN :gtfs_schema.routes r ON r.route_id = t.route_id
+					JOIN :gtfs_schema.stops stops ON stops.stop_id = st.stop_id
+					LEFT JOIN :gtfs_schema.stops stations ON stations.stop_id = stops.parent_station
 					WHERE route_short_name NOT LIKE '%SEV%' -- no rail replacement service
 					--AND st.stop_id LIKE 'de:08%' -- only stops in DE-BW
 				) t
@@ -71,8 +75,10 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 		) t
 		GROUP BY station_id
 	) t 
-	LEFT JOIN api.stops s ON s.stop_id = t.station_id
+	LEFT JOIN :gtfs_schema.stops s ON s.stop_id = t.station_id
 	;
 
-CREATE UNIQUE INDEX stations_with_served_routes_idx ON geoserver.stations_with_served_routes(station_id);
+-- > The name of the index to be created. No schema name can be included here; the index is always created in the same schema as its parent table.
+CREATE UNIQUE INDEX stations_with_served_routes_idx
+	ON :geoserver_schema.stations_with_served_routes(station_id);
 -- todo: spatial index?
