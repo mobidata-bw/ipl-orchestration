@@ -413,7 +413,8 @@ services:
 
       # Variables required for GTFS-Import
       - IPL_GTFS_IMPORTER_IMAGE
-      - IPL_GTFS_IMPORTER_NETWORK
+      # This assumes that our Docker network is called `ipl`, as defined in this file.
+      - IPL_GTFS_IMPORTER_NETWORK=${COMPOSE_PROJECT_NAME:?missing/empty}_ipl
       - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
       - IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
       - IPL_GTFS_DB_POSTGRES_HOST
