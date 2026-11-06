@@ -15,6 +15,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   2. Upgrade to the new `ipl-orchestration` release.
   3. Start the (renamed) services again using `make docker-up-detached SERVICE='gtfs-db gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`.
   4. Run a GTFS import, either via `make import-new-gtfs` or by materializing the `gtfs` Dagster asset.
+- ⚠️ `gtfs-importer`/`gtfs-api`/`gtfs-api-docs`: To prepare for a second GTFS dataset (Amarillo GTFS, see below),
+  - these services have been renamed to include "main":
+    - `gtfs-api` -> `main-gtfs-api`
+    - `gtfs-api-docs` -> `main-gtfs-api-docs`
+    - `gtfs-importer` -> `main-gtfs-importer`
+  - all relevant Compose/environment variables have been renamed to include `MAIN_`, so make sure to adapt your `.env.local`:
+    - `$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL` -> `$IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_URL`
+    - `$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT` -> `$IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT`
+    - `$IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME` -> `$IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME`
+    - `$IPL_GTFS_IMPORTER_EXTRA_HOST_IP` -> `$IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_IP`
+    - `$IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT` -> `$IPL_MAIN_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT`
+    - `$IPL_GTFS_DB_POSTGRES_SCHEMA` -> `$IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA`
+    - `$IPL_GTFS_DB_POSTGREST_USER` -> `$IPL_MAIN_GTFS_DB_POSTGREST_USER`
+    - `$IPL_GTFS_DB_POSTGREST_PASSWORD` -> `$IPL_MAIN_GTFS_DB_POSTGREST_PASSWORD`
+    - `$IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR` -> `$IPL_MAIN_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR`
+    - `$IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR` -> `$IPL_MAIN_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR`
+    - `$IPL_GTFS_API_COST_LIMIT` -> `$IPL_MAIN_GTFS_API_COST_LIMIT`
+    - `$IPL_GTFS_API_IMAGE` -> `$IPL_MAIN_GTFS_API_IMAGE`
+    - `$IPL_GTFS_API_PORT` -> `$IPL_MAIN_GTFS_API_PORT`
+    - `$IPL_GTFS_API_ADMIN_PORT` -> `$IPL_MAIN_GTFS_API_ADMIN_PORT`
+    - `$IPL_GTFS_API_PUBLIC_BASE_URL` -> `$IPL_MAIN_GTFS_API_PUBLIC_BASE_URL`
+    - `$IPL_GTFS_API_MAX_ROWS` -> `$IPL_MAIN_GTFS_API_MAX_ROWS`
+    - `$IPL_GTFS_API_DOCS_PUBLIC_HOST` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_HOST`
+    - `$IPL_GTFS_API_DOCS_PUBLIC_PORT` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_PORT`
+  - Note that the `main-gtfs-api`'s public HTTP path stays `/gtfs`.
 
 ## 2026-11-10
 

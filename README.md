@@ -229,10 +229,10 @@ The following table lists all IPL components and their respective Docker Compose
 | Dagster: database ([PostgreSQL](https://www.postgresql.org))                        | `dagster-postgresql` | ✔︎                    | *-*       | *n/a*              |
 | [IPL Proxy](https://github.com/mobidata-bw/ipl-proxy)                               | `transformer-proxy`  | ✔︎                    | 8400      | *-*                | on-the-fly patching of HTTP resources from 3rd parties; used by OCPDB, x2gbfs, etc. |
 | RadVIS: database ([PostgreSQL](https://www.postgresql.org))                         | `ipl-db`             | ✔︎                    | 5432      | *n/a*              | stores RadVIS data, served by `geoserver` |
-| GTFS: API ([PostgREST](https://postgrest.org/))                                     | `gtfs-api`           | ✔︎                    | 4000      | `/gtfs`            | serves [GTFS](https://gtfs.org/schedule/) data in `gtfs-db` as an API |
-| GTFS: documentation ([Stoplight Elements](https://github.com/stoplightio/elements)) | `gtfs-api-docs`      | ✔︎                    | 4001      | `/docs/gtfs`       | UI documenting the GTFS API |
-| GTFS: importer ([`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer)) | `gtfs-importer` |              | *-*       | *-*                | downloads, cleans & imports GTFS into the database; started by a Dagster task |
-| GTFS: database ([PostgreSQL](https://www.postgresql.org))                           | `gtfs-db`            | ✔︎                    | *-*       | *n/a*              | stores imported GTFS data, served by `gtfs-api` and `geoserver` |
+| main GTFS: API ([PostgREST](https://postgrest.org/))                                | `main-gtfs-api`      | ✔︎                    | 4000      | `/gtfs`            | serves the main [GTFS](https://gtfs.org/schedule/) data in `gtfs-db` as an API |
+| main GTFS: documentation ([Stoplight Elements](https://github.com/stoplightio/elements)) | `main-gtfs-api-docs` | ✔︎               | 4001      | `/docs/gtfs`       | UI documenting the main GTFS API `main-gtfs-api` |
+| main GTFS: importer ([`postgis-gtfs-importer`](https://github.com/mobidata-bw/postgis-gtfs-importer)) | `main-gtfs-importer` |    | *-*       | *-*                | downloads, cleans & imports the main GTFS into the database; started by a Dagster task |
+| main GTFS: database ([PostgreSQL](https://www.postgresql.org))                      | `gtfs-db`            | ✔︎                    | *-*       | *n/a*              | stores imported GTFS data, served by `main-gtfs-api` and `geoserver` |
 | database proxy ([pgbouncer](https://www.pgbouncer.org))                             | `pgbouncer`          | ✔︎                    | 6432      | *n/a*              | proxies services' connections to databases (`dagster-postgresql`, `gtfs-db`, etc.) |
 | task/message queue ([RabbitMQ](https://www.rabbitmq.com))                           | `rabbitmq`           | ✔︎                    | *-*       | *-*                |
 | web server ([Caddy](https://caddyserver.com)): static data                          | `caddy`              | ✔︎                    | 6999      | `/datasets`        | serves static datasets |
@@ -258,5 +258,5 @@ In addition, some of IPL's services also expose domain-specific metrics:
 | `ingress`        | 8081      | HTTP requests count/rate/duration/status codes, Go runtime |
 | `lamassu`        | 9002      | GBFS errors/sync status, HTTP requests, JVM runtime |
 | `ocpdb-flask`    | 7000      | sources status/errors |
-| `gtfs-api`       | 4002      | date/time of GTFS import, DB connection stats, PostgREST internals |
+| `main-gtfs-api`  | 4002      | date/time of GTFS import, DB connection stats, PostgREST internals |
 | `park-api-flask` | 7500      | sources status/errors |
