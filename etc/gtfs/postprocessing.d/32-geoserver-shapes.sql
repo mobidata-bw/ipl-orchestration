@@ -1,4 +1,8 @@
-CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
+\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\set gtfs_schema '"' :gtfs_schema_raw '"'
+\set geoserver_schema '"' :gtfs_schema_raw '_geoserver"'
+
+CREATE MATERIALIZED VIEW :geoserver_schema.shapes_with_routes AS
 	SELECT
 		shape_id,
 		st_setsrid(any_value(shape), 4326) AS shape,
@@ -18,20 +22,20 @@ CREATE MATERIALIZED VIEW geoserver.shapes_with_routes AS
 			agency.agency_id,
 			agency.agency_name,
 			agency.agency_url
-		FROM api.shapes_aggregated shapes
-		JOIN api.trips ON shapes.shape_id = trips.shape_id
-		JOIN api.routes ON trips.route_id = routes.route_id
-		JOIN api.agency ON routes.agency_id = agency.agency_id
+		FROM :gtfs_schema.shapes_aggregated shapes
+		JOIN :gtfs_schema.trips ON shapes.shape_id = trips.shape_id
+		JOIN :gtfs_schema.routes ON trips.route_id = routes.route_id
+		JOIN :gtfs_schema.agency ON routes.agency_id = agency.agency_id
 		WHERE route_short_name NOT LIKE '%SEV%'
 	) t
 	GROUP BY shape_id, route_type, agency_id, agency_name, agency_url;
 
 -- allow filtering via Geoserver's CQL
 -- todo: solve properly in gtfs-via-postgres, for all enums
-DROP CAST IF EXISTS (api.route_type_val AS text);
-CREATE CAST (api.route_type_val AS text) WITH INOUT AS ASSIGNMENT;
+DROP CAST IF EXISTS (:gtfs_schema.route_type_val AS text);
+CREATE CAST (:gtfs_schema.route_type_val AS text) WITH INOUT AS ASSIGNMENT;
 
 -- todo: primary/unique key?
 CREATE INDEX shapes_with_routes_shape_idx
-  ON geoserver.shapes_with_routes
+  ON :geoserver_schema.shapes_with_routes
   USING GIST (shape);
