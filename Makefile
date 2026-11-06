@@ -121,18 +121,18 @@ prepare-geoserver-workspace-for-commit:
 
 .PHONY: import-new-gtfs
 import-new-gtfs: init
-	$(DOCKER_COMPOSE) build gtfs-importer
-	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
+	$(DOCKER_COMPOSE) build main-gtfs-importer
+	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm main-gtfs-importer
 	# > To reload the configuration via signal, send a SIGUSR2 signal to the server process.
 	# Note: We assume here that the PostgREST process is the container's root/only process.
-	$(DOCKER_COMPOSE) --profile import-new-gtfs kill --signal USR2 gtfs-api
+	$(DOCKER_COMPOSE) --profile import-new-gtfs kill --signal USR2 main-gtfs-api
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:
 	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE="$$POSTGRES_DB" psql'
 
-.PHONY: gtfs-db-latest-import
-gtfs-db-latest-import:
+.PHONY: main-gtfs-latest-import
+main-gtfs-latest-import:
 	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE="$$POSTGRES_DB" psql -b -t --csv -c "SELECT extract(epoch FROM main_gtfs.gtfs_data_imported_at())::INT || '\''_'\'' || main_gtfs.gtfs_feed_digest()"'
 
 
