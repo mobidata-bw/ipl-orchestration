@@ -1,4 +1,4 @@
-\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\getenv gtfs_schema_raw GTFS_IMPORTER_FINAL_DB_SCHEMA
 \set gtfs_schema_escaped '\'' :gtfs_schema_raw '\''
 
 UPDATE postgrest.config
