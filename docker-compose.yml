@@ -419,6 +419,7 @@ services:
       - IPL_GTFS_DB_POSTGRES_DB=${IPL_GTFS_DB_POSTGRES_DB:?missing/empty}
       # This assumes that our Docker network is called `ipl`, as defined in this file.
       - IPL_GTFS_IMPORTER_NETWORK=${COMPOSE_PROJECT_NAME:?missing/empty}_ipl
+      # main GTFS
       - IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
       - IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
       - IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA=${IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
@@ -433,6 +434,21 @@ services:
       # Required to mount volumes for docker-in-docker executions
       - IPL_MAIN_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
       - IPL_MAIN_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
+      # Amarillo GTFS
+      - IPL_AMARILLO_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
+      - IPL_AMARILLO_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
+      - IPL_AMARILLO_GTFS_DB_POSTGRES_SCHEMA=${IPL_AMARILLO_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
+      - IPL_AMARILLO_GTFS_IMPORTER_CURL_MIRROR_ADDITIONAL_ARGS
+      - IPL_AMARILLO_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME
+      - IPL_AMARILLO_GTFS_IMPORTER_EXTRA_HOST_IP
+      - IPL_AMARILLO_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT=${IPL_AMARILLO_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}
+      - IPL_AMARILLO_GTFS_IMPORTER_GTFS_TO_SQL_ADDITIONAL_ARGS
+      # - IPL_AMARILLO_GTFS_DB_POSTGREST_USER
+      # - IPL_AMARILLO_GTFS_DB_POSTGREST_PASSWORD
+      # - IPL_AMARILLO_GTFS_API_COST_LIMIT
+      # Required to mount volumes for docker-in-docker executions
+      - IPL_AMARILLO_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR=${PWD}/etc/gtfs/
+      - IPL_AMARILLO_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR=${PWD}/var/gtfs/
 
       # directory where datasets should stored for publishing (Note: should be mounted as volume)
       - WWW_ROOT_DIR=/var/www/
@@ -530,7 +546,7 @@ services:
         condition: service_started
     restart: unless-stopped
 
-  # This service stores GTFS data imported by main-gtfs-importer.
+  # This service stores GTFS data imported by main-gtfs-importer & amarillo-gtfs-importer.
   gtfs-db:
     networks: [ipl]
     image: ${IPL_GTFS_DB_IMAGE}
@@ -704,11 +720,13 @@ services:
       GTFS_IMPORTER_SCHEMA: ${IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
       GTFS_DOWNLOAD_URL: ${IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty}
       GTFS_DOWNLOAD_USER_AGENT: ${IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
+      CURL_MIRROR_ADDITIONAL_ARGS: ${IPL_MAIN_GTFS_IMPORTER_CURL_MIRROR_ADDITIONAL_ARGS:-}
       GTFS_TMP_DIR: /var/gtfs
       POSTGREST_USER: ${IPL_MAIN_GTFS_DB_POSTGREST_USER:?missing/empty}
       POSTGREST_PASSWORD: ${IPL_MAIN_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
       POSTGREST_STATEMENT_COST_LIMIT: ${IPL_MAIN_GTFS_API_COST_LIMIT:?missing/empty}
       GTFSTIDY_BEFORE_IMPORT: '${IPL_MAIN_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}'
+      GTFS_TO_SQL_ADDITIONAL_ARGS: ${IPL_MAIN_GTFS_IMPORTER_GTFS_TO_SQL_ADDITIONAL_ARGS:-}
 
   main-gtfs-api-docs:
     networks: [ipl]
@@ -736,6 +754,41 @@ services:
       - "traefik.http.routers.main-gtfs-api-docs.rule=PathPrefix(`/docs/gtfs`)"
       - "traefik.http.services.main-gtfs-api-docs.loadbalancer.server.port=8080"
     restart: unless-stopped
+
+  amarillo-gtfs-importer:
+    networks: [ipl]
+    # Although, in production, the periodic GTFS import is launched as non-Compose Docker container via Dagster (dagster-* services), we also define a Compose service for imports triggered by other sources e.g. Ansible.
+    image: ${IPL_GTFS_IMPORTER_IMAGE:?missing/empty}
+    profiles:
+      - import-new-gtfs
+    depends_on:
+      gtfs-db:
+        condition: service_healthy
+    links:
+      - gtfs-db
+    volumes:
+      - ./var/gtfs:/var/gtfs
+      - ./etc/gtfs:/etc/gtfs
+      # mount modified download script
+      - ./etc/gtfs/download.sh:/importer/download.sh
+    extra_hosts:
+      - "${IPL_AMARILLO_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME:?missing/empty}=${IPL_AMARILLO_GTFS_IMPORTER_EXTRA_HOST_IP:?missing/empty}"
+    environment:
+      PGHOST: gtfs-db
+      PGPORT: 5432
+      PGUSER: ${IPL_GTFS_DB_POSTGRES_USER:?missing/empty}
+      PGPASSWORD: ${IPL_GTFS_DB_POSTGRES_PASSWORD:?missing/empty}
+      PGDATABASE: ${IPL_GTFS_DB_POSTGRES_DB:?missing/empty}
+      GTFS_IMPORTER_SCHEMA: ${IPL_AMARILLO_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
+      GTFS_DOWNLOAD_URL: ${IPL_AMARILLO_GTFS_IMPORTER_GTFS_DOWNLOAD_URL:?missing/empty}
+      GTFS_DOWNLOAD_USER_AGENT: ${IPL_AMARILLO_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT:?missing/empty}
+      CURL_MIRROR_ADDITIONAL_ARGS: ${IPL_AMARILLO_GTFS_IMPORTER_CURL_MIRROR_ADDITIONAL_ARGS:-}
+      GTFS_TMP_DIR: /var/gtfs
+      # POSTGREST_USER: ${IPL_AMARILLO_GTFS_DB_POSTGREST_USER:?missing/empty}
+      # POSTGREST_PASSWORD: ${IPL_AMARILLO_GTFS_DB_POSTGREST_PASSWORD:?missing/empty}
+      # POSTGREST_STATEMENT_COST_LIMIT: ${IPL_AMARILLO_GTFS_API_COST_LIMIT:?missing/empty}
+      GTFSTIDY_BEFORE_IMPORT: '${IPL_AMARILLO_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}'
+      GTFS_TO_SQL_ADDITIONAL_ARGS: ${IPL_AMARILLO_GTFS_IMPORTER_GTFS_TO_SQL_ADDITIONAL_ARGS:-}
 
   rabbitmq:
     networks: [ipl]

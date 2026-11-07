@@ -40,6 +40,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     - `$IPL_GTFS_API_DOCS_PUBLIC_HOST` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_HOST`
     - `$IPL_GTFS_API_DOCS_PUBLIC_PORT` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_PORT`
   - Note that the `main-gtfs-api`'s public HTTP path stays `/gtfs`.
+- ⚠️ add [Amarillo](https://amarillo.mobidata-bw.de) GTFS import – This is a breaking change because `ipl-orchestration` now expects that it can download & import the Amarillo GTFS, for which you need to add your API Token via `$IPL_AMARILLO_GTFS_IMPORTER_CURL_MIRROR_ADDITIONAL_ARGS` in `.env.local` (`.env` demonstrates its usage). Alternatively, you can disable the automatic Amarillo GTFS import.
 
 ## 2026-11-10
 
