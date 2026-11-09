@@ -29,10 +29,23 @@ CREATE MATERIALIZED VIEW geoserver.stations_with_served_routes AS
 				route_type,
 				-- todo: in case the feed uses extended route_types, these need to be handled here also
 				case
-					when route_type::int = 0 then '20000'
-					when route_type::int = 2 then '10002'
-					when route_type::int between 3 and 9 then '3000' || route_type::int
-					else '9000' || route_type::int
+					when route_type::int between 100 and 117 then '1000100' -- Railway Service: render_prio = 100, prio_route_type = 100
+					when route_type::int between 200 and 209 then '5000200' -- Coach Service: render_prio = 500, prio_route_type = 200
+					when route_type::int between 400 and 405 then '2000400' -- Urban Railway Service: render_prio = 200, prio_route_type = 400
+					when route_type::int between 700 and 716 then '4000700' -- Bus Service: render_prio = 400, prio_route_type = 700
+					when route_type::int = 800 then '4000800' -- Trolleybus Service: render_prio = 400, prio_route_type = 800
+					when route_type::int between 900 and 906 then '3000900' -- Tram Service: render_prio = 300, prio_route_type = 900
+					when route_type::int = 1000 then '7001000' -- Water Transport: render_prio = 700, prio_route_type = 1000
+					when route_type::int = 1200 then '7001200' -- Ferry Service: render_prio = 700, prio_route_type = 1200
+					when route_type::int between 1300 and 1307 then '8001300' -- Aerial Lift Service: render_prio = 800, prio_route_type = 1300
+					when route_type::int = 1400 then '8001400' -- Funicular Service: render_prio = 800, prio_route_type = 1400
+					when route_type::int between 1500 and 1507 then '6001500' -- Taxi Service: render_prio = 600, prio_route_type = 1500
+					when route_type::int = 1700 then '9001700' -- Miscellaneous Service: render_prio = 900, prio_route_type = 1700
+					when route_type::int < 11 then '1000000' || route_type::int -- Irregular route types below 100: render_prio = 1000, prio_route_type = 0 - 7
+					when route_type::int between 11 and 12 then '100000' || route_type::int -- Irregular route types below 100: render_prio = 1000, prio_route_type = 11 - 12
+					--- Air Service (1100) -> 10001100: render_prio = 1000, prio_route_type = 1100
+					--- Horse-drawn Carriage (1702) -> 10001702: render_prio = 1000, prio_route_type = 1702
+					else '1000' || route_type::int	
 				end prio_encoded_route_type,
 				array_agg(DISTINCT route_name) AS route_names
 			FROM (
