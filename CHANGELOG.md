@@ -6,11 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## 2026-11-10
+
 - ⚠️ `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5eb757b2fac4d15e458ecec96f7edd9101b5efeefb16138b93e9f975075d8825))
   - Although `atmoz/sftp`'s default configuration, which this project relias on, *does not* allow `root` login, this update patches the ["\*sshole" vulnerability](https://sshole.com) ([1](https://pkgs.alpinelinux.org/package/v3.24/main/x86_64/openssh), [2](https://gitlab.alpinelinux.org/alpine/aports/-/commit/384e25e6bd1f2e7b30095900e48b570d46953510)).
 - [ipl-proxy 2026-11-06T06-33](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-11-06): reactivate nextbike_vehicle_availabilities for nextbike_kk
-- Lamassu:
-  - ⚠️ remove `ford_carsharing_autohausboelz`
+- ⚠️ Lamassu: remove `ford_carsharing_autohausboelz` feed
 - [ipl dagster pipeline 2026-11-10](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-11-10). This includes an update to dagster v1.13.29 and addition of a new dataset `traffic/roadworks/roadworks_and_events_bw.geoparquet`.
 
 ## 2026-11-03
@@ -23,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## 2026-10-29
 
 - Lamassu:
-  - ⚠️ remove `ford_carsharing_autohauskauderer`
+  - ⚠️ remove `ford_carsharing_autohauskauderer` feed
   - Bump to [2026-10-29T09-22 release](https://github.com/entur/lamassu/blob/55385f383f674fefbc0d8996e108d79e988f7dfd/Changelog.md?#130-under-development). This includes e.g.:
     - Add top-level systems query to GraphQL API [#902](https://github.com/entur/lamassu/pull/902)
     - ⚠️ fix: use patched Liberica JRE base image to distrust compromised eMudhra roots [#920](https://github.com/entur/lamassu/pull/920)
