@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - [ipl-proxy 2026-11-06T06-33](https://github.com/mobidata-bw/ipl-proxy/blob/main/CHANGELOG.md#2026-11-06): reactivate nextbike_vehicle_availabilities for nextbike_kk
 - Lamassu:
   - ⚠️ remove `ford_carsharing_autohausboelz`
+- [ipl dagster pipeline 2026-11-10](https://github.com/mobidata-bw/ipl-dagster-pipeline/blob/main/CHANGELOG.md#2026-11-10). This includes an update to dagster v1.13.29 and addition of a new dataset `traffic/roadworks/roadworks_and_events_bw.geoparquet`.
 
 ## 2026-11-03
 
