@@ -23,6 +23,8 @@ run_storage:
   class: PostgresRunStorage
   config:
     postgres_db:
+      # Need to fix psycopg2 for now, see https://github.com/dagster-io/dagster/issues/34232
+      scheme: postgresql+psycopg2
       hostname:
         env: PGHOST
       username:
@@ -39,6 +41,8 @@ schedule_storage:
   class: PostgresScheduleStorage
   config:
     postgres_db:
+      # Need to fix psycopg2 for now, see https://github.com/dagster-io/dagster/issues/34232
+      scheme: postgresql+psycopg2
       hostname:
         env: PGHOST
       username:
@@ -55,6 +59,8 @@ event_log_storage:
   class: PostgresEventLogStorage
   config:
     postgres_db:
+      # Need to fix psycopg2 for now, see https://github.com/dagster-io/dagster/issues/34232
+      scheme: postgresql+psycopg2
       hostname:
         env: PGHOST
       username:
