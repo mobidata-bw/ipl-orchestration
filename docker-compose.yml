@@ -447,6 +447,7 @@ services:
       - IPL_WEBCAM_WORKER=${WEBCAM_WORKER:?missing/empty}
       - IPL_WEBCAM_IMAGE_PATH=/var/webcam
       - IPL_WEBCAM_SYMLINK_PATH=/var/webcam/overview
+      - GEOPARQUET_TEMP_DIR=${PWD}/var/dagster/tmp/
     volumes:
       # Make docker API accessible so we can start containers in jobs
       - /var/run/docker.sock:/var/run/docker.sock
