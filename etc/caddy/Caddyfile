@@ -13,6 +13,10 @@ http://:80 {
     root * /var/www/datasets
   }
   # Webcam
+  # Relative redirect target, so that it also works behind a path prefix (e.g. /karten/ipl/webcam).
+  handle /webcam {
+    redir webcam/ permanent
+  }
   handle_path /webcam/* {
     root * /var/www/webcam
     file_server browse
