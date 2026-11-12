@@ -9,81 +9,182 @@
       <Title>MobiData BW® - ÖPNV-Linien</Title>
       <FeatureTypeStyle>
         <Rule>
-          <Title>Straßen-, Stadt und U-Bahn-Linien</Title>
+          <Title>Zugverkehr</Title>
           <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
+            <ogc:PropertyIsBetween>
               <ogc:PropertyName>route_type</ogc:PropertyName>
-              <ogc:Literal>0</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
+              <ogc:LowerBoundary>
+                <ogc:Literal>100</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>117</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
           </ogc:Filter>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#0065B0</CssParameter>
+              <CssParameter name="stroke">#D52730</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <Title>Buslinie</Title>
+          <Title>Stadtbahn</Title>
           <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
+            <ogc:PropertyIsBetween>
               <ogc:PropertyName>route_type</ogc:PropertyName>
-              <ogc:Literal>3</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
+              <ogc:LowerBoundary>
+                <ogc:Literal>400</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>405</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
           </ogc:Filter>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#A7007E</CssParameter>
+              <CssParameter name="stroke">#005A9C</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <Title>Bahnlinie</Title>
+          <Title>Straßenbahnverkehr</Title>
           <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
+            <ogc:PropertyIsBetween>
               <ogc:PropertyName>route_type</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
+              <ogc:LowerBoundary>
+                <ogc:Literal>900</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>906</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
           </ogc:Filter>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#666666</CssParameter>
+              <CssParameter name="stroke">#D48300</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <Title>Fährlinie</Title>
+          <Title>Busverkehre</Title>
           <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>route_type</ogc:PropertyName>
-              <ogc:Literal>4</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
+            <ogc:Or>
+              <ogc:PropertyIsBetween>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:LowerBoundary>
+                  <ogc:Literal>700</ogc:Literal>
+                </ogc:LowerBoundary>
+                <ogc:UpperBoundary>
+                  <ogc:Literal>716</ogc:Literal>
+                </ogc:UpperBoundary>
+              </ogc:PropertyIsBetween>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:Literal>800</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsBetween>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:LowerBoundary>
+                  <ogc:Literal>200</ogc:Literal>
+                </ogc:LowerBoundary>
+                <ogc:UpperBoundary>
+                  <ogc:Literal>209</ogc:Literal>
+                </ogc:UpperBoundary>
+              </ogc:PropertyIsBetween>
+            </ogc:Or>
           </ogc:Filter>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#FF7F24</CssParameter>
+              <CssParameter name="stroke">#8062A6</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <Title>Seilbahnlinie</Title>
+          <Title>Wassertransport und Fährbetrieb</Title>
           <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>route_type</ogc:PropertyName>
-              <ogc:Literal>7</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
+            <ogc:Or>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:Literal>1000</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:Literal>1200</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:Or>
           </ogc:Filter>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#FF0000</CssParameter>
+              <CssParameter name="stroke">#007F83</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
         <Rule>
-          <Title>Andere Linie</Title>
-          <ElseFilter />
+          <Title>Seilbahn</Title>
+          <ogc:Filter>
+            <ogc:Or>
+              <ogc:PropertyIsBetween>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:LowerBoundary>
+                  <ogc:Literal>1300</ogc:Literal>
+                </ogc:LowerBoundary>
+                <ogc:UpperBoundary>
+                  <ogc:Literal>1307</ogc:Literal>
+                </ogc:UpperBoundary>
+              </ogc:PropertyIsBetween>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:Literal>1400</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+            </ogc:Or>
+          </ogc:Filter>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#508137</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Taxi</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsBetween>
+              <ogc:PropertyName>route_type</ogc:PropertyName>
+              <ogc:LowerBoundary>
+                <ogc:Literal>1500</ogc:Literal>
+              </ogc:LowerBoundary>
+              <ogc:UpperBoundary>
+                <ogc:Literal>1507</ogc:Literal>
+              </ogc:UpperBoundary>
+            </ogc:PropertyIsBetween>
+          </ogc:Filter>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#98734F</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Sonstige Verkehre</Title>
+          <ogc:Filter>
+            <ogc:Or>           
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:Literal>1700</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsBetween>
+                <ogc:PropertyName>route_type</ogc:PropertyName>
+                <ogc:LowerBoundary>
+                  <ogc:Literal>0</ogc:Literal>
+                </ogc:LowerBoundary>
+                <ogc:UpperBoundary>
+                  <ogc:Literal>12</ogc:Literal>
+                </ogc:UpperBoundary>
+              </ogc:PropertyIsBetween>
+            </ogc:Or>
+          </ogc:Filter>
           <LineSymbolizer>
             <Stroke> 
-              <CssParameter name="stroke">#cacaca</CssParameter> 
+              <CssParameter name="stroke">#6D7076</CssParameter> 
             </Stroke>    
           </LineSymbolizer>
         </Rule>
