@@ -121,19 +121,22 @@ prepare-geoserver-workspace-for-commit:
 
 .PHONY: import-new-gtfs
 import-new-gtfs: init
-	$(DOCKER_COMPOSE) build gtfs-importer
-	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm gtfs-importer
-	# make sure pgbouncer is running
-	$(DOCKER_COMPOSE) --profile import-new-gtfs up --detach --wait --wait-timeout 30 pgbouncer
-	$(DOCKER_COMPOSE) --profile import-new-gtfs exec pgbouncer /reload-pgbouncer-databases.sh
+	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm main-gtfs-importer
+	# > To reload the configuration via signal, send a SIGUSR2 signal to the server process.
+	# Note: We assume here that the PostgREST process is the container's root/only process.
+	$(DOCKER_COMPOSE) --profile import-new-gtfs kill --signal USR2 main-gtfs-api
+	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm amarillo-gtfs-importer
 
 .PHONY: gtfs-db-psql
 gtfs-db-psql:
-	$(DOCKER_COMPOSE) exec -e PGDATABASE gtfs-db /bin/sh -c 'export PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD"; env PGDATABASE="$$(psql gtfs_importer -b -t --csv -c "SELECT db_name FROM latest_successful_imports ORDER BY imported_at DESC LIMIT 1" | xargs)" psql'
+	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE="$$POSTGRES_DB" psql'
 
-.PHONY: gtfs-db-latest-import
-gtfs-db-latest-import:
-	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE=gtfs_importer psql -b -t --csv -c "SELECT db_name FROM latest_successful_imports ORDER BY imported_at DESC LIMIT 1"'
+.PHONY: main-gtfs-latest-import
+main-gtfs-latest-import:
+	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE="$$POSTGRES_DB" psql -b -t --csv -c "SELECT extract(epoch FROM main_gtfs.gtfs_data_imported_at())::INT || '\''_'\'' || main_gtfs.gtfs_feed_digest()"'
+.PHONY: amarillo-gtfs-latest-import
+amarillo-gtfs-latest-import:
+	$(DOCKER_COMPOSE) exec gtfs-db /bin/sh -c 'env PGUSER="$$POSTGRES_USER" PGPASSWORD="$$POSTGRES_PASSWORD" PGDATABASE="$$POSTGRES_DB" psql -b -t --csv -c "SELECT extract(epoch FROM amarillo_gtfs.gtfs_data_imported_at())::INT || '\''_'\'' || main_gtfs.gtfs_feed_digest()"'
 
 
 

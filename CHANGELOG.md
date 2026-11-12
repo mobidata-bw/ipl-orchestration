@@ -6,6 +6,42 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### GTFS import changes
+
+- ⚠️ upgrade `gtfs_importer` to [`postgis-gtfs-importer#v8`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [v8](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/v8), which switches [from a one-database-per-import-based import to a schema-based import](https://github.com/mobidata-bw/postgis-gtfs-importer/pull/41). Migrate as follows:
+  1. *Before upgrading to the new `ipl-orchestration` release*,
+    - stop all GTFS-related Compose services using `make docker-down SERVICE='gtfs-db gtfs-importer gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`;
+    - delete `gtfs-db`'s data by running `rm -rf var/gtfs/gtfs-db`.
+  2. Upgrade to the new `ipl-orchestration` release.
+  3. Start the (renamed) services again using `make docker-up-detached SERVICE='gtfs-db gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`.
+  4. Run a GTFS import, either via `make import-new-gtfs` or by materializing the `gtfs` Dagster asset.
+- ⚠️ `gtfs-importer`/`gtfs-api`/`gtfs-api-docs`: To prepare for a second GTFS dataset (Amarillo GTFS, see below),
+  - these services have been renamed to include "main":
+    - `gtfs-api` -> `main-gtfs-api`
+    - `gtfs-api-docs` -> `main-gtfs-api-docs`
+    - `gtfs-importer` -> `main-gtfs-importer`
+  - all relevant Compose/environment variables have been renamed to include `MAIN_`, so make sure to adapt your `.env.local`:
+    - `$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_URL` -> `$IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_URL`
+    - `$IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT` -> `$IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT`
+    - `$IPL_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME` -> `$IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME`
+    - `$IPL_GTFS_IMPORTER_EXTRA_HOST_IP` -> `$IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_IP`
+    - `$IPL_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT` -> `$IPL_MAIN_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT`
+    - `$IPL_GTFS_DB_POSTGRES_SCHEMA` -> `$IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA`
+    - `$IPL_GTFS_DB_POSTGREST_USER` -> `$IPL_MAIN_GTFS_DB_POSTGREST_USER`
+    - `$IPL_GTFS_DB_POSTGREST_PASSWORD` -> `$IPL_MAIN_GTFS_DB_POSTGREST_PASSWORD`
+    - `$IPL_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR` -> `$IPL_MAIN_GTFS_IMPORTER_HOST_CUSTOM_SCRIPTS_DIR`
+    - `$IPL_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR` -> `$IPL_MAIN_GTFS_IMPORTER_HOST_GTFS_OUTPUT_DIR`
+    - `$IPL_GTFS_API_COST_LIMIT` -> `$IPL_MAIN_GTFS_API_COST_LIMIT`
+    - `$IPL_GTFS_API_IMAGE` -> `$IPL_MAIN_GTFS_API_IMAGE`
+    - `$IPL_GTFS_API_PORT` -> `$IPL_MAIN_GTFS_API_PORT`
+    - `$IPL_GTFS_API_ADMIN_PORT` -> `$IPL_MAIN_GTFS_API_ADMIN_PORT`
+    - `$IPL_GTFS_API_PUBLIC_BASE_URL` -> `$IPL_MAIN_GTFS_API_PUBLIC_BASE_URL`
+    - `$IPL_GTFS_API_MAX_ROWS` -> `$IPL_MAIN_GTFS_API_MAX_ROWS`
+    - `$IPL_GTFS_API_DOCS_PUBLIC_HOST` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_HOST`
+    - `$IPL_GTFS_API_DOCS_PUBLIC_PORT` -> `$IPL_MAIN_GTFS_API_DOCS_PUBLIC_PORT`
+  - Note that the `main-gtfs-api`'s public HTTP path stays `/gtfs`.
+- ⚠️ add [Amarillo](https://amarillo.mobidata-bw.de) GTFS import – This is a breaking change because `ipl-orchestration` now expects that it can download & import the Amarillo GTFS, for which you need to add your API Token via `$IPL_AMARILLO_GTFS_IMPORTER_CURL_MIRROR_ADDITIONAL_ARGS` in `.env.local` (`.env` demonstrates its usage). Alternatively, you can disable the automatic Amarillo GTFS import.
+
 ## 2026-11-10
 
 - ⚠️ `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5eb757b2fac4d15e458ecec96f7edd9101b5efeefb16138b93e9f975075d8825))
