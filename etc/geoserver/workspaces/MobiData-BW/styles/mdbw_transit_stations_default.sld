@@ -9,11 +9,11 @@
       <Title>MobiData BW® - Bahnhöfe und Haltestellen</Title>
       <FeatureTypeStyle>
         <Rule>
-          <Title>Straßen-, Stadt und U-Bahn-Haltestelle</Title>
+          <Title>Zugverkehr</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>prio_route_type</ogc:PropertyName>
-              <ogc:Literal>0</ogc:Literal>
+              <ogc:Literal>100</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -21,7 +21,7 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#0065B0</CssParameter>
+                  <CssParameter name="fill">#D52730</CssParameter>
                 </Fill>
                 <Stroke>
                   <CssParameter name="stroke">#000000</CssParameter>
@@ -33,11 +33,11 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Bus-Haltestelle</Title>
+          <Title>Stadtbahn</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>prio_route_type</ogc:PropertyName>
-              <ogc:Literal>3</ogc:Literal>
+              <ogc:Literal>400</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -45,7 +45,7 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#D9C022</CssParameter>
+                  <CssParameter name="fill">#005A9C</CssParameter>
                 </Fill>
                 <Stroke>
                   <CssParameter name="stroke">#000000</CssParameter>
@@ -57,11 +57,11 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Bahnhof</Title>
+          <Title>Straßenbahnverkehr</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>prio_route_type</ogc:PropertyName>
-              <ogc:Literal>2</ogc:Literal>
+              <ogc:Literal>900</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -69,7 +69,7 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#E4010B</CssParameter>
+                  <CssParameter name="fill">#D48300</CssParameter>
                 </Fill>
                 <Stroke>
                   <CssParameter name="stroke">#000000</CssParameter>
@@ -81,11 +81,11 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Fähranleger</Title>
+          <Title>Busverkehr</Title>
           <ogc:Filter>
             <ogc:PropertyIsEqualTo>
               <ogc:PropertyName>prio_route_type</ogc:PropertyName>
-              <ogc:Literal>4</ogc:Literal>
+              <ogc:Literal>700</ogc:Literal>
             </ogc:PropertyIsEqualTo>
           </ogc:Filter>
           <PointSymbolizer>
@@ -93,7 +93,7 @@
               <Mark>
                 <WellKnownName>circle</WellKnownName>
                 <Fill>
-                  <CssParameter name="fill">#FF7F24</CssParameter>
+                  <CssParameter name="fill">#8062A6</CssParameter>
                 </Fill>
                 <Stroke>
                   <CssParameter name="stroke">#000000</CssParameter>
@@ -105,7 +105,103 @@
           </PointSymbolizer>
         </Rule>
         <Rule>
-          <Title>Andere</Title>
+          <Title>Reisebusverkehr</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
+              <ogc:Literal>200</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#8062A6</CssParameter>
+                </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
+              </Mark>
+              <Size>8</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Taxi</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
+              <ogc:Literal>1500</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#98734F</CssParameter>
+                </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
+              </Mark>
+              <Size>8</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Wassertransport</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
+              <ogc:Literal>1000</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#007F83</CssParameter>
+                </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
+              </Mark>
+              <Size>8</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Seilbahn</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>prio_route_type</ogc:PropertyName>
+              <ogc:Literal>1300</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PointSymbolizer>
+            <Graphic>
+              <Mark>
+                <WellKnownName>circle</WellKnownName>
+                <Fill>
+                  <CssParameter name="fill">#508137</CssParameter>
+                </Fill>
+                <Stroke>
+                  <CssParameter name="stroke">#000000</CssParameter>
+                  <CssParameter name="stroke-width">0.5</CssParameter>
+                </Stroke>
+              </Mark>
+              <Size>8</Size>
+            </Graphic>
+          </PointSymbolizer>
+        </Rule>
+        <Rule>
+          <Title>Verschiedene Verkehre</Title>
           <ElseFilter />
           <PointSymbolizer>
             <Graphic>
