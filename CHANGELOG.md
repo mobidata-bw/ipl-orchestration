@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 - `caddy`: upgrade [`caddy`](https://hub.docker.com/_/caddy) to [`2.11.9-alpine`](https://hub.docker.com/layers/library/caddy/2.11.9-alpine/images/sha256-fc9cbc100585871d18d4e451cca7021785c90a7006087427ae5ceb3e4efe6424) ([v2.11.5 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.5), [v2.11.6 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.6), [v2.11.7 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.7), [v2.11.8 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.8), [v2.11.9 release](https://github.com/caddyserver/caddy/releases/tag/v2.11.9)) – These upgrades contain several security fixes!
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.7.9`](https://hub.docker.com/layers/library/traefik/v3.7.19/images/sha256-44b61e76a251fe586d17d881fc900452d0a7b4a4b08c97ce6eac86d45b4c8b9d) ([v3.7.14-v3.7.19 changelog](https://github.com/traefik/traefik/blob/v3.7.19/CHANGELOG.md)) – These upgrades contain several security fixes!
 
 ## 2026-11-17
 
