@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### GTFS import changes
+
+- ⚠️ upgrade `gtfs_importer` to [`postgis-gtfs-importer#v8`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [v8](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/v8), which switches [from a one-database-per-import-based import to a schema-based import](https://github.com/mobidata-bw/postgis-gtfs-importer/pull/41). Migrate as follows:
+  1. *Before upgrading to the new `ipl-orchestration` release*,
+    - stop all GTFS-related Compose services using `make docker-down SERVICE='gtfs-db gtfs-importer gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`;
+    - delete `gtfs-db`'s data by running `rm -rf var/gtfs/gtfs-db`.
+  2. Upgrade to the new `ipl-orchestration` release.
+  3. Start the (renamed) services again using `make docker-up-detached SERVICE='gtfs-db gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`.
+  4. Run a GTFS import, either via `make import-new-gtfs` or by materializing the `gtfs` Dagster asset.
+
 ## 2026-11-10
 
 - ⚠️ `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5eb757b2fac4d15e458ecec96f7edd9101b5efeefb16138b93e9f975075d8825))
