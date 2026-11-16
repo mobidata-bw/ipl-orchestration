@@ -121,10 +121,10 @@ prepare-geoserver-workspace-for-commit:
 
 .PHONY: import-new-gtfs
 import-new-gtfs: init
-	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm main-gtfs-importer
-	# > To reload the configuration via signal, send a SIGUSR2 signal to the server process.
-	# Note: We assume here that the PostgREST process is the container's root/only process.
-	$(DOCKER_COMPOSE) --profile import-new-gtfs kill --signal USR2 main-gtfs-api
+# 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm main-gtfs-importer
+# 	# > To reload the configuration via signal, send a SIGUSR2 signal to the server process.
+# 	# Note: We assume here that the PostgREST process is the container's root/only process.
+# 	$(DOCKER_COMPOSE) --profile import-new-gtfs kill --signal USR2 main-gtfs-api
 	$(DOCKER_COMPOSE) --profile import-new-gtfs run --rm amarillo-gtfs-importer
 
 .PHONY: gtfs-db-psql

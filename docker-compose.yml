@@ -428,9 +428,11 @@ services:
       - IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_URL
       - IPL_MAIN_GTFS_IMPORTER_GTFS_DOWNLOAD_USER_AGENT
       - IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA=${IPL_MAIN_GTFS_DB_POSTGRES_SCHEMA:?missing/empty}
+      # todo: add args?
       - IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_HOSTNAME
       - IPL_MAIN_GTFS_IMPORTER_EXTRA_HOST_IP
       - IPL_MAIN_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT=${IPL_MAIN_GTFS_IMPORTER_GTFSTIDY_BEFORE_IMPORT:?missing/empty}
+      # todo: add args?
       - IPL_MAIN_GTFS_DB_POSTGREST_USER
       - IPL_MAIN_GTFS_DB_POSTGREST_PASSWORD
       - IPL_MAIN_GTFS_API_COST_LIMIT
@@ -488,6 +490,8 @@ services:
       - ./var/webcam:/var/webcam
       # Mount files folder, which contains e.g. download certificates
       - ./etc/dagster/files/:/opt/dagster/app/files/:ro
+      # todo: just for debugging, remove
+      - ../ipl-dagster-pipeline/pipeline:/opt/dagster/app/pipeline
     depends_on:
         pgbouncer:
           condition: service_healthy
@@ -552,6 +556,7 @@ services:
     restart: unless-stopped
 
   # This service stores GTFS data imported by main-gtfs-importer & amarillo-gtfs-importer.
+  # todo: merge with `ipl-db`?
   gtfs-db:
     networks: [ipl]
     image: ${IPL_GTFS_DB_IMAGE}
@@ -562,7 +567,7 @@ services:
       - ./var/gtfs/gtfs-db:/var/lib/postgresql
       # picked up by default
       # Note: We must not mount the entire directory at `/docker-entrypoint-initdb.d` because it would "shadow" the init script `/docker-entrypoint-initdb.d/10_postgis.sh` contained in the image.
-      # todo: move into postgis-with-pg-plan-filter image?
+      # todo: move into postgis-with-pg-plan-filter image – do this!
       - ./etc/gtfs/gtfs-db/initdb.d/20_postgis_geography_to_json.sql:/docker-entrypoint-initdb.d/20_postgis_geography_to_json.sql
       - ./etc/gtfs/gtfs-db/initdb.d/30_postgrest_read_dynamic_config.sql:/docker-entrypoint-initdb.d/30_postgrest_read_dynamic_config.sql
       # picked up via $POSTGRES_INITDB_ARGS
