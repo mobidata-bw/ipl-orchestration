@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 - OCPDB: add datex2_smatrics
+- GeoServer: introduce GTFS extended route types for GTFS layers
 
 ## 2026-11-10
 
