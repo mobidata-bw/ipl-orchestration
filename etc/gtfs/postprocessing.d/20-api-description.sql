@@ -1,4 +1,7 @@
-COMMENT ON SCHEMA "api" IS
+\getenv gtfs_schema_raw GTFS_IMPORTER_SCHEMA
+\set gtfs_schema '"' :gtfs_schema_raw '"'
+
+COMMENT ON SCHEMA :gtfs_schema IS
 $$REST-API für GTFS-Fahrplandaten
 
 Diese API ist Teil der [MobiData-BW-Integrationsplattform](https://dev-ipl.mobidata-bw.de/). Sie ermöglicht Abfragen zu Haltestellen & Stationen, Ankünften & Abfahrten, Routen/Linien samt Fahrplantagen & Linienverläufen.
