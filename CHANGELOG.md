@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- OCPDB: add datex2_smatrics
+
 ## 2026-11-10
 
 - ⚠️ `sftp`: upgrade [`atmoz/sftp`](https://hub.docker.com/r/atmoz/sftp) to the latest ([`alpine`](https://hub.docker.com/layers/atmoz/sftp/alpine/images/sha256-5eb757b2fac4d15e458ecec96f7edd9101b5efeefb16138b93e9f975075d8825))
