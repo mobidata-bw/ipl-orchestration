@@ -27,6 +27,13 @@ http://:80 {
     root * /var/www/ocpdb
   }
 
+  # Custom 429 body for the OCPDB bulk router, queried internally by Traefik's errors middleware
+  # (not routed publicly). Traefik keeps the original 429 status code.
+  handle /errors/ocpdb-bulk-429 {
+    header Content-Type "text/plain; charset=utf-8"
+    respond "{$OCPDB_BULK_RATE_LIMIT_MESSAGE}" 200
+  }
+
   # private gbfs feeds. Access restricted via traefik
   handle_path /gbfs/* {
     root * /var/www/gbfs
