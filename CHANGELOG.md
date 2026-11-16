@@ -8,6 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - OCPDB: add datex2_smatrics
 - GeoServer: introduce GTFS extended route types for GTFS layers
+- ⚠️ OCPDB: add rate limiting for bulk requests
+  - Bulk requests are requests to `/ocpdb/api/*` (except the key protected `/ocpdb/api/server/*`) with an `offset` parameter or with `limit` >= 500. Requests from internal clients (`10.0.0.0/8`) are not limited.
+  - Bulk requests are limited per client IP to 3 parallel requests (configurable via `OCPDB_BULK_INFLIGHT_PER_IP`) and to 60 requests per minute with a burst of 120 (configurable via `OCPDB_BULK_RATE_LIMIT_PER_MINUTE` and `OCPDB_BULK_RATE_LIMIT_BURST`).
+  - Overall, max. 24 parallel bulk requests are allowed (configurable via `OCPDB_BULK_INFLIGHT_GLOBAL`), so that there is always backend capacity left for small requests.
+  - Clients exceeding these limits get an HTTP `429` with an explanatory text (`OCPDB_BULK_RATE_LIMIT_MESSAGE`). **Clients fetching the full dataset have to fetch pages sequentially and must handle `429` responses with a retry after a delay.**
+  - OCPDB gunicorn now uses the `gthread` worker class with 4 threads per worker.
+
 
 ## 2026-11-10
 
