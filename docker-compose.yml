@@ -130,6 +130,9 @@ services:
     networks: [ipl]
     image: ${CADDY_IMAGE}
     restart: unless-stopped
+    environment:
+      # used by the Caddyfile for the custom OCPDB bulk 429 response body
+      OCPDB_BULK_RATE_LIMIT_MESSAGE: ${OCPDB_BULK_RATE_LIMIT_MESSAGE:?missing/empty}
     ports:
       # public:
       # - index page
@@ -161,12 +164,13 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.caddy.rule=Path(`/`) || PathPrefix(`/datasets`) || PathPrefix(`/.well-known/`) || Path(`/robots.txt`) || Path(`/favicon.ico`) || PathPrefix(`/ocpdb/images`)"
+      - "traefik.http.routers.caddy.middlewares=global-rate-limit@file"
       - "traefik.http.routers.caddy-webcam.rule=PathPrefix(`/webcam`)"
       - "traefik.http.services.caddy.loadbalancer.server.port=80"
-      - "traefik.http.routers.caddy-webcam.middlewares=caddy-webcam"
+      - "traefik.http.routers.caddy-webcam.middlewares=global-rate-limit@file,caddy-webcam"
       - "traefik.http.middlewares.caddy-webcam.basicauth.users=${WEBCAM_BASIC_AUTH:?missing/empty}"
       - "traefik.http.routers.caddy-gbfs.rule=PathPrefix(`/gbfs`)"
-      - "traefik.http.routers.caddy-gbfs.middlewares=caddy-gbfs"
+      - "traefik.http.routers.caddy-gbfs.middlewares=global-rate-limit@file,caddy-gbfs"
       - "traefik.http.middlewares.caddy-gbfs.basicauth.users=${GBFS_BASIC_AUTH:?missing/empty}"
 
   # This service requests non-standard sharing provider APIs and generates
@@ -237,7 +241,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.lamassu.rule=PathPrefix(`/sharing`)"
-      - "traefik.http.routers.lamassu.middlewares=sharing-stripprefix"
+      - "traefik.http.routers.lamassu.middlewares=global-rate-limit@file,sharing-stripprefix"
       - "traefik.http.middlewares.sharing-stripprefix.stripprefix.prefixes=/sharing"
       - "traefik.http.services.lamassu.loadbalancer.server.port=8080"
       # Note: /admin is shifted to the management port in application.properties'
@@ -310,6 +314,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"
+      - "traefik.http.routers.geoserver.middlewares=global-rate-limit@file"
       - "traefik.http.services.geoserver.loadbalancer.server.port=8080"
     ports:
       - ${GEOSERVER_PORT}:8080
@@ -655,7 +660,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api.rule=PathPrefix(`/gtfs`)"
-      - "traefik.http.routers.gtfs-api.middlewares=gtfs-stripprefix"
+      - "traefik.http.routers.gtfs-api.middlewares=global-rate-limit@file,gtfs-stripprefix"
       - "traefik.http.middlewares.gtfs-stripprefix.stripprefix.prefixes=/gtfs"
       - "traefik.http.services.gtfs-api.loadbalancer.server.port=3000"
     restart: unless-stopped
@@ -732,6 +737,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gtfs-api-docs.rule=PathPrefix(`/docs/gtfs`)"
+      - "traefik.http.routers.gtfs-api-docs.middlewares=global-rate-limit@file"
       - "traefik.http.services.gtfs-api-docs.loadbalancer.server.port=8080"
     restart: unless-stopped
 
@@ -760,16 +766,62 @@ services:
 
   ocpdb-flask:
     <<: *ocpdb-defaults
-    command: ["gunicorn", "--workers", "${OCPDB_GUNICORN_WORKER_COUNT}", "--bind", "0.0.0.0:5000", "webapp.entry_point_gunicorn:app"]
+    command: [
+      "gunicorn",
+      "--workers", "${OCPDB_GUNICORN_WORKER_COUNT}",
+      "--bind", "0.0.0.0:5000",
+      "--worker-class", "gthread",
+      "--threads", "4",
+      "webapp.entry_point_gunicorn:app"
+    ]
     restart: unless-stopped
     ports:
       - ${OCPDB_API_PORT}:5000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`) && !PathPrefix(`/ocpdb/images`)"
       - "traefik.http.services.ocpdb-flask.loadbalancer.server.port=5000"
-      - "traefik.http.routers.ocpdb-flask.middlewares=ocpdb-stripprefix"
       - "traefik.http.middlewares.ocpdb-stripprefix.stripprefix.prefixes=/ocpdb"
+
+      # Default router: everything below /ocpdb which is not matched by a more specific router below.
+      - "traefik.http.routers.ocpdb-flask.rule=PathPrefix(`/ocpdb`) && !PathPrefix(`/ocpdb/images`)"
+      - "traefik.http.routers.ocpdb-flask.service=ocpdb-flask"
+      - "traefik.http.routers.ocpdb-flask.middlewares=global-rate-limit@file,ocpdb-stripprefix"
+
+      # Server API (key protected, e.g. DATEX II realtime /api/server/v1/datex/v3.5/{source}/realtime): a single
+      # trusted consumer polls these with ~750 requests/min, which are cheap (avg < 100 ms when the backend is healthy).
+      # Therefore, this router is explicitly *not* subject to the global rate limit.
+      - "traefik.http.routers.ocpdb-flask-server.rule=PathPrefix(`/ocpdb/api/server/`)"
+      - "traefik.http.routers.ocpdb-flask-server.priority=200"
+      - "traefik.http.routers.ocpdb-flask-server.service=ocpdb-flask"
+      - "traefik.http.routers.ocpdb-flask-server.middlewares=ocpdb-stripprefix"
+
+      # Bulk router: paginated / large list requests (`offset` given or `limit` >= 500), excluding the server API and
+      # internal (10.0.0.0/8, e.g. QM exporter) clients. These requests take seconds each and account for ~80% of the
+      # backend time. Outages happened when too many full-dataset scrapers ran in parallel, saturated all gunicorn
+      # workers, and even `/v1/locations?limit=1` did not get a worker anymore. So we limit:
+      # 1. per client IP: max 3 parallel bulk requests (inflightreq answers 429 immediately on excess)
+      # 2. per client IP: 60 bulk requests per minute, burst 120 (a full dump with limit=1000 has ~150 pages)
+      # 3. overall: max 24 parallel bulk requests, so that there is always backend capacity left for small requests
+      - "traefik.http.routers.ocpdb-flask-bulk.rule=PathPrefix(`/ocpdb/api/`) && !PathPrefix(`/ocpdb/api/server/`) && (QueryRegexp(`offset`, `.*`) || QueryRegexp(`limit`, `^([5-9][0-9]{2}|[0-9]{4,})$$`)) && !HeaderRegexp(`X-Forwarded-For`, `^10[.][0-9]+[.][0-9]+[.][0-9]+$$`)"
+      - "traefik.http.routers.ocpdb-flask-bulk.priority=100"
+      - "traefik.http.routers.ocpdb-flask-bulk.service=ocpdb-flask"
+      - "traefik.http.routers.ocpdb-flask-bulk.middlewares=ocpdb-bulk-429-message,global-rate-limit@file,ocpdb-bulk-inflight-per-ip,ocpdb-bulk-rate-limit-per-ip,ocpdb-bulk-inflight-global,ocpdb-stripprefix"
+      # see etc/traefik/global-rate-limit.yml for why we exclude the Docker gateway IP
+      - "traefik.http.middlewares.ocpdb-bulk-inflight-per-ip.inflightreq.amount=${OCPDB_BULK_INFLIGHT_PER_IP:-3}"
+      - "traefik.http.middlewares.ocpdb-bulk-inflight-per-ip.inflightreq.sourcecriterion.ipstrategy.excludedips=172.28.5.254"
+      - "traefik.http.middlewares.ocpdb-bulk-rate-limit-per-ip.ratelimit.period=1m"
+      - "traefik.http.middlewares.ocpdb-bulk-rate-limit-per-ip.ratelimit.average=${OCPDB_BULK_RATE_LIMIT_PER_MINUTE:-60}"
+      - "traefik.http.middlewares.ocpdb-bulk-rate-limit-per-ip.ratelimit.burst=${OCPDB_BULK_RATE_LIMIT_BURST:-120}"
+      - "traefik.http.middlewares.ocpdb-bulk-rate-limit-per-ip.ratelimit.sourcecriterion.ipstrategy.excludedips=172.28.5.254"
+      # requesthost as source criterion: one shared bucket for all clients (per Host header)
+      - "traefik.http.middlewares.ocpdb-bulk-inflight-global.inflightreq.amount=${OCPDB_BULK_INFLIGHT_GLOBAL:-24}"
+      - "traefik.http.middlewares.ocpdb-bulk-inflight-global.inflightreq.sourcecriterion.requesthost=true"
+      # Replace the body of all 429 responses of the bulk router (from any of the limits above) with a custom text,
+      # served by Caddy (see etc/caddy/Caddyfile and $OCPDB_BULK_RATE_LIMIT_MESSAGE). The status code stays 429.
+      # It has to be the first middleware of the chain, so that it wraps all limiting middlewares.
+      - "traefik.http.middlewares.ocpdb-bulk-429-message.errors.status=429"
+      - "traefik.http.middlewares.ocpdb-bulk-429-message.errors.service=caddy@docker"
+      - "traefik.http.middlewares.ocpdb-bulk-429-message.errors.query=/errors/ocpdb-bulk-429"
 
   ocpdb-worker:
     <<: *ocpdb-defaults
@@ -850,7 +902,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.park-api-flask.rule=PathPrefix(`/park-api`)"
       - "traefik.http.services.park-api-flask.loadbalancer.server.port=5000"
-      - "traefik.http.routers.park-api-flask.middlewares=park-api-stripprefix"
+      - "traefik.http.routers.park-api-flask.middlewares=global-rate-limit@file,park-api-stripprefix"
       - "traefik.http.middlewares.park-api-stripprefix.stripprefix.prefixes=/park-api"
 
   park-api-init-db:

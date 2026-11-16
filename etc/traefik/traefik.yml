@@ -23,8 +23,10 @@ entryPoints:
     address: ":80"
     http:
       middlewares:
-        # by default, apply a global request rate limit
-        - global-rate-limit@file
+        # NOTE: global-rate-limit@file is *not* applied here, but at each router individually (see docker-compose.yml
+        # labels and file provider routers), because Traefik does not allow excluding single routers from entrypoint
+        # middlewares, and the OCPDB server API (DATEX II realtime) must not be subject to it.
+        # => Every new router has to add `global-rate-limit@file` as first middleware!
         # redirect all `http:` requests to `https:`
         # todo: only do this in production
         # - redirect-http-to-https@file
