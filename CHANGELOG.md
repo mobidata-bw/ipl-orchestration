@@ -15,6 +15,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Clients exceeding these limits get an HTTP `429` with an explanatory text (`OCPDB_BULK_RATE_LIMIT_MESSAGE`). **Clients fetching the full dataset have to fetch pages sequentially and must handle `429` responses with a retry after a delay.**
   - OCPDB gunicorn now uses the `gthread` worker class with 4 threads per worker.
 
+### GTFS import changes
+
+- ⚠️ upgrade `gtfs_importer` to [`postgis-gtfs-importer#v8`](https://github.com/mobidata-bw/postgis-gtfs-importer) to [v8](https://github.com/mobidata-bw/postgis-gtfs-importer/tree/v8), which switches [from a one-database-per-import-based import to a schema-based import](https://github.com/mobidata-bw/postgis-gtfs-importer/pull/41). Migrate as follows:
+  1. *Before upgrading to the new `ipl-orchestration` release*,
+    - stop all GTFS-related Compose services using `make docker-down SERVICE='gtfs-db gtfs-importer gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`;
+    - delete `gtfs-db`'s data by running `rm -rf var/gtfs/gtfs-db`.
+  2. Upgrade to the new `ipl-orchestration` release.
+  3. Start the (renamed) services again using `make docker-up-detached SERVICE='gtfs-db gtfs-api gtfs-api-docs pgbouncer dagster-pipeline geoserver'`.
+  4. Run a GTFS import, either via `make import-new-gtfs` or by materializing the `gtfs` Dagster asset.
 
 ## 2026-11-10
 
