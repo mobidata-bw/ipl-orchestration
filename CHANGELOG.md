@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## 2026-11-17
 
+- ⚠️ Lamassu: remove `donkey_bamberg` feed
 - OCPDB: add datex2_smatrics
 - GeoServer: introduce GTFS extended route types for GTFS layers
 - ⚠️ OCPDB: add rate limiting for bulk requests
