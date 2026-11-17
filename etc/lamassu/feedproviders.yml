@@ -516,14 +516,6 @@ lamassu:
           clientId: ${LAMASSU_BOLT_CLIENT_ID}
           clientPassword: ${LAMASSU_BOLT_CLIENT_PASSWORD}
     ## Donkey DE
-    - systemId: donkey_bamberg
-      operatorId: DKY:Operator:donkey
-      operatorName: Donkey Republic
-      codespace: DKA
-      # Note: donkey feeds are accessed via proxy, using http instead of https
-      url: "http://stables.donkey.bike/api/public/gbfs/3.0/donkey_bamberg/gbfs.json"
-      language: en
-      version: 3.0
     - systemId: donkey_kiel
       operatorId: DKY:Operator:donkey
       operatorName: Donkey Republic
