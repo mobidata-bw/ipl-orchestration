@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Overall, max. 24 parallel bulk requests are allowed (configurable via `OCPDB_BULK_INFLIGHT_GLOBAL`), so that there is always backend capacity left for small requests.
   - Clients exceeding these limits get an HTTP `429` with an explanatory text (`OCPDB_BULK_RATE_LIMIT_MESSAGE`). **Clients fetching the full dataset have to fetch pages sequentially and must handle `429` responses with a retry after a delay.**
   - OCPDB gunicorn now uses the `gthread` worker class with 4 threads per worker.
+  - For more infos, [check the access strategies document](https://github.com/binary-butterfly/ocpdb/blob/main/docs/access_strategies.md)
 
 ## 2026-11-10
 
