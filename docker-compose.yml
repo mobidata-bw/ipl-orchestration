@@ -228,12 +228,14 @@ services:
       LAMASSU_FEED_UPATE_INTERVAL_IN_MS: ${LAMASSU_FEED_UPATE_INTERVAL_IN_MS:?missing/empty}
       LAMASSU_FEED_CACHE_MINIMUM_INTERVAL_IN_S: ${LAMASSU_FEED_CACHE_MINIMUM_INTERVAL_IN_S:?missing/empty}
       # depending on base image, JAVA_TOOL_OPTIONS must be used
+      # -XX:-UseBASE64Intrinsics added as mitigation see https://securitylabs.datadoghq.com/articles/java4shell-remote-code-execution-in-openjdk-cve-2026-114938/#mitigation
       JDK_JAVA_OPTIONS:
         -Dspring.config.location=/etc/application-config/application.properties
         -Dspring.profiles.active=leader
         -Dorg.entur.lamassu.adminPassword=${LAMASSU_ADMIN_PASSWORD}
         -Dhttp.proxyHost=transformer-proxy
         -Dhttp.proxyPort=8080
+        -XX:-UseBASE64Intrinsics
     volumes:
       - ./etc/lamassu/:/etc/application-config/
       - ./var/gbfs/feeds:/var/gbfs/feeds
@@ -328,6 +330,7 @@ services:
       - PROXY_BASE_URL=${GEOSERVER_PROXY_BASE_URL:?missing/empty}
       # All we want to do is set user.timezone and DALLOW_ENV_PARAMETRIZATION. Due to https://github.com/geosolutions-it/docker-geoserver/issues/133
       # we currently need to pass in all default properties already defined in the dockerfile
+      # -XX:-UseBASE64Intrinsics added as mitigation see https://securitylabs.datadoghq.com/articles/java4shell-remote-code-execution-in-openjdk-cve-2026-114938/#mitigation
       - JAVA_OPTS= >-
           -Duser.timezone=${TZ:?'missing/empty $TZ'}
           -DALLOW_ENV_PARAMETRIZATION=true
@@ -343,6 +346,7 @@ services:
           -XX:MaxGCPauseMillis=200
           -XX:ParallelGCThreads=20
           -XX:ConcGCThreads=5
+          -XX:-UseBASE64Intrinsics
           -Dorg.geotools.coverage.jaiext.enabled=$${JAIEXT_ENABLED}
           -Dorg.geotools.shapefile.datetime=true
           -DGEOWEBCACHE_CONFIG_DIR=$${GEOWEBCACHE_CONFIG_DIR}
