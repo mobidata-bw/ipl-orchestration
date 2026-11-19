@@ -80,7 +80,7 @@ docker-restart: init
 # Pull all images or only the containers specified by SERVICE (e.g. `make docker-pull SERVICE=redis`)
 .PHONY: docker-pull
 docker-pull:
-	$(DOCKER_COMPOSE) --profile import-new-gtfs,import-logs pull $(SERVICE)
+	$(DOCKER_COMPOSE) --profile import-new-gtfs,import-access-logs pull $(SERVICE)
 
 # Tear down all containers and delete all volumes
 .PHONY: docker-purge

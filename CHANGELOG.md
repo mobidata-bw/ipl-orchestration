@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - OCPDB: add datex2_eulektro
 - ⚠️ Lamassu: remove `freibe` feed
 - ⚠️ move `bin/goaccess` to `bin/access-logs/goaccess` – This is only a breaking change if you mount your add your own scripts to this directory.
+- ⚠️ rename Docker Compose profile `import-logs` to `import-access-logs` – This is only a breaking change if you use scripts that rely on this profile.
 
 ## 2026-11-18
 
