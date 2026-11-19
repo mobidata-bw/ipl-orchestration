@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - ⚠️ move `bin/goaccess` to `bin/access-logs/goaccess` – This is only a breaking change if you mount your add your own scripts to this directory.
 - ⚠️ rename Docker Compose profile `import-logs` to `import-access-logs` – This is only a breaking change if you use scripts that rely on this profile.
 - ⚠️ rename Docker Compose task `goaccess` to `import-access-logs-into-goaccess` – This is only a breaking change if run this task by its name.
+- add new (opt-in) Docker Compose task `import-access-logs-into-parquet` that imports each `ingress`/Traefik access log file into a corresponding `var/logs/traefik/access-$date.log.parquet` for further analysis
 
 ## 2026-11-18
 

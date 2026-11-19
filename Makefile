@@ -171,3 +171,4 @@ TRAEFIK_ACCESS_LOG_FILENAME ?= access.log
 .PHONY: import-access-logs
 import-access-logs:
 	$(DOCKER_COMPOSE) --profile import-access-logs run --rm -e "TRAEFIK_ACCESS_LOG_FILENAME=$(TRAEFIK_ACCESS_LOG_FILENAME)" import-access-logs-into-goaccess
+	$(DOCKER_COMPOSE) --profile import-access-logs run --rm --build -e "TRAEFIK_ACCESS_LOG_FILENAME=$(TRAEFIK_ACCESS_LOG_FILENAME)" import-access-logs-into-parquet

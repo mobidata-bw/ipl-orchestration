@@ -106,6 +106,25 @@ services:
       - ./var/log/traefik:/var/log/traefik:ro
     entrypoint: ["/opt/import.sh"]
 
+  import-access-logs-into-parquet:
+    # > profiles defines a list of named profiles for the service to be enabled under. If unassigned, the service is always started but if assigned, it is only started if the profile is activated.
+    # https://github.com/compose-spec/compose-spec/blob/77cc0f9575b560c94ca2a3b94db126c54c9e4759/spec.md#profiles
+    profiles:
+      - import-access-logs
+    networks: [ipl]
+    user: *local-user
+    build:
+      context: bin/access-logs/parquet
+      dockerfile: duckdb-with-shell.Dockerfile
+    environment:
+      - TZ=${TZ:?missing/empty}
+    volumes:
+      # entrypoint script
+      - ./bin/access-logs/parquet:/opt/access-logs:ro
+      # Traefik access logs and newly created parquet files
+      - ./var/log/traefik:/var/log/traefik:rw
+    entrypoint: ["/opt/access-logs/import.sh"]
+
   # This service applies a couple of conversions for certain GBFS feeds to fix
   # syntax issues which prevent importing in Lamassu.
   # It needs to be configured as proxy for Lamassu and feeds to be filtered should
