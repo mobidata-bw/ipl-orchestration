@@ -95,7 +95,7 @@ services:
       - GOACCESS_KEEP_LAST_DAYS=${GOACCESS_KEEP_LAST_DAYS:?missing/empty}
     volumes:
       # entrypoint script
-      - ./bin/goaccess/import.sh:/opt/import.sh:ro
+      - ./bin/access-logs/goaccess/import.sh:/opt/import.sh:ro
       # GoAccess configuration file
       - ./etc/goaccess.conf:/etc/goaccess.conf:ro
       # data written by GoAccess itself: statistics database, generated HTML report, processing logs

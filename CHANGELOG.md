@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Update env `IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_UR` for GTFS import to [actual download url](https://github.com/mobidata-bw/ipl-orchestration/blob/63cbf4c59dda6d594bb07a348e3040e856104fe7/.env#L67)
 - OCPDB: add datex2_eulektro
 - ⚠️ Lamassu: remove `freibe` feed
+- ⚠️ move `bin/goaccess` to `bin/access-logs/goaccess` – This is only a breaking change if you mount your add your own scripts to this directory.
 
 ## 2026-11-18
 
