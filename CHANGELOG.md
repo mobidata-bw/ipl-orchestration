@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - OCPDB: set gunicorn keep-alive to 120s (above Traefik's 90s backend idle timeout) to prevent sporadic HTTP 502 at DATEX II realtime pushes
 - OCPDB: add datex2_eulektro
 - ⚠️ Lamassu: remove `freibe` feed
+- OCPDB: set gunicorn keep-alive to 120s (above Traefik's 90s backend idle timeout) to prevent sporadic HTTP 502 at DATEX II realtime pushes
 
 ## 2026-11-18
 
