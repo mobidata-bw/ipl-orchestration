@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - upgrades some libraries, e.g. `postgresql-client` from v14.23.0 to v14.14.0
   - contains some changes to bitnami's container helper scripts that should not affect users
 - `gtfs-api`: upgrade [`postgrest/postgrest`](https://hub.docker.com/r/postgrest/postgrest) to [`v16.6`](https://github.com/PostgREST/postgrest/releases/tag/v16.6) ([[`v16.5` release](https://github.com/PostgREST/postgrest/releases/tag/v16.5))
+- `gtfs-api-docs`: upgrade to [`skriptfabrik/elements-cli:0.5.34`](https://github.com/skriptfabrik/elements-cli/releases/tag/0.5.34)
 
 ## 2026-11-24
 
