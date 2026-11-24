@@ -776,6 +776,11 @@ services:
       "--bind", "0.0.0.0:5000",
       "--worker-class", "gthread",
       "--threads", "4",
+      # Has to be longer than Traefik's idle timeout for backend connections (`serversTransport.forwardingTimeouts.
+      # idleConnTimeout` in etc/traefik/traefik.yml, 90s). Otherwise gunicorn closes
+      # keep-alive connections Traefik still reuses, which leads to HTTP 502 for non-retryable requests (e.g. the
+      # DATEX II realtime POSTs at /ocpdb/api/server/*). With gthread, idle keep-alive connections do not block a thread.
+      "--keep-alive", "120",
       "webapp.entry_point_gunicorn:app"
     ]
     restart: unless-stopped

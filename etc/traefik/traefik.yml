@@ -68,6 +68,15 @@ entryPoints:
   traefik:
     address: ":8080"
 
+serversTransport:
+  forwardingTimeouts:
+    # How long Traefik keeps idle keep-alive connections to backends open (Traefik's default is 90s, but it is set
+    # explicitly so that a changed default in a future Traefik version does not silently break things).
+    # NOTE: Backends' keep-alive timeouts have to be *longer* than this, otherwise they close connections Traefik still
+    # reuses, which leads to HTTP 502 for non-retryable requests. See e.g. `--keep-alive` of `ocpdb-flask` in
+    # docker-compose.yml.
+    idleConnTimeout: 90s
+
 accessLog:
   filePath: "/var/log/traefik/access.log"
   format: json
