@@ -29,6 +29,7 @@ init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_ke
 	touch -a var/gtfs/pgbouncer-dsn.txt
 	mkdir -p var/geoserver/datadir
 	mkdir -p var/geoserver/gwc_cache_dir
+	mkdir -p var/geoserver/datasets
 	mkdir -p var/log/geoserver/tomcat
 	mkdir -p var/log/geoserver/geoserver
 	mkdir -p var/goaccess/data

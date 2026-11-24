@@ -311,6 +311,8 @@ services:
       # see also $GEOSERVER_DATA_TEMPLATE_DIR below
       - ./etc/geoserver/datadir:/opt/geoserver_data_template/:ro
       - ./var/geoserver/datadir:/opt/geoserver_data/
+      # datasources deployed manually/externally (e.g. via Ansible)
+      - ./var/geoserver/datasets:/opt/datasets/:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.geoserver.rule=PathPrefix(`/geoserver`)"

@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
     3. deploy the new `ipl-orchestration` release using `ipl-ansible`, or
       a. check out the release in Git
       b. run `make docker-up-detached SERVICE=geoserver`
+  - move the directory for externally (as in: not by `ipl-orchestration` itself) provided datasets from `var/geoserver/datadir/data/ansible-files` to `var/geoserver/datasets`
 
 ## 2026-11-26
 
