@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.8.0`](https://hub.docker.com/layers/library/traefik/v3.8.0/images/sha256-2e288bd466b23d4c62a76c89ddddb2965798b7a3f925aaa4400982b5028e7f92) ([`v3.8.0` changelog](https://github.com/traefik/traefik/blob/v3.8.0/CHANGELOG.md)) – This upgrade contains security fixes!
 - `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-11-24T13.25.33_5c8a6a0`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/cc990d4186258226c41cf1cf6b75fd37873f9e3e), which
   - upgrades pgbouncer to [v1.26.1](https://www.pgbouncer.org/2026/10/pgbouncer-1-26-1)
   - upgrades some libraries, e.g. `postgresql-client` from v14.23.0 to v14.14.0
