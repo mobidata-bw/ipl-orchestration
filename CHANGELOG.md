@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- `pgbouncer`: upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-11-24T13.25.33_5c8a6a0`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/cc990d4186258226c41cf1cf6b75fd37873f9e3e), which
+  - upgrades pgbouncer to [v1.26.1](https://www.pgbouncer.org/2026/10/pgbouncer-1-26-1)
+  - upgrades some libraries, e.g. `postgresql-client` from v14.23.0 to v14.14.0
+  - contains some changes to bitnami's container helper scripts that should not affect users
+
 ## 2026-11-24
 
 - Update env `IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_UR` for GTFS import to [actual download url](https://github.com/mobidata-bw/ipl-orchestration/blob/63cbf4c59dda6d594bb07a348e3040e856104fe7/.env#L67)
