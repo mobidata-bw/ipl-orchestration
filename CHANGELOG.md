@@ -33,7 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - ⚠️ Lamassu: remove `donkey_bamberg` feed
 - OCPDB: add datex2_smatrics
-- GeoServer: introduce GTFS extended route types for GTFS layers
+- ⚠️ GeoServer: introduce GTFS extended route types for GTFS layers
 - ⚠️ OCPDB: add rate limiting for bulk requests
   - Bulk requests are requests to `/ocpdb/api/*` (except the key protected `/ocpdb/api/server/*`) with an `offset` parameter or with `limit` >= 500. Requests from internal clients (`10.0.0.0/8`) are not limited.
   - Bulk requests are limited per client IP to 3 parallel requests (configurable via `OCPDB_BULK_INFLIGHT_PER_IP`) and to 60 requests per minute with a burst of 120 (configurable via `OCPDB_BULK_RATE_LIMIT_PER_MINUTE` and `OCPDB_BULK_RATE_LIMIT_BURST`).
