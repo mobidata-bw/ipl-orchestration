@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- `pgbouncer`: revert upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-11-24T13.25.33_5c8a6a0`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/cc990d4186258226c41cf1cf6b75fd37873f9e3e) – The upgrade broke `pgbouncer`'s config reload mechanism because [the `SUSPEND` command is now removed](https://github.com/mobidata-bw/ipl-orchestration/pull/649#pullrequestreview-6060644857).
+
 ## 2026-11-25
 
 - `ingess`: upgrade [`traefik`](https://hub.docker.com/_/traefik) to [`v3.8.0`](https://hub.docker.com/layers/library/traefik/v3.8.0/images/sha256-2e288bd466b23d4c62a76c89ddddb2965798b7a3f925aaa4400982b5028e7f92) ([`v3.8.0` changelog](https://github.com/traefik/traefik/blob/v3.8.0/CHANGELOG.md)) – This upgrade contains security fixes!
