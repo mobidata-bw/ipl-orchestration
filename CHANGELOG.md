@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+- OCPDB: add datex2_ewe
+
 ## 2026-11-26
 
 - `pgbouncer`: revert upgrade to [`ghcr.io/mobidata-bw/pgbouncer:2026-11-24T13.25.33_5c8a6a0`](https://github.com/mobidata-bw/bitnami-pgbouncer-image/tree/cc990d4186258226c41cf1cf6b75fd37873f9e3e) – The upgrade broke `pgbouncer`'s config reload mechanism because [the `SUSPEND` command is now removed](https://github.com/mobidata-bw/ipl-orchestration/pull/649#pullrequestreview-6060644857).
