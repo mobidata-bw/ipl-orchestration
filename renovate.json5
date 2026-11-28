@@ -19,6 +19,8 @@
 		// Note: It only scans .env using regular expressions for aptly named variables, without any understanding for docker-compose.yml and wether this variable is actually used in a service's `image` field.
 		// [1] see also https://github.com/mobidata-bw/ipl-ansible
 		// [2] https://docs.renovatebot.com/modules/manager/regex/
+		// Note:
+		// > The regex manager matches are done per-file, not per-line! This means the ^ and $ regex assertions only match the beginning and end of the entire file. If you need to match line boundaries you can use (?:^|\r\n|\r|\n|$).
 		{
 			"customType": "regex",
 			"managerFilePatterns": [
@@ -101,6 +103,27 @@
 				"postgrest/postgrest",
 			],
 			"allowedVersions": "/^v\\d*[02468]\\.\\d+$/",
+		},
+
+		// Note:
+		// > The regex manager matches are done per-file, not per-line! This means the ^ and $ regex assertions only match the beginning and end of the entire file. If you need to match line boundaries you can use (?:^|\r\n|\r|\n|$).
+		// https://docs.renovatebot.com/modules/manager/regex/
+		{
+			customType: 'regex',
+			managerFilePatterns: [
+				'/.*\\.Dockerfile$/'
+			],
+			matchStrings: [
+				// https://docs.renovatebot.com/modules/manager/regex/
+
+				// In `bin/access-logs/parquet/duckdb-with-shell.Dockerfile`, we use the following notation to configure Renovate Bot inline:
+				// > # renovate: datasource=github-releases depName=duckdb/duckdb versioning=semver
+				// > ARG DUCKDB_VERSION=2.0.0
+				// Note that
+				// - the version might be in quotes or it might not.
+				// - we assure that the two matched lines actually start/end (respectively) with the expected notation, so that we don't match parts of longer lines.
+				'(?:^|\\r\\n|\\r|\\n)# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) versioning=(?<versioning>.*?)(?:\\r\\n|\\r|\\n)ARG\\s+\\S+\\s*=\\s*(?:[\'"]?)(?<currentValue>[^\\s\'"]+)(?:[\'"]?)(?:\\r\\n|\\r|\\n|$)',
+			],
 		},
 	],
 }

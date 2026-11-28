@@ -30,8 +30,10 @@ init: etc/sftp/users.conf etc/sftp/ssh_host_ed25519_key etc/sftp/ssh_host_rsa_ke
 	mkdir -p var/geoserver/datadir
 	touch -a var/geoserver/datadir/global.xml
 	mkdir -p var/geoserver/gwc_cache_dir
+	mkdir -p var/log/traefik
 	mkdir -p var/log/geoserver/tomcat
 	mkdir -p var/log/geoserver/geoserver
+	mkdir -p var/log/goaccess
 	mkdir -p var/goaccess/data
 	mkdir -p var/goaccess/report
 	mkdir -p var/ocpdb/logs
@@ -80,7 +82,7 @@ docker-restart: init
 # Pull all images or only the containers specified by SERVICE (e.g. `make docker-pull SERVICE=redis`)
 .PHONY: docker-pull
 docker-pull:
-	$(DOCKER_COMPOSE) --profile import-new-gtfs,import-logs pull $(SERVICE)
+	$(DOCKER_COMPOSE) --profile import-new-gtfs,import-access-logs pull $(SERVICE)
 
 # Tear down all containers and delete all volumes
 .PHONY: docker-purge
@@ -163,3 +165,10 @@ park-api-upgrade:
 park-api-shell:
 	$(DOCKER_COMPOSE) exec park-api-flask /bin/sh
 
+# management of Traefik's access logs
+# -----------------------------------
+TRAEFIK_ACCESS_LOG_FILENAME ?= access.log
+.PHONY: import-access-logs
+import-access-logs:
+	$(DOCKER_COMPOSE) --profile import-access-logs run --rm -e "TRAEFIK_ACCESS_LOG_FILENAME=$(TRAEFIK_ACCESS_LOG_FILENAME)" import-access-logs-into-goaccess
+	$(DOCKER_COMPOSE) --profile import-access-logs run --rm --build -e "TRAEFIK_ACCESS_LOG_FILENAME=$(TRAEFIK_ACCESS_LOG_FILENAME)" import-access-logs-into-parquet

@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Update env `IPL_GTFS_IMPORTER_GTFS_DOWNLOAD_UR` for GTFS import to [actual download url](https://github.com/mobidata-bw/ipl-orchestration/blob/63cbf4c59dda6d594bb07a348e3040e856104fe7/.env#L67)
 - OCPDB: add datex2_eulektro
 - ⚠️ Lamassu: remove `freibe` feed
+- ⚠️ move `bin/goaccess` to `bin/access-logs/goaccess` – This is only a breaking change if you mount your add your own scripts to this directory.
+- ⚠️ rename Docker Compose profile `import-logs` to `import-access-logs` – This is only a breaking change if you use scripts that rely on this profile.
+- ⚠️ rename Docker Compose task `goaccess` to `import-access-logs-into-goaccess` – This is only a breaking change if run this task by its name.
+- add new (opt-in) Docker Compose task `import-access-logs-into-parquet` that imports each `ingress`/Traefik access log file into a corresponding `var/logs/traefik/access-$date.log.parquet` for further analysis
 
 ## 2026-11-18
 
